@@ -52,6 +52,7 @@ namespace ACNHPoker
         private ToolStripMenuItem CopyArea;
         private bool AreaCopied = false;
         private ToolStripMenuItem PasteArea;
+        private ToolStripMenuItem SaveArea;
         private byte[][] SavedArea;
 
 
@@ -59,6 +60,7 @@ namespace ACNHPoker
         private bool sound;
         private bool ignore = false;
         public static int numOfColumn = 0;
+        public static int numOfRow = 0;
 
         byte[] Layer1 = null;
         byte[] Layer2 = null;
@@ -176,6 +178,9 @@ namespace ACNHPoker
 
                 PasteArea = new ToolStripMenuItem("Paste Area", null, pasteAreaToolStripMenuItem_Click);
                 PasteArea.ForeColor = Color.White;
+
+                SaveArea = new ToolStripMenuItem("Save Area to File", null, saveAreaToolStripMenuItem_Click);
+                SaveArea.ForeColor = Color.White;
 
                 this.KeyPreview = true;
                 Log.logEvent("Map", "MapForm Started Successfully");
@@ -1228,7 +1233,7 @@ namespace ACNHPoker
 
                         selectedItem.setup(name, Convert.ToUInt16("0x" + id, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(id, fieldSource), true, "");
                     }
-                    
+
                     if (selection != null)
                     {
                         string hexValue = "00000000";
@@ -1242,7 +1247,7 @@ namespace ACNHPoker
 
                         selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng", Utilities.precedingZeros(hexValue, 8));
                     }
-                    
+
                     //updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
                 }
@@ -2312,6 +2317,8 @@ namespace ACNHPoker
                 floorRightClick.Items.Add(CopyArea);
             if (AreaCopied && !floorRightClick.Items.Contains(PasteArea))
                 floorRightClick.Items.Add(PasteArea);
+            if (AreaSet && !floorRightClick.Items.Contains(SaveArea))
+                floorRightClick.Items.Add(SaveArea);
         }
 
         private void copyAreaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2556,8 +2563,119 @@ namespace ACNHPoker
                 floorRightClick.Items.Remove(CopyArea);
             if (floorRightClick.Items.Contains(PasteArea))
                 floorRightClick.Items.Remove(PasteArea);
+            if (floorRightClick.Items.Contains(SaveArea))
+                floorRightClick.Items.Remove(SaveArea);
             moveAnchor(anchorX, anchorY);
             miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
+        }
+
+        private void saveAreaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int TopLeftX;
+            int TopLeftY;
+            int BottomRightX;
+            int BottomRightY;
+
+            if (Corner1X <= Corner2X)
+            {
+                if (Corner1Y <= Corner2Y) // Top Left
+                {
+                    TopLeftX = Corner1X;
+                    TopLeftY = Corner1Y;
+                    BottomRightX = Corner2X;
+                    BottomRightY = Corner2Y;
+                }
+                else // Bottom Left
+                {
+                    TopLeftX = Corner1X;
+                    TopLeftY = Corner2Y; //
+                    BottomRightX = Corner2X;
+                    BottomRightY = Corner1Y; //
+                }
+            }
+            else
+            {
+                if (Corner1Y <= Corner2Y) // Top Right
+                {
+                    TopLeftX = Corner2X; //
+                    TopLeftY = Corner1Y;
+                    BottomRightX = Corner1X; //
+                    BottomRightY = Corner2Y;
+                }
+                else // Bottom Left
+                {
+                    TopLeftX = Corner2X;
+                    TopLeftY = Corner2Y;
+                    BottomRightX = Corner1X;
+                    BottomRightY = Corner1Y;
+                }
+            }
+
+            int numberOfColumn = BottomRightX - TopLeftX + 1;
+            int numberOfRow = BottomRightY - TopLeftY + 1;
+
+            int sizeOfRow = 0x8;
+            byte[] save = { };
+            byte[] tempItem = new byte[sizeOfRow];
+
+            for (int i = 0; i < numberOfColumn; i++)
+            {
+                for (int j = 0; j < numberOfRow; j++)
+                {
+                    if (layer1Btn.Checked)
+                        Buffer.BlockCopy(Layer1, (int)((0xC00 * (i + TopLeftX)) + (0x10 * (j + TopLeftY))), tempItem, 0, sizeOfRow);
+                    else
+                        Buffer.BlockCopy(Layer2, (int)((0xC00 * (i + TopLeftX)) + (0x10 * (j + TopLeftY))), tempItem, 0, sizeOfRow);
+
+                    if (Utilities.ByteToHexString(tempItem).StartsWith("FEFF0000") || Utilities.ByteToHexString(tempItem).StartsWith("FDFF0000"))
+                    {
+
+                    }
+                    else
+                        save = Utilities.add(save, tempItem);
+                }
+            }
+
+            moveAnchor(anchorX, anchorY);
+
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs|New Horizons Inventory(*.nhi) | *.nhi",
+                FileName = "(" + numberOfRow + ")" + "filename",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            File.WriteAllBytes(file.FileName, save);
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         #endregion
@@ -5167,6 +5285,12 @@ namespace ACNHPoker
                 return;
             }
 
+            if (selectedButton == null)
+            {
+                MessageBox.Show("Please select a slot!");
+                return;
+            }
+
             string flag1 = selectedItem.getFlag1();
             string flag2 = Utilities.precedingZeros(FlagTextbox.Text, 2);
 
@@ -5182,71 +5306,62 @@ namespace ACNHPoker
                 int row;
                 int column;
                 int BottomRightX = 0;
-                int BottomRightY= 0;
+                int BottomRightY = 0;
 
                 int main = variationList.GetLength(0);
                 int sub = variationList.GetLength(1);
 
-                if (main > 1 && sub > 1)
+                variationSpawn variationSpawner = new variationSpawn(variationList);
+                int result = (int)variationSpawner.ShowDialog(this);
+
+                if (result == 1) // Main
                 {
-                    variationSpawn variationSpawner = new variationSpawn(variationList);
-                    int result = (int)variationSpawner.ShowDialog(this);
-
-                    if (result == 1) // Main
-                    {
-                        BottomRightX = selectedButton.mapX + numOfColumn - 1;
-                        row = variationList.GetLength(0);
-                        BottomRightY = TopLeftY + row - 1;
-                        spawnArea = buildVariationArea(variationList, row, numOfColumn, 1);
-                    }
-                    else if (result == 6) // Sub
-                    {
-                        BottomRightX = selectedButton.mapX + numOfColumn - 1;
-                        row = variationList.GetLength(1);
-                        BottomRightY = TopLeftY + row - 1;
-                        spawnArea = buildVariationArea(variationList, row, numOfColumn, 6);
-                    }
-                    else if (result == 5) // All
-                    {
-                        BottomRightX = selectedButton.mapX + main - 1;
-                        row = sub;
-                        column = main;
-                        BottomRightY = TopLeftY + row - 1;
-                        spawnArea = buildVariationArea(variationList, row, column, 5);
-                    }
-                    else
-                    {
-                        return;
-                    }
-
+                    BottomRightX = selectedButton.mapX + numOfColumn - 1;
+                    row = variationList.GetLength(0);
+                    BottomRightY = TopLeftY + row - 1;
+                    spawnArea = buildVariationArea(variationList, row, numOfColumn, 1);
+                }
+                else if (result == 6) // Sub
+                {
+                    BottomRightX = selectedButton.mapX + numOfColumn - 1;
+                    row = variationList.GetLength(1);
+                    BottomRightY = TopLeftY + row - 1;
+                    spawnArea = buildVariationArea(variationList, row, numOfColumn, 6);
+                }
+                else if (result == 5) // All
+                {
+                    BottomRightX = selectedButton.mapX + main - 1;
+                    row = sub;
+                    column = main;
+                    BottomRightY = TopLeftY + row - 1;
+                    spawnArea = buildVariationArea(variationList, row, column, 5);
+                }
+                else if (result == 3) // Main H
+                {
+                    BottomRightY = selectedButton.mapY + numOfRow - 1;
+                    column = variationList.GetLength(0);
+                    BottomRightX = TopLeftX + column - 1;
+                    spawnArea = buildVertVariationArea(variationList, column, numOfRow, 3);
+                }
+                else if (result == 7) // Sub H
+                {
+                    BottomRightY = selectedButton.mapY + numOfRow - 1;
+                    column = variationList.GetLength(1);
+                    BottomRightX = TopLeftX + column - 1;
+                    spawnArea = buildVertVariationArea(variationList, column, numOfRow, 7);
+                }
+                else if (result == 4) // All H
+                {
+                    BottomRightY = selectedButton.mapY + main - 1;
+                    row = main;
+                    column = sub;
+                    BottomRightX = TopLeftX + column - 1;
+                    spawnArea = buildVertVariationArea(variationList, column, row, 4);
                 }
                 else
                 {
-                    variationSpawn variationSpawner = new variationSpawn(variationList);
-                    int result = (int)variationSpawner.ShowDialog(this);
-
-                    if (result == 1) // Main
-                    {
-                        BottomRightX = selectedButton.mapX + numOfColumn - 1;
-                        row = variationList.GetLength(0);
-                        BottomRightY = TopLeftY + row - 1;
-                        spawnArea = buildVariationArea(variationList, row, numOfColumn, 1);
-                    }
-                    else if (result == 6) // Sub
-                    {
-                        BottomRightX = selectedButton.mapX + numOfColumn - 1;
-                        row = variationList.GetLength(1);
-                        BottomRightY = TopLeftY + row - 1;
-                        spawnArea = buildVariationArea(variationList, row, numOfColumn, 6);
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    return;
                 }
-
-
-
 
                 long address;
 
@@ -5335,6 +5450,79 @@ namespace ACNHPoker
                         string itemData = Utilities.precedingZeros(variation[i, j].fillItemData(), 8);
                         string flag1 = Utilities.precedingZeros(variation[i, j].getFlag1(), 2);
                         string flag2 = Utilities.precedingZeros(variation[i, j].getFlag2(), 2);
+
+                        byte[] ItemLeft = Utilities.stringToByte(Utilities.buildDropStringLeft(itemID, itemData, flag1, flag2));
+                        byte[] ItemRight = Utilities.stringToByte(Utilities.buildDropStringRight(itemID));
+
+                        Buffer.BlockCopy(ItemLeft, 0, b[i * 2], 0x10 * j, 16);
+                        Buffer.BlockCopy(ItemRight, 0, b[i * 2 + 1], 0x10 * j, 16);
+                    }
+                }
+            }
+
+            return b;
+        }
+
+        private byte[][] buildVertVariationArea(inventorySlot[,] variation, int numberOfColumn, int multiple = 1, int mode = 3)
+        {
+            int numberOfRow = multiple;
+            int sizeOfRow = 16;
+
+            byte[][] b = new byte[numberOfColumn * 2][];
+
+            for (int i = 0; i < numberOfColumn * 2; i++)
+            {
+                b[i] = new byte[numberOfRow * sizeOfRow];
+            }
+
+            if (mode == 3) // Main
+            {
+                for (int i = 0; i < numberOfColumn; i++)
+                {
+                    for (int j = 0; j < numberOfRow; j++)
+                    {
+                        string itemID = Utilities.precedingZeros(variation[i, 0].fillItemID(), 4);
+                        string itemData = Utilities.precedingZeros(variation[i, 0].fillItemData(), 8);
+                        string flag1 = Utilities.precedingZeros(variation[i, 0].getFlag1(), 2);
+                        string flag2 = Utilities.precedingZeros(variation[i, 0].getFlag2(), 2);
+
+                        byte[] ItemLeft = Utilities.stringToByte(Utilities.buildDropStringLeft(itemID, itemData, flag1, flag2));
+                        byte[] ItemRight = Utilities.stringToByte(Utilities.buildDropStringRight(itemID));
+
+                        Buffer.BlockCopy(ItemLeft, 0, b[i * 2], 0x10 * j, 16);
+                        Buffer.BlockCopy(ItemRight, 0, b[i * 2 + 1], 0x10 * j, 16);
+                    }
+                }
+            }
+            else if (mode == 7) // Sub
+            {
+                for (int i = 0; i < numberOfColumn; i++)
+                {
+                    for (int j = 0; j < numberOfRow; j++)
+                    {
+                        string itemID = Utilities.precedingZeros(variation[0, i].fillItemID(), 4);
+                        string itemData = Utilities.precedingZeros(variation[0, i].fillItemData(), 8);
+                        string flag1 = Utilities.precedingZeros(variation[0, i].getFlag1(), 2);
+                        string flag2 = Utilities.precedingZeros(variation[0, i].getFlag2(), 2);
+
+                        byte[] ItemLeft = Utilities.stringToByte(Utilities.buildDropStringLeft(itemID, itemData, flag1, flag2));
+                        byte[] ItemRight = Utilities.stringToByte(Utilities.buildDropStringRight(itemID));
+
+                        Buffer.BlockCopy(ItemLeft, 0, b[i * 2], 0x10 * j, 16);
+                        Buffer.BlockCopy(ItemRight, 0, b[i * 2 + 1], 0x10 * j, 16);
+                    }
+                }
+            }
+            else // All
+            {
+                for (int i = 0; i < numberOfColumn; i++)
+                {
+                    for (int j = 0; j < numberOfRow; j++)
+                    {
+                        string itemID = Utilities.precedingZeros(variation[j, i].fillItemID(), 4);
+                        string itemData = Utilities.precedingZeros(variation[j, i].fillItemData(), 8);
+                        string flag1 = Utilities.precedingZeros(variation[j, i].getFlag1(), 2);
+                        string flag2 = Utilities.precedingZeros(variation[j, i].getFlag2(), 2);
 
                         byte[] ItemLeft = Utilities.stringToByte(Utilities.buildDropStringLeft(itemID, itemData, flag1, flag2));
                         byte[] ItemRight = Utilities.stringToByte(Utilities.buildDropStringRight(itemID));
