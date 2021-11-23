@@ -60,8 +60,6 @@ namespace ACNHPoker
                     Log.logEvent("Regen", "A Shiny Has Appeared!");
                 }
 
-                Debug.Print(Utilities.GetFreezeCount(s).ToString());
-
                 Log.logEvent("Regen", "RegenForm Started Successfully");
             }
             catch (Exception ex)
@@ -387,9 +385,10 @@ namespace ACNHPoker
                     if (MiniMap == null)
                     {
                         byte[] Acre = Utilities.getAcre(s, null);
+                        byte[] Building = Utilities.getBuilding(s, null);
 
                         if (MiniMap == null)
-                            MiniMap = new miniMap(data, Acre);
+                            MiniMap = new miniMap(data, Acre, Building);
 
                         miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
                     }

@@ -306,6 +306,7 @@ namespace ACNHPoker
             }
 
             //-----------------------------------------------------------------
+            string matchName = "";
             string id = "";
             string color = "";
             if (ItemDict.ContainsKey(name.ToLower()) && otherColor == 0)            // exect name       exect name,[red]
@@ -315,6 +316,12 @@ namespace ACNHPoker
                 if (dv.Count > 0)                                                   // exect name,[red]
                 {
                     DataRowView drv = dv[0];
+                    matchName = drv["eng"].ToString();
+                    if (matchName.Contains("[!]"))
+                    {
+                        await MyTwitchBot.SendMessage($"Sorry, the item \"{name}\" is invalid.");
+                        return;
+                    }
                     id = drv["id"].ToString();
                     color = drv["color"].ToString();
                 }
@@ -334,6 +341,12 @@ namespace ACNHPoker
                     if (dv.Count > 0)
                     {
                         DataRowView drv = dv[0];
+                        matchName = drv["eng"].ToString();
+                        if (matchName.Contains("[!]"))
+                        {
+                            await MyTwitchBot.SendMessage($"Sorry, the item \"{name}\" is invalid.");
+                            return;
+                        }
                         id = drv["id"].ToString();
                         color = drv["color"].ToString();
                     }
@@ -383,6 +396,12 @@ namespace ACNHPoker
                             {
                                 drv = dv[otherColor];
                             }
+                        }
+                        matchName = drv["eng"].ToString();
+                        if (matchName.Contains("[!]"))
+                        {
+                            await MyTwitchBot.SendMessage($"Sorry, the item \"{name}\" is invalid.");
+                            return;
                         }
                         id = drv["id"].ToString();
                         color = drv["color"].ToString();

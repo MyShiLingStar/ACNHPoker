@@ -142,12 +142,12 @@ namespace ACNHPoker
 
 
             if (MiniMap == null)
-                MiniMap = new miniMap(b, null, 3);
+                MiniMap = new miniMap(b, null, null, 3);
 
             //miniMapBox.Visible = true;
             //miniMapBox.Image = MiniMap.drawItemMap();
         }
-
+         
         private void button2_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog file = new SaveFileDialog()
@@ -224,6 +224,32 @@ namespace ACNHPoker
             byte[] data = File.ReadAllBytes(file.FileName);
 
             Utilities.SendByteArray8(s, Utilities.AcreOffset, data, AcrePlusAdditionalParams);
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons b (*.nhb)|*.nhb",
+            };
+
+            string savepath = Directory.GetCurrentDirectory() + @"\save";
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            byte[] save = Utilities.ReadByteArray8(s, Utilities.BuildingOffset, AllBuildingSize);
+
+            File.WriteAllBytes(file.FileName, save);
         }
 
         public static void GetAcreTileColor(byte acre, int x, int y)

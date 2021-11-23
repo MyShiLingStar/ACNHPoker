@@ -22,14 +22,14 @@ namespace ACNHPoker
         private byte[] Layer1 = null;
         private byte[] Layer2 = null;
         private byte[] Acre = null;
-
+        private byte[] Building = null;
         private byte[] save = null;
 
         private byte[][] item = null;
         private int rowNum;
         private byte[][] SpawnArea = null;
         private bool spawnlock = false;
-        public bulkSpawn(Socket S, USBBot Bot, byte[] layer1, byte[] layer2, byte[] acre, int x, int y, map Map, bool Ignore, bool Sound)
+        public bulkSpawn(Socket S, USBBot Bot, byte[] layer1, byte[] layer2, byte[] acre, byte[] building, int x, int y, map Map, bool Ignore, bool Sound)
         {
             try
             {
@@ -38,12 +38,13 @@ namespace ACNHPoker
                 Layer1 = layer1;
                 Layer2 = layer2;
                 Acre = acre;
+                Building = building;
                 anchorX = x;
                 anchorY = y;
                 main = Map;
                 ignore = Ignore;
                 sound = Sound;
-                MiniMap = new miniMap(Layer1, acre, 4);
+                MiniMap = new miniMap(Layer1, Acre, Building, 4);
                 InitializeComponent();
                 xCoordinate.Text = x.ToString();
                 yCoordinate.Text = y.ToString();

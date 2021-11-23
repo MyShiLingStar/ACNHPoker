@@ -65,6 +65,7 @@ namespace ACNHPoker
         byte[] Layer1 = null;
         byte[] Layer2 = null;
         byte[] Acre = null;
+        byte[] Building = null;
         #endregion
 
         #region Form Load
@@ -220,11 +221,12 @@ namespace ACNHPoker
                 Layer1 = Utilities.getMapLayer(s, bot, layer1Address, ref counter);
                 Layer2 = Utilities.getMapLayer(s, bot, layer2Address, ref counter);
                 Acre = Utilities.getAcre(s, bot);
+                Building = Utilities.getBuilding(s, bot);
 
                 if (Layer1 != null && Layer2 != null && Acre != null)
                 {
                     if (MiniMap == null)
-                        MiniMap = new miniMap(Layer1, Acre, 2);
+                        MiniMap = new miniMap(Layer1, Acre, Building, 2);
                 }
                 else
                     throw new NullReferenceException("Layer1/Layer2/Acre");
@@ -466,7 +468,7 @@ namespace ACNHPoker
             else if (P1Id == "315A" || P1Id == "1618" || P1Id == "342F")
             {
                 Path1 = GetImagePathFromID(itemID, source, Data);
-                ContainPath = GetImagePathFromID(P1Data, source);
+                ContainPath = GetImagePathFromID(P1Data, source, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16));
             }
             else if (ItemAttr.hasFenceWithVariation(ID))  // Fence Variation
             {
@@ -537,7 +539,7 @@ namespace ACNHPoker
             else if (P1Id == "315A" || P1Id == "1618" || P1Id == "342F")
             {
                 Path1 = GetImagePathFromID(itemID, source, Data);
-                ContainPath = GetImagePathFromID(P1Data, source);
+                ContainPath = GetImagePathFromID(P1Data, source, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16));
             }
             else if (ItemAttr.hasFenceWithVariation(ID))  // Fence Variation
             {
@@ -2804,7 +2806,7 @@ namespace ACNHPoker
 
             if (itemID.Equals("315A") || itemID.Equals("1618") || itemID.Equals("342F"))
             {
-                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source), true, GetImagePathFromID(Utilities.turn2bytes(itemData), source), "00", flag2);
+                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source), true, GetImagePathFromID(Utilities.turn2bytes(itemData), source, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), "00", flag2);
             }
             else if (itemID.Equals("16A2"))
             {
@@ -3998,7 +4000,7 @@ namespace ACNHPoker
 
         private void saveTopngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            miniMap big = new miniMap(Layer1, Acre, 4);
+            miniMap big = new miniMap(Layer1, Acre, Building, 4);
             SaveFileDialog file = new SaveFileDialog()
             {
                 Filter = "Portable Network Graphics (*.png)|*.png",
@@ -4163,7 +4165,7 @@ namespace ACNHPoker
         private void bulkSpawnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bulk == null)
-                bulk = new bulkSpawn(s, bot, Layer1, Layer2, Acre, anchorX, anchorY, this, ignore, sound); ;
+                bulk = new bulkSpawn(s, bot, Layer1, Layer2, Acre, Building, anchorX, anchorY, this, ignore, sound); ;
             bulk.StartPosition = FormStartPosition.CenterParent;
             bulk.ShowDialog();
         }
@@ -5554,7 +5556,7 @@ namespace ACNHPoker
 
             if (itemID.Equals("315A") || itemID.Equals("1618") || itemID.Equals("342F"))
             {
-                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source), true, GetImagePathFromID(Utilities.turn2bytes(itemData), source), "00", flag2);
+                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source), true, GetImagePathFromID(Utilities.turn2bytes(itemData), source, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), "00", flag2);
             }
             else if (itemID.Equals("16A2"))
             {

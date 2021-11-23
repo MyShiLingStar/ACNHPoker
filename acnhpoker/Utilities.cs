@@ -96,7 +96,9 @@ namespace ACNHPoker
         public const int AllAcreSize = AcreMax * 2;
         public const int AcreAndPlaza = AllAcreSize + 2 + 2 + 4 + 4;
 
-        public static UInt32 BuildingOffset = mapZero + 0xCF610; //TODO?
+        public static UInt32 BuildingOffset = mapZero + 0xCF600;
+        private const int BuildingSize = 0x14;
+        private const int AllBuildingSize = 46 * BuildingSize;
 
         public static UInt32 player1SlotBase = masterAddress;
         public static UInt32 playerOffset = 0x11B968;
@@ -2309,6 +2311,45 @@ namespace ACNHPoker
             }
         }
 
+        public static byte[] getBuilding(Socket socket, USBBot bot)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        Debug.Print("[Sys] Peek : Building " + BuildingOffset);
+
+                        byte[] b = ReadByteArray(socket, BuildingOffset, AllBuildingSize);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Building");
+                        }
+                        return b;
+                    }
+                    else
+                    {
+                        Debug.Print("[Usb] Peek : Building " + BuildingOffset);
+
+                        byte[] b = bot.ReadBytes(BuildingOffset, AllBuildingSize);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Building");
+                        }
+                        return b;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                    return null;
+                }
+            }
+        }
+
         public static byte[] getCoordinate(Socket socket, USBBot bot)
         {
             lock (botLock)
@@ -3019,6 +3060,49 @@ namespace ACNHPoker
             }
             else
                 return false;
+        }
+
+        public static string translateVariationValueBack(string input)
+        {
+            if (input.Length > 4)
+                return "0000";
+
+            int hexValue = Convert.ToUInt16("0x" + input, 16);
+
+            if (hexValue < 0x8)
+            {
+                return Utilities.precedingZeros(input, 4);
+            }
+            else if (hexValue < 0x10)
+            {
+                return Utilities.precedingZeros((hexValue + 0x20 - 0x8).ToString("X"), 4);
+            }
+            else if (hexValue < 0x18)
+            {
+                return Utilities.precedingZeros((hexValue + 0x40 - 0x10).ToString("X"), 4);
+            }
+            else if (hexValue < 0x20)
+            {
+                return Utilities.precedingZeros((hexValue + 0x60 - 0x18).ToString("X"), 4);
+            }
+            else if (hexValue < 0x28)
+            {
+                return Utilities.precedingZeros((hexValue + 0x80 - 0x20).ToString("X"), 4);
+            }
+            else if (hexValue < 0x30)
+            {
+                return Utilities.precedingZeros((hexValue + 0xA0 - 0x28).ToString("X"), 4);
+            }
+            else if (hexValue < 0x38)
+            {
+                return Utilities.precedingZeros((hexValue + 0xC0 - 0x30).ToString("X"), 4);
+            }
+            else if (hexValue < 0x40)
+            {
+                return Utilities.precedingZeros((hexValue + 0xE0 - 0x38).ToString("X"), 4);
+            }
+            else
+                return "0000";
         }
 
         #region Villager

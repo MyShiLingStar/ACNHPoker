@@ -274,6 +274,8 @@ namespace ACNHPoker
                 return OverworldState.Loading;
             else if ($"{value:X8}".EndsWith("AC00"))
                 return OverworldState.Loading;
+            else if ($"{value:X8}".EndsWith("BC10"))
+                return OverworldState.Loading;
             switch (value)
             {
                 case 0x00000000: return OverworldState.Null;

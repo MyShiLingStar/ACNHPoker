@@ -227,25 +227,26 @@ namespace ACNHPoker
             this.ForeColor = System.Drawing.Color.White;
             this.TextAlign = System.Drawing.ContentAlignment.TopLeft;
 
-            this.Invoke((MethodInvoker)delegate
+            lock (syncRoot)
             {
-                this.Text = "";
-                if (this.Image != null)
+                this.Invoke((MethodInvoker)delegate
                 {
-                    try
+                    this.Text = "";
+                    if (this.Image != null)
                     {
-                        lock (syncRoot)
+                        try
                         {
                             this.Image.Dispose();
                             this.Image = null;
-                        };
+                        }
+                        catch
+                        {
+                            refreshing = false;
+                            return;
+                        }
                     }
-                    catch
-                    {
-                        return;
-                    }
-                }
-            });
+                });
+            };
 
             //this.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             this.locked = false;
@@ -265,7 +266,8 @@ namespace ACNHPoker
                     }
                     //this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
 
-                    await Task.Run(() => {
+                    await Task.Run(() =>
+                    {
                         lock (syncRoot)
                         {
                             this.Image = displayItemImage(large, false);
@@ -278,7 +280,8 @@ namespace ACNHPoker
                 }
                 else if (itemID != 0xFFFE && flag1 != "00") // wrapped
                 {
-                    await Task.Run(() => {
+                    await Task.Run(() =>
+                    {
                         lock (syncRoot)
                         {
                             this.Image = displayItemImage(large, false);
@@ -294,7 +297,8 @@ namespace ACNHPoker
                         locked = true;
                     }
 
-                    await Task.Run(() => {
+                    await Task.Run(() =>
+                    {
                         lock (syncRoot)
                         {
                             this.Image = displayItemImage(large, true);

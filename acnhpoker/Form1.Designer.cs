@@ -366,6 +366,7 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
@@ -1782,7 +1783,8 @@
             "Box : 03",
             "Festive : 3F",
             "Lucky money : 33",
-            "Sebaetdon : 37"});
+            "Sebaetdon : 37",
+            "otoshidama : 3B"});
             this.wrapSetting.Location = new System.Drawing.Point(644, 478);
             this.wrapSetting.Name = "wrapSetting";
             this.wrapSetting.Size = new System.Drawing.Size(103, 24);
@@ -7901,11 +7903,28 @@
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(371, 816);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(85, 23);
+            this.button8.TabIndex = 246;
+            this.button8.Tag = "";
+            this.button8.Text = "dump b";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button13);
@@ -8343,6 +8362,7 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button8;
     }
 }
 

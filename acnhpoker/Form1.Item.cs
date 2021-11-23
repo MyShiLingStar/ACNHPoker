@@ -413,7 +413,7 @@ namespace ACNHPoker
                     }
                     else if (itemID == "315A" || itemID == "1618" || itemID == "342F") // Wall-Mounted
                     {
-                        btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemData, 16)), GetImagePathFromID(recipeData, itemSource), flag1, flag2);
+                        btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemData, 16)), GetImagePathFromID(recipeData, itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(fenceData), 16)), flag1, flag2);
                         continue;
                     }
                     else if (ItemAttr.hasFenceWithVariation(IntId)) // Fence Variation
@@ -507,7 +507,7 @@ namespace ACNHPoker
                 {
                     if (!offline)
                         Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
-                    selectedButton.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                    selectedButton.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), selectedItem.getFlag1(), selectedItem.getFlag2());
                 }
                 else if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
                 {
@@ -1500,7 +1500,7 @@ namespace ACNHPoker
                     }
                     else if (id == "315A" || id == "1618" || id == "342F") // Wall-Mounted
                     {
-                        selectedItem.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                        selectedItem.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), selectedItem.getFlag1(), selectedItem.getFlag2());
                     }
                     else if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
                     {
@@ -1756,7 +1756,7 @@ namespace ACNHPoker
                 }
                 else if (customIdTextbox.Text == "315A" || customIdTextbox.Text == "1618" || customIdTextbox.Text == "342F") // Wall-Mounted
                 {
-                    selectedItem.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                    selectedItem.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), selectedItem.getFlag1(), selectedItem.getFlag2());
                 }
                 else if (ItemAttr.hasFenceWithVariation(IntId)) // Fence Variation
                 {
@@ -1918,7 +1918,7 @@ namespace ACNHPoker
                 }
                 else if (customIdTextbox.Text == "315A" || customIdTextbox.Text == "1618" || customIdTextbox.Text == "342F") // Wall-Mounted
                 {
-                    selectedItem.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                    selectedItem.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), selectedItem.getFlag1(), selectedItem.getFlag2());
                 }
                 else if (ItemAttr.hasFenceWithVariation(IntId)) // Fence Variation
                 {
@@ -2344,7 +2344,7 @@ namespace ACNHPoker
             }
             else if (customIdTextbox.Text == "315A" || customIdTextbox.Text == "1618" || customIdTextbox.Text == "342F") // Wall-Mounted
             {
-                selectedItem.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                selectedItem.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), selectedItem.getFlag1(), selectedItem.getFlag2());
             }
             else if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
             {
@@ -2417,7 +2417,7 @@ namespace ACNHPoker
             }
             else if (customIdTextbox.Text == "315A" || customIdTextbox.Text == "1618" || customIdTextbox.Text == "342F") // Wall-Mounted
             {
-                selectedItem.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                selectedItem.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + hexValue, 16)), true, GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), selectedItem.getFlag1(), selectedItem.getFlag2());
             }
             else if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
             {

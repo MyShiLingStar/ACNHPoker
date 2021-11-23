@@ -922,7 +922,7 @@ namespace ACNHPoker
         private async Task DropItem(DropOrder CurrentOrder)
         {
             string flag1;
-            if (CurrentOrder.id == "16A2" || CurrentOrder.name.Contains("wrapping paper"))
+            if (CurrentOrder.id == "16A2" || CurrentOrder.name.Contains("wrapping paper") || CurrentOrder.id == "3107" || CurrentOrder.id == "3106") // Vine Glowing Moss
                 flag1 = "00";
             else
                 flag1 = "7F";
@@ -931,7 +931,7 @@ namespace ACNHPoker
 
             Utilities.SpawnItem(s, null, 0, flag1 + flag2 + CurrentOrder.id, Utilities.precedingZeros(CurrentOrder.count, 8));
             //Thread.Sleep(500);
-            if (CurrentOrder.id == "16A2")
+            if (CurrentOrder.id == "16A2" || CurrentOrder.id == "3107" || CurrentOrder.id == "3106")
             {
                 controller.dropRecipe();
                 lastOrderIsRecipe = true;
@@ -1993,7 +1993,7 @@ namespace ACNHPoker
         {
             Utilities.DeleteSlot(s,null, 0);
             WriteLog("First inventory slot cleared!", true);
-            WriteLog("please remember to reset your cursor to the first inventory slot for the drop bot to function properly!", true);
+            WriteLog("Please remember to reset your cursor to the first inventory slot for the drop bot to function properly!", true);
         }
 
         private void sessionBox_CheckedChanged(object sender, EventArgs e)
