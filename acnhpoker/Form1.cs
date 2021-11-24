@@ -19,7 +19,7 @@ namespace ACNHPoker
     {
         #region variable
         private static Socket s;
-        private string version = "ACNH Poker R18.6 for v2.0.2";
+        private string version = "ACNH Poker R18.7 for v2.0.3";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;

@@ -170,7 +170,7 @@ namespace ACNHPoker
                         }
                         else if (CurrentBuilding >= BuildingType.PlayerHouse1 && CurrentBuilding <= BuildingType.PlayerHouse8)
                         {
-                            buildingTopX = BuildingX - 3;
+                            buildingTopX = BuildingX - 2;
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 2;
                             buildingBottomY = BuildingY;
@@ -220,7 +220,7 @@ namespace ACNHPoker
                         {
                             buildingTopX = BuildingX - 2;
                             buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 2;
+                            buildingBottomX = BuildingX + 1;
                             buildingBottomY = BuildingY + 1;
                             BuildingColor = Color.LightGoldenrodYellow;
                         }
@@ -707,7 +707,7 @@ namespace ACNHPoker
                         }
                         else if (CurrentBuilding >= BuildingType.PlayerHouse1 && CurrentBuilding <= BuildingType.PlayerHouse8)
                         {
-                            buildingTopX = BuildingX - 3;
+                            buildingTopX = BuildingX - 2;
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 2;
                             buildingBottomY = BuildingY;
@@ -757,7 +757,7 @@ namespace ACNHPoker
                         {
                             buildingTopX = BuildingX - 2;
                             buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 2;
+                            buildingBottomX = BuildingX + 1;
                             buildingBottomY = BuildingY + 1;
                             BuildingColor = Color.LightGoldenrodYellow;
                         }

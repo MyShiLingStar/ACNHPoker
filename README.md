@@ -272,8 +272,17 @@ https://youtu.be/-zztRgmtXig
 * R18.5
 	* Update for Game version number 2.0.1
 * R18.6
-	* Update for Game version number 2.0.1
+	* Update for Game version number 2.0.2
 	* Added	a dialog for variation spawning in "Map Dropper"
+* R18.7
+	* Update for Game version number 2.0.3
+	* Added	a button to flip variation spawning to horizontal.
+	* Added "Area Select" -> "Right Click" -> "Save to file" to "Map Dropper".
+      * You can select .nhi or .nhbs. Noted that empty space and extension will be skipped.
+	* Fixed the variation displayed on the wall-mount/ceiling-mount.
+	* Added basic building indicator to "Map Dropper"
+      * Noted that the indicator only provide a general guidance. ~0.5 grid error might happen.
+	
 
 ## Contributing
 
