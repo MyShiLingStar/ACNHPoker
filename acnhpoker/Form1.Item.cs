@@ -2288,12 +2288,6 @@ namespace ACNHPoker
 
         private void keyboardCopy(object sender, KeyEventArgs e)
         {
-            if ((s == null || s.Connected == false) & bot == null)
-            {
-                MessageBox.Show("Please connect to the switch first");
-                return;
-            }
-
             itemModeBtn_Click(sender, e);
             if (hexModeBtn.Tag.ToString() == "Normal")
             {
@@ -2301,7 +2295,7 @@ namespace ACNHPoker
             }
 
             string hexValue = "0";
-            int decValue = int.Parse(customAmountTxt.Text) - 1;
+            int decValue = Convert.ToInt16("0x" + customAmountTxt.Text, 16) - 1;
             if (decValue >= 0)
                 hexValue = decValue.ToString("X");
 

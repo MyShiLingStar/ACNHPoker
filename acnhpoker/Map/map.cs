@@ -5280,6 +5280,170 @@ namespace ACNHPoker
             }
         }
 
+        private void flag00To04ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (AreaSet || AreaCopied)
+            {
+                if (Corner1X < 0 || Corner1Y < 0 || Corner2X < 0 || Corner2Y < 0 || Corner1X > 111 || Corner1Y > 95 || Corner2X > 111 || Corner2Y > 95)
+                {
+                    myMessageBox.Show("Selected Area Out of Bounds!", "Please use your brain, My Master.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int TopLeftX;
+                int TopLeftY;
+                int BottomRightX;
+                int BottomRightY;
+
+                if (Corner1X <= Corner2X)
+                {
+                    if (Corner1Y <= Corner2Y) // Top Left
+                    {
+                        TopLeftX = Corner1X;
+                        TopLeftY = Corner1Y;
+                        BottomRightX = Corner2X;
+                        BottomRightY = Corner2Y;
+                    }
+                    else // Bottom Left
+                    {
+                        TopLeftX = Corner1X;
+                        TopLeftY = Corner2Y; //
+                        BottomRightX = Corner2X;
+                        BottomRightY = Corner1Y; //
+                    }
+                }
+                else
+                {
+                    if (Corner1Y <= Corner2Y) // Top Right
+                    {
+                        TopLeftX = Corner2X; //
+                        TopLeftY = Corner1Y;
+                        BottomRightX = Corner1X; //
+                        BottomRightY = Corner2Y;
+                    }
+                    else // Bottom Left
+                    {
+                        TopLeftX = Corner2X;
+                        TopLeftY = Corner2Y;
+                        BottomRightX = Corner1X;
+                        BottomRightY = Corner1Y;
+                    }
+                }
+
+                int numberOfColumn = BottomRightX - TopLeftX + 1;
+                int numberOfRow = BottomRightY - TopLeftY + 1;
+
+                int sizeOfRow = 16;
+
+                SavedArea = new byte[numberOfColumn * 2][];
+
+                for (int i = 0; i < numberOfColumn * 2; i++)
+                {
+                    SavedArea[i] = new byte[numberOfRow * sizeOfRow];
+                }
+
+                for (int i = 0; i < numberOfColumn; i++)
+                {
+                    for (int j = 0; j < numberOfRow; j++)
+                    {
+                        if (layer1Btn.Checked)
+                        {
+                            Buffer.BlockCopy(Layer1, (int)((0xC00 * (i + TopLeftX)) + (0x10 * (j + TopLeftY))), SavedArea[i * 2], 0x10 * j, 0x10);
+                            Buffer.BlockCopy(Layer1, (int)((0xC00 * (i + TopLeftX)) + (0x10 * (j + TopLeftY)) + 0x600), SavedArea[i * 2 + 1], 0x10 * j, 0x10);
+                            if (SavedArea[i * 2][0x10 * j] != 0xFE || SavedArea[i * 2][0x10 * j + 1] != 0xFF)
+                            {
+                                if (SavedArea[i * 2][0x10 * j + 2] == 0x00)
+                                    SavedArea[i * 2][0x10 * j + 2] = 0x04;
+                            }
+                        }
+                        else
+                        {
+                            Buffer.BlockCopy(Layer2, (int)((0xC00 * (i + TopLeftX)) + (0x10 * (j + TopLeftY))), SavedArea[i * 2], 0x10 * j, 0x10);
+                            Buffer.BlockCopy(Layer2, (int)((0xC00 * (i + TopLeftX)) + (0x10 * (j + TopLeftY)) + 0x600), SavedArea[i * 2 + 1], 0x10 * j, 0x10);
+                            if (SavedArea[i * 2][0x10 * j] != 0xFE || SavedArea[i * 2][0x10 * j + 1] != 0xFF)
+                            {
+                                if (SavedArea[i * 2][0x10 * j + 2] == 0x00)
+                                    SavedArea[i * 2][0x10 * j + 2] = 0x04;
+                            }
+                        }
+                    }
+                }
+
+                long address;
+
+                if (layer1Btn.Checked)
+                {
+                    address = Utilities.mapZero;
+                }
+                else if (layer2Btn.Checked)
+                {
+                    address = Utilities.mapZero + Utilities.mapSize;
+                }
+                else
+                    return;
+
+                disableBtn();
+
+                Thread pasteAreaThread = new Thread(delegate () { pasteArea(address, TopLeftX, TopLeftY, numberOfColumn, numberOfRow); });
+                pasteAreaThread.Start();
+
+                ClearCopiedAreaBtn_Click(this, e);
+            }
+            else
+            {
+                ToolStripItem item = (sender as ToolStripItem);
+                if (item != null)
+                {
+                    if (item.Owner is ContextMenuStrip owner)
+                    {
+                        var btn = (floorSlot)owner.SourceControl;
+
+                        if (btn.flag2 != "00")
+                            return;
+
+                        try
+                        {
+
+                            if (anchorX < 0 || anchorY < 0)
+                            {
+                                return;
+                            }
+
+                            long address;
+
+                            if (layer1Btn.Checked)
+                            {
+                                address = getAddress(btn.mapX, btn.mapY);
+                            }
+                            else if (layer2Btn.Checked)
+                            {
+                                address = (getAddress(btn.mapX, btn.mapY) + Utilities.mapSize);
+                            }
+                            else
+                                return;
+
+                            disableBtn();
+
+                            btnToolTip.RemoveAll();
+
+                            string itemID = Utilities.precedingZeros(btn.itemID.ToString("X"), 4);
+                            string itemData = Utilities.precedingZeros(btn.itemData.ToString("X"), 8);
+                            string flag1 = btn.flag1;
+                            string flag2 = "04";
+
+                            Thread dropThread = new Thread(delegate () { dropItem(address, itemID, itemData, flag1, flag2, btn); });
+                            dropThread.Start();
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.logEvent("Map", "Flag04: " + ex.Message.ToString());
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
         private void placeVariationBtn_Click(object sender, EventArgs e)
         {
             if (IdTextbox.Text == "" || HexTextbox.Text == "" || FlagTextbox.Text == "")

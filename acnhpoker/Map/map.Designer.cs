@@ -168,6 +168,7 @@ namespace ACNHPoker
             this.miniMapBox = new System.Windows.Forms.PictureBox();
             this.HexTextbox = new System.Windows.Forms.RichTextBox();
             this.selectedItem = new ACNHPoker.inventorySlot();
+            this.flag00To04ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.fieldGridView)).BeginInit();
             this.BtnPanel.SuspendLayout();
             this.floorRightClick.SuspendLayout();
@@ -665,17 +666,18 @@ namespace ACNHPoker
             this.deleteToolStripMenuItem,
             this.replaceItemToolStripMenuItem,
             this.flag20ToolStripMenuItem,
-            this.flag00ToolStripMenuItem});
+            this.flag00ToolStripMenuItem,
+            this.flag00To04ToolStripMenuItem});
             this.floorRightClick.Name = "floorRightClick";
             this.floorRightClick.ShowImageMargin = false;
-            this.floorRightClick.Size = new System.Drawing.Size(136, 114);
+            this.floorRightClick.Size = new System.Drawing.Size(156, 158);
             this.floorRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.floorRightClick_Opening);
             // 
             // copyItemToolStripMenuItem
             // 
             this.copyItemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.copyItemToolStripMenuItem.Name = "copyItemToolStripMenuItem";
-            this.copyItemToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.copyItemToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.copyItemToolStripMenuItem.Text = "Copy Item";
             this.copyItemToolStripMenuItem.Click += new System.EventHandler(this.copyItemToolStripMenuItem_Click);
             // 
@@ -683,7 +685,7 @@ namespace ACNHPoker
             // 
             this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.deleteToolStripMenuItem.Text = "Delete Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -691,7 +693,7 @@ namespace ACNHPoker
             // 
             this.replaceItemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.replaceItemToolStripMenuItem.Name = "replaceItemToolStripMenuItem";
-            this.replaceItemToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.replaceItemToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.replaceItemToolStripMenuItem.Text = "Replace Item";
             this.replaceItemToolStripMenuItem.Click += new System.EventHandler(this.replaceItemToolStripMenuItem_Click);
             // 
@@ -699,7 +701,7 @@ namespace ACNHPoker
             // 
             this.flag20ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.flag20ToolStripMenuItem.Name = "flag20ToolStripMenuItem";
-            this.flag20ToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.flag20ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.flag20ToolStripMenuItem.Text = "Flag to 20";
             this.flag20ToolStripMenuItem.Click += new System.EventHandler(this.flag20ToolStripMenuItem_Click);
             // 
@@ -707,7 +709,7 @@ namespace ACNHPoker
             // 
             this.flag00ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.flag00ToolStripMenuItem.Name = "flag00ToolStripMenuItem";
-            this.flag00ToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.flag00ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.flag00ToolStripMenuItem.Text = "Flag to 00";
             this.flag00ToolStripMenuItem.Click += new System.EventHandler(this.flag00ToolStripMenuItem_Click);
             // 
@@ -3143,6 +3145,14 @@ namespace ACNHPoker
             this.selectedItem.UseVisualStyleBackColor = false;
             this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
             // 
+            // flag00To04ToolStripMenuItem
+            // 
+            this.flag00To04ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.flag00To04ToolStripMenuItem.Name = "flag00To04ToolStripMenuItem";
+            this.flag00To04ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.flag00To04ToolStripMenuItem.Text = "Flag 00 to 04";
+            this.flag00To04ToolStripMenuItem.Click += new System.EventHandler(this.flag00To04ToolStripMenuItem_Click);
+            // 
             // map
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -3365,5 +3375,6 @@ namespace ACNHPoker
         private System.Windows.Forms.ToolStripMenuItem flag20ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem flag00ToolStripMenuItem;
         private System.Windows.Forms.Button placeVariationBtn;
+        private System.Windows.Forms.ToolStripMenuItem flag00To04ToolStripMenuItem;
     }
 }

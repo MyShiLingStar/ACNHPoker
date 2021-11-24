@@ -669,11 +669,11 @@ namespace ACNHPoker
 
             for (int m = plazaTopX; m <= plazaTopX + 11; m++)
             {
-                if (m < 0)
+                if (m < 0 || m >= numOfColumn)
                     continue;
                 for (int n = plazaTopY; n <= plazaTopY + 9; n++)
                 {
-                    if (n < 0)
+                    if (n < 0 || n >= numOfRow)
                         continue;
                     floorBackgroundColor[n][m] = Color.DarkSalmon;
                 }
@@ -695,7 +695,12 @@ namespace ACNHPoker
 
                     if (CurrentBuilding != BuildingType.None)
                     {
-                        floorBackgroundColor[BuildingY][BuildingX] = Color.Red;
+                        if (BuildingX < 0 || BuildingX > numOfColumn || BuildingY < 0 || BuildingY > numOfRow)
+                        {
+
+                        }
+                        else
+                            floorBackgroundColor[BuildingY][BuildingX] = Color.Red;
 
                         if (CurrentBuilding == BuildingType.ResidentServicesBuilding)
                         {
