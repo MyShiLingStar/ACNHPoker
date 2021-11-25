@@ -863,5 +863,105 @@ namespace ACNHPoker
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
         }
+
+        private void freezeAllVillagerBtn_Click(object sender, EventArgs e)
+        {
+            Thread FreezeAllVillagerThread = new Thread(delegate () { FreezeAllVillager(); });
+            FreezeAllVillagerThread.Start();
+
+        }
+
+        private void FreezeAllVillager()
+        {
+            showMapWait(124, "Freezing...");
+
+            lockControl();
+
+            int counter = 0;
+
+            villagerFlag = new byte[10][];
+
+            for (int i = 0; i < 10; i++)
+            {
+                // Set every one to irregular move out
+                Utilities.SetMoveout(s, null, i, "2", "0");
+                villagerFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33);
+                if (i > 0) // Freeze all other 9 villagers' flag
+                    Utilities.FreezeBig(s, (uint)(Utilities.VillagerAddress + (i * Utilities.VillagerSize) + Utilities.VillagerMoveoutOffset), villagerFlag[i], (uint)villagerFlag[i].Length);
+            }
+
+            // Freeze the first villager and his/her house
+            byte[] VillagerData = Utilities.GetVillager(s, null, 0, (int)Utilities.VillagerSize, ref counter);
+
+            int[] HouseList = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                byte b = Utilities.GetHouseOwner(s, null, i, ref counter);
+                HouseList[i] = Convert.ToInt32(b);
+            }
+
+
+            Villager V = new Villager(VillagerData, 0)
+            {
+                HouseIndex = Utilities.FindHouseIndex(0, HouseList)
+            };
+
+            byte[] HouseData = Utilities.GetHouse(s, null, V.HouseIndex, ref counter);
+
+            Utilities.FreezeBig(s, Utilities.VillagerAddress, VillagerData, Utilities.VillagerSize);
+            Utilities.FreezeBig(s, (uint)(Utilities.VillagerHouseAddress + (V.HouseIndex * (Utilities.VillagerHouseSize))), HouseData, Utilities.VillagerHouseSize);
+
+
+            int freezeCount = Utilities.GetFreezeCount(s);
+
+            hideMapWait();
+
+            unlockControl();
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                FinMsg.Visible = true;
+                FinMsg.Text = "Purgatory!";
+                updateFreezeCountLabel(freezeCount);
+            });
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void unfreezeAllVillagerBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (i > 0)
+                    Utilities.SendString(s, Utilities.UnFreeze((uint)(Utilities.VillagerAddress + (i * Utilities.VillagerSize) + Utilities.VillagerMoveoutOffset)));
+            }
+
+            Utilities.unFreezeBig(s, Utilities.VillagerAddress, Utilities.VillagerSize);
+
+            int[] HouseList = new int[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                byte b = Utilities.GetHouseOwner(s, null, i, ref counter);
+                HouseList[i] = Convert.ToInt32(b);
+            }
+
+            int HouseIndex = Utilities.FindHouseIndex(0, HouseList);
+            Utilities.unFreezeBig(s, (uint)(Utilities.VillagerHouseAddress + (HouseIndex * (Utilities.VillagerHouseSize))), Utilities.VillagerHouseSize);
+
+            int freezeCount = Utilities.GetFreezeCount(s);
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                FinMsg.Visible = true;
+                FinMsg.Text = "Limbo!";
+                updateFreezeCountLabel(freezeCount);
+            });
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
     }
 }

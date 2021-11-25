@@ -38,6 +38,7 @@ namespace ACNHPoker
 
         private DataGridViewRow lastRow = null;
         private string imagePath;
+        private string languageSetting = "eng";
 
         private Dictionary<string, string> OverrideDict;
 
@@ -66,10 +67,22 @@ namespace ACNHPoker
         byte[] Layer2 = null;
         byte[] Acre = null;
         byte[] Building = null;
+
+        Color[] target =
+        {
+            Color.FromArgb(252, 3, 3),
+            Color.FromArgb(252, 78, 3),
+            Color.FromArgb(252, 227, 3),
+            Color.FromArgb(0, 82, 7),
+            Color.FromArgb(3, 255, 32),
+            Color.FromArgb(5, 106, 230),
+            Color.FromArgb(157, 40, 224),
+        };
+        int targetValue = 0;
         #endregion
 
         #region Form Load
-        public map(Socket S, USBBot Bot, string itemPath, string recipePath, string flowerPath, string variationPath, string favPath, Form1 Main, string ImagePath, Dictionary<string, string> overrideDict, bool Sound)
+        public map(Socket S, USBBot Bot, string itemPath, string recipePath, string flowerPath, string variationPath, string favPath, Form1 Main, string ImagePath, string LanguageSetting, Dictionary<string, string> overrideDict, bool Sound)
         {
             try
             {
@@ -91,6 +104,7 @@ namespace ACNHPoker
                 imagePath = ImagePath;
                 OverrideDict = overrideDict;
                 sound = Sound;
+
                 floorSlots = new floorSlot[49];
 
                 InitializeComponent();
@@ -184,6 +198,18 @@ namespace ACNHPoker
                 SaveArea.ForeColor = Color.White;
 
                 this.KeyPreview = true;
+
+                LanguageSetup(LanguageSetting);
+                languageSetting = LanguageSetting;
+
+                if (fieldGridView.Columns.Contains(languageSetting))
+                {
+                    hideAllLanguage();
+                    fieldGridView.Columns[languageSetting].Visible = true;
+                }
+
+                FlashTimer.Start();
+
                 Log.logEvent("Map", "MapForm Started Successfully");
             }
             catch (Exception ex)
@@ -1083,7 +1109,7 @@ namespace ACNHPoker
             else
             {
                 //row found set the index and find the name
-                return (string)row["eng"];
+                return (string)row[languageSetting];
             }
         }
 
@@ -1183,7 +1209,7 @@ namespace ACNHPoker
                     if (currentDataTable == source)
                     {
                         string id = fieldGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                        string name = fieldGridView.Rows[e.RowIndex].Cells["eng"].Value.ToString();
+                        string name = fieldGridView.Rows[e.RowIndex].Cells[languageSetting].Value.ToString();
 
                         IdTextbox.Text = id;
                         HexTextbox.Text = "00000000";
@@ -1193,7 +1219,7 @@ namespace ACNHPoker
                     else if (currentDataTable == recipeSource)
                     {
                         string id = "16A2"; // Recipe;
-                        string name = fieldGridView.Rows[e.RowIndex].Cells["eng"].Value.ToString();
+                        string name = fieldGridView.Rows[e.RowIndex].Cells[languageSetting].Value.ToString();
                         string hexValue = fieldGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
 
                         IdTextbox.Text = id;
@@ -1204,7 +1230,7 @@ namespace ACNHPoker
                     else if (currentDataTable == flowerSource)
                     {
                         string id = fieldGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                        string name = fieldGridView.Rows[e.RowIndex].Cells["eng"].Value.ToString();
+                        string name = fieldGridView.Rows[e.RowIndex].Cells[languageSetting].Value.ToString();
                         string hexValue = fieldGridView.Rows[e.RowIndex].Cells["value"].Value.ToString();
 
                         IdTextbox.Text = id;
@@ -1247,7 +1273,7 @@ namespace ACNHPoker
                         else if (currentDataTable == fieldSource)
                             hexValue = fieldGridView.Rows[e.RowIndex].Cells["value"].Value.ToString();
 
-                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng", Utilities.precedingZeros(hexValue, 8));
+                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting, Utilities.precedingZeros(hexValue, 8));
                     }
 
                     //updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
@@ -1285,7 +1311,7 @@ namespace ACNHPoker
 
                         if (selection != null)
                         {
-                            selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), "eng");
+                            selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), languageSetting);
                         }
                     }
 
@@ -1299,7 +1325,7 @@ namespace ACNHPoker
             recipeModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             flowerModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             favModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            //fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             if (itemSearchBox.Text != "Search")
             {
@@ -1315,17 +1341,13 @@ namespace ACNHPoker
                 //set the ID row invisible
                 fieldGridView.Columns["id"].Visible = false;
                 fieldGridView.Columns["iName"].Visible = false;
-                fieldGridView.Columns["jpn"].Visible = false;
-                fieldGridView.Columns["tchi"].Visible = false;
-                fieldGridView.Columns["schi"].Visible = false;
-                fieldGridView.Columns["kor"].Visible = false;
-                fieldGridView.Columns["fre"].Visible = false;
-                fieldGridView.Columns["ger"].Visible = false;
-                fieldGridView.Columns["spa"].Visible = false;
-                fieldGridView.Columns["ita"].Visible = false;
-                fieldGridView.Columns["dut"].Visible = false;
-                fieldGridView.Columns["rus"].Visible = false;
                 fieldGridView.Columns["color"].Visible = false;
+
+                if (fieldGridView.Columns.Contains(languageSetting))
+                {
+                    hideAllLanguage();
+                    fieldGridView.Columns[languageSetting].Visible = true;
+                }
 
                 DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
                 {
@@ -1373,7 +1395,7 @@ namespace ACNHPoker
             recipeModeBtn.BackColor = Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             flowerModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             favModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            //fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             if (itemSearchBox.Text != "Search")
             {
@@ -1388,16 +1410,12 @@ namespace ACNHPoker
 
                 fieldGridView.Columns["id"].Visible = false;
                 fieldGridView.Columns["iName"].Visible = false;
-                fieldGridView.Columns["jpn"].Visible = false;
-                fieldGridView.Columns["tchi"].Visible = false;
-                fieldGridView.Columns["schi"].Visible = false;
-                fieldGridView.Columns["kor"].Visible = false;
-                fieldGridView.Columns["fre"].Visible = false;
-                fieldGridView.Columns["ger"].Visible = false;
-                fieldGridView.Columns["spa"].Visible = false;
-                fieldGridView.Columns["ita"].Visible = false;
-                fieldGridView.Columns["dut"].Visible = false;
-                fieldGridView.Columns["rus"].Visible = false;
+
+                if (fieldGridView.Columns.Contains(languageSetting))
+                {
+                    hideAllLanguage();
+                    fieldGridView.Columns[languageSetting].Visible = true;
+                }
 
                 DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
                 {
@@ -1445,7 +1463,7 @@ namespace ACNHPoker
             recipeModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             flowerModeBtn.BackColor = Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             favModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            //fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             if (itemSearchBox.Text != "Search")
             {
@@ -1460,17 +1478,13 @@ namespace ACNHPoker
 
                 fieldGridView.Columns["id"].Visible = false;
                 fieldGridView.Columns["iName"].Visible = false;
-                fieldGridView.Columns["jpn"].Visible = false;
-                fieldGridView.Columns["tchi"].Visible = false;
-                fieldGridView.Columns["schi"].Visible = false;
-                fieldGridView.Columns["kor"].Visible = false;
-                fieldGridView.Columns["fre"].Visible = false;
-                fieldGridView.Columns["ger"].Visible = false;
-                fieldGridView.Columns["spa"].Visible = false;
-                fieldGridView.Columns["ita"].Visible = false;
-                fieldGridView.Columns["dut"].Visible = false;
-                fieldGridView.Columns["rus"].Visible = false;
                 fieldGridView.Columns["value"].Visible = false;
+
+                if (fieldGridView.Columns.Contains(languageSetting))
+                {
+                    hideAllLanguage();
+                    fieldGridView.Columns[languageSetting].Visible = true;
+                }
 
                 DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
                 {
@@ -1518,7 +1532,7 @@ namespace ACNHPoker
             recipeModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             flowerModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             favModeBtn.BackColor = Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            //fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             if (itemSearchBox.Text != "Search")
             {
@@ -1560,7 +1574,7 @@ namespace ACNHPoker
             recipeModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             flowerModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             favModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            //fieldModeBtn.BackColor = Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
 
             if (itemSearchBox.Text != "Search")
             {
@@ -1629,15 +1643,15 @@ namespace ACNHPoker
                 {
                     if (currentDataTable == source)
                     {
-                        (fieldGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("eng" + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
+                        (fieldGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
                     }
                     else if (currentDataTable == recipeSource)
                     {
-                        (fieldGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("eng" + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
+                        (fieldGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
                     }
                     else if (currentDataTable == flowerSource)
                     {
-                        (fieldGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("eng" + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
+                        (fieldGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
                     }
                     else if (currentDataTable == favSource)
                     {
@@ -1834,7 +1848,7 @@ namespace ACNHPoker
                     else if (currentDataTable == fieldSource)
                         hexValue = fieldGridView.Rows[fieldGridView.CurrentRow.Index + 1].Cells["value"].Value.ToString();
 
-                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng", Utilities.precedingZeros(hexValue, 8));
+                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting, Utilities.precedingZeros(hexValue, 8));
                 }
 
             }
@@ -1876,7 +1890,7 @@ namespace ACNHPoker
                     else if (currentDataTable == fieldSource)
                         hexValue = fieldGridView.Rows[fieldGridView.CurrentRow.Index - 1].Cells["value"].Value.ToString();
 
-                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng", Utilities.precedingZeros(hexValue, 8));
+                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting, Utilities.precedingZeros(hexValue, 8));
                 }
             }
         }
@@ -1895,7 +1909,7 @@ namespace ACNHPoker
             if (currentDataTable == source)
             {
                 string id = fieldGridView.Rows[index].Cells["id"].Value.ToString();
-                string name = fieldGridView.Rows[index].Cells["eng"].Value.ToString();
+                string name = fieldGridView.Rows[index].Cells[languageSetting].Value.ToString();
 
                 IdTextbox.Text = id;
                 HexTextbox.Text = "00000000";
@@ -1905,7 +1919,7 @@ namespace ACNHPoker
             else if (currentDataTable == recipeSource)
             {
                 string id = "16A2"; // Recipe;
-                string name = fieldGridView.Rows[index].Cells["eng"].Value.ToString();
+                string name = fieldGridView.Rows[index].Cells[languageSetting].Value.ToString();
                 string hexValue = fieldGridView.Rows[index].Cells["id"].Value.ToString();
 
                 IdTextbox.Text = id;
@@ -1916,7 +1930,7 @@ namespace ACNHPoker
             else if (currentDataTable == flowerSource)
             {
                 string id = fieldGridView.Rows[index].Cells["id"].Value.ToString();
-                string name = fieldGridView.Rows[index].Cells["eng"].Value.ToString();
+                string name = fieldGridView.Rows[index].Cells[languageSetting].Value.ToString();
                 string hexValue = fieldGridView.Rows[index].Cells["value"].Value.ToString();
 
                 IdTextbox.Text = id;
@@ -3813,15 +3827,15 @@ namespace ACNHPoker
             UInt16 IntId = Convert.ToUInt16("0x" + id, 16);
             if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
             {
-                selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng", value);
+                selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting, value);
             }
             else if (id == "315A" || id == "1618" || id == "342F")
             {
-                selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), "eng");
+                selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), languageSetting);
             }
             else
             {
-                selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng");
+                selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
             }
             selection.mapform = this;
             variationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
@@ -5743,16 +5757,183 @@ namespace ACNHPoker
 
                 if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
                 {
-                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng", value);
+                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting, value);
                 }
                 else if (id == "315A" || id == "1618" || id == "342F")
                 {
-                    selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), "eng");
+                    selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), languageSetting);
                 }
                 else
                 {
-                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), "eng");
+                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                 }
+            }
+        }
+
+        private void LanguageSetup(string configLanguage)
+        {
+            switch (configLanguage)
+            {
+                case "eng":
+                    Language.SelectedIndex = 0;
+                    break;
+                case "jpn":
+                    Language.SelectedIndex = 1;
+                    break;
+                case "tchi":
+                    Language.SelectedIndex = 2;
+                    break;
+                case "schi":
+                    Language.SelectedIndex = 3;
+                    break;
+                case "kor":
+                    Language.SelectedIndex = 4;
+                    break;
+                case "fre":
+                    Language.SelectedIndex = 5;
+                    break;
+                case "ger":
+                    Language.SelectedIndex = 6;
+                    break;
+                case "spa":
+                    Language.SelectedIndex = 7;
+                    break;
+                case "ita":
+                    Language.SelectedIndex = 8;
+                    break;
+                case "dut":
+                    Language.SelectedIndex = 9;
+                    break;
+                case "rus":
+                    Language.SelectedIndex = 10;
+                    break;
+                default:
+                    Language.SelectedIndex = 0;
+                    break;
+            }
+        }
+
+        private void Language_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            itemSearchBox.Clear();
+
+            switch (Language.SelectedIndex)
+            {
+                case 0:
+                    languageSetting = "eng";
+                    break;
+                case 1:
+                    languageSetting = "jpn";
+                    break;
+                case 2:
+                    languageSetting = "tchi";
+                    break;
+                case 3:
+                    languageSetting = "schi";
+                    break;
+                case 4:
+                    languageSetting = "kor";
+                    break;
+                case 5:
+                    languageSetting = "fre";
+                    break;
+                case 6:
+                    languageSetting = "ger";
+                    break;
+                case 7:
+                    languageSetting = "spa";
+                    break;
+                case 8:
+                    languageSetting = "ita";
+                    break;
+                case 9:
+                    languageSetting = "dut";
+                    break;
+                case 10:
+                    languageSetting = "rus";
+                    break;
+                default:
+                    languageSetting = "eng";
+                    break;
+            }
+
+            if (fieldGridView.Columns.Contains(languageSetting))
+            {
+                hideAllLanguage();
+                fieldGridView.Columns[languageSetting].Visible = true;
+            }
+        }
+
+        private void hideAllLanguage()
+        {
+            if (fieldGridView.Columns.Contains("id"))
+            {
+                fieldGridView.Columns["eng"].Visible = false;
+                fieldGridView.Columns["jpn"].Visible = false;
+                fieldGridView.Columns["tchi"].Visible = false;
+                fieldGridView.Columns["schi"].Visible = false;
+                fieldGridView.Columns["kor"].Visible = false;
+                fieldGridView.Columns["fre"].Visible = false;
+                fieldGridView.Columns["ger"].Visible = false;
+                fieldGridView.Columns["spa"].Visible = false;
+                fieldGridView.Columns["ita"].Visible = false;
+                fieldGridView.Columns["dut"].Visible = false;
+                fieldGridView.Columns["rus"].Visible = false;
+            }
+        }
+
+        private void FlashTimer_Tick(object sender, EventArgs e)
+        {
+            var rand = new Random();
+            int CurrentR = fieldModeBtn.BackColor.R;
+            int CurrentG = fieldModeBtn.BackColor.G;
+            int CurrentB = fieldModeBtn.BackColor.B;
+            int NewR;
+            int NewG;
+            int NewB;
+
+            if (CurrentR == target[targetValue].R && CurrentG == target[targetValue].G && CurrentB == target[targetValue].B)
+            {
+                targetValue++;
+                if (targetValue >= 7)
+                    targetValue = 0;
+            }
+            else
+            {
+                if (CurrentR > target[targetValue].R)
+                    NewR = CurrentR - rand.Next(1, 5);
+                else if (CurrentR < target[targetValue].R)
+                    NewR = CurrentR + rand.Next(1, 5);
+                else
+                    NewR = CurrentR;
+                if (NewR < 0)
+                    NewR = 0;
+                if (NewR > 255)
+                    NewR = 255;
+
+                if (CurrentG > target[targetValue].G)
+                    NewG = CurrentG - rand.Next(1, 5);
+                else if (CurrentG < target[targetValue].G)
+                    NewG = CurrentG + rand.Next(1, 5);
+                else
+                    NewG = CurrentG;
+                if (NewG < 0)
+                    NewG = 0;
+                if (NewG > 255)
+                    NewG = 255;
+
+                if (CurrentB > target[targetValue].B)
+                    NewB = CurrentB - rand.Next(1, 5);
+                else if (CurrentB < target[targetValue].B)
+                    NewB = CurrentB + rand.Next(1, 5);
+                else
+                    NewB = CurrentB;
+                if (NewB < 0)
+                    NewB = 0;
+                if (NewB > 255)
+                    NewB = 255;
+
+                fieldModeBtn.BackColor = Color.FromArgb(NewR, NewG, NewB);
             }
         }
     }

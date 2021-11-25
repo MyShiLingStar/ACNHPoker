@@ -854,7 +854,7 @@ namespace ACNHPoker
 
             if (Map == null)
             {
-                Map = new map(s, bot, Utilities.itemPath, Utilities.recipePath, Utilities.flowerPath, Utilities.variationPath, Utilities.favPath, this, Utilities.imagePath, OverrideDict, sound);
+                Map = new map(s, bot, Utilities.itemPath, Utilities.recipePath, Utilities.flowerPath, Utilities.variationPath, Utilities.favPath, this, Utilities.imagePath, languageSetting, OverrideDict, sound);
                 Map.Show();
             }
         }

@@ -2818,6 +2818,40 @@ namespace ACNHPoker
 
         public static byte[] FreezeRate(string rate) => Encode("configure freezeRate " + rate);
 
+        public static void FreezeBig(Socket socket, uint offset, byte[] data, uint size)
+        {
+            uint max = 0x2000;
+
+            if (size <= max)
+                Utilities.SendString(socket, Freeze(offset, data));
+            else
+            {
+                byte[] current = new byte[max];
+                byte[] remain = new byte[size - max];
+
+                Buffer.BlockCopy(data, 0, current, 0, (int)max);
+                Buffer.BlockCopy(data, (int)max, remain, 0, (int)(size - max));
+
+                Utilities.SendString(socket, Freeze(offset, current));
+
+                FreezeBig(socket, offset + max, remain, size - max);
+            }
+        }
+
+        public static void unFreezeBig(Socket socket, uint offset, uint size)
+        {
+            uint max = 0x2000;
+
+            if (size <= max)
+                Utilities.SendString(socket, UnFreeze(offset));
+            else
+            {
+                Utilities.SendString(socket, UnFreeze(offset));
+
+                unFreezeBig(socket, offset + max, size - max);
+            }
+        }
+
         public static string getVersion(Socket socket)
         {
             lock (botLock)

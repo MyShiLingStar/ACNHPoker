@@ -54,14 +54,14 @@ namespace ACNHPoker
             this.mainPanel = new System.Windows.Forms.Panel();
             this.FinMsg = new System.Windows.Forms.RichTextBox();
             this.mapPanel = new System.Windows.Forms.Panel();
+            this.unfreezeAllVillagerBtn = new System.Windows.Forms.Button();
+            this.freezeAllVillagerBtn = new System.Windows.Forms.Button();
             this.FreezeMap2Btn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.yCoordinate = new System.Windows.Forms.RichTextBox();
             this.miniMapBox = new System.Windows.Forms.PictureBox();
             this.xCoordinate = new System.Windows.Forms.RichTextBox();
-            this.unfreezeVillagerBtn = new System.Windows.Forms.Button();
-            this.freezeVillagerBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RateBar)).BeginInit();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,7 +77,7 @@ namespace ACNHPoker
             this.saveMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.saveMapBtn.ForeColor = System.Drawing.Color.White;
-            this.saveMapBtn.Location = new System.Drawing.Point(13, 214);
+            this.saveMapBtn.Location = new System.Drawing.Point(13, 177);
             this.saveMapBtn.Margin = new System.Windows.Forms.Padding(4);
             this.saveMapBtn.Name = "saveMapBtn";
             this.saveMapBtn.Size = new System.Drawing.Size(208, 25);
@@ -105,7 +105,7 @@ namespace ACNHPoker
             this.changeRateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeRateBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.changeRateBtn.ForeColor = System.Drawing.Color.White;
-            this.changeRateBtn.Location = new System.Drawing.Point(13, 72);
+            this.changeRateBtn.Location = new System.Drawing.Point(13, 61);
             this.changeRateBtn.Margin = new System.Windows.Forms.Padding(4);
             this.changeRateBtn.Name = "changeRateBtn";
             this.changeRateBtn.Size = new System.Drawing.Size(208, 25);
@@ -154,11 +154,11 @@ namespace ACNHPoker
             // FreezeCountLabel
             // 
             this.FreezeCountLabel.AutoSize = true;
-            this.FreezeCountLabel.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FreezeCountLabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
             this.FreezeCountLabel.ForeColor = System.Drawing.Color.White;
-            this.FreezeCountLabel.Location = new System.Drawing.Point(54, 4);
+            this.FreezeCountLabel.Location = new System.Drawing.Point(54, 0);
             this.FreezeCountLabel.Name = "FreezeCountLabel";
-            this.FreezeCountLabel.Size = new System.Drawing.Size(99, 32);
+            this.FreezeCountLabel.Size = new System.Drawing.Size(86, 29);
             this.FreezeCountLabel.TabIndex = 226;
             this.FreezeCountLabel.Text = "0 / 255";
             this.FreezeCountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,7 +168,7 @@ namespace ACNHPoker
             this.SlotLabel.AutoSize = true;
             this.SlotLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.SlotLabel.ForeColor = System.Drawing.Color.White;
-            this.SlotLabel.Location = new System.Drawing.Point(12, 11);
+            this.SlotLabel.Location = new System.Drawing.Point(12, 7);
             this.SlotLabel.Name = "SlotLabel";
             this.SlotLabel.Size = new System.Drawing.Size(43, 16);
             this.SlotLabel.TabIndex = 227;
@@ -178,7 +178,7 @@ namespace ACNHPoker
             // RateBar
             // 
             this.RateBar.LargeChange = 1000;
-            this.RateBar.Location = new System.Drawing.Point(5, 30);
+            this.RateBar.Location = new System.Drawing.Point(5, 23);
             this.RateBar.Maximum = 10000;
             this.RateBar.Minimum = 100;
             this.RateBar.Name = "RateBar";
@@ -195,7 +195,7 @@ namespace ACNHPoker
             this.RateValue.AutoSize = true;
             this.RateValue.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.RateValue.ForeColor = System.Drawing.Color.White;
-            this.RateValue.Location = new System.Drawing.Point(163, 43);
+            this.RateValue.Location = new System.Drawing.Point(166, 36);
             this.RateValue.Name = "RateValue";
             this.RateValue.Size = new System.Drawing.Size(56, 16);
             this.RateValue.TabIndex = 230;
@@ -207,12 +207,12 @@ namespace ACNHPoker
             this.EnableTextBtn.BackColor = System.Drawing.Color.DarkGreen;
             this.EnableTextBtn.FlatAppearance.BorderSize = 0;
             this.EnableTextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EnableTextBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.EnableTextBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.EnableTextBtn.ForeColor = System.Drawing.Color.White;
-            this.EnableTextBtn.Location = new System.Drawing.Point(13, 105);
+            this.EnableTextBtn.Location = new System.Drawing.Point(13, 91);
             this.EnableTextBtn.Margin = new System.Windows.Forms.Padding(4);
             this.EnableTextBtn.Name = "EnableTextBtn";
-            this.EnableTextBtn.Size = new System.Drawing.Size(100, 45);
+            this.EnableTextBtn.Size = new System.Drawing.Size(100, 38);
             this.EnableTextBtn.TabIndex = 231;
             this.EnableTextBtn.Text = "Enable Instant Text";
             this.EnableTextBtn.UseVisualStyleBackColor = false;
@@ -223,12 +223,12 @@ namespace ACNHPoker
             this.DisableTextBtn.BackColor = System.Drawing.Color.DarkRed;
             this.DisableTextBtn.FlatAppearance.BorderSize = 0;
             this.DisableTextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DisableTextBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.DisableTextBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.DisableTextBtn.ForeColor = System.Drawing.Color.White;
-            this.DisableTextBtn.Location = new System.Drawing.Point(121, 105);
+            this.DisableTextBtn.Location = new System.Drawing.Point(121, 91);
             this.DisableTextBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DisableTextBtn.Name = "DisableTextBtn";
-            this.DisableTextBtn.Size = new System.Drawing.Size(100, 45);
+            this.DisableTextBtn.Size = new System.Drawing.Size(100, 38);
             this.DisableTextBtn.TabIndex = 232;
             this.DisableTextBtn.Text = "Disable Instant Text";
             this.DisableTextBtn.UseVisualStyleBackColor = false;
@@ -239,12 +239,12 @@ namespace ACNHPoker
             this.UnFreezeInvBtn.BackColor = System.Drawing.Color.DarkRed;
             this.UnFreezeInvBtn.FlatAppearance.BorderSize = 0;
             this.UnFreezeInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnFreezeInvBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.UnFreezeInvBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.UnFreezeInvBtn.ForeColor = System.Drawing.Color.White;
-            this.UnFreezeInvBtn.Location = new System.Drawing.Point(121, 158);
+            this.UnFreezeInvBtn.Location = new System.Drawing.Point(121, 134);
             this.UnFreezeInvBtn.Margin = new System.Windows.Forms.Padding(4);
             this.UnFreezeInvBtn.Name = "UnFreezeInvBtn";
-            this.UnFreezeInvBtn.Size = new System.Drawing.Size(100, 45);
+            this.UnFreezeInvBtn.Size = new System.Drawing.Size(100, 38);
             this.UnFreezeInvBtn.TabIndex = 234;
             this.UnFreezeInvBtn.Text = "UnFreeze Inventory";
             this.UnFreezeInvBtn.UseVisualStyleBackColor = false;
@@ -255,12 +255,12 @@ namespace ACNHPoker
             this.FreezeInvBtn.BackColor = System.Drawing.Color.DarkGreen;
             this.FreezeInvBtn.FlatAppearance.BorderSize = 0;
             this.FreezeInvBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FreezeInvBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FreezeInvBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.FreezeInvBtn.ForeColor = System.Drawing.Color.White;
-            this.FreezeInvBtn.Location = new System.Drawing.Point(13, 158);
+            this.FreezeInvBtn.Location = new System.Drawing.Point(13, 134);
             this.FreezeInvBtn.Margin = new System.Windows.Forms.Padding(4);
             this.FreezeInvBtn.Name = "FreezeInvBtn";
-            this.FreezeInvBtn.Size = new System.Drawing.Size(100, 45);
+            this.FreezeInvBtn.Size = new System.Drawing.Size(100, 38);
             this.FreezeInvBtn.TabIndex = 233;
             this.FreezeInvBtn.Text = "Freeze Inventory";
             this.FreezeInvBtn.UseVisualStyleBackColor = false;
@@ -271,12 +271,12 @@ namespace ACNHPoker
             this.FreezeMapBtn.BackColor = System.Drawing.Color.DarkGreen;
             this.FreezeMapBtn.FlatAppearance.BorderSize = 0;
             this.FreezeMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FreezeMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FreezeMapBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.FreezeMapBtn.ForeColor = System.Drawing.Color.White;
-            this.FreezeMapBtn.Location = new System.Drawing.Point(13, 247);
+            this.FreezeMapBtn.Location = new System.Drawing.Point(13, 207);
             this.FreezeMapBtn.Margin = new System.Windows.Forms.Padding(4);
             this.FreezeMapBtn.Name = "FreezeMapBtn";
-            this.FreezeMapBtn.Size = new System.Drawing.Size(100, 45);
+            this.FreezeMapBtn.Size = new System.Drawing.Size(100, 38);
             this.FreezeMapBtn.TabIndex = 235;
             this.FreezeMapBtn.Text = "Freeze Map";
             this.FreezeMapBtn.UseVisualStyleBackColor = false;
@@ -287,12 +287,12 @@ namespace ACNHPoker
             this.UnFreezeMapBtn.BackColor = System.Drawing.Color.DarkRed;
             this.UnFreezeMapBtn.FlatAppearance.BorderSize = 0;
             this.UnFreezeMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UnFreezeMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.UnFreezeMapBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.UnFreezeMapBtn.ForeColor = System.Drawing.Color.White;
-            this.UnFreezeMapBtn.Location = new System.Drawing.Point(121, 247);
+            this.UnFreezeMapBtn.Location = new System.Drawing.Point(121, 207);
             this.UnFreezeMapBtn.Margin = new System.Windows.Forms.Padding(4);
             this.UnFreezeMapBtn.Name = "UnFreezeMapBtn";
-            this.UnFreezeMapBtn.Size = new System.Drawing.Size(100, 45);
+            this.UnFreezeMapBtn.Size = new System.Drawing.Size(100, 38);
             this.UnFreezeMapBtn.TabIndex = 236;
             this.UnFreezeMapBtn.Text = "UnFreeze Map";
             this.UnFreezeMapBtn.UseVisualStyleBackColor = false;
@@ -314,7 +314,7 @@ namespace ACNHPoker
             this.WaitMessagebox.AutoSize = true;
             this.WaitMessagebox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.WaitMessagebox.ForeColor = System.Drawing.Color.White;
-            this.WaitMessagebox.Location = new System.Drawing.Point(89, 6);
+            this.WaitMessagebox.Location = new System.Drawing.Point(85, 6);
             this.WaitMessagebox.Name = "WaitMessagebox";
             this.WaitMessagebox.Size = new System.Drawing.Size(57, 16);
             this.WaitMessagebox.TabIndex = 240;
@@ -334,7 +334,7 @@ namespace ACNHPoker
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(65, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(61, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.TabIndex = 216;
@@ -347,12 +347,14 @@ namespace ACNHPoker
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.unfreezeAllVillagerBtn);
+            this.mainPanel.Controls.Add(this.freezeAllVillagerBtn);
+            this.mainPanel.Controls.Add(this.changeRateBtn);
+            this.mainPanel.Controls.Add(this.RateBar);
             this.mainPanel.Controls.Add(this.SlotLabel);
             this.mainPanel.Controls.Add(this.RateValue);
             this.mainPanel.Controls.Add(this.saveMapBtn);
-            this.mainPanel.Controls.Add(this.changeRateBtn);
             this.mainPanel.Controls.Add(this.FreezeCountLabel);
-            this.mainPanel.Controls.Add(this.RateBar);
             this.mainPanel.Controls.Add(this.EnableTextBtn);
             this.mainPanel.Controls.Add(this.FinMsg);
             this.mainPanel.Controls.Add(this.DisableTextBtn);
@@ -363,7 +365,7 @@ namespace ACNHPoker
             this.mainPanel.Controls.Add(this.FreezeMapBtn);
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(250, 395);
+            this.mainPanel.Size = new System.Drawing.Size(236, 364);
             this.mainPanel.TabIndex = 240;
             // 
             // FinMsg
@@ -384,8 +386,6 @@ namespace ACNHPoker
             // 
             // mapPanel
             // 
-            this.mapPanel.Controls.Add(this.unfreezeVillagerBtn);
-            this.mapPanel.Controls.Add(this.freezeVillagerBtn);
             this.mapPanel.Controls.Add(this.FreezeMap2Btn);
             this.mapPanel.Controls.Add(this.startBtn);
             this.mapPanel.Controls.Add(this.label4);
@@ -393,10 +393,42 @@ namespace ACNHPoker
             this.mapPanel.Controls.Add(this.yCoordinate);
             this.mapPanel.Controls.Add(this.miniMapBox);
             this.mapPanel.Controls.Add(this.xCoordinate);
-            this.mapPanel.Location = new System.Drawing.Point(256, 4);
+            this.mapPanel.Location = new System.Drawing.Point(239, 2);
             this.mapPanel.Name = "mapPanel";
-            this.mapPanel.Size = new System.Drawing.Size(377, 354);
+            this.mapPanel.Size = new System.Drawing.Size(235, 364);
             this.mapPanel.TabIndex = 241;
+            // 
+            // unfreezeAllVillagerBtn
+            // 
+            this.unfreezeAllVillagerBtn.BackColor = System.Drawing.Color.DarkRed;
+            this.unfreezeAllVillagerBtn.FlatAppearance.BorderSize = 0;
+            this.unfreezeAllVillagerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unfreezeAllVillagerBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.unfreezeAllVillagerBtn.ForeColor = System.Drawing.Color.White;
+            this.unfreezeAllVillagerBtn.Location = new System.Drawing.Point(121, 250);
+            this.unfreezeAllVillagerBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.unfreezeAllVillagerBtn.Name = "unfreezeAllVillagerBtn";
+            this.unfreezeAllVillagerBtn.Size = new System.Drawing.Size(100, 38);
+            this.unfreezeAllVillagerBtn.TabIndex = 246;
+            this.unfreezeAllVillagerBtn.Text = "UnFreeze All Villager";
+            this.unfreezeAllVillagerBtn.UseVisualStyleBackColor = false;
+            this.unfreezeAllVillagerBtn.Click += new System.EventHandler(this.unfreezeAllVillagerBtn_Click);
+            // 
+            // freezeAllVillagerBtn
+            // 
+            this.freezeAllVillagerBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.freezeAllVillagerBtn.FlatAppearance.BorderSize = 0;
+            this.freezeAllVillagerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.freezeAllVillagerBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.freezeAllVillagerBtn.ForeColor = System.Drawing.Color.White;
+            this.freezeAllVillagerBtn.Location = new System.Drawing.Point(13, 250);
+            this.freezeAllVillagerBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.freezeAllVillagerBtn.Name = "freezeAllVillagerBtn";
+            this.freezeAllVillagerBtn.Size = new System.Drawing.Size(100, 38);
+            this.freezeAllVillagerBtn.TabIndex = 245;
+            this.freezeAllVillagerBtn.Text = "Freeze All Villager";
+            this.freezeAllVillagerBtn.UseVisualStyleBackColor = false;
+            this.freezeAllVillagerBtn.Click += new System.EventHandler(this.freezeAllVillagerBtn_Click);
             // 
             // FreezeMap2Btn
             // 
@@ -481,38 +513,6 @@ namespace ACNHPoker
             this.xCoordinate.TabIndex = 236;
             this.xCoordinate.Text = "";
             // 
-            // unfreezeVillagerBtn
-            // 
-            this.unfreezeVillagerBtn.BackColor = System.Drawing.Color.DarkRed;
-            this.unfreezeVillagerBtn.FlatAppearance.BorderSize = 0;
-            this.unfreezeVillagerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.unfreezeVillagerBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.unfreezeVillagerBtn.ForeColor = System.Drawing.Color.White;
-            this.unfreezeVillagerBtn.Location = new System.Drawing.Point(113, 271);
-            this.unfreezeVillagerBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.unfreezeVillagerBtn.Name = "unfreezeVillagerBtn";
-            this.unfreezeVillagerBtn.Size = new System.Drawing.Size(100, 45);
-            this.unfreezeVillagerBtn.TabIndex = 244;
-            this.unfreezeVillagerBtn.Text = "UnFreeze Villager";
-            this.unfreezeVillagerBtn.UseVisualStyleBackColor = false;
-            this.unfreezeVillagerBtn.Click += new System.EventHandler(this.unfreezeVillagerBtn_Click);
-            // 
-            // freezeVillagerBtn
-            // 
-            this.freezeVillagerBtn.BackColor = System.Drawing.Color.DarkGreen;
-            this.freezeVillagerBtn.FlatAppearance.BorderSize = 0;
-            this.freezeVillagerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.freezeVillagerBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.freezeVillagerBtn.ForeColor = System.Drawing.Color.White;
-            this.freezeVillagerBtn.Location = new System.Drawing.Point(5, 271);
-            this.freezeVillagerBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.freezeVillagerBtn.Name = "freezeVillagerBtn";
-            this.freezeVillagerBtn.Size = new System.Drawing.Size(100, 45);
-            this.freezeVillagerBtn.TabIndex = 243;
-            this.freezeVillagerBtn.Text = "Freeze Villager";
-            this.freezeVillagerBtn.UseVisualStyleBackColor = false;
-            this.freezeVillagerBtn.Click += new System.EventHandler(this.freezeVillagerBtn_Click);
-            // 
             // Freezer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -575,7 +575,7 @@ namespace ACNHPoker
         private System.Windows.Forms.RichTextBox yCoordinate;
         private System.Windows.Forms.PictureBox miniMapBox;
         private System.Windows.Forms.RichTextBox xCoordinate;
-        private System.Windows.Forms.Button unfreezeVillagerBtn;
-        private System.Windows.Forms.Button freezeVillagerBtn;
+        private System.Windows.Forms.Button freezeAllVillagerBtn;
+        private System.Windows.Forms.Button unfreezeAllVillagerBtn;
     }
 }
