@@ -1,13 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -100,7 +95,7 @@ namespace ACNHPoker
 
             lockControl();
 
-            byte[] save = Utilities.ReadByteArray8(s, address, 0x54000*2, ref counter);
+            byte[] save = Utilities.ReadByteArray8(s, address, 0x54000 * 2, ref counter);
 
             File.WriteAllBytes(file.FileName, save);
 
@@ -209,8 +204,8 @@ namespace ACNHPoker
 
         private void EnableTextBtn_Click(object sender, EventArgs e)
         {
-            Utilities.SendString(s, Utilities.Freeze(Utilities.TextSpeedAddress, new byte[1] {3}));
-            
+            Utilities.SendString(s, Utilities.Freeze(Utilities.TextSpeedAddress, new byte[1] { 3 }));
+
             int freezeCount = Utilities.GetFreezeCount(s);
 
             this.Invoke((MethodInvoker)delegate
@@ -375,7 +370,7 @@ namespace ACNHPoker
 
         private void UnFreezeMapBtn_Click(object sender, EventArgs e)
         {
-            Log.logEvent("Regen", "Regen3 Stopped") ;
+            Log.logEvent("Regen", "Regen3 Stopped");
 
             UInt32 address = Utilities.mapZero;
 
@@ -617,7 +612,7 @@ namespace ACNHPoker
                 {
 
                 }
-                else if ((x % 2 != 0) && (i == x / 2 ))
+                else if ((x % 2 != 0) && (i == x / 2))
                 {
 
                 }
@@ -740,7 +735,7 @@ namespace ACNHPoker
                 Buffer.BlockCopy(first, 0x0, parts[0], 0x0, 0xC00);
 
                 //====================================================
-                
+
                 offsets[1] = 0xC00;
                 parts[1] = new byte[size * topLength];
                 Buffer.BlockCopy(first, 0xC00, parts[1], 0x0, size * topLength);
@@ -890,6 +885,7 @@ namespace ACNHPoker
                     Utilities.FreezeBig(s, (uint)(Utilities.VillagerAddress + (i * Utilities.VillagerSize) + Utilities.VillagerMoveoutOffset), villagerFlag[i], (uint)villagerFlag[i].Length);
             }
 
+
             // Freeze the first villager and his/her house
             byte[] VillagerData = Utilities.GetVillager(s, null, 0, (int)Utilities.VillagerSize, ref counter);
 
@@ -901,15 +897,22 @@ namespace ACNHPoker
                 HouseList[i] = Convert.ToInt32(b);
             }
 
-
             Villager V = new Villager(VillagerData, 0)
             {
                 HouseIndex = Utilities.FindHouseIndex(0, HouseList)
             };
 
+
             byte[] HouseData = Utilities.GetHouse(s, null, V.HouseIndex, ref counter);
 
-            Utilities.FreezeBig(s, Utilities.VillagerAddress, VillagerData, Utilities.VillagerSize);
+            byte[] head = new byte[0x2F83];
+            byte[] tail = new byte[0xBB6];
+
+            Buffer.BlockCopy(VillagerData, 0, head, 0, 0x2F83);
+            Buffer.BlockCopy(VillagerData, 0x1267A, tail, 0, 0xBB6);
+
+            Utilities.FreezeBig(s, Utilities.VillagerAddress, head, 0x2F83);
+            Utilities.FreezeBig(s, Utilities.VillagerAddress + 0x1267A, tail, 0xBB6);
             Utilities.FreezeBig(s, (uint)(Utilities.VillagerHouseAddress + (V.HouseIndex * (Utilities.VillagerHouseSize))), HouseData, Utilities.VillagerHouseSize);
 
 
@@ -922,7 +925,7 @@ namespace ACNHPoker
             this.Invoke((MethodInvoker)delegate
             {
                 FinMsg.Visible = true;
-                FinMsg.Text = "Purgatory!";
+                FinMsg.Text = V.GetRealName() + " is in Purgatory! " + V.HouseIndex;
                 updateFreezeCountLabel(freezeCount);
             });
 
@@ -938,7 +941,8 @@ namespace ACNHPoker
                     Utilities.SendString(s, Utilities.UnFreeze((uint)(Utilities.VillagerAddress + (i * Utilities.VillagerSize) + Utilities.VillagerMoveoutOffset)));
             }
 
-            Utilities.unFreezeBig(s, Utilities.VillagerAddress, Utilities.VillagerSize);
+            Utilities.unFreezeBig(s, Utilities.VillagerAddress, 0x2F83);
+            Utilities.unFreezeBig(s, Utilities.VillagerAddress + 0x1267A, 0xBB6);
 
             int[] HouseList = new int[10];
 

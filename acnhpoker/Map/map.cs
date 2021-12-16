@@ -210,6 +210,9 @@ namespace ACNHPoker
 
                 FlashTimer.Start();
 
+                ((TextBox)HexTextbox.Controls[1]).MaxLength = 8;
+                ((TextBox)FlagTextbox.Controls[1]).MaxLength = 2;
+
                 Log.logEvent("Map", "MapForm Started Successfully");
             }
             catch (Exception ex)
@@ -219,6 +222,7 @@ namespace ACNHPoker
                 MessageBox.Show(ex.Message);
             }
         }
+
         #endregion
 
         #region Fetch Map
@@ -1570,6 +1574,8 @@ namespace ACNHPoker
 
         private void fieldModeBtn_Click(object sender, EventArgs e)
         {
+            FlashTimer.Stop();
+
             itemModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             recipeModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             flowerModeBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2834,53 +2840,6 @@ namespace ACNHPoker
             {
                 selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source, Convert.ToUInt32("0x" + itemData, 16)), true, "", "00", flag2);
             }
-        }
-
-        private void HexTextbox_DoubleClick(object sender, EventArgs e)
-        {
-            if (currentDataTable == recipeSource || currentDataTable == flowerSource)
-                return;
-
-            if (IdTextbox.Text == "")
-                return;
-
-            string id = Utilities.precedingZeros(IdTextbox.Text, 4);
-
-            UInt16 IntId = Convert.ToUInt16("0x" + IdTextbox.Text, 16);
-
-            if (Utilities.itemkind.ContainsKey(id))
-            {
-                int value = Utilities.CountByKind[Utilities.itemkind[id]];
-
-                if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
-                {
-                    string hexValue = Utilities.precedingZeros(HexTextbox.Text, 8);
-
-
-                    string front = Utilities.precedingZeros(hexValue, 8).Substring(0, 4);
-                    string back = Utilities.precedingZeros(hexValue, 8).Substring(4, 4);
-
-                    int decValue = value - 1;
-                    if (decValue >= 0)
-                        HexTextbox.Text = front + Utilities.precedingZeros(decValue.ToString("X"), 4);
-                    else
-                        HexTextbox.Text = front + Utilities.precedingZeros("0", 4);
-                }
-                else
-                {
-                    int decValue = value - 1;
-                    if (decValue >= 0)
-                        HexTextbox.Text = Utilities.precedingZeros(decValue.ToString("X"), 8);
-                    else
-                        HexTextbox.Text = Utilities.precedingZeros("0", 8);
-                }
-            }
-            else
-            {
-                HexTextbox.Text = "00000000";
-            }
-
-            updateVariation();
         }
 
         #region Refresh
@@ -5934,6 +5893,156 @@ namespace ACNHPoker
                     NewB = 255;
 
                 fieldModeBtn.BackColor = Color.FromArgb(NewR, NewG, NewB);
+            }
+        }
+
+        private void FlagTextbox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            if (me.X <= FlagTextbox.Controls[1].Width + 1)
+            {
+                Console.WriteLine("EditBox");
+                if (FlagTextbox.Value == 0x0)
+                    FlagTextbox.Value = 0x20;
+                else
+                    FlagTextbox.Value = 0x00;
+            }
+            else if (me.Y <= FlagTextbox.Controls[1].Height / 2)
+                Console.WriteLine("UpArrow");
+            else if (me.X >= FlagTextbox.Controls[0].Width + FlagTextbox.Controls[0].Left)
+                Console.WriteLine("Right border");
+            else
+                Console.WriteLine("DownArrow");
+        }
+
+        private void HexTextbox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            if (me.X <= HexTextbox.Controls[1].Width + 1)
+            {
+                if (currentDataTable == recipeSource || currentDataTable == flowerSource)
+                    return;
+
+                if (IdTextbox.Text == "")
+                    return;
+
+                string id = Utilities.precedingZeros(IdTextbox.Text, 4);
+
+                UInt16 IntId = Convert.ToUInt16("0x" + IdTextbox.Text, 16);
+
+                if (Utilities.itemkind.ContainsKey(id))
+                {
+                    int value = Utilities.CountByKind[Utilities.itemkind[id]];
+
+                    if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
+                    {
+                        string hexValue = Utilities.precedingZeros(HexTextbox.Text, 8);
+
+
+                        string front = Utilities.precedingZeros(hexValue, 8).Substring(0, 4);
+                        string back = Utilities.precedingZeros(hexValue, 8).Substring(4, 4);
+
+                        int decValue = value - 1;
+                        if (decValue >= 0)
+                            HexTextbox.Text = front + Utilities.precedingZeros(decValue.ToString("X"), 4);
+                        else
+                            HexTextbox.Text = front + Utilities.precedingZeros("0", 4);
+                    }
+                    else
+                    {
+                        int decValue = value - 1;
+                        if (decValue >= 0)
+                            HexTextbox.Text = Utilities.precedingZeros(decValue.ToString("X"), 8);
+                        else
+                            HexTextbox.Text = Utilities.precedingZeros("0", 8);
+                    }
+                }
+                else
+                {
+                    HexTextbox.Text = "00000000";
+                }
+
+                updateVariation();
+            }
+        }
+
+        private void FlagTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || c == (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+            if (c >= 'a' && c <= 'f') e.KeyChar = char.ToUpper(c);
+
+            updateVariation();
+        }
+
+        private void HexTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || c == (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+            if (c >= 'a' && c <= 'f') e.KeyChar = char.ToUpper(c);
+
+            updateVariation();
+        }
+
+        private void HexTextbox_ValueChanged(object sender, EventArgs e)
+        {
+            if (IdTextbox.Text.Equals(string.Empty) || HexTextbox.Text.Equals(string.Empty))
+                return;
+
+            HexUpDown me = (HexUpDown)sender;
+            var NewValue = me.Value;
+            long data = (long)NewValue;
+            string hexValue = data.ToString("X");
+
+            string itemID = Utilities.precedingZeros(IdTextbox.Text, 4);
+            string itemData = Utilities.precedingZeros(hexValue, 8);
+            string flag2 = Utilities.precedingZeros(FlagTextbox.Text, 2);
+
+            UInt16 IntId = Convert.ToUInt16("0x" + itemID, 16);
+            string front = Utilities.precedingZeros(itemData, 8).Substring(0, 4);
+            string back = Utilities.precedingZeros(itemData, 8).Substring(4, 4);
+
+            if (itemID.Equals("315A") || itemID.Equals("1618") || itemID.Equals("342F"))
+            {
+                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source), true, GetImagePathFromID(Utilities.turn2bytes(itemData), source, Convert.ToUInt32("0x" + Utilities.translateVariationValueBack(front), 16)), "00", flag2);
+            }
+            else if (itemID.Equals("16A2"))
+            {
+                selectedItem.setup(GetNameFromID(itemID, recipeSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(Utilities.turn2bytes(itemData), recipeSource), true, "", "00", flag2);
+            }
+            else if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
+            {
+                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source, Convert.ToUInt32("0x" + front, 16)), true, "", "00", flag2);
+            }
+            else
+            {
+                selectedItem.setup(GetNameFromID(itemID, source), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, source, Convert.ToUInt32("0x" + itemData, 16)), true, "", "00", flag2);
+            }
+
+            if (selection != null)
+            {
+                //selection.Dispose();
+                string id = Utilities.precedingZeros(selectedItem.fillItemID(), 4);
+                string value = Utilities.precedingZeros(selectedItem.fillItemData(), 8);
+
+                if (ItemAttr.hasFenceWithVariation(IntId))  // Fence Variation
+                {
+                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting, value);
+                }
+                else if (id == "315A" || id == "1618" || id == "342F")
+                {
+                    selection.receiveID(Utilities.turn2bytes(selectedItem.fillItemData()), languageSetting);
+                }
+                else
+                {
+                    selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
+                }
             }
         }
     }

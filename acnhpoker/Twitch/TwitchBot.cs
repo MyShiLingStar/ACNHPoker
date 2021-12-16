@@ -79,7 +79,7 @@ namespace ACNHPoker
                     string message;
                     if (twitchChatMessage.Message.StartsWith(DropItemCommand))
                     {
-                        message = twitchChatMessage.Message.Replace(DropItemCommand,"").Replace('’', '\'').Trim();
+                        message = twitchChatMessage.Message.Replace(DropItemCommand, "").Replace('’', '\'').Trim();
                         //Console.WriteLine(message);
 
                         string name = "";

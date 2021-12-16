@@ -27,7 +27,9 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: ACNHPoker'
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    PathtoPublish: 'acnhpoker\bin\Release'
+    ArtifactName: ACNHPoker
+  condition: succeededOrFailed()

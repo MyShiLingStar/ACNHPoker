@@ -1,0 +1,3345 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TwitchLib.PubSub</name>
+    </assembly>
+    <members>
+        <member name="T:TwitchLib.PubSub.Common.Helpers">
+            <summary>
+            Static class of helper functions used around the project.
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Common.Helpers.DateTimeStringToObject(System.String)">
+            <summary>
+            Takes date time string received from Twitch API and converts it to DateTime object.
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns>DateTime.</returns>
+        </member>
+        <member name="M:TwitchLib.PubSub.Common.Helpers.Base64Encode(System.String)">
+            <summary>
+            Base64s the encode.
+            </summary>
+            <param name="plainText">The plain text.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.AutomodQueueType">
+            <summary>
+            Enum ChannelPointsChannelType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.AutomodQueueType.CaughtMessage">
+            <summary>
+            Caught message update
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.AutomodQueueType.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.ChannelPointsChannelType">
+            <summary>
+            Enum ChannelPointsChannelType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.ChannelPointsChannelType.RewardRedeemed">
+            <summary>
+            Reward redeemed
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.ChannelPointsChannelType.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.CommunityPointsChannelType">
+            <summary>
+            Enum CommunityPointsChannelType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.CommunityPointsChannelType.RewardRedeemed">
+            <summary>
+            On reward redeemed
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.CommunityPointsChannelType.CustomRewardUpdated">
+            <summary>
+            On custom reward updated
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.CommunityPointsChannelType.CustomRewardCreated">
+            <summary>
+            On custom reward created
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.CommunityPointsChannelType.CustomRewardDeleted">
+            <summary>
+            On custom reward deleted
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.LeaderBoardType">
+            <summary>
+            Enum LeaderBoardType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.LeaderBoardType.BitsUsageByChannel">
+            <summary>
+            On bits usage by channel
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.LeaderBoardType.SubGiftSent">
+            <summary>
+            On sub gift sent
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.PredictionType">
+            <summary>
+            Enum PredictionType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.PredictionType.EventCreated">
+            <summary>When a prediction is started [Contains all information about the prediction]</summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.PredictionType.EventUpdated">
+            <summary>When there is a update for the prediction [contains information about the prediction] (contains top predictors or the outcome when finished)</summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.PubSubRequestType">
+            <summary>
+            Enum representing various request types for PubSub service
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.PubSubRequestType.ListenToTopic">
+            <summary>
+            Type of request to listen to a specific topic
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.RaidType">
+            <summary>
+            Enum RaidType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.RaidType.RaidUpdate">
+            
+             Raid_update(_v2) is been received every second for 30 seconds
+             
+            <summary>
+            On a raid prepare started [Information about the outgoing raid](contains time and target)
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.RaidType.RaidUpdateV2">
+            <summary>
+            On a raid prepare started [Information about the outgoing raid](contains only target)
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.RaidType.RaidGo">
+            <summary>
+            When the raid actually starts
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.SubscriptionPlan">
+            <summary>
+            Enum SubscriptionPlan
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.SubscriptionPlan.NotSet">
+            <summary>
+            The not set
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.SubscriptionPlan.Prime">
+            <summary>
+            The prime
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.SubscriptionPlan.Tier1">
+            <summary>
+            The tier1
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.SubscriptionPlan.Tier2">
+            <summary>
+            The tier2
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.SubscriptionPlan.Tier3">
+            <summary>
+            The tier3
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.UserModerationNotificationsType">
+            <summary>
+            Enum ChannelPointsChannelType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.UserModerationNotificationsType.AutomodCaughtMessage">
+            <summary>
+            Automod caught message
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.UserModerationNotificationsType.Unknown">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.VideoPlaybackType">
+            <summary>
+            Valid playback types.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.VideoPlaybackType.StreamUp">
+            <summary>
+            On stream up
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.VideoPlaybackType.StreamDown">
+            <summary>
+            On stream down
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.VideoPlaybackType.ViewCount">
+            <summary>
+            On view count
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.VideoPlaybackType.Commercial">
+            <summary>
+            On commercial
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Enums.WhisperType">
+            <summary>
+            Enum WhisperType
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.WhisperType.WhisperReceived">
+            <summary>
+            The whisper received
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.WhisperType.Thread">
+            <summary>
+            The thread
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Enums.WhisperType.Unknown">
+            <summary>
+            The unknown
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnAutomodCaughtMessageArgs.AutomodCaughtMessage">
+            <summary>
+            Details about the caught message
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnAutomodCaughtMessageArgs.ChannelId">
+            <summary>
+            The ID of the channel that this event fired from.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnAutomodCaughtUserMessage.AutomodCaughtMessage">
+            <summary>
+            Details about the caught message
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnAutomodCaughtUserMessage.ChannelId">
+            <summary>
+            The ID of the channel that this event fired from.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnAutomodCaughtUserMessage.UserId">
+            <summary>
+            The ID of the user that this event fired from.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnBanArgs">
+            <inheritdoc />
+            <summary>
+            Object representing the arguments for a ban event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBanArgs.BannedUserId">
+            <summary>
+            Property representing banned user id
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBanArgs.BannedUser">
+            <summary>
+            Property representing banned username
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBanArgs.BanReason">
+            <summary>
+            Property representing ban reason.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBanArgs.BannedBy">
+            <summary>
+            Property representing the moderator who banned user.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBanArgs.BannedByUserId">
+            <summary>
+            Property representing the user id of the moderator that banned the user.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBanArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnBitsReceivedArgs">
+            <inheritdoc />
+            <summary>
+            Object representing the arguments for bits received event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.Username">
+            <summary>
+            Property of for username.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.ChannelName">
+            <summary>
+            Property for channel name.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.UserId">
+            <summary>
+            Property for user id.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.ChannelId">
+            <summary>
+            Property for channel id.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.Time">
+            <summary>
+            Property for time.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.ChatMessage">
+            <summary>
+            Property for chat message
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.BitsUsed">
+            <summary>
+            Property for bits used.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.TotalBitsUsed">
+            <summary>
+            Property for total bits used.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnBitsReceivedArgs.Context">
+            <summary>
+            Property for context
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.UserName">
+            <summary>
+            Property of username.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.ChannelName">
+            <summary>
+            Property of channel name.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.UserId">
+            <summary>
+            Property of user id.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.ChannelId">
+            <summary>
+            Property of channel id.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.Time">
+            <summary>
+            Property of time.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.ChatMessage">
+            <summary>
+            Property of chat message.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.BitsUsed">
+            <summary>
+            Property of bits used.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.TotalBitsUsed">
+            <summary>
+            Property of total bits used.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.IsAnonymous">
+            <summary>
+            Property of whether or not the bits were sent anonymously
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnBitsReceivedV2Args.Context">
+            <summary>
+            Property representing type
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs">
+            <inheritdoc />
+            <summary>
+            Object representing the arguments for channel commerce event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.Username">
+            <summary>
+            Property for username.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.DisplayName">
+            <summary>
+            Property for buyer's display name.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.ChannelName">
+            <summary>
+            Property for channel's name.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.UserId">
+            <summary>
+            Property for buyer's user ID.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.ChannelId">
+            <summary>
+            Property for channel's ID.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.Time">
+            <summary>
+            Property for timestamp.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.ItemImageURL">
+            <summary>
+            Property for item's image URL.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.ItemDescription">
+            <summary>
+            Property for item description.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.SupportsChannel">
+            <summary>
+            Property for whether this purchase supports the channel or not.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelCommerceReceivedArgs.PurchaseMessage">
+            <summary>
+            Property for accompanying chat message.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnChannelExtensionBroadcastArgs">
+            <inheritdoc />
+            <summary>
+            Class OnChannelExtensionBroadcastArgs.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelExtensionBroadcastArgs.Messages">
+            <summary>
+            Property containing the payload send to the specified extension on the specified channel.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelExtensionBroadcastArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnChannelPointsRewardRedeemedArgs.ChannelId">
+            <summary>
+            The ID of the channel that this event fired from.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Events.OnChannelPointsRewardRedeemedArgs.RewardRedeemed">
+            <summary>
+            Details about the reward that was redeemed
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnChannelSubscriptionArgs">
+            <inheritdoc />
+            <summary>
+            Class OnChannelSubscriptionArgs.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelSubscriptionArgs.Subscription">
+            <summary>
+            The subscription
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnChannelSubscriptionArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnClearArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of chat clear event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnClearArgs.Moderator">
+            <summary>
+            Property representing username of moderator who cleared chat.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnClearArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnCommercialArgs">
+            <inheritdoc/>
+            <summary>
+            Commercial arguments class.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCommercialArgs.Length">
+            <summary>
+            The length of the commercial.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCommercialArgs.ServerTime">
+            <summary>
+            Server time issued by Twitch.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCommercialArgs.ChannelId">
+            <summary>
+            Property representing the id of the channel the event originated from.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of custom reward created event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs.TimeStamp">
+            <summary>
+            Property representing server time stamp
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs.RewardId">
+            <summary>
+            Property representing the id of the created reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs.RewardTitle">
+            <summary>
+            Property representing title of the created reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs.RewardPrompt">
+            <summary>
+            Property representing prompt of the created reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardCreatedArgs.RewardCost">
+            <summary>
+            Property representing cost of the created reward
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnCustomRewardDeletedArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of custom reward deleted event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardDeletedArgs.TimeStamp">
+            <summary>
+            Property representing server time stamp
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardDeletedArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardDeletedArgs.RewardId">
+            <summary>
+            Property representing the id of the deleted reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardDeletedArgs.RewardTitle">
+            <summary>
+            Property representing title of the deleted reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardDeletedArgs.RewardPrompt">
+            <summary>
+            Property representing prompt of the deleted reward
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of custom reward updated event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs.TimeStamp">
+            <summary>
+            Property representing server time stamp
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs.RewardId">
+            <summary>
+            Property representing the id of the updated reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs.RewardTitle">
+            <summary>
+            Property representing title of the updated reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs.RewardPrompt">
+            <summary>
+            Property representing prompt of the updated reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnCustomRewardUpdatedArgs.RewardCost">
+            <summary>
+            Property representing cost of the updated reward
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnEmoteOnlyArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of emotes only event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnEmoteOnlyArgs.Moderator">
+            <summary>
+            Property representing moderator who issued moderator only command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnEmoteOnlyArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnEmoteOnlyOffArgs">
+            <inheritdoc />
+            <summary>
+            Class representing emotesonly off event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnEmoteOnlyOffArgs.Moderator">
+            <summary>
+            Property representing moderator who issued command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnEmoteOnlyOffArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnFollowArgs">
+            <inheritdoc />
+            <summary>
+            Class OnFollowArgs.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnFollowArgs.FollowedChannelId">
+            <summary>
+            The followed channel identifier
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnFollowArgs.DisplayName">
+            <summary>
+            The display name
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnFollowArgs.Username">
+            <summary>
+            The username
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnFollowArgs.UserId">
+            <summary>
+            The user identifier
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnHostArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of on host event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnHostArgs.Moderator">
+            <summary>
+            Property representing moderator who issued command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnHostArgs.HostedChannel">
+            <summary>
+            Property representing hosted channel.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnHostArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnLeaderboardEventArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of on leaderboard event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnLeaderboardEventArgs.ChannelId">
+            <summary>
+            Property representing channel id where the event got issued.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnLeaderboardEventArgs.TopList">
+            <summary>
+            Property representing a leaderboard list.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnListenResponseArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments for a listen response.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnListenResponseArgs.Topic">
+            <summary>
+            Property representing the topic that was listened to
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnListenResponseArgs.Response">
+            <summary>
+            Property representing the response as Response object
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnListenResponseArgs.Successful">
+            <summary>
+            Property representing if request was successful.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnListenResponseArgs.ChannelId">
+            <summary>
+            Property representing the id of the channel the event originated from.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnLogArgs">
+            <inheritdoc />
+            <summary>
+            Class OnLogArgs.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnLogArgs.Data">
+            <summary>
+            Property representing data received from Twitch
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnMessageDeletedArgs">
+            <inheritdoc />
+            <summary>
+            OnMessageDeleted event arguments class.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.TargetUser">
+            <summary>
+            Name of the user whose message was deleted
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.TargetUserId">
+            <summary>
+            ID of the user whose message was deleted
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.DeletedBy">
+            <summary>
+            Name of the moderator who deleted the message
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.DeletedByUserId">
+            <summary>
+            ID of the moderator who deleted the message
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.Message">
+            <summary>
+            The message that was deleted
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.MessageId">
+            <summary>
+            ID of the message that was deleted
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnMessageDeletedArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnPredictionArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of on prediction event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.Type">
+            <summary>
+            Property representing the the prediction type
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.Id">
+            <summary>
+            Property representing the the prediction Id
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.ChannelId">
+            <summary>
+            The channel Id it came from
+            </summary>
+            <value>The channel id</value>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.CreatedAt">
+            <summary>
+            Property representing the created at
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.LockedAt">
+            <summary>
+            Property representing the locked at
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.EndedAt">
+            <summary>
+            Property representing the ended at
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.Outcomes">
+            <summary>
+            Property representing the outcome
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.Status">
+            <summary>
+            Property representing the prediction Status
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.Title">
+            <summary>
+            Property representing the title
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.WinningOutcomeId">
+            <summary>
+            Property representing the wining outcome Id
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPredictionArgs.PredictionTime">
+            <summary>
+            Property representing the prediction time
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnPubSubServiceErrorArgs">
+            <inheritdoc />
+            <summary>
+            Class representing a pubsub service error event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnPubSubServiceErrorArgs.Exception">
+            <summary>
+            Property representing exception.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnR9kBetaArgs">
+            <inheritdoc />
+            <summary>
+            Class representing event where r9k was enabled
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnR9kBetaArgs.Moderator">
+            <summary>
+            Property representing moderator that issued command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnR9kBetaArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnR9kBetaOffArgs">
+            <inheritdoc />
+            <summary>
+            Class representing event where r9k was turned off.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnR9kBetaOffArgs.Moderator">
+            <summary>
+            Property representing moderator that issued command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnR9kBetaOffArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnRaidGoArgs">
+            <inheritdoc />
+            <summary>
+            Object representing the arguments for a raid go event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.Id">
+            <summary>
+            Property representing the id of the raid event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.TargetChannelId">
+            <summary>
+            Property representing the target channel id
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.TargetLogin">
+            <summary>
+            Property representing the target channel login
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.TargetDisplayName">
+            <summary>
+            Property representing  the target display name
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.TargetProfileImage">
+            <summary>
+            Property representing the target profile image url
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidGoArgs.ViewerCount">
+            <summary>
+            Property representing the count of people in the raid
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnRaidUpdateArgs">
+            <inheritdoc />
+            <summary>
+            Class representing arguments of on raid update event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.Id">
+            <summary>
+            Property representing the id of the raid event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.TargetChannelId">
+            <summary>
+            Property representing the target channel id
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.AnnounceTime">
+            <summary>
+            Property representing the date when the raid got prepared
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.RaidTime">
+            <summary>
+            Property representing the date the raid starts
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.RemainingDurationSeconds">
+            <summary>
+            Property representing the countdown for the raid
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateArgs.ViewerCount">
+            <summary>
+            Property representing the count of people in the raid
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnRaidUpdateV2Args">
+            <inheritdoc />
+            <summary>
+            Object representing the arguments for a raid go event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.Id">
+            <summary>
+            Property representing the id of the raid event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.TargetChannelId">
+            <summary>
+            Property representing the target channel id
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.TargetLogin">
+            <summary>
+            Property representing the target channel login
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.TargetDisplayName">
+            <summary>
+            Property representing  the target display name
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.TargetProfileImage">
+            <summary>
+            Property representing the target profile image url
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRaidUpdateV2Args.ViewerCount">
+            <summary>
+            Property representing the count of people in the raid
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnRewardRedeemedArgs">
+            <inheritdoc />
+            <summary>
+            Object representing the arguments for a reward redeem event
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.TimeStamp">
+            <summary>
+            Property representing server time stamp
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.Login">
+            <summary>
+            Property representing login name of the user redeemed the reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.DisplayName">
+            <summary>
+            Property representing displayname of the user redeemed the reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.Message">
+            <summary>
+            Property representing message of the user
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.RewardId">
+            <summary>
+            Property representing the id of the redeemed custom reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.RewardTitle">
+            <summary>
+            Property representing title of the redeemed reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.RewardPrompt">
+            <summary>
+            Property representing prompt of the redeemed reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.RewardCost">
+            <summary>
+            Property representing cost of the redeemed reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.Status">
+            <summary>
+            Property representing the status of the redeemed reward
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnRewardRedeemedArgs.RedemptionId">
+            <summary>
+            Property representing the id of the redeemed reward
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnStreamDownArgs">
+            <inheritdoc />
+            <summary>
+            Class representing stream going down event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnStreamDownArgs.ServerTime">
+            <summary>
+            Property representing the server time of event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnStreamDownArgs.ChannelId">
+            <summary>
+            Property representing the id of the channel the event originated from.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnStreamUpArgs">
+            <inheritdoc />
+            <summary>
+            Class representing when a stream starts event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnStreamUpArgs.ServerTime">
+            <summary>
+            Property representing the server time.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnStreamUpArgs.PlayDelay">
+            <summary>
+            Property representing play delay.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnStreamUpArgs.ChannelId">
+            <summary>
+            Property representing the id of the channel the event originated from.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnSubscribersOnlyArgs">
+            <inheritdoc />
+            <summary>
+            Class representing subscriber only mode event starting.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnSubscribersOnlyArgs.Moderator">
+            <summary>
+            Property representing moderator that issued command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnSubscribersOnlyArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnSubscribersOnlyOffArgs">
+            <inheritdoc />
+            <summary>
+            Class representing subscriber only mode turning off event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnSubscribersOnlyOffArgs.Moderator">
+            <summary>
+            Property representing the moderator that issued the command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnSubscribersOnlyOffArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnTimeoutArgs">
+            <inheritdoc />
+            <summary>
+            Class representing timeout event.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.TimedoutUserId">
+            <summary>
+            Property representing the timedout user id.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.TimedoutUser">
+            <summary>
+            Property representing the timedout username.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.TimeoutDuration">
+            <summary>
+            Property representing the tumeout duration.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.TimeoutReason">
+            <summary>
+            Property representing the timeout reaosn.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.TimedoutBy">
+            <summary>
+            Property representing the moderator that issued the command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.TimedoutById">
+            <summary>
+            Property representing the moderator that issued the command's user id.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnTimeoutArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnUnbanArgs">
+            <inheritdoc />
+            <summary>
+            OnUnban event arguments class.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUnbanArgs.UnbannedUser">
+            <summary>
+            Name of user that was unbanned
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUnbanArgs.UnbannedUserId">
+            <summary>
+            Userid of user that was unbanned.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUnbanArgs.UnbannedBy">
+            <summary>
+            Name of moderator that issued unban command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUnbanArgs.UnbannedByUserId">
+            <summary>
+            Userid of the unbanned user.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUnbanArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnUntimeoutArgs">
+            <inheritdoc />
+            <summary>
+            Untimeout argument class.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUntimeoutArgs.UntimeoutedUser">
+            <summary>
+            User that was untimed out (ie unbanned for a timeout)
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUntimeoutArgs.UntimeoutedUserId">
+            <summary>
+            Userid that was untimed out (ie unbanned for a timeout)
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUntimeoutArgs.UntimeoutedBy">
+            <summary>
+            Moderator that issued the untimeout command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUntimeoutArgs.UntimeoutedByUserId">
+            <summary>
+            Moderator user id that issued untimeout command.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnUntimeoutArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnViewCountArgs">
+            <inheritdoc />
+            <summary>
+            ViewCount arguments class.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnViewCountArgs.ServerTime">
+            <summary>
+            Server time issued by Twitch.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnViewCountArgs.Viewers">
+            <summary>
+            Number of viewers at current time.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnViewCountArgs.ChannelId">
+            <summary>
+            Property representing the id of the channel the event originated from.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Events.OnWhisperArgs">
+            <inheritdoc />
+            <summary>
+            [INCOMPLETE/NOT_FULLY_SUPPORTED]Whisper arguement class.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnWhisperArgs.Whisper">
+            <summary>
+            Property representing the whisper object.
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Events.OnWhisperArgs.ChannelId">
+            <summary>
+            The channel ID the event came from
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Extensions.JSONObjectExtensions">
+            <summary>
+            Represents the Extensions on JToken
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Extensions.JSONObjectExtensions.IsEmpty(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Checks if the value is empty
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TwitchLib.PubSub.Interfaces.ITwitchPubSub">
+            <summary>
+            Interface ITwitchPubSub
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnBan">
+            <summary>
+            Occurs when [on ban].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnBitsReceived">
+            <summary>
+            Occurs when [on bits received].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnChannelExtensionBroadcast">
+            <summary>
+            Occurs when [on channel extension broadcast].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnChannelSubscription">
+            <summary>
+            Occurs when [on channel subscription].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnClear">
+            <summary>
+            Occurs when [on clear].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnChannelCommerceReceived">
+            <summary>
+            Occurs when [on channel commerce].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnEmoteOnly">
+            <summary>
+            Occurs when [on emote only].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnEmoteOnlyOff">
+            <summary>
+            Occurs when [on emote only off].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnFollow">
+            <summary>
+            Occurs when [on follow].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnHost">
+            <summary>
+            Occurs when [on host].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnMessageDeleted">
+            <summary>
+            Occurs when [on message deleted].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnListenResponse">
+            <summary>
+            Occurs when [on listen response].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnPubSubServiceClosed">
+            <summary>
+            Occurs when [on pub sub service closed].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnPubSubServiceConnected">
+            <summary>
+            Occurs when [on pub sub service connected].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnPubSubServiceError">
+            <summary>
+            Occurs when [on pub sub service error].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnR9kBeta">
+            <summary>
+            Occurs when [on R9K beta].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnR9kBetaOff">
+            <summary>
+            Occurs when [on R9K beta off].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnStreamDown">
+            <summary>
+            Occurs when [on stream down].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnStreamUp">
+            <summary>
+            Occurs when [on stream up].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnSubscribersOnly">
+            <summary>
+            Occurs when [on subscribers only].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnSubscribersOnlyOff">
+            <summary>
+            Occurs when [on subscribers only off].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnTimeout">
+            <summary>
+            Occurs when [on timeout].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnUnban">
+            <summary>
+            Occurs when [on unban].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnUntimeout">
+            <summary>
+            Occurs when [on untimeout].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnViewCount">
+            <summary>
+            Occurs when [on view count].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnWhisper">
+            <summary>
+            Occurs when [on whisper].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnCustomRewardCreated">
+             <summary>
+             Occurs when [on reward created]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnCustomRewardUpdated">
+             <summary>
+             Occurs when [on reward updated]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnCustomRewardDeleted">
+            <summary>
+            Occurs when [on reward deleted]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnRewardRedeemed">
+            <summary>
+            Occurs when [on reward redeemed]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnLeaderboardSubs">
+            <summary>
+            Occurs when [on leaderboard subs].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnLeaderboardBits">
+            <summary>
+            Occurs when [on leaderboard bits].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnRaidUpdate">
+            <summary>
+            Occurs when [on raid update]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnRaidUpdateV2">
+            <summary>
+            Occurs when [on raid update v2]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnRaidGo">
+            <summary>
+            Occurs when [on raid go]
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnLog">
+            <summary>
+            Occurs when [on log].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnCommercial">
+            <summary>
+            Occurs when [on commercial].
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.Interfaces.ITwitchPubSub.OnPrediction">
+            <summary>
+            Occurs when [on prediction].
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.Connect">
+            <summary>
+            Connects this instance.
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.Disconnect">
+            <summary>
+            Disconnects this instance.
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToBitsEvents(System.String)">
+            <summary>
+            Listens to bits events.
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToChannelExtensionBroadcast(System.String,System.String)">
+            <summary>
+            Listens to extension channel broadcast messages.
+            </summary>
+            <param name="channelId">The channel twitch identifier.</param>
+            <param name="extensionId">The extension identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToChatModeratorActions(System.String,System.String)">
+            <summary>
+            Listens to chat moderator actions.
+            </summary>
+            <param name="myTwitchId">My twitch identifier.</param>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToCommerce(System.String)">
+            <summary>
+            Listens to commerce events.
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToFollows(System.String)">
+            <summary>
+            Listens to follows.
+            </summary>
+            <param name="channelId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToSubscriptions(System.String)">
+            <summary>
+            Listens to subscriptions.
+            </summary>
+            <param name="channelId">The channel identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToVideoPlayback(System.String)">
+            <summary>
+            Listens to video playback.
+            </summary>
+            <param name="channelName">Name of the channel.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToWhispers(System.String)">
+            <summary>
+            Listens to whispers.
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToRewards(System.String)">
+            <summary>
+            Listens to rewards
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToLeaderboards(System.String)">
+            <summary>
+            Listens to leaderboards
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToRaid(System.String)">
+            <summary>
+            Listens to raids
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.ListenToPredictions(System.String)">
+            <summary>
+            Listens to predictions
+            </summary>
+            <param name="channelTwitchId">The channel twitch identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.SendTopics(System.String,System.Boolean)">
+            <summary>
+            Sends the topics.
+            </summary>
+            <param name="oauth">The oauth.</param>
+            <param name="unlisten">if set to <c>true</c> [unlisten].</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.Interfaces.ITwitchPubSub.TestMessageParser(System.String)">
+            <summary>
+            Tests the message parser.
+            </summary>
+            <param name="testJsonString">The test json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.LeaderBoard">
+            <summary>
+            Model representing the leader board.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.LeaderBoard.Place">
+            <summary>
+            Place
+            </summary>
+            <value>The place</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.LeaderBoard.Score">
+            <summary>
+            Score
+            </summary>
+            <value>The Score of the user</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.LeaderBoard.UserId">
+            <summary>
+            User id
+            </summary>
+            <value>The User id</value>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.PreviousRequest">
+            <summary>
+            Model representing the previous request.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.PreviousRequest.Nonce">
+            <summary>
+            Unique communication token.
+            </summary>
+            <value>The nonce.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.PreviousRequest.RequestType">
+            <summary>
+            PubSub request type.
+            </summary>
+            <value>The type of the request.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.PreviousRequest.Topic">
+            <summary>
+            Topic that we are interested in.
+            </summary>
+            <value>The topic.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.PreviousRequest.#ctor(System.String,TwitchLib.PubSub.Enums.PubSubRequestType,System.String)">
+            <summary>
+            PreviousRequest model constructor.
+            </summary>
+            <param name="nonce">The nonce.</param>
+            <param name="requestType">Type of the request.</param>
+            <param name="topic">The topic.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Message">
+            <summary>
+            PubSub Message model.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Message.Topic">
+            <summary>
+            Topic that the message is relevant to.
+            </summary>
+            <value>The topic.</value>
+        </member>
+        <member name="F:TwitchLib.PubSub.Models.Responses.Message.MessageData">
+            <summary>
+            Model containing data of the message.
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Message.#ctor(System.String)">
+            <summary>
+            PubSub Message model constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.AutomodCaughtMessage.AutomodCaughtMessage">
+            <summary>
+            Model representing the data in automod caught message
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.AutomodQueue">
+            <summary>
+            ChannelPointsChannel model constructor
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.AutomodQueue.Type">
+            <summary>
+            Type of channel points channel
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.AutomodQueueData">
+            <summary>
+            Class representing automod queue actions
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents">
+            <summary>
+            Model representing the data in a channel bits event.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.Username">
+            <summary>
+            Username of the sender.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.ChannelName">
+            <summary>
+            The channel the bits were sent to.
+            </summary>
+            <value>The name of the channel.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.UserId">
+            <summary>
+            User ID of the sender.
+            </summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.ChannelId">
+            <summary>
+            Channel/User ID of where the bits were sent to.
+            </summary>
+            <value>The channel identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.Time">
+            <summary>
+            Time stamp of the event.
+            </summary>
+            <value>The time.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.ChatMessage">
+            <summary>
+            Chat message that accompanied the bits.
+            </summary>
+            <value>The chat message.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.BitsUsed">
+            <summary>
+            The amount of bits sent.
+            </summary>
+            <value>The bits used.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.TotalBitsUsed">
+            <summary>
+            The total amount of bits the user has sent.
+            </summary>
+            <value>The total bits used.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.Context">
+            <summary>
+            Context related to event.
+            </summary>
+            <value>The context.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.ChannelBitsEvents.#ctor(System.String)">
+            <summary>
+            ChannelBitsEvent model constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents">
+            <summary>
+            Model representing the data in a channel commerce event.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.Username">
+            <summary>
+            Username of the buyer.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.DisplayName">
+            <summary>
+            Display name of the buyer.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.ChannelName">
+            <summary>
+            The channel the purchase was made in.
+            </summary>
+            <value>The name of the channel.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.UserId">
+            <summary>
+            User ID of the buyer.
+            </summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.ChannelId">
+            <summary>
+            Channel/User ID the purchase was made for/in.
+            </summary>
+            <value>The channel identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.Time">
+            <summary>
+            Time stamp of the event.
+            </summary>
+            <value>The time.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.ItemImageURL">
+            <summary>
+            URL for the item's image.
+            </summary>
+            <value>The item image URL.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.ItemDescription">
+            <summary>
+            Description of the item.
+            </summary>
+            <value>The item description.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.SupportsChannel">
+            <summary>
+            Does this purchase support the channel?
+            </summary>
+            <value><c>true</c> if [supports channel]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.PurchaseMessage">
+            <summary>
+            Chat message that accompanied the purchase.
+            </summary>
+            <value>The purchase message.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.ChannelCommerceEvents.#ctor(System.String)">
+            <summary>
+            ChannelBitsEvent model constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChannelExtensionBroadcast">
+            <summary>
+            VideoPlayback model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelExtensionBroadcast.Messages">
+            <summary>
+            Video playback type
+            </summary>
+            <value>The messages.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.ChannelExtensionBroadcast.#ctor(System.String)">
+            <summary>
+            VideoPlayback constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChannelPointsChannel">
+            <summary>
+            ChannelPointsChannel model constructor
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelPointsChannel.Type">
+            <summary>
+            Type of channel points channel
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChannelPointsData">
+            <summary>
+            Class representing channel points data
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription">
+            <summary>
+            ChatModeratorActions model.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.DisplayName">
+            <summary>
+            Gets or sets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.RecipientName">
+            <summary>
+            Gets or sets the name of the recipient.
+            </summary>
+            <value>The name of the recipient.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.RecipientDisplayName">
+            <summary>
+            Gets or sets the display name of the recipient.
+            </summary>
+            <value>The display name of the recipient.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.ChannelName">
+            <summary>
+            Gets or sets the name of the channel.
+            </summary>
+            <value>The name of the channel.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.UserId">
+            <summary>
+            Gets or sets the user identifier.
+            </summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.ChannelId">
+            <summary>
+            Gets or sets the channel identifier.
+            </summary>
+            <value>The channel identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.RecipientId">
+            <summary>
+            Gets or sets the recipient identifier.
+            </summary>
+            <value>The recipient identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.Time">
+            <summary>
+            Gets or sets the time.
+            </summary>
+            <value>The time.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.SubscriptionPlan">
+            <summary>
+            Gets or sets the subscription plan.
+            </summary>
+            <value>The subscription plan.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.SubscriptionPlanName">
+            <summary>
+            Gets or sets the name of the subscription plan.
+            </summary>
+            <value>The name of the subscription plan.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.Months">
+            <summary>
+            Gets or sets the months.
+            </summary>
+            <value>The months.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.CumulativeMonths">
+            <summary>
+            Gets or sets the number of cumulative months.
+            </summary>
+            <value>The cumulative months.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.StreakMonths">
+            <summary>
+            Gets or sets the number of streak months.
+            </summary>
+            <value>The streak months.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.Context">
+            <summary>
+            Gets or sets the context.
+            </summary>
+            <value>The context.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.SubMessage">
+            <summary>
+            Gets or sets the sub message.
+            </summary>
+            <value>The sub message.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.IsGift">
+            <summary>
+            Gets or sets true if gifted.
+            </summary>
+            <value>Boolean of gifted.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.MultiMonthDuration">
+            <summary>
+            Gets or sets the multi month duration.
+            </summary>
+            <value>Multi month Duration int.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.ChannelSubscription.#ctor(System.String)">
+            <summary>
+            ChatModeratorActions model constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions">
+            <summary>
+            ChatModeratorActions model.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.Type">
+            <summary>
+            Topic relevant to this messagedata type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.ModerationAction">
+            <summary>
+            The specific moderation action.
+            </summary>
+            <value>The moderation action.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.Args">
+            <summary>
+            Arguments provided in moderation action.
+            </summary>
+            <value>The arguments.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.CreatedBy">
+            <summary>
+            Moderator that performed action.
+            </summary>
+            <value>The created by.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.CreatedByUserId">
+            <summary>
+            User Id of the user that performed the Action.
+            </summary>
+            <value>The created by user identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.TargetUserId">
+            <summary>
+            User Id of user that received Action.
+            </summary>
+            <value>The target user identifier.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.ChatModeratorActions.#ctor(System.String)">
+            <summary>
+            ChatModeratorActions model constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel">
+            <summary>
+            CommunityPointsChannel model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.Type">
+            <summary>
+            Community points channel type
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.TimeStamp">
+            <summary>
+            Server time stamp
+            </summary>
+            <value>The server DateTime.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.ChannelId">
+            <summary>
+            Channel identifier.
+            </summary>
+            <value>The channel identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.Login">
+            <summary>
+            Login value associated.
+            </summary>
+            <value>The login name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.DisplayName">
+            <summary>
+            Display name found in chat.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.Message">
+            <summary>
+            Custom reward message of the user
+            </summary>
+            <value>The reward message.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.RewardId">
+            <summary>
+            Reward Id
+            </summary>
+            <value>the reward id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.RewardTitle">
+            <summary>
+            Reward title
+            </summary>
+            <value>The reward title.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.RewardPrompt">
+            <summary>
+            Reward prompt, the text thats been shown in the chat
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.RewardCost">
+            <summary>
+            Reward cost
+            </summary>
+            <value>The reward cost.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.Status">
+            <summary>
+            Status
+            </summary>
+            <value>the reward status.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.RedemptionId">
+            <summary>
+            RedemptionId
+            </summary>
+            <value>The unique identifier for the Redeemed reward</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.CommunityPointsChannel.#ctor(System.String)">
+            <summary>
+            CommunityPointsChannel constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Following">
+            <summary>
+            Following model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Following.DisplayName">
+            <summary>
+            Following user display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Following.Username">
+            <summary>
+            Following user username.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Following.UserId">
+            <summary>
+            Following user user-id.
+            </summary>
+            <value>The user identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Following.FollowedChannelId">
+            <summary>
+            Gets the followed channel identifier.
+            </summary>
+            <value>The followed channel identifier.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Following.#ctor(System.String)">
+            <summary>
+            Following constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.LeaderboardEvents">
+            <summary>
+            Leaderboard model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.LeaderboardEvents.Type">
+            <summary>
+            Leader board type
+            </summary>
+            <value>The type</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.LeaderboardEvents.ChannelId">
+            <summary>
+            Channel id
+            </summary>
+            <value>The channel id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.LeaderboardEvents.Top">
+            <summary>
+            Top 10 list of the leaderboards
+            </summary>
+            <value>The list of the leaderboard</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.LeaderboardEvents.#ctor(System.String)">
+            <summary>
+            LeaderboardEvents constructor.
+            </summary>
+            <param name="jsonStr"></param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData">
+            <summary>
+            Class representing message data.
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents">
+            <summary>
+            Predictions model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.Type">
+            <summary>
+            Prediction Type
+            </summary>
+            <value>The type</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.Id">
+            <summary>
+            Prediction Id
+            </summary>
+            <value>The id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.ChannelId">
+            <summary>
+            Channel Id
+            </summary>
+            <value>The channel id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.CreatedAt">
+            <summary>
+            Created At
+            </summary>
+            <value>The time of creation</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.LockedAt">
+            <summary>
+            Locked At
+            </summary>
+            <value>The time of lock</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.EndedAt">
+            <summary>
+            Ended At
+            </summary>
+            <value>The time of ending</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.Outcomes">
+            <summary>
+            Outcome
+            </summary>
+            <value>The outcomes</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.Status">
+            <summary>
+            Prediction Status
+            </summary>
+            <value>The status</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.Title">
+            <summary>
+            Title
+            </summary>
+            <value>The title</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.WinningOutcomeId">
+            <summary>
+            Wining Outcome Id
+            </summary>
+            <value>The id of the winning outcome</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.PredictionTime">
+            <summary>
+            Prediction time
+            </summary>
+            <value>The seconds the prediction runs, starts from <see cref="P:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.CreatedAt"/></value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.PredictionEvents.#ctor(System.String)">
+            <summary>
+            PredictionEvents constructor.
+            </summary>
+            <param name="jsonStr"></param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents">
+            <summary>
+            RaidEvents model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.Type">
+            <summary>
+            Raid type
+            </summary>
+            <value>The raid type</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.Id">
+            <summary>
+            Raid id
+            </summary>
+            <value>The raid id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.ChannelId">
+            <summary>
+            Channel Id
+            </summary>
+            <value>The channel id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.TargetChannelId">
+            <summary>
+            Target Channel Id
+            </summary>
+            <value>The target channel id</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.TargetLogin">
+            <summary>
+            Target Login
+            </summary>
+            <value>The target login name</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.TargetDisplayName">
+            <summary>
+            Target Display Name
+            </summary>
+            <value>The target display name</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.TargetProfileImage">
+            <summary>
+            Target Profile Image
+            </summary>
+            <value>The target profile image (url)</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.AnnounceTime">
+            <summary>
+            Announce Time
+            </summary>
+            <value>The announce time</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.RaidTime">
+            <summary>
+            Raid Time
+            </summary>
+            <value>The raid time</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.RemainigDurationSeconds">
+            <summary>
+            Remaining Duration Seconds
+            </summary>
+            <value>The remaining duration seconds</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.ViewerCount">
+            <summary>
+            Viewer Count
+            </summary>
+            <value>The viewer count</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.RaidEvents.#ctor(System.String)">
+            <summary>
+            RaidEvents constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.SubMessage">
+            <inheritdoc />
+            <summary>
+            Class SubMessage.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>The message.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emotes">
+            <summary>
+            Gets or sets the emotes.
+            </summary>
+            <value>The emotes.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.SubMessage"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emote">
+            <summary>
+            Class Emote.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emote.Start">
+            <summary>
+            Gets or sets the start.
+            </summary>
+            <value>The start.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emote.End">
+            <summary>
+            Gets or sets the end.
+            </summary>
+            <value>The end.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emote.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emote.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.SubMessage.Emote"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.UserModerationNotifications.UserModerationNotifications">
+            <summary>
+            userModerationNotifications model constructor
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.UserModerationNotificationsData">
+            <summary>
+            Class representing user moderation notifications
+            </summary>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback">
+            <summary>
+            VideoPlayback model constructor.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback.Type">
+            <summary>
+            Video playback type
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback.ServerTime">
+            <summary>
+            Server time stamp
+            </summary>
+            <value>The server time.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback.PlayDelay">
+            <summary>
+            Current delay (if one exists)
+            </summary>
+            <value>The play delay.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback.Viewers">
+            <summary>
+            Viewer count
+            </summary>
+            <value>The viewers.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback.Length">
+            <summary>
+            Gets the length.
+            </summary>
+            <value>The length.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.VideoPlayback.#ctor(System.String)">
+            <summary>
+            VideoPlayback constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper">
+            <summary>
+            Class representing a whisper received via PubSub.
+            Implements the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Models.Responses.Messages.MessageData" />
+            <inheritdoc />
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.Type">
+            <summary>
+            Type of MessageData
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.TypeEnum">
+            <summary>
+            Enum of the Message type
+            </summary>
+            <value>The type enum.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.Data">
+            <summary>
+            Data identifier in MessageData
+            </summary>
+            <value>The data.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjectWhisperReceived">
+            <summary>
+            Object that houses the data accompanying the type.
+            </summary>
+            <value>The data object whisper received.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjectThread">
+            <summary>
+            Object that houses the data accompanying the type.
+            </summary>
+            <value>The data object thread.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.#ctor(System.String)">
+            <summary>
+            Whisper object constructor.
+            </summary>
+            <param name="jsonStr">The json string.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread">
+            <summary>
+            Class DataObjThread.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.LastRead">
+            <summary>
+            Gets or sets the last read.
+            </summary>
+            <value>The last read.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.Archived">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread"/> is archived.
+            </summary>
+            <value><c>true</c> if archived; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.Muted">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread"/> is muted.
+            </summary>
+            <value><c>true</c> if muted; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.SpamInfo">
+            <summary>
+            Gets or sets the spam information.
+            </summary>
+            <value>The spam information.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.SpamInfoObj">
+            <summary>
+            Class SpamInfoObj.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.SpamInfoObj.Likelihood">
+            <summary>
+            Gets or sets the likelihood.
+            </summary>
+            <value>The likelihood.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.SpamInfoObj.LastMarkedNotSpam">
+            <summary>
+            Gets or sets the last marked not spam.
+            </summary>
+            <value>The last marked not spam.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.SpamInfoObj.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjThread.SpamInfoObj"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived">
+            <summary>
+            Class representing the data in the MessageData object.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Id">
+            <summary>
+            DataObject identifier
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.ThreadId">
+            <summary>
+            Twitch assigned thread id
+            </summary>
+            <value>The thread identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Body">
+            <summary>
+            Body of data received from Twitch
+            </summary>
+            <value>The body.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.SentTs">
+            <summary>
+            Timestamp generated by Twitc
+            </summary>
+            <value>The sent ts.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.FromId">
+            <summary>
+            Id of user that sent whisper.
+            </summary>
+            <value>From identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Tags">
+            <summary>
+            Tags object housing associated tags.
+            </summary>
+            <value>The tags.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Recipient">
+            <summary>
+            Receipient object housing various properties about user who received whisper.
+            </summary>
+            <value>The recipient.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Nonce">
+            <summary>
+            Uniquely generated string used to identify response from request.
+            </summary>
+            <value>The nonce.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            DataObj constructor.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj">
+            <summary>
+            Class representing the tags associated with the whisper.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.Login">
+            <summary>
+            Login value associated.
+            </summary>
+            <value>The login.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.DisplayName">
+            <summary>
+            Display name found in chat.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.Color">
+            <summary>
+            Color of whispers
+            </summary>
+            <value>The color.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.UserType">
+            <summary>
+            User type of whisperer
+            </summary>
+            <value>The type of the user.</value>
+        </member>
+        <member name="F:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.Emotes">
+            <summary>
+            List of emotes found in whisper
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.Badges">
+            <summary>
+            All badges associated with the whisperer
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.EmoteObj">
+            <summary>
+            Class representing a single emote found in a whisper
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.EmoteObj.Id">
+            <summary>
+            Emote ID
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.EmoteObj.Start">
+            <summary>
+            Starting character of emote
+            </summary>
+            <value>The start.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.EmoteObj.End">
+            <summary>
+            Ending character of emote
+            </summary>
+            <value>The end.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.TagsObj.EmoteObj.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            EmoteObj construcotr.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj">
+            <summary>
+            Class representing the recipient of the whisper.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.Id">
+            <summary>
+            Receiver id
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.Username">
+            <summary>
+            Receiver username
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.DisplayName">
+            <summary>
+            Receiver display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.Color">
+            <summary>
+            Receiver color.
+            </summary>
+            <value>The color.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.UserType">
+            <summary>
+            User type of receiver.
+            </summary>
+            <value>The type of the user.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.Badges">
+            <summary>
+            List of badges that the receiver has.
+            </summary>
+            <value>The badges.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.RecipientObj.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            RecipientObj constructor.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Badge">
+            <summary>
+            Class representing a single badge.
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Badge.Id">
+            <summary>
+            Id of the badge.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Badge.Version">
+            <summary>
+            Version of the badge.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Badge.#ctor(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TwitchLib.PubSub.Models.Responses.Messages.Whisper.DataObjWhisperReceived.Badge"/> class.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.Models.Responses.Response">
+            <summary>
+            Response object detailing pubsub response
+            </summary>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Response.Error">
+            <summary>
+            IF error exists, it will be here
+            </summary>
+            <value>The error.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Response.Nonce">
+            <summary>
+            Unique communication token
+            </summary>
+            <value>The nonce.</value>
+        </member>
+        <member name="P:TwitchLib.PubSub.Models.Responses.Response.Successful">
+            <summary>
+            Whether or not successful
+            </summary>
+            <value><c>true</c> if successful; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:TwitchLib.PubSub.Models.Responses.Response.#ctor(System.String)">
+            <summary>
+            Response model constructor.
+            </summary>
+            <param name="json">The json.</param>
+        </member>
+        <member name="T:TwitchLib.PubSub.TwitchPubSub">
+            <summary>
+            Class representing interactions with the Twitch PubSub
+            Implements the <see cref="T:TwitchLib.PubSub.Interfaces.ITwitchPubSub" />
+            </summary>
+            <seealso cref="T:TwitchLib.PubSub.Interfaces.ITwitchPubSub" />
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._socket">
+            <summary>
+            The socket
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._previousRequests">
+            <summary>
+            The previous requests
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._previousRequestsSemaphore">
+            <summary>
+            The previous requests semaphore
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._logger">
+            <summary>
+            The logger
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._pingTimer">
+            <summary>
+            The ping timer
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._pongTimer">
+            <summary>
+            The pong timer
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._pongReceived">
+            <summary>
+            The pong received
+            </summary>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub._topicList">
+            <summary>
+            The topic list
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnPubSubServiceConnected">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub Service is connected.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnPubSubServiceError">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub Service has an error.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnPubSubServiceClosed">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub Service is closed.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnListenResponse">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives any response.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnTimeout">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice a viewer gets a timeout.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnBan">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice a viewer gets banned.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnMessageDeleted">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice a message was deleted.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnUnban">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice a viewer gets unbanned.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnUntimeout">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice a viewer gets a timeout removed.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnHost">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that the channel being listened to is hosting another channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnSubscribersOnly">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that Sub-Only Mode gets turned on.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnSubscribersOnlyOff">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that Sub-Only Mode gets turned off.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnClear">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that chat gets cleared.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnEmoteOnly">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that Emote-Only Mode gets turned on.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnEmoteOnlyOff">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that Emote-Only Mode gets turned off.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnR9kBeta">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that the chat option R9kBeta gets turned on.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnR9kBetaOff">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that the chat option R9kBeta gets turned off.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnBitsReceived">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice of a bit donation.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnBitsReceivedV2">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives a bits message.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnChannelCommerceReceived">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice of a commerce transaction.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnStreamUp">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that the stream of the channel being listened to goes online.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnStreamDown">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice that the stream of the channel being listened to goes offline.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnViewCount">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice view count has changed.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnWhisper">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives a whisper.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnChannelSubscription">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when the channel being listened to gets a subscription.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnChannelExtensionBroadcast">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives a message sent to the specified extension on the specified channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnFollow">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when a user follows the designated channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnCustomRewardCreated">
+             <inheritdoc />
+             <summary>
+             Fires when PubSub receives notice when a custom reward has been created on the specified channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnCustomRewardUpdated">
+             <inheritdoc />
+             <summary>
+             Fires when PubSub receives notice when a custom reward has been changed on the specified channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnCustomRewardDeleted">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when a reward has been deleted on the specified channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnRewardRedeemed">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when a reward has been redeemed on the specified channel.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnChannelPointsRewardRedeemed">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives a message indicating a channel points reward was redeemed.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnLeaderboardSubs">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when the leaderboard changes for subs.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnLeaderboardBits">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when the leaderboard changes for Bits.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnRaidUpdate">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when a channel prepares a raid
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnRaidUpdateV2">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when a channel prepares a raid
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnRaidGo">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives notice when a channel starts the raid
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnLog">
+            <inheritdoc />
+            <summary>
+            Fires when PubSub receives any data from Twitch
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnCommercial">
+            <inheritdoc/>
+            <summary>
+            Fires when PubSub receives notice that the stream is playing a commercial.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnPrediction">
+            <inheritdoc/>
+            <summary>
+            Fires when PubSub receives notice that a prediction has started or updated.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnAutomodCaughtMessage">
+            <inheritdoc/>
+            <summary>
+            Fires when Automod updates a held message.
+            </summary>
+        </member>
+        <member name="E:TwitchLib.PubSub.TwitchPubSub.OnAutomodCaughtUserMessage">
+            <inheritdoc/>
+            <summary>
+            Fires when a moderation event hits a user
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.#ctor(Microsoft.Extensions.Logging.ILogger{TwitchLib.PubSub.TwitchPubSub})">
+            <summary>
+            Constructor for a client that interface's with Twitch's PubSub system.
+            </summary>
+            <param name="logger">Optional ILogger param to enable logging</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.OnError(System.Object,TwitchLib.Communication.Events.OnErrorEventArgs)">
+            <summary>
+            Handles the <see cref="E:OnError" /> event.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:TwitchLib.Communication.Events.OnErrorEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.OnMessage(System.Object,TwitchLib.Communication.Events.OnMessageEventArgs)">
+            <summary>
+            Handles the <see cref="E:OnMessage" /> event.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:TwitchLib.Communication.Events.OnMessageEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.Socket_OnDisconnected(System.Object,System.EventArgs)">
+            <summary>
+            Handles the OnDisconnected event of the Socket control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.Socket_OnConnected(System.Object,System.EventArgs)">
+            <summary>
+            Handles the OnConnected event of the Socket control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.PingTimerTick(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Pings the timer tick.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Timers.ElapsedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.PongTimerTick(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Pongs the timer tick.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Timers.ElapsedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ParseMessage(System.String)">
+            <summary>
+            Parses the message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="F:TwitchLib.PubSub.TwitchPubSub.Random">
+            <summary>
+            The random
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.GenerateNonce">
+            <summary>
+            Generates the nonce.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToTopic(System.String)">
+            <summary>
+            Listens to topic.
+            </summary>
+            <param name="topic">The topic.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToTopics(System.String[])">
+            <summary>
+            Listen to multiple topics.
+            </summary>
+            <param name="topics">The topics</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.SendTopics(System.String,System.Boolean)">
+            <inheritdoc />
+            <summary>
+            Sends the topics.
+            </summary>
+            <param name="oauth">The oauth.</param>
+            <param name="unlisten">if set to <c>true</c> [unlisten].</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.UnaccountedFor(System.String)">
+            <summary>
+            Unaccounted for.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToFollows(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends a request to listenOn follows coming into a specified channel.
+            </summary>
+            <param name="channelId">The channel identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToChatModeratorActions(System.String,System.String)">
+            <inheritdoc />
+            <summary>
+            Sends a request to listenOn timeouts and bans in a specific channel
+            </summary>
+            <param name="userId">A moderator's twitch account's ID (can be fetched from TwitchApi)</param>
+            <param name="channelId">Channel ID who has previous parameter's moderator (can be fetched from TwitchApi)</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToAutomodQueue(System.String,System.String)">
+            <inheritdoc />
+            <summary>
+            Sends a request to listen to Automod queued messages in a specific channel
+            </summary>
+            <param name="userTwitchId">A moderator's twitch account's ID</param>
+            <param name="channelTwitchId">Channel ID who has previous parameter's moderator</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToChannelExtensionBroadcast(System.String,System.String)">
+            <inheritdoc />
+            <summary>
+            Sends a request to ListenOn EBS broadcasts sent to a specific extension on a specific channel.
+            </summary>
+            <param name="channelId">Id of the channel that the extension lives on.</param>
+            <param name="extensionId">The extension identifier.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToBitsEvents(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listenOn bits events in specific channel
+            </summary>
+            <param name="channelTwitchId">Channel Id of channel to listen to bits on (can be fetched from TwitchApi)</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToBitsEventsV2(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to bits events in specific channel
+            </summary>
+            <param name="channelTwitchId">Channel Id of channel to listen to bits on (can be fetched from TwitchApi)</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToCommerce(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listenOn channel commerce events in specific channel
+            </summary>
+            <param name="channelTwitchId">Channel Id of channel to listen to commerce events on.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToVideoPlayback(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listenOn video playback events in specific channel
+            </summary>
+            <param name="channelTwitchId">Id of channel to listen to playback events in.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToWhispers(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to whispers from specific channel.
+            </summary>
+            <param name="channelTwitchId">Channel to listen to whispers on.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToRewards(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to rewards from specific channel.
+            </summary>
+            <param name="channelTwitchId">Channel to listen to rewards on.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToChannelPoints(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to channel points actions from specific channel.
+            </summary>
+            <param name="channelTwitchId">Channel to listen to rewards on.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToLeaderboards(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to leaderboards from specific channel.
+            </summary>
+            <param name="channelTwitchId">Channel to listen to leaderboards on.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToRaid(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to raids 'from' specific channel
+            </summary>
+            <param name="channelTwitchId">Channel to listen to raids get prepared on.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToSubscriptions(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to channel subscriptions.
+            </summary>
+            <param name="channelId">Id of the channel to listen to.</param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.ListenToPredictions(System.String)">
+            <inheritdoc />
+            <summary>
+            Sends request to listen to channel predictions.
+            </summary>
+            <param name="channelTwitchId"></param>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.Connect">
+            <inheritdoc />
+            <summary>
+            Method to connect to Twitch's PubSub service. You MUST listen toOnConnected event and listen to a Topic within 15 seconds of connecting (or be disconnected)
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.Disconnect">
+            <inheritdoc />
+            <summary>
+            What do you think it does? :)
+            </summary>
+        </member>
+        <member name="M:TwitchLib.PubSub.TwitchPubSub.TestMessageParser(System.String)">
+            <inheritdoc />
+            <summary>
+            This method will send passed json text to the message parser in order to allow forOn-demand parser testing.
+            </summary>
+            <param name="testJsonString">The test json string.</param>
+        </member>
+    </members>
+</doc>

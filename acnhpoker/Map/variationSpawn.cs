@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ACNHPoker
 {
     public partial class variationSpawn : Form
     {
-        inventorySlot[,] mainSlot = new inventorySlot[1 ,3];
+        inventorySlot[,] mainSlot = new inventorySlot[1, 3];
         inventorySlot[,] subSlot = new inventorySlot[1, 3];
         inventorySlot[,] allSlot = new inventorySlot[2, 3];
 
@@ -107,7 +101,7 @@ namespace ACNHPoker
             {
                 if (i >= 3)
                     break;
-                mainSlot[0, i].setup(variationList[i,0]);
+                mainSlot[0, i].setup(variationList[i, 0]);
                 mainHSlot[i, 0].setup(variationList[i, 0]);
             }
 

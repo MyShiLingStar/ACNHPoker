@@ -191,6 +191,8 @@ namespace ACNHPoker
                                 this.regeneratorBtn.Visible = true;
                                 this.freezerBtn.Visible = true;
                                 this.dodoHelperBtn.Visible = true;
+                                this.BulldozerBtn.Visible = true;
+
                                 offline = false;
 
                                 int CurrentPlayerIndex = updateDropdownBox();
@@ -260,6 +262,8 @@ namespace ACNHPoker
                 this.regeneratorBtn.Visible = false;
                 this.freezerBtn.Visible = false;
                 this.dodoHelperBtn.Visible = false;
+                this.BulldozerBtn.Visible = false;
+
                 offline = true;
 
                 this.connectBtn.Tag = "connect";

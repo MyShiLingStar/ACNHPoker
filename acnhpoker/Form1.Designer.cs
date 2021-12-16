@@ -207,6 +207,8 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.loadBtn = new System.Windows.Forms.Button();
             this.inventoryLargePanel = new System.Windows.Forms.Panel();
+            this.unhideBtn = new System.Windows.Forms.Button();
+            this.BulldozerBtn = new System.Windows.Forms.Button();
             this.freezerBtn = new System.Windows.Forms.Button();
             this.dodoHelperBtn = new System.Windows.Forms.Button();
             this.regeneratorBtn = new System.Windows.Forms.Button();
@@ -357,13 +359,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.ReadBtn = new System.Windows.Forms.Button();
             this.createBtn = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.nhbsBtn = new System.Windows.Forms.Button();
+            this.nhbsIDBtn = new System.Windows.Forms.Button();
             this.debugBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.nhbsAZBtn = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -3334,6 +3336,8 @@
             // inventoryLargePanel
             // 
             this.inventoryLargePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inventoryLargePanel.Controls.Add(this.unhideBtn);
+            this.inventoryLargePanel.Controls.Add(this.BulldozerBtn);
             this.inventoryLargePanel.Controls.Add(this.freezerBtn);
             this.inventoryLargePanel.Controls.Add(this.dodoHelperBtn);
             this.inventoryLargePanel.Controls.Add(this.regeneratorBtn);
@@ -3378,6 +3382,38 @@
             this.inventoryLargePanel.Name = "inventoryLargePanel";
             this.inventoryLargePanel.Size = new System.Drawing.Size(1225, 550);
             this.inventoryLargePanel.TabIndex = 91;
+            // 
+            // unhideBtn
+            // 
+            this.unhideBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.unhideBtn.FlatAppearance.BorderSize = 0;
+            this.unhideBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unhideBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.unhideBtn.ForeColor = System.Drawing.Color.White;
+            this.unhideBtn.Location = new System.Drawing.Point(853, 524);
+            this.unhideBtn.Name = "unhideBtn";
+            this.unhideBtn.Size = new System.Drawing.Size(85, 23);
+            this.unhideBtn.TabIndex = 247;
+            this.unhideBtn.Tag = "";
+            this.unhideBtn.Text = "unhide";
+            this.unhideBtn.UseVisualStyleBackColor = false;
+            this.unhideBtn.Click += new System.EventHandler(this.unhideBtn_Click);
+            // 
+            // BulldozerBtn
+            // 
+            this.BulldozerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.BulldozerBtn.FlatAppearance.BorderSize = 0;
+            this.BulldozerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BulldozerBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BulldozerBtn.ForeColor = System.Drawing.Color.White;
+            this.BulldozerBtn.Location = new System.Drawing.Point(365, 0);
+            this.BulldozerBtn.Name = "BulldozerBtn";
+            this.BulldozerBtn.Size = new System.Drawing.Size(98, 24);
+            this.BulldozerBtn.TabIndex = 242;
+            this.BulldozerBtn.Text = "Bulldozer";
+            this.BulldozerBtn.UseVisualStyleBackColor = false;
+            this.BulldozerBtn.Visible = false;
+            this.BulldozerBtn.Click += new System.EventHandler(this.BulldozerBtn_Click);
             // 
             // freezerBtn
             // 
@@ -5915,6 +5951,7 @@
             this.HouseIndexValue.Size = new System.Drawing.Size(30, 28);
             this.HouseIndexValue.TabIndex = 189;
             this.HouseIndexValue.Text = "";
+            this.HouseIndexValue.TextChanged += new System.EventHandler(this.HouseIndexValue_TextChanged);
             // 
             // HouseIndexLabel
             // 
@@ -7759,37 +7796,37 @@
             this.createBtn.UseVisualStyleBackColor = false;
             this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
             // 
-            // button6
+            // nhbsBtn
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(1081, 586);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 23);
-            this.button6.TabIndex = 229;
-            this.button6.Tag = "";
-            this.button6.Text = "nhi";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.nhbsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.nhbsBtn.FlatAppearance.BorderSize = 0;
+            this.nhbsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nhbsBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.nhbsBtn.ForeColor = System.Drawing.Color.White;
+            this.nhbsBtn.Location = new System.Drawing.Point(1081, 586);
+            this.nhbsBtn.Name = "nhbsBtn";
+            this.nhbsBtn.Size = new System.Drawing.Size(85, 23);
+            this.nhbsBtn.TabIndex = 229;
+            this.nhbsBtn.Tag = "";
+            this.nhbsBtn.Text = "nhbs";
+            this.nhbsBtn.UseVisualStyleBackColor = false;
+            this.nhbsBtn.Click += new System.EventHandler(this.nhbsBtn_Click);
             // 
-            // button1
+            // nhbsIDBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1080, 615);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 23);
-            this.button1.TabIndex = 230;
-            this.button1.Tag = "";
-            this.button1.Text = "nhbs ID";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.nhbsIDBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.nhbsIDBtn.FlatAppearance.BorderSize = 0;
+            this.nhbsIDBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nhbsIDBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.nhbsIDBtn.ForeColor = System.Drawing.Color.White;
+            this.nhbsIDBtn.Location = new System.Drawing.Point(1080, 615);
+            this.nhbsIDBtn.Name = "nhbsIDBtn";
+            this.nhbsIDBtn.Size = new System.Drawing.Size(85, 23);
+            this.nhbsIDBtn.TabIndex = 230;
+            this.nhbsIDBtn.Tag = "";
+            this.nhbsIDBtn.Text = "nhbs ID";
+            this.nhbsIDBtn.UseVisualStyleBackColor = false;
+            this.nhbsIDBtn.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // debugBtn
             // 
@@ -7855,21 +7892,21 @@
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // button13
+            // nhbsAZBtn
             // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(1080, 644);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(85, 23);
-            this.button13.TabIndex = 243;
-            this.button13.Tag = "";
-            this.button13.Text = "nhbs A-Z";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click_1);
+            this.nhbsAZBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.nhbsAZBtn.FlatAppearance.BorderSize = 0;
+            this.nhbsAZBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nhbsAZBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.nhbsAZBtn.ForeColor = System.Drawing.Color.White;
+            this.nhbsAZBtn.Location = new System.Drawing.Point(1080, 644);
+            this.nhbsAZBtn.Name = "nhbsAZBtn";
+            this.nhbsAZBtn.Size = new System.Drawing.Size(85, 23);
+            this.nhbsAZBtn.TabIndex = 243;
+            this.nhbsAZBtn.Tag = "";
+            this.nhbsAZBtn.Text = "nhbs A-Z";
+            this.nhbsAZBtn.UseVisualStyleBackColor = false;
+            this.nhbsAZBtn.Click += new System.EventHandler(this.button13_Click_1);
             // 
             // button18
             // 
@@ -7927,7 +7964,7 @@
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
-            this.Controls.Add(this.button13);
+            this.Controls.Add(this.nhbsAZBtn);
             this.Controls.Add(this.speedX2Btn);
             this.Controls.Add(this.speedX3Btn);
             this.Controls.Add(this.button17);
@@ -7940,8 +7977,8 @@
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.speedX1Btn);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.nhbsIDBtn);
+            this.Controls.Add(this.nhbsBtn);
             this.Controls.Add(this.ReadBtn);
             this.Controls.Add(this.createBtn);
             this.Controls.Add(this.button4);
@@ -8332,9 +8369,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button ReadBtn;
         private System.Windows.Forms.Button createBtn;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button nhbsBtn;
         private System.Windows.Forms.CheckBox ignoreHeader;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button nhbsIDBtn;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button debugBtn;
         private System.Windows.Forms.Button button5;
@@ -8357,12 +8394,14 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button maxSpeedX100Btn;
         private System.Windows.Forms.Button freezerBtn;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button nhbsAZBtn;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button BulldozerBtn;
+        private System.Windows.Forms.Button unhideBtn;
     }
 }
 

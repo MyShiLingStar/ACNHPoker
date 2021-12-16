@@ -576,7 +576,7 @@ namespace ACNHPoker
                 string dodo = Utilities.getDodo(s).Replace("\0", "");
 
                 if (dodo == "") // Try again for Chinese
-                    dodo = Utilities.getDodo(s,true).Replace("\0", "");
+                    dodo = Utilities.getDodo(s, true).Replace("\0", "");
 
                 if (File.Exists(Utilities.dodoPath))
                 {

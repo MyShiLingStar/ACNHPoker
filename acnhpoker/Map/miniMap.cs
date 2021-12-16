@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Windows;
 
 namespace ACNHPoker
 {
@@ -22,6 +21,9 @@ namespace ACNHPoker
         private const int columnSize = 0xC00;
         private const int numOfTiles = 0x2A00;
 
+        private const int fullNumOfColumn = 0x90;
+        private const int fullNumOfRow = 0x80;
+
         private static int mapSize = 2;
         private static int plazaX = -1;
         private static int plazaY = -1;
@@ -29,7 +31,7 @@ namespace ACNHPoker
         private static int plazaTopY = -1;
 
 
-        private byte[] AcreData = ACNHPoker.Properties.Resources.acre;
+        private static byte[] AcreData = ACNHPoker.Properties.Resources.acre;
         private static Color[][] floorBackgroundColor;
 
         public const int MapTileCount16x16 = 16 * 16 * 7 * 6;
@@ -71,33 +73,33 @@ namespace ACNHPoker
 
         public Bitmap drawBackground()
         {
-                byte[] AllAcre = new byte[AcreMax];
+            byte[] AllAcre = new byte[AcreMax];
 
-                for (int i = 0; i < AcreMax; i++)
-                {
-                    AllAcre[i] = AcreMapByte[i * 2];
-                }
+            for (int i = 0; i < AcreMax; i++)
+            {
+                AllAcre[i] = AcreMapByte[i * 2];
+            }
 
-                byte[] AcreWOOutside = new byte[7 * 6];
+            byte[] AcreWOOutside = new byte[7 * 6];
 
-                for (int i = 1; i <= 6; i++)
-                {
-                    Buffer.BlockCopy(AllAcre, i * 9 + 1, AcreWOOutside, (i - 1) * 7, 7);
-                }
+            for (int i = 1; i <= 6; i++)
+            {
+                Buffer.BlockCopy(AllAcre, i * 9 + 1, AcreWOOutside, (i - 1) * 7, 7);
+            }
 
 
-                Bitmap buildingMap = drawBuildingMap();
-                buildBackgroundColor(AcreWOOutside);
+            Bitmap buildingMap = drawBuildingMap();
+            buildBackgroundColor(AcreWOOutside);
 
-                Bitmap[] AcreImage = new Bitmap[7 * 6];
+            Bitmap[] AcreImage = new Bitmap[7 * 6];
 
-                for (int i = 0; i < AcreImage.Length; i++)
-                {
-                    AcreImage[i] = DrawAcre(GetAcreData(AcreWOOutside[i]));
-                    //AcreImage[i].Save(i + ".bmp");
-                }
+            for (int i = 0; i < AcreImage.Length; i++)
+            {
+                AcreImage[i] = DrawAcre(GetAcreData(AcreWOOutside[i]));
+                //AcreImage[i].Save(i + ".bmp");
+            }
 
-                return combineMap(toFullMap(AcreImage), buildingMap);
+            return combineMap(toFullMap(AcreImage, 7, 6), buildingMap);
             /*
             catch (Exception e)
             {
@@ -108,6 +110,31 @@ namespace ACNHPoker
                 return myBitmap;
             }
             */
+        }
+
+
+        public Bitmap drawFullBackground()
+        {
+            byte[] AllAcre = new byte[AcreMax];
+
+            for (int i = 0; i < AcreMax; i++)
+            {
+                AllAcre[i] = AcreMapByte[i * 2];
+            }
+
+            Bitmap[] AllAcreImage = new Bitmap[9 * 8];
+
+            for (int i = 0; i < AllAcreImage.Length; i++)
+            {
+                AllAcreImage[i] = DrawAcre(GetAcreData(AllAcre[i]));
+                //AllAcreImage[i].Save(i + ".bmp");
+            }
+
+            Bitmap fullmap = toFullMap(AllAcreImage, 9, 8);
+
+            Bitmap buildingMap = drawFullBuildingMap();
+
+            return combineMap(fullmap, buildingMap);
         }
 
         public Bitmap drawBuildingMap()
@@ -132,25 +159,27 @@ namespace ACNHPoker
                 gr.SmoothingMode = SmoothingMode.None;
 
                 //plaza
+
                 for (int m = plazaTopX; m <= plazaTopX + 11; m++)
                 {
-                    if (m < 0)
+                    if (m < 0 || m >= numOfColumn)
                         continue;
                     for (int n = plazaTopY; n <= plazaTopY + 9; n++)
                     {
-                        if (n < 0)
+                        if (n < 0 || n >= numOfRow)
                             continue;
                         PutPixel(gr, m * mapSize, n * mapSize, Color.DarkSalmon);
                     }
                 }
+
                 //========================================
                 for (int i = 0; i < NumOfBuilding; i++)
                 {
-                    int buildingTopX = 0;
-                    int buildingTopY = 0;
+                    int buildingTopX = -1;
+                    int buildingTopY = -1;
                     int buildingBottomX = -1;
                     int buildingBottomY = -1;
-                    Color BuildingColor = Color.White;
+                    Color BuildingColor;
 
                     BuildingType CurrentBuilding = (BuildingType)buildingList[i][0];
                     int BuildingX = (buildingList[i][2] - 0x20) / 2;
@@ -158,82 +187,7 @@ namespace ACNHPoker
 
                     if (CurrentBuilding != BuildingType.None)
                     {
-                        PutPixel(gr, BuildingX * mapSize, BuildingY * mapSize, Color.Red);
-                        
-                        if (CurrentBuilding == BuildingType.ResidentServicesBuilding)
-                        {
-                            buildingTopX = BuildingX - 3;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 2;
-                            buildingBottomY = BuildingY;
-                            BuildingColor = Color.MediumSlateBlue;
-                        }
-                        else if (CurrentBuilding >= BuildingType.PlayerHouse1 && CurrentBuilding <= BuildingType.PlayerHouse8)
-                        {
-                            buildingTopX = BuildingX - 2;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 2;
-                            buildingBottomY = BuildingY;
-                            BuildingColor = Color.RoyalBlue;
-                        }
-                        else if (CurrentBuilding >= BuildingType.VillagerHouse1 && CurrentBuilding <= BuildingType.VillagerHouse10)
-                        {
-                            buildingTopX = BuildingX - 2;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 1;
-                            buildingBottomY = BuildingY;
-                            BuildingColor = Color.Chocolate;
-                        }
-                        else if (CurrentBuilding == BuildingType.NooksCranny)
-                        {
-                            buildingTopX = BuildingX - 3;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 2;
-                            buildingBottomY = BuildingY + 2;
-                            BuildingColor = Color.Gold;
-                        }
-                        else if (CurrentBuilding == BuildingType.Museum)
-                        {
-                            buildingTopX = BuildingX - 4;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 3;
-                            buildingBottomY = BuildingY + 1;
-                            BuildingColor = Color.PapayaWhip;
-                        }
-                        else if (CurrentBuilding == BuildingType.AblesSisters)
-                        {
-                            buildingTopX = BuildingX - 3;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 2;
-                            buildingBottomY = BuildingY + 1;
-                            BuildingColor = Color.DarkBlue;
-                        }
-                        else if (CurrentBuilding == BuildingType.Airport)
-                        {
-                            buildingTopX = BuildingX - 6;
-                            buildingTopY = BuildingY - 3;
-                            buildingBottomX = BuildingX + 4;
-                            buildingBottomY = BuildingY + 3;
-                            BuildingColor = Color.IndianRed;
-                        }
-                        else if (CurrentBuilding == BuildingType.Campsite)
-                        {
-                            buildingTopX = BuildingX - 2;
-                            buildingTopY = BuildingY - 2;
-                            buildingBottomX = BuildingX + 1;
-                            buildingBottomY = BuildingY + 1;
-                            BuildingColor = Color.LightGoldenrodYellow;
-                        }
-                        else if (CurrentBuilding == BuildingType.Bridge || CurrentBuilding == BuildingType.Incline)
-                        {
-                            buildingTopX = BuildingX - 1;
-                            buildingTopY = BuildingY - 1;
-                            buildingBottomX = BuildingX;
-                            buildingBottomY = BuildingY;
-                            BuildingColor = Color.Red;
-                        }
-
-
+                        BuildingColor = drawBuildingSetup(buildingList[i][0], BuildingX, BuildingY, ref buildingTopX, ref buildingTopY, ref buildingBottomX, ref buildingBottomY, false);
 
                         for (int j = buildingTopX; j <= buildingBottomX; j++)
                         {
@@ -246,6 +200,8 @@ namespace ACNHPoker
                                 PutPixel(gr, j * mapSize, k * mapSize, BuildingColor);
                             }
                         }
+
+                        PutPixel(gr, BuildingX * mapSize, BuildingY * mapSize, Color.Red);
                     }
                 }
             }
@@ -253,7 +209,80 @@ namespace ACNHPoker
             return myBitmap;
         }
 
-        private byte[] GetAcreData(byte Acre)
+        public Bitmap drawFullBuildingMap()
+        {
+            if (BuildingByte != null)
+            {
+                buildingList = new byte[NumOfBuilding][];
+                for (int i = 0; i < NumOfBuilding; i++)
+                {
+                    buildingList[i] = new byte[BuildingSize];
+                    Buffer.BlockCopy(BuildingByte, i * BuildingSize, buildingList[i], 0x0, BuildingSize);
+                }
+            }
+
+
+            Bitmap myBitmap;
+
+            myBitmap = new Bitmap(fullNumOfColumn * mapSize, fullNumOfRow * mapSize);
+
+            using (Graphics gr = Graphics.FromImage(myBitmap))
+            {
+                gr.SmoothingMode = SmoothingMode.None;
+
+                //plaza
+
+                for (int m = plazaX; m <= plazaX + (11 * 2); m++)
+                {
+                    if (m < 0 || m >= fullNumOfColumn * 2)
+                        continue;
+                    for (int n = plazaY; n <= plazaY + (9 * 2); n++)
+                    {
+                        if (n < 0 || n >= fullNumOfRow * 2)
+                            continue;
+                        PutPixel(gr, m * (mapSize / 2), n * (mapSize / 2), Color.DarkSalmon, (mapSize / 2));
+                    }
+                }
+
+
+                //========================================
+                for (int i = 0; i < NumOfBuilding; i++)
+                {
+                    int buildingTopX = -1;
+                    int buildingTopY = -1;
+                    int buildingBottomX = -1;
+                    int buildingBottomY = -1;
+                    Color BuildingColor;
+
+                    BuildingType CurrentBuilding = (BuildingType)buildingList[i][0];
+                    int BuildingX = buildingList[i][2];
+                    int BuildingY = buildingList[i][4];
+
+                    if (CurrentBuilding != BuildingType.None)
+                    {
+                        BuildingColor = drawBuildingSetup(buildingList[i][0], BuildingX, BuildingY, ref buildingTopX, ref buildingTopY, ref buildingBottomX, ref buildingBottomY, true);
+
+                        for (int j = buildingTopX; j <= buildingBottomX; j++)
+                        {
+                            if (j < 0 || j >= fullNumOfColumn * 2)
+                                continue;
+                            for (int k = buildingTopY; k <= buildingBottomY; k++)
+                            {
+                                if (k < 0 || k >= fullNumOfRow * 2)
+                                    continue;
+                                PutPixel(gr, j * (mapSize / 2), k * (mapSize / 2), BuildingColor, (mapSize / 2));
+                            }
+                        }
+
+                        PutPixel(gr, BuildingX * (mapSize / 2), BuildingY * (mapSize / 2), Color.Red, (mapSize / 2));
+                    }
+                }
+            }
+
+            return myBitmap;
+        }
+
+        private static byte[] GetAcreData(byte Acre)
         {
             byte[] data = new byte[0x100];
             Buffer.BlockCopy(AcreData, Acre * 0x100, data, 0, 0x100);
@@ -279,10 +308,10 @@ namespace ACNHPoker
             return myBitmap;
         }
 
-        private Bitmap toFullMap(Bitmap[] AcreImage)
+        private Bitmap toFullMap(Bitmap[] AcreImage, int width, int height)
         {
             Bitmap myBitmap;
-            myBitmap = new Bitmap(16 * 7 * mapSize, 16 * 6 * mapSize);
+            myBitmap = new Bitmap(16 * width * mapSize, 16 * height * mapSize);
 
             using (Graphics graphics = Graphics.FromImage(myBitmap))
             {
@@ -294,9 +323,9 @@ namespace ACNHPoker
 
                 int ImageNum = 0;
 
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < height; i++)
                 {
-                    for (int j = 0; j < 7; j++)
+                    for (int j = 0; j < width; j++)
                     {
                         graphics.DrawImage(AcreImage[ImageNum], new Rectangle(j * 16 * mapSize, i * 16 * mapSize, AcreImage[ImageNum].Width, AcreImage[ImageNum].Height), 0, 0, AcreImage[ImageNum].Width, AcreImage[ImageNum].Height, GraphicsUnit.Pixel, ia);
                         ImageNum++;
@@ -321,7 +350,7 @@ namespace ACNHPoker
 
                 graphics.DrawImage(top, new Rectangle(0, 0, top.Width, top.Height), 0, 0, top.Width, top.Height, GraphicsUnit.Pixel, ia);
             }
-            
+
 
             return myBitmap;
         }
@@ -386,6 +415,64 @@ namespace ACNHPoker
             return myBitmap;
         }
 
+        public static Bitmap drawSelectAcre(int x, int y)
+        {
+            Bitmap square = new Bitmap(16 * mapSize + 2, 16 * mapSize + 2);
+            Pen p = new Pen(Color.Red, 2 * mapSize);
+            using (Graphics g = Graphics.FromImage(square))
+            {
+                g.Clear(Color.Transparent);
+                g.DrawRectangle(p, new Rectangle(0, 0, square.Width, square.Height));
+            }
+
+
+            Bitmap myBitmap;
+            myBitmap = new Bitmap(16 * 9 * mapSize, 16 * 8 * mapSize);
+
+            using (Graphics graphics = Graphics.FromImage(myBitmap))
+            {
+                graphics.Clear(Color.Transparent);
+
+                var cm = new ColorMatrix();
+                cm.Matrix33 = 1;
+
+                var ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                graphics.DrawImage(square, new Rectangle(x * 16 * mapSize, y * 16 * mapSize, square.Width, square.Height), 0, 0, square.Width, square.Height, GraphicsUnit.Pixel, ia);
+            }
+            return myBitmap;
+        }
+
+        public Bitmap drawEdge()
+        {
+            Bitmap Rectangle = new Bitmap(16 * 7 * mapSize + 2, 16 * 6 * mapSize + 2);
+            Pen p = new Pen(Color.Tomato, 4);
+            using (Graphics g = Graphics.FromImage(Rectangle))
+            {
+                g.Clear(Color.Transparent);
+                g.DrawRectangle(p, new Rectangle(0, 0, Rectangle.Width, Rectangle.Height));
+            }
+
+
+            Bitmap myBitmap;
+            myBitmap = new Bitmap(16 * 9 * mapSize, 16 * 8 * mapSize);
+
+            using (Graphics graphics = Graphics.FromImage(myBitmap))
+            {
+                graphics.Clear(Color.Transparent);
+
+                var cm = new ColorMatrix();
+                cm.Matrix33 = 1;
+
+                var ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                graphics.DrawImage(Rectangle, new Rectangle(16 * mapSize, 16 * mapSize, Rectangle.Width, Rectangle.Height), 0, 0, Rectangle.Width, Rectangle.Height, GraphicsUnit.Pixel, ia);
+            }
+            return myBitmap;
+        }
+
         public Bitmap drawMarker(int x, int y)
         {
             Bitmap marker = new Bitmap(ACNHPoker.Properties.Resources.marker);
@@ -404,6 +491,96 @@ namespace ACNHPoker
                 ia.SetColorMatrix(cm);
 
                 graphics.DrawImage(marker, new Rectangle(x * mapSize - marker.Width / 2 + mapSize / 2, y * mapSize - marker.Height + mapSize / 2, marker.Width, marker.Height), 0, 0, marker.Width, marker.Height, GraphicsUnit.Pixel, ia);
+            }
+            return myBitmap;
+        }
+
+        public static Bitmap drawLargeMarker(int OrgX, int OrgY, int NewX, int NewY, byte buildingType = 0xFE)
+        {
+            Bitmap marker = new Bitmap(ACNHPoker.Properties.Resources.marker);
+
+            Bitmap myBitmap;
+            myBitmap = new Bitmap(16 * 9 * mapSize, 16 * 8 * mapSize);
+
+            using (Graphics graphics = Graphics.FromImage(myBitmap))
+            {
+                graphics.Clear(Color.Transparent);
+
+                var cm = new ColorMatrix();
+                cm.Matrix33 = 1;
+
+                var ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                if (buildingType != 0xFE) // 0xFE = no draw
+                {
+                    int buildingTopX = -1;
+                    int buildingTopY = -1;
+                    int buildingBottomX = -1;
+                    int buildingBottomY = -1;
+                    Color BuildingColor;
+
+                    BuildingType CurrentBuilding = (BuildingType)buildingType;
+                    int BuildingX = OrgX;
+                    int BuildingY = OrgY;
+
+                    if (OrgX != NewX || OrgY != NewY)
+                    {
+                        BuildingX = NewX;
+                        BuildingY = NewY;
+                        //=============================================== New
+                        if (CurrentBuilding != BuildingType.None)
+                        {
+                            drawBuildingSetup(buildingType, BuildingX, BuildingY, ref buildingTopX, ref buildingTopY, ref buildingBottomX, ref buildingBottomY, true);
+
+                            BuildingColor = Color.FromArgb(200, Color.DeepPink);
+
+                            for (int j = buildingTopX; j <= buildingBottomX; j++)
+                            {
+                                if (j < 0 || j >= fullNumOfColumn * 2)
+                                    continue;
+                                for (int k = buildingTopY; k <= buildingBottomY; k++)
+                                {
+                                    if (k < 0 || k >= fullNumOfRow * 2)
+                                        continue;
+                                    PutPixel(graphics, j * (mapSize / 2), k * (mapSize / 2), BuildingColor, (mapSize / 2));
+                                }
+                            }
+                        }
+
+                        Pen linePen = new Pen(Color.Red, 2);
+                        graphics.DrawLine(linePen, OrgX * (mapSize / 2), OrgY * (mapSize / 2), NewX * (mapSize / 2), NewY * (mapSize / 2));
+                    }
+                    else
+                    {
+                        BuildingX = OrgX;
+                        BuildingY = OrgY;
+
+                        //=============================================== Org
+                        if (CurrentBuilding != BuildingType.None)
+                        {
+                            drawBuildingSetup(buildingType, BuildingX, BuildingY, ref buildingTopX, ref buildingTopY, ref buildingBottomX, ref buildingBottomY, true);
+
+                            BuildingColor = Color.FromArgb(200, Color.LightPink);
+
+                            for (int j = buildingTopX; j <= buildingBottomX; j++)
+                            {
+                                if (j < 0 || j >= fullNumOfColumn * 2)
+                                    continue;
+                                for (int k = buildingTopY; k <= buildingBottomY; k++)
+                                {
+                                    if (k < 0 || k >= fullNumOfRow * 2)
+                                        continue;
+                                    PutPixel(graphics, j * (mapSize / 2), k * (mapSize / 2), BuildingColor, (mapSize / 2));
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+
+                graphics.DrawImage(marker, new Rectangle(NewX * mapSize / 2 - marker.Width / 2 + mapSize / 4, NewY * mapSize / 2 - marker.Height + mapSize / 4, marker.Width, marker.Height), 0, 0, marker.Width, marker.Height, GraphicsUnit.Pixel, ia);
             }
             return myBitmap;
         }
@@ -559,71 +736,71 @@ namespace ACNHPoker
 
         public Bitmap drawItemMap()
         {
-                Bitmap myBitmap;
+            Bitmap myBitmap;
 
-                myBitmap = new Bitmap(numOfColumn * mapSize, numOfRow * mapSize);
+            myBitmap = new Bitmap(numOfColumn * mapSize, numOfRow * mapSize);
 
-                using (Graphics gr = Graphics.FromImage(myBitmap))
+            using (Graphics gr = Graphics.FromImage(myBitmap))
+            {
+                gr.SmoothingMode = SmoothingMode.None;
+
+                for (int i = 0; i < numOfColumn; i++)
                 {
-                    gr.SmoothingMode = SmoothingMode.None;
-
-                    for (int i = 0; i < numOfColumn; i++)
+                    for (int j = 0; j < numOfRow; j++)
                     {
-                        for (int j = 0; j < numOfRow; j++)
+                        if (tilesType[i][j] == 0)
                         {
-                            if (tilesType[i][j] == 0)
-                            {
-                                //PutPixel(gr, i * mapSize, j* mapSize, Color.White);
-                            }
-                            else if (tilesType[i][j] == 1)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.GreenYellow);
-                            }
-                            else if (tilesType[i][j] == 2)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Pink);
-                            }
-                            else if (tilesType[i][j] == 3)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Blue);
-                            }
-                            else if (tilesType[i][j] == 4)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.MediumSeaGreen);
-                            }
-                            else if (tilesType[i][j] == 5)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Purple);
-                            }
-                            else if (tilesType[i][j] == 6)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Black);
-                            }
-                            else if (tilesType[i][j] == 9)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Yellow);
-                            }
-                            else if (tilesType[i][j] == 10)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Orange);
-                            }
-                            else if (tilesType[i][j] == 11)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Khaki);
-                            }
-                            else if (tilesType[i][j] == 12)
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Maroon);
-                            }
-                            else
-                            {
-                                PutPixel(gr, i * mapSize, j * mapSize, Color.Gray);
-                            }
+                            //PutPixel(gr, i * mapSize, j* mapSize, Color.White);
+                        }
+                        else if (tilesType[i][j] == 1)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.GreenYellow);
+                        }
+                        else if (tilesType[i][j] == 2)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Pink);
+                        }
+                        else if (tilesType[i][j] == 3)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Blue);
+                        }
+                        else if (tilesType[i][j] == 4)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.MediumSeaGreen);
+                        }
+                        else if (tilesType[i][j] == 5)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Purple);
+                        }
+                        else if (tilesType[i][j] == 6)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Black);
+                        }
+                        else if (tilesType[i][j] == 9)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Yellow);
+                        }
+                        else if (tilesType[i][j] == 10)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Orange);
+                        }
+                        else if (tilesType[i][j] == 11)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Khaki);
+                        }
+                        else if (tilesType[i][j] == 12)
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Maroon);
+                        }
+                        else
+                        {
+                            PutPixel(gr, i * mapSize, j * mapSize, Color.Gray);
                         }
                     }
                 }
+            }
 
-                return myBitmap;
+            return myBitmap;
             /*
             catch (Exception e)
             {
@@ -683,11 +860,11 @@ namespace ACNHPoker
             {
                 for (int i = 0; i < NumOfBuilding; i++)
                 {
-                    int buildingTopX = 0;
-                    int buildingTopY = 0;
-                    int buildingBottomX = -1;
-                    int buildingBottomY = -1;
-                    Color BuildingColor = Color.White;
+                    int buildingTopX;
+                    int buildingTopY;
+                    int buildingBottomX;
+                    int buildingBottomY;
+                    Color BuildingColor;
 
                     BuildingType CurrentBuilding = (BuildingType)buildingList[i][0];
                     int BuildingX = (buildingList[i][2] - 0x20) / 2;
@@ -708,7 +885,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 2;
                             buildingBottomY = BuildingY;
-                            BuildingColor = Color.MediumSlateBlue;
                         }
                         else if (CurrentBuilding >= BuildingType.PlayerHouse1 && CurrentBuilding <= BuildingType.PlayerHouse8)
                         {
@@ -716,7 +892,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 2;
                             buildingBottomY = BuildingY;
-                            BuildingColor = Color.RoyalBlue;
                         }
                         else if (CurrentBuilding >= BuildingType.VillagerHouse1 && CurrentBuilding <= BuildingType.VillagerHouse10)
                         {
@@ -724,7 +899,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 1;
                             buildingBottomY = BuildingY;
-                            BuildingColor = Color.Chocolate;
                         }
                         else if (CurrentBuilding == BuildingType.NooksCranny)
                         {
@@ -732,7 +906,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 2;
                             buildingBottomY = BuildingY + 2;
-                            BuildingColor = Color.Gold;
                         }
                         else if (CurrentBuilding == BuildingType.Museum)
                         {
@@ -740,7 +913,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 3;
                             buildingBottomY = BuildingY + 1;
-                            BuildingColor = Color.PapayaWhip;
                         }
                         else if (CurrentBuilding == BuildingType.AblesSisters)
                         {
@@ -748,7 +920,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 2;
                             buildingBottomY = BuildingY + 1;
-                            BuildingColor = Color.DarkBlue;
                         }
                         else if (CurrentBuilding == BuildingType.Airport)
                         {
@@ -756,7 +927,6 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 5;
                             buildingBottomX = BuildingX + 4;
                             buildingBottomY = BuildingY + 3;
-                            BuildingColor = Color.IndianRed;
                         }
                         else if (CurrentBuilding == BuildingType.Campsite)
                         {
@@ -764,7 +934,13 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 2;
                             buildingBottomX = BuildingX + 1;
                             buildingBottomY = BuildingY + 1;
-                            BuildingColor = Color.LightGoldenrodYellow;
+                        }
+                        else if (CurrentBuilding == BuildingType.ReddsTreasureTrawler)
+                        {
+                            buildingTopX = BuildingX - 2;
+                            buildingTopY = BuildingY - 2;
+                            buildingBottomX = BuildingX + 2;
+                            buildingBottomY = BuildingY;
                         }
                         else if (CurrentBuilding == BuildingType.Bridge || CurrentBuilding == BuildingType.Incline)
                         {
@@ -772,8 +948,19 @@ namespace ACNHPoker
                             buildingTopY = BuildingY - 1;
                             buildingBottomX = BuildingX;
                             buildingBottomY = BuildingY;
-                            BuildingColor = Color.Red;
                         }
+                        else
+                        {
+                            buildingTopX = BuildingX - 1;
+                            buildingTopY = BuildingY - 1;
+                            buildingBottomX = BuildingX;
+                            buildingBottomY = BuildingY;
+                        }
+
+                        if (ByteToBuildingColor.ContainsKey(buildingList[i][0]))
+                            BuildingColor = ByteToBuildingColor[buildingList[i][0]];
+                        else
+                            BuildingColor = Color.Black;
 
                         for (int j = buildingTopX; j <= buildingBottomX; j++)
                         {
@@ -784,6 +971,8 @@ namespace ACNHPoker
                                 if (k < 0 || k >= numOfRow)
                                     continue;
                                 floorBackgroundColor[k][j] = BuildingColor;
+                                if (k == BuildingY && j == BuildingX)
+                                    floorBackgroundColor[k][j] = Color.Red;
                             }
                         }
                     }
@@ -804,7 +993,7 @@ namespace ACNHPoker
             }
         }
 
-        private void PutPixel(Graphics g, int x, int y, Color c)
+        private static void PutPixel(Graphics g, int x, int y, Color c)
         {
             Bitmap Bmp = new Bitmap(mapSize, mapSize);
 
@@ -818,7 +1007,224 @@ namespace ACNHPoker
             g.DrawImageUnscaled(Bmp, x, y);
         }
 
-        private readonly Dictionary<byte, Color> Pixel = new Dictionary<byte, Color>
+        private static void PutPixel(Graphics g, int x, int y, Color c, int size)
+        {
+            Bitmap Bmp = new Bitmap(size, size);
+
+            using (Graphics gfx = Graphics.FromImage(Bmp))
+            using (SolidBrush brush = new SolidBrush(c))
+            {
+                gfx.SmoothingMode = SmoothingMode.None;
+                gfx.FillRectangle(brush, 0, 0, size, size);
+            }
+
+            g.DrawImageUnscaled(Bmp, x, y);
+        }
+
+        public static Bitmap getAcreImage(int id, int size)
+        {
+            Bitmap AcreImage;
+            AcreImage = new Bitmap(16 * size, 16 * size);
+            byte[] AcreData = GetAcreData((byte)id);
+
+
+            using (Graphics gr = Graphics.FromImage(AcreImage))
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    for (int j = 0; j < 16; j++)
+                    {
+                        PutPixel(gr, j * size, i * size, Pixel[AcreData[i * 0x10 + j]], size);
+                    }
+                }
+            }
+
+            return AcreImage;
+        }
+
+        public static Color drawBuildingSetup(byte BuildingByte, int BuildingX, int BuildingY, ref int buildingTopX,ref int buildingTopY,ref int buildingBottomX,ref int buildingBottomY, bool TimesTwo = false)
+        {
+            Color BuildingColor;
+
+            BuildingType CurrentBuilding = (BuildingType)BuildingByte;
+
+            if (TimesTwo)
+            {
+                if (CurrentBuilding == BuildingType.ResidentServicesBuilding)
+                {
+                    buildingTopX = BuildingX - 3 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 2 * 2;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding >= BuildingType.PlayerHouse1 && CurrentBuilding <= BuildingType.PlayerHouse8)
+                {
+                    buildingTopX = BuildingX - 2 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 2 * 2;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding >= BuildingType.VillagerHouse1 && CurrentBuilding <= BuildingType.VillagerHouse10)
+                {
+                    buildingTopX = BuildingX - 2 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 1 * 2;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding == BuildingType.NooksCranny)
+                {
+                    buildingTopX = BuildingX - 3 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 2 * 2;
+                    buildingBottomY = BuildingY + 2 * 2;
+                }
+                else if (CurrentBuilding == BuildingType.Museum)
+                {
+                    buildingTopX = BuildingX - 4 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 3 * 2;
+                    buildingBottomY = BuildingY + 1 * 2;
+                }
+                else if (CurrentBuilding == BuildingType.AblesSisters)
+                {
+                    buildingTopX = BuildingX - 3 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 2 * 2;
+                    buildingBottomY = BuildingY + 1 * 2;
+                }
+                else if (CurrentBuilding == BuildingType.Airport)
+                {
+                    buildingTopX = BuildingX - 5 * 2;
+                    buildingTopY = BuildingY - 5 * 2;
+                    buildingBottomX = BuildingX + 4 * 2;
+                    buildingBottomY = BuildingY + 3 * 2;
+                }
+                else if (CurrentBuilding == BuildingType.Campsite)
+                {
+                    buildingTopX = BuildingX - 2 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 1 * 2;
+                    buildingBottomY = BuildingY + 1 * 2;
+                }
+                else if (CurrentBuilding == BuildingType.ReddsTreasureTrawler)
+                {
+                    buildingTopX = BuildingX - 2 * 2;
+                    buildingTopY = BuildingY - 2 * 2;
+                    buildingBottomX = BuildingX + 2 * 2;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding == BuildingType.Bridge || CurrentBuilding == BuildingType.Incline)
+                {
+                    buildingTopX = BuildingX - 1 * 2;
+                    buildingTopY = BuildingY - 1 * 2;
+                    buildingBottomX = BuildingX;
+                    buildingBottomY = BuildingY;
+                }
+                else if (BuildingByte == 0xFF)
+                {
+                    buildingTopX = BuildingX;
+                    buildingTopY = BuildingY;
+                    buildingBottomX = BuildingX + 11 * 2;
+                    buildingBottomY = BuildingY + 9 * 2;
+                }
+                else
+                {
+                    buildingTopX = BuildingX - 1 * 2;
+                    buildingTopY = BuildingY - 1 * 2;
+                    buildingBottomX = BuildingX;
+                    buildingBottomY = BuildingY;
+                }
+            }
+            else
+            {
+                if (CurrentBuilding == BuildingType.ResidentServicesBuilding)
+                {
+                    buildingTopX = BuildingX - 3;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 2;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding >= BuildingType.PlayerHouse1 && CurrentBuilding <= BuildingType.PlayerHouse8)
+                {
+                    buildingTopX = BuildingX - 2;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 2;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding >= BuildingType.VillagerHouse1 && CurrentBuilding <= BuildingType.VillagerHouse10)
+                {
+                    buildingTopX = BuildingX - 2;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 1;
+                    buildingBottomY = BuildingY;
+                }
+                else if (CurrentBuilding == BuildingType.NooksCranny)
+                {
+                    buildingTopX = BuildingX - 3;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 2;
+                    buildingBottomY = BuildingY + 2;
+                }
+                else if (CurrentBuilding == BuildingType.Museum)
+                {
+                    buildingTopX = BuildingX - 4;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 3;
+                    buildingBottomY = BuildingY + 1;
+                }
+                else if (CurrentBuilding == BuildingType.AblesSisters)
+                {
+                    buildingTopX = BuildingX - 3;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 2;
+                    buildingBottomY = BuildingY + 1;
+                }
+                else if (CurrentBuilding == BuildingType.Airport)
+                {
+                    buildingTopX = BuildingX - 5;
+                    buildingTopY = BuildingY - 5;
+                    buildingBottomX = BuildingX + 4;
+                    buildingBottomY = BuildingY + 3;
+                }
+                else if (CurrentBuilding == BuildingType.Campsite)
+                {
+                    buildingTopX = BuildingX - 2;
+                    buildingTopY = BuildingY - 2;
+                    buildingBottomX = BuildingX + 1;
+                    buildingBottomY = BuildingY + 1;
+                }
+                else if (CurrentBuilding == BuildingType.Bridge || CurrentBuilding == BuildingType.Incline)
+                {
+                    buildingTopX = BuildingX - 1;
+                    buildingTopY = BuildingY - 1;
+                    buildingBottomX = BuildingX;
+                    buildingBottomY = BuildingY;
+                }
+                else if (BuildingByte == 0xFF)
+                {
+                    buildingTopX = BuildingX;
+                    buildingTopY = BuildingY;
+                    buildingBottomX = BuildingX + 11;
+                    buildingBottomY = BuildingY + 9;
+                }
+                else
+                {
+                    buildingTopX = BuildingX - 1;
+                    buildingTopY = BuildingY - 1;
+                    buildingBottomX = BuildingX;
+                    buildingBottomY = BuildingY;
+                }
+            }
+
+            if (ByteToBuildingColor.ContainsKey(BuildingByte))
+                BuildingColor = ByteToBuildingColor[BuildingByte];
+            else
+                BuildingColor = Color.Black;
+
+            return BuildingColor;
+        }
+
+        private static readonly Dictionary<byte, Color> Pixel = new Dictionary<byte, Color>
         {
                 {0x00, Color.FromArgb(70, 116, 71)}, // Grass
 
@@ -840,9 +1246,7 @@ namespace ACNHPoker
                 {0x2C, Color.FromArgb(144, 115, 104)}, // Beach - Grass Edge
                 {0x2D, Color.FromArgb(187, 121, 109)}, // Pier
                 {0x2E, Color.FromArgb(169, 255, 255)}, // Sea - Beach Edge
-
         };
-
         private enum BuildingType : byte
         {
             None = 0x0,
@@ -876,5 +1280,38 @@ namespace ACNHPoker
             ReddsTreasureTrawler = 0x1C,
             Studio = 0x1D,
         }
+
+        public static readonly Dictionary<byte, Color> ByteToBuildingColor = new Dictionary<byte, Color>
+        {
+            {0x0, Color.White},
+            {0x1, Color.RoyalBlue},
+            {0x2, Color.RoyalBlue},
+            {0x3, Color.RoyalBlue},
+            {0x4, Color.RoyalBlue},
+            {0x5, Color.RoyalBlue},
+            {0x6, Color.RoyalBlue},
+            {0x7, Color.RoyalBlue},
+            {0x9, Color.Chocolate},
+            {0xA, Color.Chocolate},
+            {0xB, Color.Chocolate},
+            {0xC, Color.Chocolate},
+            {0xD, Color.Chocolate},
+            {0xE, Color.Chocolate},
+            {0xF, Color.Chocolate},
+            {0x10, Color.Chocolate},
+            {0x11, Color.Chocolate},
+            {0x12, Color.Chocolate},
+            {0x13, Color.Gold},
+            {0x14, Color.MediumSlateBlue},
+            {0x15, Color.NavajoWhite},
+            {0x16, Color.IndianRed},
+            {0x17, Color.DarkSeaGreen},
+            {0x18, Color.DarkBlue},
+            {0x19, Color.LightGoldenrodYellow},
+            {0x1A, Color.Red},
+            {0x1B, Color.Red},
+            {0x1C, Color.OrangeRed},
+            {0x1D, Color.Black},
+        };
     }
 }

@@ -903,7 +903,7 @@ namespace ACNHPoker
             Thread.Sleep(2000);
 
             controller.clickA(); // Open Selection
-            Thread.Sleep(1000); 
+            Thread.Sleep(1000);
 
             controller.clickA(); // Select End Session.
             Thread.Sleep(10000);
@@ -976,7 +976,7 @@ namespace ACNHPoker
             }
             else
             {
-                int houseIndex = 0;
+                int houseIndex = 9;
                 int villagerIndex = Convert.ToInt32(Utilities.GetHouseOwner(s, null, houseIndex));
 
                 string IVpath = Utilities.villagerPath + CurrentOrder.InternalName + ".nhv2";
@@ -1991,7 +1991,7 @@ namespace ACNHPoker
 
         private void clearInvBtn_Click(object sender, EventArgs e)
         {
-            Utilities.DeleteSlot(s,null, 0);
+            Utilities.DeleteSlot(s, null, 0);
             WriteLog("First inventory slot cleared!", true);
             WriteLog("Please remember to reset your cursor to the first inventory slot for the drop bot to function properly!", true);
         }

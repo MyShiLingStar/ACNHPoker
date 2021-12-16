@@ -147,7 +147,7 @@ namespace ACNHPoker
             //miniMapBox.Visible = true;
             //miniMapBox.Image = MiniMap.drawItemMap();
         }
-         
+
         private void button2_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog file = new SaveFileDialog()
@@ -351,19 +351,17 @@ namespace ACNHPoker
             Debug.Print("Thread Start " + startAddress.ToString("X") + " " + endAddress.ToString("X"));
 
             byte[] result = Utilities.stringToByte(value);
-
+            /*
             BoyerMoore boi = new BoyerMoore(result);
 
             //bank = new byte[0];
 
             for (UInt32 i = 0x0; startAddress + i <= endAddress; i += 8000)
             {
-                /*
                 if (offsetFound)
                 {
                     return;
                 }
-                */
 
                 byte[] b = Utilities.peekAddress(s, bot, startAddress + i, 8000);
                 //bank = Utilities.add(bank, b);
@@ -379,6 +377,7 @@ namespace ACNHPoker
                     return;
                 }
             }
+            */
         }
 
         private void dumpBtn_Click(object sender, EventArgs e)
@@ -485,7 +484,23 @@ namespace ACNHPoker
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void unhideBtn_Click(object sender, EventArgs e)
+        {
+            if (currentPanel == itemModePanel)
+            {
+                itemGridView.Columns["id"].Visible = true;
+                itemGridView.Columns["iName"].Visible = true;
+            }
+            else if (currentPanel == recipeModePanel)
+            {
+                recipeGridView.Columns["id"].Visible = true;
+                recipeGridView.Columns["iName"].Visible = true;
+            }
+            else
+                return;
+        }
+
+        private void nhbsBtn_Click(object sender, EventArgs e)
         {
             string bank = "";
             for (int i = 0; i < itemGridView.Rows.Count; i++)
@@ -535,6 +550,7 @@ namespace ACNHPoker
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
         }
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {

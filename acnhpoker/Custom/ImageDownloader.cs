@@ -35,24 +35,24 @@ namespace ACNHPoker
                 File.Delete(@"img.zip");
             }
 
-                WebClient webClient = new WebClient();
-                webClient.Proxy = null;
+            WebClient webClient = new WebClient();
+            webClient.Proxy = null;
 
-                webClient.DownloadProgressChanged += (s, ez) =>
-                {
-                    progressBar.Value = ez.ProgressPercentage;
-                };
+            webClient.DownloadProgressChanged += (s, ez) =>
+            {
+                progressBar.Value = ez.ProgressPercentage;
+            };
 
-                webClient.DownloadFileCompleted += (s, ez) =>
-                {
-                    waitmsg.Visible = true;
-                    progressBar.Visible = false;
+            webClient.DownloadFileCompleted += (s, ez) =>
+            {
+                waitmsg.Visible = true;
+                progressBar.Visible = false;
 
-                    Thread unzipThread = new Thread(delegate () { extractHere(); });
-                    unzipThread.Start();
-                };
+                Thread unzipThread = new Thread(delegate () { extractHere(); });
+                unzipThread.Start();
+            };
 
-                webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack8/img.zip"), "img.zip");
+            webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack8/img.zip"), "img.zip");
 
         }
 
