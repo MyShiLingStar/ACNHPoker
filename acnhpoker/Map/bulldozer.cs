@@ -97,6 +97,9 @@ namespace ACNHPoker
                 DataGridViewColumn BuildingX = new DataGridViewTextBoxColumn();
                 DataGridViewColumn BuildingY = new DataGridViewTextBoxColumn();
 
+                DataGridViewColumn BuildingA = new DataGridViewTextBoxColumn();
+                DataGridViewColumn BuildingT = new DataGridViewTextBoxColumn();
+
                 BuildingColor.HeaderText = "";
                 BuildingColor.Name = "Color";
                 BuildingColor.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -117,12 +120,22 @@ namespace ACNHPoker
                 BuildingY.Name = "Y";
                 BuildingY.SortMode = DataGridViewColumnSortMode.NotSortable;
                 BuildingY.Width = 60;
+                BuildingA.HeaderText = "Angle";
+                BuildingA.Name = "Angle";
+                BuildingA.SortMode = DataGridViewColumnSortMode.NotSortable;
+                BuildingA.Width = 60;
+                BuildingT.HeaderText = "Type";
+                BuildingT.Name = "Type";
+                BuildingT.SortMode = DataGridViewColumnSortMode.NotSortable;
+                BuildingT.Width = 60;
 
                 buildingGridView.Columns.Add(BuildingID);
                 buildingGridView.Columns.Add(BuildingColor);
                 buildingGridView.Columns.Add(BuildingName);
                 buildingGridView.Columns.Add(BuildingX);
                 buildingGridView.Columns.Add(BuildingY);
+                buildingGridView.Columns.Add(BuildingA);
+                buildingGridView.Columns.Add(BuildingT);
 
                 buildingGridView.Columns["ID"].Visible = false;
 
@@ -130,12 +143,15 @@ namespace ACNHPoker
                 buildingGridView.Columns["Y"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buildingGridView.Columns["X"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buildingGridView.Columns["Y"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+                buildingGridView.Columns["Angle"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["Type"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["Angle"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["Type"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
                 if (Acre != null)
                 {
-                    buildingGridView.Rows.Add(0x00FF, "", "Plaza", Acre[0x94], Acre[0x98]);
+                    buildingGridView.Rows.Add(0x00FF, "", "Plaza", Acre[0x94], Acre[0x98], 0, 0);
 
                     DataGridViewCellStyle style = new DataGridViewCellStyle();
                     style.BackColor = Color.DarkSalmon;
@@ -173,12 +189,12 @@ namespace ACNHPoker
                     byte key = buildingList[i][0];
                     if (BuildingName.ContainsKey(key))
                     {
-                        buildingGridView.Rows.Add(buildingList[i][0x0], "", BuildingName[key], buildingList[i][0x2], buildingList[i][0x4]);
+                        buildingGridView.Rows.Add(buildingList[i][0x0], "", BuildingName[key], buildingList[i][0x2], buildingList[i][0x4], buildingList[i][0x6], buildingList[i][0x8]);
                         style.BackColor = miniMap.ByteToBuildingColor[buildingList[i][0x0]];
                     }
                     else
                     {
-                        buildingGridView.Rows.Add(buildingList[i][0x0], "", "???", buildingList[i][0x2], buildingList[i][0x4]);
+                        buildingGridView.Rows.Add(buildingList[i][0x0], "", "???", buildingList[i][0x2], buildingList[i][0x4], buildingList[i][0x6], buildingList[i][0x8]);
                         style.BackColor = Color.Black;
                     }
 
@@ -449,6 +465,9 @@ namespace ACNHPoker
 
                     XUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X"].Value.ToString());
                     YUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y"].Value.ToString());
+                    AUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Angle"].Value.ToString());
+                    TUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Type"].Value.ToString());
+
                     int index = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["ID"].Value.ToString());
                     byte type = (byte)index;
                     if (index <= BuildingType.Items.Count)
@@ -688,6 +707,8 @@ namespace ACNHPoker
             {
                 buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value = XUpDown.Value;
                 buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value = YUpDown.Value;
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Angle"].Value = AUpDown.Value;
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Type"].Value = TUpDown.Value;
 
                 int index = BuildingType.SelectedIndex;
                 byte type = (byte)index;
@@ -708,7 +729,8 @@ namespace ACNHPoker
                 Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14] = type;
                 Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14 + 0x2] = (byte)XUpDown.Value;
                 Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14 + 0x4] = (byte)YUpDown.Value;
-
+                Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14 + 0x6] = (byte)AUpDown.Value;
+                Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14 + 0x8] = (byte)TUpDown.Value;
 
                 miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawFullBackground(), MiniMap.drawEdge());
                 miniMapBox.Image = null;

@@ -63,11 +63,11 @@ namespace ACNHPoker
             this.BuildingType = new System.Windows.Forms.ComboBox();
             this.LargeXLabel = new System.Windows.Forms.Label();
             this.XUpDown = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.TUpDown = new System.Windows.Forms.NumericUpDown();
             this.LargeYLabel = new System.Windows.Forms.Label();
             this.typeLabel = new System.Windows.Forms.Label();
             this.YUpDown = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.AUpDown = new System.Windows.Forms.NumericUpDown();
             this.angleLabel = new System.Windows.Forms.Label();
             this.buildingGridView = new System.Windows.Forms.DataGridView();
             this.LoadingPanel = new System.Windows.Forms.Panel();
@@ -78,9 +78,9 @@ namespace ACNHPoker
             this.buildingPanel.SuspendLayout();
             this.BuildingControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingGridView)).BeginInit();
             this.LoadingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -414,11 +414,11 @@ namespace ACNHPoker
             this.BuildingControl.Controls.Add(this.BuildingType);
             this.BuildingControl.Controls.Add(this.LargeXLabel);
             this.BuildingControl.Controls.Add(this.XUpDown);
-            this.BuildingControl.Controls.Add(this.numericUpDown1);
+            this.BuildingControl.Controls.Add(this.TUpDown);
             this.BuildingControl.Controls.Add(this.LargeYLabel);
             this.BuildingControl.Controls.Add(this.typeLabel);
             this.BuildingControl.Controls.Add(this.YUpDown);
-            this.BuildingControl.Controls.Add(this.numericUpDown2);
+            this.BuildingControl.Controls.Add(this.AUpDown);
             this.BuildingControl.Controls.Add(this.angleLabel);
             this.BuildingControl.Location = new System.Drawing.Point(0, 355);
             this.BuildingControl.Name = "BuildingControl";
@@ -595,24 +595,23 @@ namespace ACNHPoker
             0});
             this.XUpDown.ValueChanged += new System.EventHandler(this.XUpDown_ValueChanged);
             // 
-            // numericUpDown1
+            // TUpDown
             // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown1.Location = new System.Drawing.Point(441, 33);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.TUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.TUpDown.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TUpDown.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.TUpDown.ForeColor = System.Drawing.Color.White;
+            this.TUpDown.Location = new System.Drawing.Point(441, 33);
+            this.TUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(65, 25);
-            this.numericUpDown1.TabIndex = 37;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.TUpDown.Name = "TUpDown";
+            this.TUpDown.Size = new System.Drawing.Size(65, 25);
+            this.TUpDown.TabIndex = 37;
+            this.TUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TUpDown.Value = new decimal(new int[] {
             255,
             0,
             0,
@@ -663,24 +662,23 @@ namespace ACNHPoker
             0});
             this.YUpDown.ValueChanged += new System.EventHandler(this.YUpDown_ValueChanged);
             // 
-            // numericUpDown2
+            // AUpDown
             // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown2.Enabled = false;
-            this.numericUpDown2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.numericUpDown2.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown2.Location = new System.Drawing.Point(291, 33);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.AUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.AUpDown.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AUpDown.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.AUpDown.ForeColor = System.Drawing.Color.White;
+            this.AUpDown.Location = new System.Drawing.Point(291, 33);
+            this.AUpDown.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(65, 25);
-            this.numericUpDown2.TabIndex = 35;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.AUpDown.Name = "AUpDown";
+            this.AUpDown.Size = new System.Drawing.Size(65, 25);
+            this.AUpDown.TabIndex = 35;
+            this.AUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AUpDown.Value = new decimal(new int[] {
             255,
             0,
             0,
@@ -772,8 +770,8 @@ namespace ACNHPoker
             this.Controls.Add(this.RealYCoordinate);
             this.Controls.Add(this.RealXCoordinate);
             this.Controls.Add(this.miniMapBox);
-            this.Controls.Add(this.acrePanel);
             this.Controls.Add(this.buildingPanel);
+            this.Controls.Add(this.acrePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1110, 550);
@@ -787,9 +785,9 @@ namespace ACNHPoker
             this.BuildingControl.ResumeLayout(false);
             this.BuildingControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingGridView)).EndInit();
             this.LoadingPanel.ResumeLayout(false);
             this.LoadingPanel.PerformLayout();
@@ -827,9 +825,9 @@ namespace ACNHPoker
         private System.Windows.Forms.NumericUpDown YUpDown;
         private System.Windows.Forms.Label LargeYLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown TUpDown;
         private System.Windows.Forms.Label typeLabel;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown AUpDown;
         private System.Windows.Forms.Label angleLabel;
         private System.Windows.Forms.ComboBox BuildingType;
         private System.Windows.Forms.Panel BuildingControl;

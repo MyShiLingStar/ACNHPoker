@@ -269,7 +269,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0CE9 ; FtrBabychair ; baby chair ; まめイス ; 兒童椅 ; 儿童椅 ; 유아용 의자 ; chaise bambin ; Babystuhl ; sillita infantil ; sediolina per bimbi ; babystoel ; детский стульчик
 0CEB ; FtrWeightscale ; digital scale ; たいじゅうそくていき ; 體重計 ; 体重计 ; 체중계 ; balance électronique ; Personenwaage ; báscula digital ; bilancia digitale ; digitale weegschaal ; цифровые весы
 0D05 ; FtrTV20inch ; LCD TV (20 in.) ; えきしょうテレビ 20インチ ; 液晶電視 20吋 ; 20寸液晶电视 ; 20인치 탁상용 TV ; télé LED (20\") ; 20-Zoll-LCD-Fernseher ; tele LCD de 20\" ; TV a LED (20 pollici) ; l⁠c⁠d-⁠tv (20 inch) ; ЖК-телевизор (20\")
-0D0C ; FtrHuntingtrophy ; deer decoration ; しかのオブジェ ; 小鹿裝飾品 ; 小鹿装饰品 ; 사슴 장식 ; trophée cerf ; Holz-Rehkopf ; cabeza de ciervo decorativa ; trofeo del cervo ; hertendecoratie ; декоративный олень
+0D0C ; FtrHuntingtrophy ; deer decoration ; しかのオブジェ ; 小鹿裝飾品 ; 小鹿装饰品 ; 사슴 장식 ; trophée cerf ; Holz-Hirschkopf ; cabeza de ciervo decorativa ; trofeo del cervo ; hertendecoratie ; декоративный олень
 0D11 ; FtrMonitoringchair ; lifeguard chair ; ビーチのかんしだい ; 沙灘瞭望台 ; 沙滩瞭望台 ; 안전 감시대 ; siège de maître-nageur ; Bademeisterstuhl ; silla de socorrista ; sedia da bagnino ; strandwachtstoel ; стул спасателя
 0D12 ; FtrPublicbench ; public bench ; パブリックベンチ ; 公共長椅 ; 公共长椅 ; 공공 벤치 ; paire de chaises sur poutre ; Sitzgelegenheit ; asiento de edificio público ; coppia di sedie sala attesa ; openbare zitgelegenheid ; секция стульев
 0D14 ; FtrGardenpool ; plastic pool ; ビニールプール ; 充氣泳池 ; 充气泳池 ; 비닐 풀 ; piscine de jardin ; Planschbecken ; piscina hinchable ; piscina gonfiabile ; tuinzwembad ; надувной бассейн
@@ -662,7 +662,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2804 ; FtrAromastick ; fragrance sticks ; アロマスティック ; 擴香棒 ; 熏香条 ; 아로마 스틱 ; diffuseur à bâtonnets ; Stäbchen-Duftspender ; difusor de varillas ; diffusore a bastoncini ; geurstokjes ; ароматические палочки
 29F6 ; FtrBambooStool ; bamboo stool ; たけのスツール ; 竹凳子 ; 竹凳子 ; 대나무 스툴 ; tabouret en bambou ; Bambushocker ; taburete de bambú ; sgabello di bambù ; bamboekruk ; бамбуковый табурет
 29F7 ; FtrBambooMusic ; bamboo speaker ; たけのスピーカー ; 竹廣播喇叭 ; 竹制扬声器 ; 대나무 스피커 ; enceinte en bambou ; Bambus-Lautsprecher ; altavoz de bambú ; altoparlante di bambù ; bamboeluidspreker ; бамбуковая колонка
-2EA5 ; FtrRockArch ; stone arch ; ストーンアーチ ; 石拱門 ; 石拱门 ; 석제 아치 ; arche en pierre ; Steinbogen ; megalito ; arco di pietra ; stenen boog ; каменная арка
+2EA5 ; FtrRockArch ; stone arch ; ストーンアーチ ; 石拱門 ; 石拱门 ; 석제 아치 ; arche en pierre ; Steinbogen ; megalito ; arco di pietra ; stenen poort ; каменная арка
 2EA6 ; FtrPianoStreet ; street piano ; ストリートピアノ ; 街頭鋼琴 ; 街头钢琴 ; 스트리트 피아노 ; piano de rue ; Straßenklavier ; piano ambulante ; pianoforte di strada ; straatpiano ; уличное пианино
 2EA7 ; FtrRockMonument ; stone tablet ; せきひ ; 石碑 ; 石碑 ; 비석 ; pierre gravée ; Gedenkstein ; placa de piedra ; stele incisa ; gedenksteen ; каменный монумент
 2F6C ; FtrDalFigure ; DAL model plane ; ＤＡＬのひこうきもけい ; DAL飛機模型 ; DAL飞机模型 ; DAL 비행기 모형 ; maquette d'avion DAL ; DAL-Flugzeugmodell ; figura de hidroavión de DAL ; modellino di aereo DAL ; DAL-modelvliegtuig ; модель самолета DAL
@@ -691,7 +691,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3054 ; FtrCompassCarB ; Pocket modern camper ; キャンピングカーのもけいB ; 露營車模型B ; 露营车模型B ; 캠핑카 모형 B ; mini camping-car moderne ; Pocket-Alkovenmobil ; autocaravana moderna ; modellino camper moderno ; Pocket-kampeerauto ; модель автодома
 3055 ; FtrCompassCarA ; Pocket vintage camper ; キャンピングカーのもけいA ; 露營車模型A ; 露营车模型A ; 캠핑카 모형 A ; mini camping-car classique ; Pocket-Kleinbus ; autocaravana clásica ; modellino camper classico ; Pocket-kampeerbusje ; модель ретро-автодома
 3071 ; FtrWeddingChairL ; wedding bench ; ウェディングなベンチ ; 婚禮長椅 ; 婚礼长椅 ; 웨딩 벤치 ; banc de mariage ; Hochzeitsbank ; banco de boda ; panchina nuziale ; trouwbank ; свадебная скамья
-3072 ; FtrWeddingArch ; wedding arch ; ウェディングなアーチ ; 婚禮拱門 ; 婚礼拱门 ; 웨딩 아치 ; arche de mariage ; Hochzeitstor ; arco de boda ; arco nuziale ; trouwboog ; свадебная арка
+3072 ; FtrWeddingArch ; wedding arch ; ウェディングなアーチ ; 婚禮拱門 ; 婚礼拱门 ; 웨딩 아치 ; arche de mariage ; Hochzeitstor ; arco de boda ; arco nuziale ; trouwpoort ; свадебная арка
 3073 ; FtrWeddingCake ; wedding cake ; ウェディングケーキ ; 婚禮蛋糕 ; 婚礼蛋糕 ; 웨딩 케이크 ; gâteau de mariage ; Hochzeitstorte ; tarta de boda ; torta nuziale ; trouwtaart ; свадебный торт
 3074 ; FtrWeddingTableM ; wedding head table ; ウェディングなメインテーブル ; 婚禮主桌 ; 婚礼主桌 ; 웨딩 메인 테이블 ; table des mariés ; Hochzeitsfesttafel ; mesa novios de boda ; tavolo d'onore nuziale ; trouwfeesttafel ; стол для молодоженов
 3075 ; FtrWeddingChairS ; wedding chair ; ウェディングなチェア ; 婚禮椅 ; 婚礼椅 ; 웨딩 체어 ; chaise de mariage ; Hochzeitsstuhl ; silla de boda ; sedia nuziale ; trouwstoel ; свадебный стул
@@ -1061,7 +1061,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 35B7 ; FtrOpenshelfWood ; open wooden shelves ; もくせいオープンシェルフ ; 木製開放式櫃子 ; 木制开放式柜子 ; 목제 오픈 쉘프 ; étagère ouverte en bois ; Holz-Offenregal ; estantería abierta madera ; scaffale aperto di legno ; open houten kast ; открытая дерев. полка
 35BC ; FtrJuicecaseStool ; bottle crate ; ボトルクレート ; 飲料物流箱 ; 饮料物流箱 ; 병음료 박스 ; caisse à bouteilles ; Getränkekasten ; caja de refresco ; cassa per bottiglie ; flessenkrat ; ящик для бутылок
 35C4 ; FtrLampCubeCeiling ; hanging cube light ; つりさげキューブライト ; 吊掛式方塊燈 ; 悬挂式方块灯 ; 천장걸이 큐브 라이트 ; lampe cube suspendue ; Würfel-Hängelampe ; lámpara cúbica ; lampada cubica da soffitto ; vierkante hanglamp ; лампа-куб
-35C5 ; FtrPartylightArch ; plain party-lights arch ; そぼくなパーティーライト ; 樸素派對燈 ; 朴素派对灯 ; 소박한 파티 라이트 ; arche de guirlandes de fête ; Schlicht-Partylichtertor ; arco luces de fiesta sencillo ; luminaria comune ; simpele feestboog ; простая арка с огоньками
+35C5 ; FtrPartylightArch ; plain party-lights arch ; そぼくなパーティーライト ; 樸素派對燈 ; 朴素派对灯 ; 소박한 파티 라이트 ; arche de guirlandes de fête ; Schlicht-Partylichtertor ; arco luces de fiesta sencillo ; luminaria comune ; simpele feestpoort ; простая арка с огоньками
 35C7 ; FtrCarnivalDecoration ; Festivale garland ; カーニバルなガーランド ; 狂歡節掛旗 ; 狂欢节挂饰 ; 카니발 가랜드 ; guirlande de carnaval ; Karnevalsgirlande ; guirnalda de Carnaval ; festone Carnevale ; carnavalsslinger ; карнавальная гирлянда
 35CA ; FtrCarnivalParasol ; Festivale parasol ; カーニバルなパラソル ; 狂歡節陽傘 ; 狂欢节阳伞 ; 카니발 파라솔 ; parasol de carnaval ; Karnevalsschirm ; parasol de Carnaval ; parasole Carnevale ; carnavalsparasol ; карнавальный зонт
 35CC ; FtrCarnivalBalloon ; Festivale balloon lamp ; カーニバルなバルーンランプ ; 狂歡節氣球燈 ; 狂欢节气球灯 ; 카니발 풍선 램프 ; lampe ballon carnaval ; Karnevalsballonlampe ; lámpara globo de Carnaval ; globo luminoso Carnevale ; carnavalsballonlamp ; карнавальная лампа-шар
@@ -1086,7 +1086,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3667 ; FtrSwitchLite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков
 36C1 ; FtrCave ; cave ; どうくつ ; 洞穴 ; 洞穴 ; 동굴 ; cabane en pierre ; Höhle ; cueva ; grotta ; grot ; пещера
-36C2 ; FtrRemainsArch ; ruined arch ; いせきのアーチ ; 遺跡拱門 ; 遗迹拱门 ; 유적 아치 ; ruine d'arche ; Ruinentor ; arco ruinas ; arco in rovina ; vervallen boog ; разрушенная арка
+36C2 ; FtrRemainsArch ; ruined arch ; いせきのアーチ ; 遺跡拱門 ; 遗迹拱门 ; 유적 아치 ; ruine d'arche ; Ruinentor ; arco ruinas ; arco in rovina ; vervallen poort ; разрушенная арка
 36C3 ; FtrVineHangchair ; vine hanging chair ; ツルのハンギングチェア ; 藤蔓吊籃椅 ; 藤蔓吊篮椅 ; 덩굴 행잉 체어 ; fauteuil suspendu vigne ; Rankenhängesessel ; silla colgante enredadera ; poltrona appesa con edera ; hangstoel met klimplant ; гамак-кресло из лозы
 36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца
 36E1 ; FtrTruck2t ; truck ; トラック ; 貨車 ; 货车 ; 트럭 ; camion ; Laster ; camión ; camion ; vrachtwagen ; грузовик

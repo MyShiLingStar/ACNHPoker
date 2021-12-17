@@ -99,7 +99,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 005B ; FtrIronwoodKitchen ; ironwood kitchenette ; アイアンウッドキッチン ; 鑄鐵木廚房 ; 铸铁木厨房 ; 아이언우드 키친 ; kitchenette en bois de fer ; Eisen-Holz-Spülschrank ; fregadero universidad ; lavabo di legno ferro ; ijzeren-houten aanrecht ; мини-кухня (ДСП и сталь)
 005C ; FtrIronwoodCupboard ; ironwood cupboard ; アイアンウッドカップボード ; 鑄鐵木櫥櫃 ; 铸铁木橱柜 ; 아이언우드 찬장 ; étagère en bois de fer ; Eisen-Holz-Küchenschrank ; aparador universidad ; credenza di legno ferro ; ijzeren-houten buffetkast ; буфет из ДСП и стали
 005E ; FtrIronwoodClockW ; ironwood clock ; アイアンウッドクロック ; 鑄鐵木時鐘 ; 铸铁木时钟 ; 아이언우드 시계 ; horloge en bois de fer ; Eisen-Holz-Wanduhr ; reloj de pared universidad ; orologio di legno ferro ; ijzeren-houten klok ; часы из ДСП и стали
-017A ; FtrHuntingtrophy ; deer decoration ; しかのオブジェ ; 小鹿裝飾品 ; 小鹿装饰品 ; 사슴 장식 ; trophée cerf ; Holz-Rehkopf ; cabeza de ciervo decorativa ; trofeo del cervo ; hertendecoratie ; декоративный олень
+017A ; FtrHuntingtrophy ; deer decoration ; しかのオブジェ ; 小鹿裝飾品 ; 小鹿装饰品 ; 사슴 장식 ; trophée cerf ; Holz-Hirschkopf ; cabeza de ciervo decorativa ; trofeo del cervo ; hertendecoratie ; декоративный олень
 017E ; FtrBasketsteamer ; steamer-basket set ; せいろ ; 蒸籠 ; 蒸笼 ; 나무 찜통 ; set de paniers vapeur ; Dampfgarer ; set de vaporeras apilables ; set per cottura a vapore ; stoommand ; пароварка из бамбука
 00E0 ; FtrGardenTableNatural ; natural garden table ; ナチュラルなガーデンテーブル ; 自然風花園桌 ; 自然风花园桌 ; 내추럴 가든 테이블 ; table de jardin naturelle ; Funktional-Gartentisch ; mesa de madera natural ; tavolo naturale da giardino ; natuurlijke tuintafel ; обычный садовый стол
 0069 ; FtrStoneTable ; stone table ; いしのテーブル ; 石桌 ; 石头桌 ; 돌 테이블 ; table en pierre ; Steintisch ; mesa de piedra ; tavolo di pietra ; stenen tafel ; стол из камня
@@ -315,7 +315,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 024F ; FtrBambooMusic ; bamboo speaker ; たけのスピーカー ; 竹廣播喇叭 ; 竹制扬声器 ; 대나무 스피커 ; enceinte en bambou ; Bambus-Lautsprecher ; altavoz de bambú ; altoparlante di bambù ; bamboeluidspreker ; бамбуковая колонка
 025A ; FtrFishArowanaGold ; golden arowana model ; きんのアロワナ ; 金色骨舌魚 ; 金色骨舌鱼 ; 금 아로와나 ; arowana en or ; Gold-Arowana-Modell ; trofeo arowana de oro ; replica di arowana in oro ; model-gouden-arowana ; муляж золотой араваны
 0253 ; FtrGearWallGold ; golden gears ; おうごんのはぐるま ; 黃金齒輪 ; 黄金齿轮 ; 황금 톱니바퀴 ; engrenage en or ; Gold-Getriebe ; engranaje dorado ; ingranaggio dorato ; gouden tandwielen ; золотые шестеренки
-028C ; FtrRockArch ; stone arch ; ストーンアーチ ; 石拱門 ; 石拱门 ; 석제 아치 ; arche en pierre ; Steinbogen ; megalito ; arco di pietra ; stenen boog ; каменная арка
+028C ; FtrRockArch ; stone arch ; ストーンアーチ ; 石拱門 ; 石拱门 ; 석제 아치 ; arche en pierre ; Steinbogen ; megalito ; arco di pietra ; stenen poort ; каменная арка
 028E ; FtrPianoStreet ; street piano ; ストリートピアノ ; 街頭鋼琴 ; 街头钢琴 ; 스트리트 피아노 ; piano de rue ; Straßenklavier ; piano ambulante ; pianoforte di strada ; straatpiano ; уличное пианино
 028B ; FtrRockMonument ; stone tablet ; せきひ ; 石碑 ; 石碑 ; 비석 ; pierre gravée ; Gedenkstein ; placa de piedra ; stele incisa ; gedenksteen ; каменный монумент
 0286 ; FtrGardenrockLow ; flat garden rock ; ひくいにわいし ; 低矮庭園石 ; 低矮庭院石 ; 낮은 바위 ; pierre de jardin basse ; Flach-Gartenstein ; roca plana ; pietra da giardino bassa ; lage tuinrots ; садовый камень
@@ -324,7 +324,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 029E ; FtrGardenTableSNatural ; natural square table ; ナチュラルなスクエアテーブル ; 自然風方桌 ; 自然风方桌 ; 내추럴 스퀘어 테이블 ; table carrée naturelle ; Funktionaltischchen ; mesita de madera natural ; tavolo naturale quadrato ; naturel houten tafeltje ; обычный квадратн. стол
 041E ; FtrWorktable ; project table ; こうさくだい ; 工作台 ; 工作台 ; 작업용 테이블 ; table de bricolage ; Projekttisch ; mesa de trabajo ; tavolo da lavoro ; werktafel ; рабочий стол
 041B ; FtrStoolBox ; box-shaped seat ; はこイス ; 箱型椅子 ; 箱型椅子 ; 박스 모양 의자 ; tabouret cubique ; Arbeitsschemel ; taburete de trabajo ; sgabello cubico ; vierkante kruk ; массивный табурет
-02B7 ; FtrEggArch ; Bunny Day arch ; イースターなアーチ ; 復活節拱門 ; 复活节拱门 ; 이스터 아치 ; arche fête des œufs ; Häschentag-Tor ; arco Caza del Huevo ; arco caccia all'uovo ; eierboog ; арка на День зайцев
+02B7 ; FtrEggArch ; Bunny Day arch ; イースターなアーチ ; 復活節拱門 ; 复活节拱门 ; 이스터 아치 ; arche fête des œufs ; Häschentag-Tor ; arco Caza del Huevo ; arco caccia all'uovo ; eierpoort ; арка на День зайцев
 02B8 ; FtrDollPyn ; wobbling Zipper toy ; ぴょんたろうのおきあがりこぼし ; 蹦蹦不倒娃娃 ; 蹦蹦不倒娃娃 ; 토빗 오뚝이 ; ramponeau d'Albin ; Stehauf-Ohs ; tentetieso Coti Conejal ; misirizzi Ovidio ; Zipper-tuimelaar ; неваляшка-Зиппер
 02B9 ; FtrEggLamp ; Bunny Day lamp ; イースターなランプ ; 復活節燈 ; 复活节灯 ; 이스터 램프 ; lampe fête des œufs ; Häschentag-Lampe ; lámpara Caza del Huevo ; lampada caccia all'uovo ; eierlamp ; лампа «День зайцев»
 02BA ; FtrEggBedW ; Bunny Day bed ; イースターなベッド ; 復活節床鋪 ; 复活节床铺 ; 이스터 침대 ; lit fête des œufs ; Häschentag-Bett ; cama Caza del Huevo ; letto caccia all'uovo ; eierbed ; кровать «День зайцев»
@@ -387,7 +387,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 030F ; FtrWallCounterBrickS ; low brick island counter ; レンガのしきりカウンターL ; 磚塊分隔吧台L ; 砖块分隔吧台L ; 벽돌 칸막이 카운터 L ; séparateur bas en briques ; Niedrig-Ziegelinseltheke ; encimera de ladrillo baja ; separatore di mattoni S ; laag bakstenen blok ; низкая стойка (кирпич)
 0310 ; FtrWallCounterWoodL ; tall wooden island counter ; もくせいのしきりカウンターH ; 木製分隔吧台H ; 木制分隔吧台H ; 목제 칸막이 카운터 H ; séparateur haut en bois ; Hoch-Holzinseltheke ; encimera de madera alta ; separatore di legno L ; hoog houten blok ; высокая стойка (дерево)
 02FA ; FtrCave ; cave ; どうくつ ; 洞穴 ; 洞穴 ; 동굴 ; cabane en pierre ; Höhle ; cueva ; grotta ; grot ; пещера
-02FB ; FtrRemainsArch ; ruined arch ; いせきのアーチ ; 遺跡拱門 ; 遗迹拱门 ; 유적 아치 ; ruine d'arche ; Ruinentor ; arco ruinas ; arco in rovina ; vervallen boog ; разрушенная арка
+02FB ; FtrRemainsArch ; ruined arch ; いせきのアーチ ; 遺跡拱門 ; 遗迹拱门 ; 유적 아치 ; ruine d'arche ; Ruinentor ; arco ruinas ; arco in rovina ; vervallen poort ; разрушенная арка
 02F6 ; FtrVineHangchair ; vine hanging chair ; ツルのハンギングチェア ; 藤蔓吊籃椅 ; 藤蔓吊篮椅 ; 덩굴 행잉 체어 ; fauteuil suspendu vigne ; Rankenhängesessel ; silla colgante enredadera ; poltrona appesa con edera ; hangstoel met klimplant ; гамак-кресло из лозы
 0349 ; FtrPicklesTurnipPile ; stacked senmaizuke barrels ; つまれたせんまいづけのたる ; 疊起來的醃菜桶 ; 叠起来的腌菜桶 ; 쌓인 무절임 통 ; pile de fûts senmaizuke ; Senmaizuke-Fass-Stapel ; pila barricas nabo encurtido ; pila di barili di senmaizuke ; stapel senmaizuke-vaten ; бочки с сэммайдзукэ
 034A ; FtrPicklesTurnip ; senmaizuke barrel ; せんまいづけのたる ; 醃菜桶 ; 腌菜桶 ; 무절임 통 ; fût senmaizuke ; Senmaizuke-Fass ; barrica de nabo encurtido ; barile di senmaizuke ; senmaizuke-vat ; бочка с сэммайдзукэ
@@ -527,7 +527,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0390 ; FtrPieFish ; sea-bass pie ; スズキのパイ ; 鱸魚派 ; 鲈鱼派 ; 농어파이 ; tourte au bar commun ; Seebarsch-Pastete ; empanada de lubina ; sformato di spigola ; zeebaarstaart ; пирог с судаком
 0391 ; FtrSalad ; salad ; サラダ ; 沙拉 ; 沙拉 ; 샐러드 ; salade ; Salat ; ensalada ; insalatona ; salade ; салат
 0392 ; FtrSoupMushroom ; mushroom potage ; キノコのポタージュ ; 蘑菇濃湯 ; 蘑菇浓汤 ; 버섯 포타주 ; potage aux champignons ; Pilzsuppe ; crema de champiñones ; zuppa di funghi ; champignonsoep ; грибное рагу
-0393 ; FtrFishandchips ; fish and chips ; フィッシュ&チップス ; 炸魚薯條 ; 炸鱼薯条 ; 피시&칩스 ; fish and chips ; Fish and Chips ; fish & chips ; piatto di fritti ; vis en friet ; рыба с картофелем фри
+0393 ; FtrFishandchips ; fish-and-chips ; フィッシュ&チップス ; 炸魚薯條 ; 炸鱼薯条 ; 피시&칩스 ; fish and chips ; Fish and Chips ; fish & chips ; piatto di fritti ; vis en friet ; рыба с картофелем фри
 0394 ; FtrChips ; french fries ; フライドポテト ; 炸薯條 ; 炸薯条 ; 감자튀김 ; plat de frites ; Pommes frites ; plato de patatas fritas ; porzione di patatine fritte ; friet ; картофель фри
 0395 ; FtrSconePlain ; plain scones ; スコーン ; 司康鬆餅 ; 司康饼 ; 스콘 ; plat de scones nature ; Scones ; plato de scones ; piatto di scone ; scones ; простые булочки
 0396 ; FtrCupcakeVegetable ; veggie cupcakes ; やさいのカップケーキ ; 蔬菜紙杯蛋糕 ; 蔬菜纸杯蛋糕 ; 야채 컵케이크 ; plat de cupcakes légumes ; Gemüse-Cupcakes ; plato de cupcakes vegetales ; piatto di cupcake di verdure ; groentecupcakes ; кексики с овощами
