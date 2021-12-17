@@ -282,7 +282,10 @@ https://youtu.be/-zztRgmtXig
 	* Fixed the variation displayed on the wall-mount/ceiling-mount.
 	* Added basic building indicator to "Map Dropper"
       * Noted that the indicator only provide a general guidance. ~0.5 grid error might happen.
-	
+* R18.8
+	* Update for Game version number 2.0.4
+	* Added "Bulldozer" for Acre and building editing.
+	* Update NuGet Libraries
 
 ## Contributing
 

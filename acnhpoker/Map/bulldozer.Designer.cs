@@ -54,6 +54,8 @@ namespace ACNHPoker
             this.TerrainBtn = new System.Windows.Forms.Button();
             this.buildingPanel = new System.Windows.Forms.Panel();
             this.BuildingControl = new System.Windows.Forms.Panel();
+            this.saveBuildingBtn = new System.Windows.Forms.Button();
+            this.loadBuildingBtn = new System.Windows.Forms.Button();
             this.PreviewBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.updateBtn = new System.Windows.Forms.Button();
@@ -68,6 +70,9 @@ namespace ACNHPoker
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.angleLabel = new System.Windows.Forms.Label();
             this.buildingGridView = new System.Windows.Forms.DataGridView();
+            this.LoadingPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             this.acrePanel.SuspendLayout();
             this.buildingPanel.SuspendLayout();
@@ -77,6 +82,8 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.YUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingGridView)).BeginInit();
+            this.LoadingPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // miniMapBox
@@ -95,6 +102,7 @@ namespace ACNHPoker
             this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.miniMapBox.TabIndex = 190;
             this.miniMapBox.TabStop = false;
+            this.miniMapBox.Visible = false;
             this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
             this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
             // 
@@ -292,6 +300,7 @@ namespace ACNHPoker
             this.AcreBtn.TabIndex = 236;
             this.AcreBtn.Text = "Acre";
             this.AcreBtn.UseVisualStyleBackColor = false;
+            this.AcreBtn.Visible = false;
             this.AcreBtn.Click += new System.EventHandler(this.AcreBtn_Click);
             // 
             // BuildingBtn
@@ -307,6 +316,7 @@ namespace ACNHPoker
             this.BuildingBtn.TabIndex = 237;
             this.BuildingBtn.Text = "Building";
             this.BuildingBtn.UseVisualStyleBackColor = false;
+            this.BuildingBtn.Visible = false;
             this.BuildingBtn.Click += new System.EventHandler(this.BuildingBtn_Click);
             // 
             // acrePanel
@@ -321,6 +331,7 @@ namespace ACNHPoker
             this.acrePanel.Name = "acrePanel";
             this.acrePanel.Size = new System.Drawing.Size(513, 470);
             this.acrePanel.TabIndex = 238;
+            this.acrePanel.Visible = false;
             // 
             // saveAcreBtn
             // 
@@ -394,6 +405,8 @@ namespace ACNHPoker
             // 
             // BuildingControl
             // 
+            this.BuildingControl.Controls.Add(this.saveBuildingBtn);
+            this.BuildingControl.Controls.Add(this.loadBuildingBtn);
             this.BuildingControl.Controls.Add(this.PreviewBtn);
             this.BuildingControl.Controls.Add(this.label1);
             this.BuildingControl.Controls.Add(this.updateBtn);
@@ -413,6 +426,36 @@ namespace ACNHPoker
             this.BuildingControl.TabIndex = 95;
             this.BuildingControl.Visible = false;
             // 
+            // saveBuildingBtn
+            // 
+            this.saveBuildingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.saveBuildingBtn.FlatAppearance.BorderSize = 0;
+            this.saveBuildingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBuildingBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveBuildingBtn.ForeColor = System.Drawing.Color.White;
+            this.saveBuildingBtn.Location = new System.Drawing.Point(232, 80);
+            this.saveBuildingBtn.Name = "saveBuildingBtn";
+            this.saveBuildingBtn.Size = new System.Drawing.Size(86, 30);
+            this.saveBuildingBtn.TabIndex = 241;
+            this.saveBuildingBtn.Text = "Save";
+            this.saveBuildingBtn.UseVisualStyleBackColor = false;
+            this.saveBuildingBtn.Click += new System.EventHandler(this.saveBuildingBtn_Click);
+            // 
+            // loadBuildingBtn
+            // 
+            this.loadBuildingBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.loadBuildingBtn.FlatAppearance.BorderSize = 0;
+            this.loadBuildingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadBuildingBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadBuildingBtn.ForeColor = System.Drawing.Color.White;
+            this.loadBuildingBtn.Location = new System.Drawing.Point(324, 80);
+            this.loadBuildingBtn.Name = "loadBuildingBtn";
+            this.loadBuildingBtn.Size = new System.Drawing.Size(86, 30);
+            this.loadBuildingBtn.TabIndex = 240;
+            this.loadBuildingBtn.Text = "Load";
+            this.loadBuildingBtn.UseVisualStyleBackColor = false;
+            this.loadBuildingBtn.Click += new System.EventHandler(this.loadBuildingBtn_Click);
+            // 
             // PreviewBtn
             // 
             this.PreviewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -426,6 +469,7 @@ namespace ACNHPoker
             this.PreviewBtn.TabIndex = 239;
             this.PreviewBtn.Text = "Preview";
             this.PreviewBtn.UseVisualStyleBackColor = false;
+            this.PreviewBtn.Visible = false;
             // 
             // label1
             // 
@@ -451,6 +495,7 @@ namespace ACNHPoker
             this.updateBtn.TabIndex = 238;
             this.updateBtn.Text = "◀ Update";
             this.updateBtn.UseVisualStyleBackColor = false;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // buildingConfirmBtn
             // 
@@ -465,6 +510,7 @@ namespace ACNHPoker
             this.buildingConfirmBtn.TabIndex = 237;
             this.buildingConfirmBtn.Text = "Confirm";
             this.buildingConfirmBtn.UseVisualStyleBackColor = false;
+            this.buildingConfirmBtn.Click += new System.EventHandler(this.buildingConfirmBtn_Click);
             // 
             // BuildingType
             // 
@@ -513,6 +559,7 @@ namespace ACNHPoker
             this.BuildingType.Name = "BuildingType";
             this.BuildingType.Size = new System.Drawing.Size(196, 24);
             this.BuildingType.TabIndex = 94;
+            this.BuildingType.SelectedIndexChanged += new System.EventHandler(this.BuildingType_SelectedIndexChanged);
             // 
             // LargeXLabel
             // 
@@ -546,11 +593,13 @@ namespace ACNHPoker
             0,
             0,
             0});
+            this.XUpDown.ValueChanged += new System.EventHandler(this.XUpDown_ValueChanged);
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown1.Enabled = false;
             this.numericUpDown1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.numericUpDown1.ForeColor = System.Drawing.Color.White;
             this.numericUpDown1.Location = new System.Drawing.Point(441, 33);
@@ -612,11 +661,13 @@ namespace ACNHPoker
             0,
             0,
             0});
+            this.YUpDown.ValueChanged += new System.EventHandler(this.YUpDown_ValueChanged);
             // 
             // numericUpDown2
             // 
             this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
             this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown2.Enabled = false;
             this.numericUpDown2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.numericUpDown2.ForeColor = System.Drawing.Color.White;
             this.numericUpDown2.Location = new System.Drawing.Point(291, 33);
@@ -671,12 +722,42 @@ namespace ACNHPoker
             this.buildingGridView.TabIndex = 30;
             this.buildingGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.buildingGridView_CellMouseUp);
             // 
+            // LoadingPanel
+            // 
+            this.LoadingPanel.Controls.Add(this.label2);
+            this.LoadingPanel.Controls.Add(this.pictureBox2);
+            this.LoadingPanel.Location = new System.Drawing.Point(470, 241);
+            this.LoadingPanel.Name = "LoadingPanel";
+            this.LoadingPanel.Size = new System.Drawing.Size(185, 30);
+            this.LoadingPanel.TabIndex = 241;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(29, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 22);
+            this.label2.TabIndex = 242;
+            this.label2.Text = "Now Loading...";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.pictureBox2.Location = new System.Drawing.Point(2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.TabIndex = 217;
+            this.pictureBox2.TabStop = false;
+            // 
             // Bulldozer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1094, 511);
+            this.Controls.Add(this.LoadingPanel);
             this.Controls.Add(this.TerrainBtn);
             this.Controls.Add(this.BuildingBtn);
             this.Controls.Add(this.AcreBtn);
@@ -691,8 +772,8 @@ namespace ACNHPoker
             this.Controls.Add(this.RealYCoordinate);
             this.Controls.Add(this.RealXCoordinate);
             this.Controls.Add(this.miniMapBox);
-            this.Controls.Add(this.buildingPanel);
             this.Controls.Add(this.acrePanel);
+            this.Controls.Add(this.buildingPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1110, 550);
@@ -710,6 +791,9 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.YUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingGridView)).EndInit();
+            this.LoadingPanel.ResumeLayout(false);
+            this.LoadingPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -754,5 +838,10 @@ namespace ACNHPoker
         private System.Windows.Forms.Button buildingConfirmBtn;
         private System.Windows.Forms.Button saveAcreBtn;
         private System.Windows.Forms.Button loadAcreBtn;
+        private System.Windows.Forms.Button saveBuildingBtn;
+        private System.Windows.Forms.Button loadBuildingBtn;
+        private System.Windows.Forms.Panel LoadingPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

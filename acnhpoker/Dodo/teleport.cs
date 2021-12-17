@@ -17,7 +17,7 @@ namespace ACNHPoker
         private static byte[] teleportByte;
         private static byte[] anchorByte;
 
-        private static string offset = "[[[[main+460ED68]+18]+178]+D0]+DA"; //"[[[[main+3A33980]+18]+178]+D0]+DA"; //"[[[[main+3A32980]+18]+178]+D0]+DA"; //"[[[[main+3A08B40]+18]+178]+D0]+DA"; //"[[[[main+39DC030]+18]+178]+D0]+DA";//"[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
+        private static string offset = "[[[[main+4627088]+18]+178]+D0]+DA"; //"[[[[main+460ED68]+18]+178]+D0]+DA"; //"[[[[main+3A33980]+18]+178]+D0]+DA"; //"[[[[main+3A32980]+18]+178]+D0]+DA"; //"[[[[main+3A08B40]+18]+178]+D0]+DA"; //"[[[[main+39DC030]+18]+178]+D0]+DA";//"[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
 
         private static int coordinateSize = 20;
         private static int turningSize = 4;

@@ -236,10 +236,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bulldozer.cs">
+    <Compile Include="Map\bulldozer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="bulldozer.Designer.cs">
+    <Compile Include="Map\bulldozer.Designer.cs">
       <DependentUpon>bulldozer.cs</DependentUpon>
     </Compile>
     <Compile Include="Map\BadTimeSimulator.cs">
@@ -394,7 +394,7 @@
     <Compile Include="Custom\VillagerSelector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="bulldozer.resx">
+    <EmbeddedResource Include="Map\bulldozer.resx">
       <DependentUpon>bulldozer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Map\BadTimeSimulator.resx">

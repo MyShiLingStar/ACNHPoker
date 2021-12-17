@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -34,17 +35,23 @@ namespace ACNHPoker
         private int selectedAcreValue;
 
         private Panel selectedPanel;
-
+        private bool MapOrGridViewChange = false;
+        private bool plazaEdited = false;
         public Bulldozer(Socket S, Form1 Main, bool Sound)
         {
             s = S;
             main = Main;
             sound = Sound;
 
-            var layer1Address = Utilities.mapZero;
-
             InitializeComponent();
 
+            Thread LoadThread = new Thread(delegate () { loadMap(); });
+            LoadThread.Start();
+        }
+
+        private void loadMap()
+        {
+            var layer1Address = Utilities.mapZero;
 
             var imageList = new ImageList();
             imageList.ImageSize = new Size(64, 64);
@@ -55,7 +62,6 @@ namespace ACNHPoker
                 acreList.Items.Add(i.ToString(), i.ToString());
             }
             ListViewItem_SetSpacing(acreList, 64 + 15, 80 + 15);
-
 
             if (s != null)
             {
@@ -141,6 +147,15 @@ namespace ACNHPoker
 
                 buildingGridView.CurrentCell = buildingGridView.Rows[0].Cells[2];
             }
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                LoadingPanel.Visible = false;
+                miniMapBox.Visible = true;
+                AcreBtn.Visible = true;
+                BuildingBtn.Visible = true;
+                acrePanel.Visible = true;
+            });
         }
 
         private void fillBuilding()
@@ -220,24 +235,31 @@ namespace ACNHPoker
                 }
                 else
                 {
-                    if (Realx > 255)
-                        Realx = 255;
-                    if (Realy > 255)
-                        Realy = 255;
-
-                    XUpDown.Value = Realx;
-                    YUpDown.Value = Realy;
-
-                    if (buildingGridView.CurrentCell.RowIndex != -1)
+                    if (BuildingControl.Visible)
                     {
-                        int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
-                        int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
-                        int index = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["ID"].Value.ToString());
-                        byte type = (byte)index;
-                        miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, Realx, Realy, type);
+                        if (Realx > 255)
+                            Realx = 255;
+                        if (Realy > 255)
+                            Realy = 255;
+
+                        MapOrGridViewChange = true;
+
+                        XUpDown.Value = Realx;
+                        YUpDown.Value = Realy;
+
+                        if (buildingGridView.CurrentCell.RowIndex != -1)
+                        {
+                            int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
+                            int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                            int index = BuildingType.SelectedIndex;
+                            byte type = (byte)index;
+                            miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, Realx, Realy, type);
+                        }
+                        else
+                            miniMapBox.Image = miniMap.drawLargeMarker(Realx, Realy, Realx, Realy);
+
+                        MapOrGridViewChange = false;
                     }
-                    else
-                        miniMapBox.Image = miniMap.drawLargeMarker(Realx, Realy, Realx, Realy);
                 }
 
                 if (AcreY <= 0)
@@ -300,6 +322,35 @@ namespace ACNHPoker
                 RealYCoordinate.Text = Realy.ToString();
                 xCoordinate.Text = x.ToString();
                 yCoordinate.Text = y.ToString();
+
+                if (selectedPanel == buildingPanel)
+                {
+                    if (BuildingControl.Visible)
+                    {
+                        if (Realx > 255)
+                            Realx = 255;
+                        if (Realy > 255)
+                            Realy = 255;
+
+                        MapOrGridViewChange = true;
+
+                        XUpDown.Value = Realx;
+                        YUpDown.Value = Realy;
+
+                        if (buildingGridView.CurrentCell.RowIndex != -1)
+                        {
+                            int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
+                            int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                            int index = BuildingType.SelectedIndex;
+                            byte type = (byte)index;
+                            miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, Realx, Realy, type);
+                        }
+                        else
+                            miniMapBox.Image = miniMap.drawLargeMarker(Realx, Realy, Realx, Realy);
+
+                        MapOrGridViewChange = false;
+                    }
+                }
             }
         }
 
@@ -310,6 +361,9 @@ namespace ACNHPoker
             int counter = 0;
             Utilities.sendAcre(s, null, AcreOnly, ref counter);
             sendBtn.BackColor = Color.FromArgb(114, 137, 218);
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void setBtn_Click(object sender, EventArgs e)
@@ -336,9 +390,12 @@ namespace ACNHPoker
 
         private void ListViewItem_SetSpacing(ListView listview, short leftPadding, short topPadding)
         {
-            const int LVM_FIRST = 0x1000;
-            const int LVM_SETICONSPACING = LVM_FIRST + 53;
-            SendMessage(listview.Handle, LVM_SETICONSPACING, IntPtr.Zero, (IntPtr)MakeLong(leftPadding, topPadding));
+            this.Invoke((MethodInvoker)delegate
+            {
+                const int LVM_FIRST = 0x1000;
+                const int LVM_SETICONSPACING = LVM_FIRST + 53;
+                SendMessage(listview.Handle, LVM_SETICONSPACING, IntPtr.Zero, (IntPtr)MakeLong(leftPadding, topPadding));
+            });
         }
 
         private void acreList_SelectedIndexChanged(object sender, EventArgs e)
@@ -363,6 +420,7 @@ namespace ACNHPoker
             acrePanel.Visible = false;
             buildingPanel.Visible = true;
             selectedPanel = buildingPanel;
+            miniMapBox.Image = null;
             selectedAcre = -1;
         }
 
@@ -374,6 +432,7 @@ namespace ACNHPoker
             acrePanel.Visible = true;
             buildingPanel.Visible = false;
             selectedPanel = acrePanel;
+            miniMapBox.Image = null;
             selectedAcre = -1;
         }
 
@@ -385,6 +444,9 @@ namespace ACNHPoker
                 if (e.RowIndex > -1)
                 {
                     BuildingControl.Visible = true;
+
+                    MapOrGridViewChange = true;
+
                     XUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X"].Value.ToString());
                     YUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y"].Value.ToString());
                     int index = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["ID"].Value.ToString());
@@ -404,6 +466,8 @@ namespace ACNHPoker
                     int OrgX = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X"].Value.ToString());
                     int OrgY = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y"].Value.ToString());
                     miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, (int)XUpDown.Value, (int)YUpDown.Value, type);
+
+                    MapOrGridViewChange = false;
 
                     if (e.ColumnIndex != 2)
                     {
@@ -543,7 +607,7 @@ namespace ACNHPoker
                 if (data.Length != 0x90)
                 {
                     myMessageBox.Show(  "Incorrect file size!" + " (0x" + data.Length.ToString("X") + ")\n" +
-                                        "Correct file size should be (0x90)", "Who gave you that file?", MessageBoxButtons.OK);
+                                        "Correct file size should be (0x90)", "Who gave you that file?", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -551,6 +615,276 @@ namespace ACNHPoker
 
                 miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawFullBackground(), MiniMap.drawEdge());
                 sendBtn.BackColor = Color.Orange;
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void XUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (MapOrGridViewChange)
+                return;
+
+            if (buildingGridView.CurrentCell.RowIndex != -1)
+            {
+                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
+                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                int index = BuildingType.SelectedIndex;
+                byte type = (byte)index;
+
+                miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, (int)XUpDown.Value, (int)YUpDown.Value, type);
+            }
+        }
+
+        private void YUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (MapOrGridViewChange)
+                return;
+
+            if (buildingGridView.CurrentCell.RowIndex != -1)
+            {
+                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
+                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                int index = BuildingType.SelectedIndex;
+                byte type = (byte)index;
+
+                miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, (int)XUpDown.Value, (int)YUpDown.Value, type);
+            }
+        }
+
+        private void BuildingType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MapOrGridViewChange)
+                return;
+
+            if (buildingGridView.CurrentCell.RowIndex != -1)
+            {
+                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
+                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                int index = BuildingType.SelectedIndex;
+                byte type = (byte)index;
+
+                miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, (int)XUpDown.Value, (int)YUpDown.Value, type);
+            }
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            if (buildingGridView.CurrentCell.RowIndex == 0) // Plaza
+            {
+                plazaEdited = true;
+                buildingGridView.Rows[0].Cells["X"].Value = XUpDown.Value;
+                buildingGridView.Rows[0].Cells["Y"].Value = YUpDown.Value;
+
+                Acre[0x94] = (byte)XUpDown.Value;
+                Acre[0x98] = (byte)YUpDown.Value;
+                MiniMap.updatePlaza();
+                miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawFullBackground(), MiniMap.drawEdge());
+                miniMapBox.Image = null;
+            }
+            else if (buildingGridView.CurrentCell.RowIndex != -1)
+            {
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value = XUpDown.Value;
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value = YUpDown.Value;
+
+                int index = BuildingType.SelectedIndex;
+                byte type = (byte)index;
+
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["ID"].Value = type;
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Name"].Value = BuildingName[type];
+
+
+                DataGridViewCellStyle style = new DataGridViewCellStyle();
+
+                if (BuildingName.ContainsKey(type))
+                    style.BackColor = miniMap.ByteToBuildingColor[type];
+                else
+                    style.BackColor = Color.Black;
+
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Color"].Style = style;
+
+                Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14] = type;
+                Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14 + 0x2] = (byte)XUpDown.Value;
+                Building[(buildingGridView.CurrentCell.RowIndex - 1) * 0x14 + 0x4] = (byte)YUpDown.Value;
+
+
+                miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawFullBackground(), MiniMap.drawEdge());
+                miniMapBox.Image = null;
+            }
+
+            buildingConfirmBtn.BackColor = Color.Orange;
+        }
+
+        private void buildingConfirmBtn_Click(object sender, EventArgs e)
+        {
+            int counter = 0;
+
+            if (plazaEdited)
+            {
+                byte[] PlazaOnly = new byte[0x8];
+                Buffer.BlockCopy(Acre, 0x94, PlazaOnly, 0x0, 0x8);
+                Utilities.sendPlaza(s, null, PlazaOnly, ref counter);
+            }
+
+            Utilities.sendBuilding(s, null, Building, ref counter);
+            buildingConfirmBtn.BackColor = Color.FromArgb(114, 137, 218);
+            miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawFullBackground(), MiniMap.drawEdge());
+            miniMapBox.Image = null;
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void saveBuildingBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog file = new SaveFileDialog()
+                {
+                    Filter = "New Horizons Building List (*.nhb)|*.nhb",
+                };
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastSave"].Value;
+
+                //Debug.Print(savepath);
+                if (Directory.Exists(savepath))
+                {
+                    file.InitialDirectory = savepath;
+                }
+                else
+                {
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastSave"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
+                File.WriteAllBytes(file.FileName, Building);
+
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void loadBuildingBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog file = new OpenFileDialog()
+                {
+                    Filter = "New Horizons Building List (*.nhb)|*.nhb| All files (*.*)|*.*",
+                };
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+                if (Directory.Exists(savepath))
+                {
+                    file.InitialDirectory = savepath;
+                }
+                else
+                {
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
+                byte[] data = File.ReadAllBytes(file.FileName);
+
+                if (data.Length != 0x398)
+                {
+                    myMessageBox.Show("Incorrect file size!" + " (0x" + data.Length.ToString("X") + ")\n" +
+                                        "Correct file size should be (0x398)", "Who gave you that file?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Buffer.BlockCopy(data, 0x0, Building, 0, 0x398);
+
+                buildingList = new byte[NumOfBuilding][];
+                for (int i = 0; i < NumOfBuilding; i++)
+                {
+                    buildingList[i] = new byte[BuildingSize];
+                    Buffer.BlockCopy(Building, i * BuildingSize, buildingList[i], 0x0, BuildingSize);
+
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+
+                    byte key = buildingList[i][0];
+                    if (BuildingName.ContainsKey(key))
+                    {
+                        buildingGridView.Rows[i + 1].Cells["ID"].Value = buildingList[i][0x0];
+                        buildingGridView.Rows[i + 1].Cells["Name"].Value = BuildingName[key];
+                        buildingGridView.Rows[i + 1].Cells["X"].Value = buildingList[i][0x2];
+                        buildingGridView.Rows[i + 1].Cells["Y"].Value = buildingList[i][0x4];
+                        style.BackColor = miniMap.ByteToBuildingColor[buildingList[i][0x0]];
+                    }
+                    else
+                    {
+                        buildingGridView.Rows[i + 1].Cells["ID"].Value = buildingList[i][0x0];
+                        buildingGridView.Rows[i + 1].Cells["Name"].Value = "???";
+                        buildingGridView.Rows[i + 1].Cells["X"].Value = buildingList[i][0x2];
+                        buildingGridView.Rows[i + 1].Cells["Y"].Value = buildingList[i][0x4];
+                        style.BackColor = Color.Black;
+                    }
+
+                    buildingGridView.Rows[i + 1].Cells["Color"].Style = style;
+                }
+
+                buildingGridView.CurrentCell = buildingGridView.Rows[0].Cells[2];
+                XUpDown.Value = Int16.Parse(buildingGridView.Rows[0].Cells["X"].Value.ToString());
+                YUpDown.Value = Int16.Parse(buildingGridView.Rows[0].Cells["Y"].Value.ToString());
+                int index = Int16.Parse(buildingGridView.Rows[0].Cells["ID"].Value.ToString());
+                byte type = (byte)index;
+                if (index <= BuildingType.Items.Count)
+                {
+                    BuildingType.Enabled = true;
+                    BuildingType.SelectedIndex = index;
+                }
+                else
+                {
+                    //Plaza
+                    BuildingType.Enabled = false;
+                    BuildingType.SelectedIndex = -1;
+                }
+
+                miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawFullBackground(), MiniMap.drawEdge());
+                miniMapBox.Image = null;
+                buildingConfirmBtn.BackColor = Color.Orange;
             }
             catch
             {

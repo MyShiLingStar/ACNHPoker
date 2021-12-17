@@ -53,13 +53,7 @@ namespace ACNHPoker
             AcreMapByte = acreMapByte;
             BuildingByte = buildingByte;
 
-            if (AcreMapByte != null)
-            {
-                plazaX = AcreMapByte[AcreMax * 2 + 4];
-                plazaY = AcreMapByte[AcreMax * 2 + 8];
-                plazaTopX = (plazaX - 0x20) / 2;
-                plazaTopY = (plazaY - 0x20) / 2;
-            }
+            updatePlaza();
 
             ItemMapData = new byte[numOfColumn][];
             mapSize = size;
@@ -533,7 +527,7 @@ namespace ACNHPoker
                         {
                             drawBuildingSetup(buildingType, BuildingX, BuildingY, ref buildingTopX, ref buildingTopY, ref buildingBottomX, ref buildingBottomY, true);
 
-                            BuildingColor = Color.FromArgb(200, Color.DeepPink);
+                            BuildingColor = Color.FromArgb(150, Color.DeepPink);
 
                             for (int j = buildingTopX; j <= buildingBottomX; j++)
                             {
@@ -546,10 +540,10 @@ namespace ACNHPoker
                                     PutPixel(graphics, j * (mapSize / 2), k * (mapSize / 2), BuildingColor, (mapSize / 2));
                                 }
                             }
-                        }
 
-                        Pen linePen = new Pen(Color.Red, 2);
-                        graphics.DrawLine(linePen, OrgX * (mapSize / 2), OrgY * (mapSize / 2), NewX * (mapSize / 2), NewY * (mapSize / 2));
+                            Pen linePen = new Pen(Color.Red, 2);
+                            graphics.DrawLine(linePen, OrgX * (mapSize / 2), OrgY * (mapSize / 2), NewX * (mapSize / 2), NewY * (mapSize / 2));
+                        }
                     }
                     else
                     {
@@ -1042,6 +1036,16 @@ namespace ACNHPoker
             return AcreImage;
         }
 
+        public void updatePlaza()
+        {
+            if (AcreMapByte != null)
+            {
+                plazaX = AcreMapByte[AcreMax * 2 + 4];
+                plazaY = AcreMapByte[AcreMax * 2 + 8];
+                plazaTopX = (plazaX - 0x20) / 2;
+                plazaTopY = (plazaY - 0x20) / 2;
+            }
+        }
         public static Color drawBuildingSetup(byte BuildingByte, int BuildingX, int BuildingY, ref int buildingTopX,ref int buildingTopY,ref int buildingBottomX,ref int buildingBottomY, bool TimesTwo = false)
         {
             Color BuildingColor;

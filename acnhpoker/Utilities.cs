@@ -2280,7 +2280,7 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        Debug.Print("[Sys] Peek : Acre " + AcreOffset);
+                        Debug.Print("[Sys] Peek : Acre " + AcreOffset.ToString("X"));
 
                         byte[] b = ReadByteArray(socket, AcreOffset, AcreAndPlaza);
 
@@ -2292,7 +2292,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        Debug.Print("[Usb] Peek : Acre " + AcreOffset);
+                        Debug.Print("[Usb] Peek : Acre " + AcreOffset.ToString("X"));
 
                         byte[] b = bot.ReadBytes(AcreOffset, AcreAndPlaza);
 
@@ -2319,17 +2319,73 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        Debug.Print("[Sys] Poke : Acre " + AcreOffset);
+                        Debug.Print("[Sys] Poke : Acre " + AcreOffset.ToString("X"));
 
                         SendByteArray(socket, AcreOffset, acre, acre.Length, ref counter);
                         SendByteArray(socket, AcreOffset + mapOffset, acre, acre.Length, ref counter);
                     }
                     else
                     {
-                        Debug.Print("[Usb] Poke : Acre " + AcreOffset);
+                        Debug.Print("[Usb] Poke : Acre " + AcreOffset.ToString("X"));
 
                         WriteLargeBytes(bot, AcreOffset, acre, acre.Length, ref counter);
                         WriteLargeBytes(bot, AcreOffset + mapOffset, acre, acre.Length, ref counter);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                }
+            }
+        }
+
+        public static void sendPlaza(Socket socket, USBBot bot, byte[] plaza, ref int counter)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        Debug.Print("[Sys] Poke : Plaza " + (AcreOffset + 0x94).ToString("X"));
+
+                        SendByteArray(socket, AcreOffset + 0x94, plaza, plaza.Length, ref counter);
+                        SendByteArray(socket, AcreOffset + 0x94 + mapOffset, plaza, plaza.Length, ref counter);
+                    }
+                    else
+                    {
+                        Debug.Print("[Usb] Poke : Plaza " + (AcreOffset + 0x94).ToString("X"));
+
+                        WriteLargeBytes(bot, AcreOffset + 0x94, plaza, plaza.Length, ref counter);
+                        WriteLargeBytes(bot, AcreOffset + 0x94 + mapOffset, plaza, plaza.Length, ref counter);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                }
+            }
+        }
+
+        public static void sendBuilding(Socket socket, USBBot bot, byte[] building, ref int counter)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        Debug.Print("[Sys] Poke : Building " + BuildingOffset.ToString("X"));
+
+                        SendByteArray(socket, BuildingOffset, building, building.Length, ref counter);
+                        SendByteArray(socket, BuildingOffset + mapOffset, building, building.Length, ref counter);
+                    }
+                    else
+                    {
+                        Debug.Print("[Usb] Poke : Building " + BuildingOffset.ToString("X"));
+
+                        WriteLargeBytes(bot, BuildingOffset, building, building.Length, ref counter);
+                        WriteLargeBytes(bot, BuildingOffset + mapOffset, building, building.Length, ref counter);
                     }
                 }
                 catch
@@ -2347,7 +2403,7 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        Debug.Print("[Sys] Peek : Building " + BuildingOffset);
+                        Debug.Print("[Sys] Peek : Building " + BuildingOffset.ToString("X"));
 
                         byte[] b = ReadByteArray(socket, BuildingOffset, AllBuildingSize);
 
@@ -2359,7 +2415,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        Debug.Print("[Usb] Peek : Building " + BuildingOffset);
+                        Debug.Print("[Usb] Peek : Building " + BuildingOffset.ToString("X"));
 
                         byte[] b = bot.ReadBytes(BuildingOffset, AllBuildingSize);
 
