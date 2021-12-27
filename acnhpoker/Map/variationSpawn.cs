@@ -14,12 +14,25 @@ namespace ACNHPoker
         inventorySlot[,] subHSlot = new inventorySlot[3, 1];
         inventorySlot[,] allHSlot = new inventorySlot[2, 3];
 
+        private miniMap MiniMap = null;
+        private byte[] Layer1 = null;
+        private byte[] Acre = null;
+        private byte[] Building = null;
+        private bool previewOn = false;
 
         int main;
         int sub;
+        int X;
+        int Y;
 
-        public variationSpawn(inventorySlot[,] variationList)
+        public variationSpawn(inventorySlot[,] variationList, byte[] layer1, byte[] acre, byte[] building, int x, int y)
         {
+            Layer1 = layer1;
+            Acre = acre;
+            Building = building;
+            X = x;
+            Y = y;
+
             InitializeComponent();
             map.numOfColumn = (int)columnBox.Value;
             map.numOfRow = (int)rowBox.Value;
@@ -139,6 +152,9 @@ namespace ACNHPoker
             }
 
             updateSize();
+
+            MiniMap = new miniMap(Layer1, Acre, Building, 4);
+            miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
         }
 
         private void mainOnly_CheckedChanged(object sender, EventArgs e)
@@ -200,30 +216,47 @@ namespace ACNHPoker
 
         private void updateSize()
         {
-            if (mainOnly.Checked)
+            if (toggleBtn.Tag.ToString().Equals("Vertical"))
             {
-                size.Text = main.ToString() + " × " + columnBox.Value;
-            }
-            else if (subOnly.Checked)
-            {
-                size.Text = sub.ToString() + " × " + columnBox.Value;
+                if (mainOnly.Checked)
+                {
+                    size.Text = main.ToString() + " × " + columnBox.Value;
+                    if (previewOn)
+                        miniMapBox.Image = MiniMap.drawPreview(main, (int)columnBox.Value, X, Y, true);
+                }
+                else if (subOnly.Checked)
+                {
+                    size.Text = sub.ToString() + " × " + columnBox.Value;
+                    if (previewOn)
+                        miniMapBox.Image = MiniMap.drawPreview(sub, (int)columnBox.Value, X, Y, true);
+                }
+                else
+                {
+                    size.Text = sub.ToString() + " × " + main.ToString();
+                    if (previewOn)
+                        miniMapBox.Image = MiniMap.drawPreview(sub, main, X, Y, true);
+                }
             }
             else
             {
-                size.Text = sub.ToString() + " × " + main.ToString();
-            }
-
-            if (mainHOnly.Checked)
-            {
-                sizeH.Text = rowBox.Value + " × " + main.ToString();
-            }
-            else if (subHOnly.Checked)
-            {
-                sizeH.Text = rowBox.Value + " × " + sub.ToString();
-            }
-            else
-            {
-                sizeH.Text = main.ToString() + " × " + sub.ToString();
+                if (mainHOnly.Checked)
+                {
+                    sizeH.Text = rowBox.Value + " × " + main.ToString();
+                    if (previewOn)
+                        miniMapBox.Image = MiniMap.drawPreview((int)rowBox.Value, main, X, Y, true);
+                }
+                else if (subHOnly.Checked)
+                {
+                    sizeH.Text = rowBox.Value + " × " + sub.ToString();
+                    if (previewOn)
+                        miniMapBox.Image = MiniMap.drawPreview((int)rowBox.Value, sub, X, Y, true);
+                }
+                else
+                {
+                    sizeH.Text = main.ToString() + " × " + sub.ToString();
+                    if (previewOn)
+                        miniMapBox.Image = MiniMap.drawPreview(main, sub, X, Y, true);
+                }
             }
         }
 
@@ -236,6 +269,7 @@ namespace ACNHPoker
                 toggleBtn.BackColor = Color.Orange;
                 horiPanel.Visible = true;
                 vertPanel.Visible = false;
+                updateSize();
             }
             else
             {
@@ -244,6 +278,37 @@ namespace ACNHPoker
                 toggleBtn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
                 horiPanel.Visible = false;
                 vertPanel.Visible = true;
+                updateSize();
+            }
+        }
+
+        private void previewBtn_Click(object sender, EventArgs e)
+        {
+            if (previewOn)
+            {
+                this.Width = 690;
+                previewOn = false;
+            }
+            else
+            {
+                this.Width = 1150;
+                previewOn = true;
+                updateSize();
+            }
+        }
+
+        private void previewHBtn_Click(object sender, EventArgs e)
+        {
+            if (previewOn)
+            {
+                this.Width = 690;
+                previewOn = false;
+            }
+            else
+            {
+                this.Width = 1150;
+                previewOn = true;
+                updateSize();
             }
         }
     }

@@ -37,6 +37,7 @@ namespace ACNHPoker
         private Panel selectedPanel;
         private bool MapOrGridViewChange = false;
         private bool plazaEdited = false;
+        private bool valueUpdated = false;
         public Bulldozer(Socket S, Form1 Main, bool Sound)
         {
             s = S;
@@ -492,6 +493,50 @@ namespace ACNHPoker
                     {
                         buildingGridView.CurrentCell = buildingGridView.Rows[e.RowIndex].Cells[2];
                     }
+
+                    valueUpdated = true;
+
+                    if (index == 27) // incline
+                    {
+                        inclinePanel.Visible = true;
+                        inclineAngleSelect.SelectedIndex = (int)AUpDown.Value;
+                        switch (TUpDown.Value)
+                        {
+                            case 0:
+                                inclineTypeSelect.SelectedIndex = 0;
+                                break;
+                            case 1:
+                                inclineTypeSelect.SelectedIndex = 1;
+                                break;
+                            case 2:
+                                inclineTypeSelect.SelectedIndex = 2;
+                                break;
+                            case 3:
+                                inclineTypeSelect.SelectedIndex = 3;
+                                break;
+                            case 4:
+                                inclineTypeSelect.SelectedIndex = 4;
+                                break;
+                            case 29:
+                                inclineTypeSelect.SelectedIndex = 5;
+                                break;
+                            case 30:
+                                inclineTypeSelect.SelectedIndex = 6;
+                                break;
+                            case 31:
+                                inclineTypeSelect.SelectedIndex = 7;
+                                break;
+                            default:
+                                inclineTypeSelect.SelectedIndex = 0;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        inclinePanel.Visible = false;
+                    }
+
+                    valueUpdated = false;
                 }
             }
         }
@@ -686,6 +731,15 @@ namespace ACNHPoker
                 byte type = (byte)index;
 
                 miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, (int)XUpDown.Value, (int)YUpDown.Value, type);
+            }
+
+            if (BuildingType.SelectedIndex == 27) // incline
+            {
+                inclinePanel.Visible = true;
+            }
+            else
+            {
+                inclinePanel.Visible = false;
             }
         }
 
@@ -911,6 +965,55 @@ namespace ACNHPoker
             catch
             {
                 return;
+            }
+        }
+
+        private void inclineAngleSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (valueUpdated)
+                return;
+            ComboBox comboBox = (ComboBox)sender;
+            if (comboBox.SelectedIndex > -1)
+                AUpDown.Value = comboBox.SelectedIndex;
+        }
+
+        private void inclineTypeSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (valueUpdated)
+                return;
+            ComboBox comboBox = (ComboBox)sender;
+            if (comboBox.SelectedIndex > -1)
+            {
+                switch (comboBox.SelectedIndex)
+                {
+                    case 0:
+                        TUpDown.Value = 0;
+                        break;
+                    case 1:
+                        TUpDown.Value = 1;
+                        break;
+                    case 2:
+                        TUpDown.Value = 2;
+                        break;
+                    case 3:
+                        TUpDown.Value = 3;
+                        break;
+                    case 4:
+                        TUpDown.Value = 4;
+                        break;
+                    case 5:
+                        TUpDown.Value = 29;
+                        break;
+                    case 6:
+                        TUpDown.Value = 30;
+                        break;
+                    case 7:
+                        TUpDown.Value = 31;
+                        break;
+                    default:
+                        TUpDown.Value = 0;
+                        break;
+                }
             }
         }
     }

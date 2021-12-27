@@ -31,7 +31,7 @@ namespace ACNHPoker
         private static int plazaTopY = -1;
 
 
-        private static byte[] AcreData = ACNHPoker.Properties.Resources.acre;
+        private static byte[] AcreData = Properties.Resources.acre;
         private static Color[][] floorBackgroundColor;
 
         public const int MapTileCount16x16 = 16 * 16 * 7 * 6;
@@ -47,7 +47,6 @@ namespace ACNHPoker
         private const int AcreHeight = 6 + (2 * 1);
         private const int AcreMax = AcreWidth * AcreHeight;
         private const int AllAcreSize = AcreMax * 2;
-        private const int AcrePlusAdditionalParams = AllAcreSize + 2 + 2 + 4 + 4;
         public miniMap(byte[] ItemMapByte, byte[] acreMapByte, byte[] buildingByte, int size = 2)
         {
             AcreMapByte = acreMapByte;
@@ -469,7 +468,7 @@ namespace ACNHPoker
 
         public Bitmap drawMarker(int x, int y)
         {
-            Bitmap marker = new Bitmap(ACNHPoker.Properties.Resources.marker);
+            Bitmap marker = new Bitmap(Properties.Resources.marker);
 
             Bitmap myBitmap;
             myBitmap = new Bitmap(16 * 7 * mapSize, 16 * 6 * mapSize);
@@ -491,7 +490,7 @@ namespace ACNHPoker
 
         public static Bitmap drawLargeMarker(int OrgX, int OrgY, int NewX, int NewY, byte buildingType = 0xFE)
         {
-            Bitmap marker = new Bitmap(ACNHPoker.Properties.Resources.marker);
+            Bitmap marker = new Bitmap(Properties.Resources.marker);
 
             Bitmap myBitmap;
             myBitmap = new Bitmap(16 * 9 * mapSize, 16 * 8 * mapSize);
@@ -866,7 +865,7 @@ namespace ACNHPoker
 
                     if (CurrentBuilding != BuildingType.None)
                     {
-                        if (BuildingX < 0 || BuildingX > numOfColumn || BuildingY < 0 || BuildingY > numOfRow)
+                        if (BuildingX < 0 || BuildingX >= numOfColumn || BuildingY < 0 || BuildingY >= numOfRow)
                         {
 
                         }

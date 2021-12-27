@@ -608,15 +608,16 @@ namespace ACNHPoker
             int x = anchorX;
             int y = anchorY;
 
-            List<Task> tasks = new List<Task>();
-
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[0], floorByte[1], (x - 3), (y - 3), floor1, floor2, floor3, floor4, floor5, floor6, floor7, 0, false)));
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[2], floorByte[3], (x - 2), (y - 3), floor8, floor9, floor10, floor11, floor12, floor13, floor14, 1, false)));
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[4], floorByte[5], (x - 1), (y - 3), floor15, floor16, floor17, floor18, floor19, floor20, floor21, 2, false)));
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[6], floorByte[7], (x - 0), (y - 3), floor22, floor23, floor24, floor25, floor26, floor27, floor28, 3, true)));
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[8], floorByte[9], (x + 1), (y - 3), floor29, floor30, floor31, floor32, floor33, floor34, floor35, 4, false)));
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[10], floorByte[11], (x + 2), (y - 3), floor36, floor37, floor38, floor39, floor40, floor41, floor42, 5, false)));
-            tasks.Add(Task.Run(() => BtnSetupAsync(floorByte[12], floorByte[13], (x + 3), (y - 3), floor43, floor44, floor45, floor46, floor47, floor48, floor49, 6, false)));
+            List<Task> tasks = new List<Task>
+            {
+                Task.Run(() => BtnSetupAsync(floorByte[0], floorByte[1], (x - 3), (y - 3), floor1, floor2, floor3, floor4, floor5, floor6, floor7, 0, false)),
+                Task.Run(() => BtnSetupAsync(floorByte[2], floorByte[3], (x - 2), (y - 3), floor8, floor9, floor10, floor11, floor12, floor13, floor14, 1, false)),
+                Task.Run(() => BtnSetupAsync(floorByte[4], floorByte[5], (x - 1), (y - 3), floor15, floor16, floor17, floor18, floor19, floor20, floor21, 2, false)),
+                Task.Run(() => BtnSetupAsync(floorByte[6], floorByte[7], (x - 0), (y - 3), floor22, floor23, floor24, floor25, floor26, floor27, floor28, 3, true)),
+                Task.Run(() => BtnSetupAsync(floorByte[8], floorByte[9], (x + 1), (y - 3), floor29, floor30, floor31, floor32, floor33, floor34, floor35, 4, false)),
+                Task.Run(() => BtnSetupAsync(floorByte[10], floorByte[11], (x + 2), (y - 3), floor36, floor37, floor38, floor39, floor40, floor41, floor42, 5, false)),
+                Task.Run(() => BtnSetupAsync(floorByte[12], floorByte[13], (x + 3), (y - 3), floor43, floor44, floor45, floor46, floor47, floor48, floor49, 6, false))
+            };
 
             await Task.WhenAll(tasks);
 
@@ -2060,7 +2061,7 @@ namespace ACNHPoker
                 {
                     disableBtn();
                 });
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
 
             Utilities.dropItem(s, bot, address, itemID, itemData, flag1, flag2);
@@ -2295,7 +2296,7 @@ namespace ACNHPoker
 
                 while (isAboutToSave(time + 10))
                 {
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                 }
 
                 for (int i = 0; i < SpawnArea.Length / 2; i++)
@@ -2528,7 +2529,7 @@ namespace ACNHPoker
 
                 while (isAboutToSave(time + 10))
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(3000);
                 }
 
                 for (int i = 0; i < numberOfColumn; i++)
@@ -2741,7 +2742,7 @@ namespace ACNHPoker
                 {
                     disableBtn();
                 });
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
 
             Utilities.deleteFloorItem(s, bot, address);
@@ -2946,7 +2947,7 @@ namespace ACNHPoker
 
                 while (isAboutToSave(10))
                 {
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                 }
 
                 Utilities.dropColumn(s, bot, address1, address1 + 0x600, b[0], b[1], ref counter);
@@ -3073,7 +3074,7 @@ namespace ACNHPoker
 
                 while (isAboutToSave(10))
                 {
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                 }
 
                 Utilities.dropColumn(s, bot, address1, address1 + 0x600, b[0], b[1], ref counter);
@@ -3363,15 +3364,16 @@ namespace ACNHPoker
                     Thread.Sleep(2000);
                 }*/
 
-                List<Task> tasks = new List<Task>();
-
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address1, address1 + 0x600, b[0], b[1])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address2, address2 + 0x600, b[2], b[3])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address3, address3 + 0x600, b[4], b[5])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address4, address4 + 0x600, b[6], b[7])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address5, address5 + 0x600, b[8], b[9])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address6, address6 + 0x600, b[10], b[11])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address7, address7 + 0x600, b[12], b[13])));
+                List<Task> tasks = new List<Task>
+                {
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address1, address1 + 0x600, b[0], b[1])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address2, address2 + 0x600, b[2], b[3])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address3, address3 + 0x600, b[4], b[5])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address4, address4 + 0x600, b[6], b[7])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address5, address5 + 0x600, b[8], b[9])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address6, address6 + 0x600, b[10], b[11])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address7, address7 + 0x600, b[12], b[13]))
+                };
 
                 await Task.WhenAll(tasks);
 
@@ -4531,7 +4533,7 @@ namespace ACNHPoker
 
                 while (isAboutToSave(num))
                 {
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                 }
 
                 for (int i = 0; i < 56; i++)
@@ -4589,7 +4591,7 @@ namespace ACNHPoker
 
                 while (isAboutToSave(num + 10))
                 {
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                 }
 
                 for (int i = 0; i < 56; i++)
@@ -4863,18 +4865,19 @@ namespace ACNHPoker
 
                 while (isAboutToSave(10))
                 {
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                 }
 
-                List<Task> tasks = new List<Task>();
-
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address1, address1 + 0x600, b[0], b[1])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address2, address2 + 0x600, b[2], b[3])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address3, address3 + 0x600, b[4], b[5])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address4, address4 + 0x600, b[6], b[7])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address5, address5 + 0x600, b[8], b[9])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address6, address6 + 0x600, b[10], b[11])));
-                tasks.Add(Task.Run(() => Utilities.dropColumn2(s, bot, address7, address7 + 0x600, b[12], b[13])));
+                List<Task> tasks = new List<Task>
+                {
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address1, address1 + 0x600, b[0], b[1])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address2, address2 + 0x600, b[2], b[3])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address3, address3 + 0x600, b[4], b[5])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address4, address4 + 0x600, b[6], b[7])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address5, address5 + 0x600, b[8], b[9])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address6, address6 + 0x600, b[10], b[11])),
+                    Task.Run(() => Utilities.dropColumn2(s, bot, address7, address7 + 0x600, b[12], b[13]))
+                };
 
                 await Task.WhenAll(tasks);
 
@@ -5421,6 +5424,7 @@ namespace ACNHPoker
         {
             if (IdTextbox.Text == "" || HexTextbox.Text == "" || FlagTextbox.Text == "")
             {
+                MessageBox.Show("Please select an item!");
                 return;
             }
 
@@ -5450,7 +5454,7 @@ namespace ACNHPoker
                 int main = variationList.GetLength(0);
                 int sub = variationList.GetLength(1);
 
-                variationSpawn variationSpawner = new variationSpawn(variationList);
+                variationSpawn variationSpawner = new variationSpawn(variationList, Layer1, Acre, Building, TopLeftX, TopLeftY);
                 int result = (int)variationSpawner.ShowDialog(this);
 
                 if (result == 1) // Main

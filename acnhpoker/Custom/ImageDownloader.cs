@@ -35,8 +35,10 @@ namespace ACNHPoker
                 File.Delete(@"img.zip");
             }
 
-            WebClient webClient = new WebClient();
-            webClient.Proxy = null;
+            WebClient webClient = new WebClient
+            {
+                Proxy = null
+            };
 
             webClient.DownloadProgressChanged += (s, ez) =>
             {

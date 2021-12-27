@@ -1120,7 +1120,7 @@ namespace ACNHPoker
             const int maxUInt32Tosend = 125;
             size /= 4;
             int sent = 0;
-            int UInt32ToSend = 0;
+            int UInt32ToSend;
             StringBuilder dataTemp = new StringBuilder();
             string msg;
             while (sent < size)

@@ -36,30 +36,18 @@ namespace ACNHPoker
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.main02 = new ACNHPoker.inventorySlot();
-            this.main01 = new ACNHPoker.inventorySlot();
-            this.main00 = new ACNHPoker.inventorySlot();
             this.subPanel = new System.Windows.Forms.Panel();
             this.timesLabel2 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.sub00 = new ACNHPoker.inventorySlot();
             this.label10 = new System.Windows.Forms.Label();
-            this.sub01 = new ACNHPoker.inventorySlot();
-            this.sub02 = new ACNHPoker.inventorySlot();
             this.allPanel = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.all12 = new ACNHPoker.inventorySlot();
-            this.all00 = new ACNHPoker.inventorySlot();
-            this.all11 = new ACNHPoker.inventorySlot();
-            this.all01 = new ACNHPoker.inventorySlot();
-            this.all10 = new ACNHPoker.inventorySlot();
-            this.all02 = new ACNHPoker.inventorySlot();
             this.label14 = new System.Windows.Forms.Label();
             this.mainOnly = new System.Windows.Forms.RadioButton();
             this.subOnly = new System.Windows.Forms.RadioButton();
@@ -71,45 +59,60 @@ namespace ACNHPoker
             this.label16 = new System.Windows.Forms.Label();
             this.size = new System.Windows.Forms.RichTextBox();
             this.vertPanel = new System.Windows.Forms.Panel();
+            this.previewBtn = new System.Windows.Forms.Button();
             this.horiPanel = new System.Windows.Forms.Panel();
             this.mainHOnly = new System.Windows.Forms.RadioButton();
             this.sizeH = new System.Windows.Forms.RichTextBox();
             this.mainHPanel = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.timesHLabel1 = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.mainH02 = new ACNHPoker.inventorySlot();
-            this.mainH01 = new ACNHPoker.inventorySlot();
-            this.mainH00 = new ACNHPoker.inventorySlot();
             this.label21 = new System.Windows.Forms.Label();
             this.subHPanel = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.timesHLabel2 = new System.Windows.Forms.RichTextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.subH00 = new ACNHPoker.inventorySlot();
-            this.subH01 = new ACNHPoker.inventorySlot();
-            this.subH02 = new ACNHPoker.inventorySlot();
             this.rowPanel = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.rowBox = new System.Windows.Forms.NumericUpDown();
             this.allHPanel = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.okHBtn = new System.Windows.Forms.Button();
+            this.subHOnly = new System.Windows.Forms.RadioButton();
+            this.allH = new System.Windows.Forms.RadioButton();
+            this.toggleBtn = new System.Windows.Forms.Button();
+            this.miniMapBox = new System.Windows.Forms.PictureBox();
+            this.previewHBtn = new System.Windows.Forms.Button();
+            this.mainH02 = new ACNHPoker.inventorySlot();
+            this.mainH01 = new ACNHPoker.inventorySlot();
+            this.mainH00 = new ACNHPoker.inventorySlot();
+            this.subH00 = new ACNHPoker.inventorySlot();
+            this.subH01 = new ACNHPoker.inventorySlot();
+            this.subH02 = new ACNHPoker.inventorySlot();
             this.allH12 = new ACNHPoker.inventorySlot();
             this.allH00 = new ACNHPoker.inventorySlot();
             this.allH11 = new ACNHPoker.inventorySlot();
             this.allH01 = new ACNHPoker.inventorySlot();
             this.allH10 = new ACNHPoker.inventorySlot();
             this.allH02 = new ACNHPoker.inventorySlot();
-            this.okHBtn = new System.Windows.Forms.Button();
-            this.subHOnly = new System.Windows.Forms.RadioButton();
-            this.allH = new System.Windows.Forms.RadioButton();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.toggleBtn = new System.Windows.Forms.Button();
+            this.main02 = new ACNHPoker.inventorySlot();
+            this.main01 = new ACNHPoker.inventorySlot();
+            this.main00 = new ACNHPoker.inventorySlot();
+            this.sub00 = new ACNHPoker.inventorySlot();
+            this.sub01 = new ACNHPoker.inventorySlot();
+            this.sub02 = new ACNHPoker.inventorySlot();
+            this.all12 = new ACNHPoker.inventorySlot();
+            this.all00 = new ACNHPoker.inventorySlot();
+            this.all11 = new ACNHPoker.inventorySlot();
+            this.all01 = new ACNHPoker.inventorySlot();
+            this.all10 = new ACNHPoker.inventorySlot();
+            this.all02 = new ACNHPoker.inventorySlot();
             this.mainPanel.SuspendLayout();
             this.subPanel.SuspendLayout();
             this.allPanel.SuspendLayout();
@@ -122,6 +125,7 @@ namespace ACNHPoker
             this.rowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rowBox)).BeginInit();
             this.allHPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -199,63 +203,6 @@ namespace ACNHPoker
             this.label6.TabIndex = 226;
             this.label6.Text = ".   .   .";
             // 
-            // main02
-            // 
-            this.main02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.main02.FlatAppearance.BorderSize = 0;
-            this.main02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main02.flowerQuantity = ((ushort)(0));
-            this.main02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.main02.ForeColor = System.Drawing.Color.White;
-            this.main02.itemDurability = ((ushort)(0));
-            this.main02.itemQuantity = ((ushort)(0));
-            this.main02.Location = new System.Drawing.Point(0, 152);
-            this.main02.Margin = new System.Windows.Forms.Padding(0);
-            this.main02.Name = "main02";
-            this.main02.Size = new System.Drawing.Size(75, 75);
-            this.main02.TabIndex = 4;
-            this.main02.Tag = "1";
-            this.main02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.main02.UseVisualStyleBackColor = false;
-            // 
-            // main01
-            // 
-            this.main01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.main01.FlatAppearance.BorderSize = 0;
-            this.main01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main01.flowerQuantity = ((ushort)(0));
-            this.main01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.main01.ForeColor = System.Drawing.Color.White;
-            this.main01.itemDurability = ((ushort)(0));
-            this.main01.itemQuantity = ((ushort)(0));
-            this.main01.Location = new System.Drawing.Point(0, 76);
-            this.main01.Margin = new System.Windows.Forms.Padding(0);
-            this.main01.Name = "main01";
-            this.main01.Size = new System.Drawing.Size(75, 75);
-            this.main01.TabIndex = 3;
-            this.main01.Tag = "1";
-            this.main01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.main01.UseVisualStyleBackColor = false;
-            // 
-            // main00
-            // 
-            this.main00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.main00.FlatAppearance.BorderSize = 0;
-            this.main00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main00.flowerQuantity = ((ushort)(0));
-            this.main00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.main00.ForeColor = System.Drawing.Color.White;
-            this.main00.itemDurability = ((ushort)(0));
-            this.main00.itemQuantity = ((ushort)(0));
-            this.main00.Location = new System.Drawing.Point(0, 0);
-            this.main00.Margin = new System.Windows.Forms.Padding(0);
-            this.main00.Name = "main00";
-            this.main00.Size = new System.Drawing.Size(75, 75);
-            this.main00.TabIndex = 2;
-            this.main00.Tag = "1";
-            this.main00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.main00.UseVisualStyleBackColor = false;
-            // 
             // subPanel
             // 
             this.subPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -320,25 +267,6 @@ namespace ACNHPoker
             this.label9.TabIndex = 231;
             this.label9.Text = ".   .   .";
             // 
-            // sub00
-            // 
-            this.sub00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.sub00.FlatAppearance.BorderSize = 0;
-            this.sub00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sub00.flowerQuantity = ((ushort)(0));
-            this.sub00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.sub00.ForeColor = System.Drawing.Color.White;
-            this.sub00.itemDurability = ((ushort)(0));
-            this.sub00.itemQuantity = ((ushort)(0));
-            this.sub00.Location = new System.Drawing.Point(0, 0);
-            this.sub00.Margin = new System.Windows.Forms.Padding(0);
-            this.sub00.Name = "sub00";
-            this.sub00.Size = new System.Drawing.Size(75, 75);
-            this.sub00.TabIndex = 8;
-            this.sub00.Tag = "1";
-            this.sub00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.sub00.UseVisualStyleBackColor = false;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -349,44 +277,6 @@ namespace ACNHPoker
             this.label10.Size = new System.Drawing.Size(44, 16);
             this.label10.TabIndex = 230;
             this.label10.Text = ".   .   .";
-            // 
-            // sub01
-            // 
-            this.sub01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.sub01.FlatAppearance.BorderSize = 0;
-            this.sub01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sub01.flowerQuantity = ((ushort)(0));
-            this.sub01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.sub01.ForeColor = System.Drawing.Color.White;
-            this.sub01.itemDurability = ((ushort)(0));
-            this.sub01.itemQuantity = ((ushort)(0));
-            this.sub01.Location = new System.Drawing.Point(0, 76);
-            this.sub01.Margin = new System.Windows.Forms.Padding(0);
-            this.sub01.Name = "sub01";
-            this.sub01.Size = new System.Drawing.Size(75, 75);
-            this.sub01.TabIndex = 9;
-            this.sub01.Tag = "1";
-            this.sub01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.sub01.UseVisualStyleBackColor = false;
-            // 
-            // sub02
-            // 
-            this.sub02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.sub02.FlatAppearance.BorderSize = 0;
-            this.sub02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sub02.flowerQuantity = ((ushort)(0));
-            this.sub02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.sub02.ForeColor = System.Drawing.Color.White;
-            this.sub02.itemDurability = ((ushort)(0));
-            this.sub02.itemQuantity = ((ushort)(0));
-            this.sub02.Location = new System.Drawing.Point(0, 152);
-            this.sub02.Margin = new System.Windows.Forms.Padding(0);
-            this.sub02.Name = "sub02";
-            this.sub02.Size = new System.Drawing.Size(75, 75);
-            this.sub02.TabIndex = 10;
-            this.sub02.Tag = "1";
-            this.sub02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.sub02.UseVisualStyleBackColor = false;
             // 
             // allPanel
             // 
@@ -461,120 +351,6 @@ namespace ACNHPoker
             this.label13.Size = new System.Drawing.Size(44, 16);
             this.label13.TabIndex = 233;
             this.label13.Text = ".   .   .";
-            // 
-            // all12
-            // 
-            this.all12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.all12.FlatAppearance.BorderSize = 0;
-            this.all12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.all12.flowerQuantity = ((ushort)(0));
-            this.all12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.all12.ForeColor = System.Drawing.Color.White;
-            this.all12.itemDurability = ((ushort)(0));
-            this.all12.itemQuantity = ((ushort)(0));
-            this.all12.Location = new System.Drawing.Point(76, 152);
-            this.all12.Margin = new System.Windows.Forms.Padding(0);
-            this.all12.Name = "all12";
-            this.all12.Size = new System.Drawing.Size(75, 75);
-            this.all12.TabIndex = 19;
-            this.all12.Tag = "1";
-            this.all12.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.all12.UseVisualStyleBackColor = false;
-            // 
-            // all00
-            // 
-            this.all00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.all00.FlatAppearance.BorderSize = 0;
-            this.all00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.all00.flowerQuantity = ((ushort)(0));
-            this.all00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.all00.ForeColor = System.Drawing.Color.White;
-            this.all00.itemDurability = ((ushort)(0));
-            this.all00.itemQuantity = ((ushort)(0));
-            this.all00.Location = new System.Drawing.Point(0, 0);
-            this.all00.Margin = new System.Windows.Forms.Padding(0);
-            this.all00.Name = "all00";
-            this.all00.Size = new System.Drawing.Size(75, 75);
-            this.all00.TabIndex = 14;
-            this.all00.Tag = "1";
-            this.all00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.all00.UseVisualStyleBackColor = false;
-            // 
-            // all11
-            // 
-            this.all11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.all11.FlatAppearance.BorderSize = 0;
-            this.all11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.all11.flowerQuantity = ((ushort)(0));
-            this.all11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.all11.ForeColor = System.Drawing.Color.White;
-            this.all11.itemDurability = ((ushort)(0));
-            this.all11.itemQuantity = ((ushort)(0));
-            this.all11.Location = new System.Drawing.Point(76, 76);
-            this.all11.Margin = new System.Windows.Forms.Padding(0);
-            this.all11.Name = "all11";
-            this.all11.Size = new System.Drawing.Size(75, 75);
-            this.all11.TabIndex = 18;
-            this.all11.Tag = "1";
-            this.all11.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.all11.UseVisualStyleBackColor = false;
-            // 
-            // all01
-            // 
-            this.all01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.all01.FlatAppearance.BorderSize = 0;
-            this.all01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.all01.flowerQuantity = ((ushort)(0));
-            this.all01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.all01.ForeColor = System.Drawing.Color.White;
-            this.all01.itemDurability = ((ushort)(0));
-            this.all01.itemQuantity = ((ushort)(0));
-            this.all01.Location = new System.Drawing.Point(0, 76);
-            this.all01.Margin = new System.Windows.Forms.Padding(0);
-            this.all01.Name = "all01";
-            this.all01.Size = new System.Drawing.Size(75, 75);
-            this.all01.TabIndex = 15;
-            this.all01.Tag = "1";
-            this.all01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.all01.UseVisualStyleBackColor = false;
-            // 
-            // all10
-            // 
-            this.all10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.all10.FlatAppearance.BorderSize = 0;
-            this.all10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.all10.flowerQuantity = ((ushort)(0));
-            this.all10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.all10.ForeColor = System.Drawing.Color.White;
-            this.all10.itemDurability = ((ushort)(0));
-            this.all10.itemQuantity = ((ushort)(0));
-            this.all10.Location = new System.Drawing.Point(76, 0);
-            this.all10.Margin = new System.Windows.Forms.Padding(0);
-            this.all10.Name = "all10";
-            this.all10.Size = new System.Drawing.Size(75, 75);
-            this.all10.TabIndex = 17;
-            this.all10.Tag = "1";
-            this.all10.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.all10.UseVisualStyleBackColor = false;
-            // 
-            // all02
-            // 
-            this.all02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.all02.FlatAppearance.BorderSize = 0;
-            this.all02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.all02.flowerQuantity = ((ushort)(0));
-            this.all02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.all02.ForeColor = System.Drawing.Color.White;
-            this.all02.itemDurability = ((ushort)(0));
-            this.all02.itemQuantity = ((ushort)(0));
-            this.all02.Location = new System.Drawing.Point(0, 152);
-            this.all02.Margin = new System.Windows.Forms.Padding(0);
-            this.all02.Name = "all02";
-            this.all02.Size = new System.Drawing.Size(75, 75);
-            this.all02.TabIndex = 16;
-            this.all02.Tag = "1";
-            this.all02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.all02.UseVisualStyleBackColor = false;
             // 
             // label14
             // 
@@ -719,6 +495,7 @@ namespace ACNHPoker
             // 
             // vertPanel
             // 
+            this.vertPanel.Controls.Add(this.previewBtn);
             this.vertPanel.Controls.Add(this.mainOnly);
             this.vertPanel.Controls.Add(this.size);
             this.vertPanel.Controls.Add(this.mainPanel);
@@ -734,8 +511,25 @@ namespace ACNHPoker
             this.vertPanel.Size = new System.Drawing.Size(661, 378);
             this.vertPanel.TabIndex = 238;
             // 
+            // previewBtn
+            // 
+            this.previewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.previewBtn.FlatAppearance.BorderSize = 0;
+            this.previewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previewBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.previewBtn.ForeColor = System.Drawing.Color.White;
+            this.previewBtn.Location = new System.Drawing.Point(484, 315);
+            this.previewBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.previewBtn.Name = "previewBtn";
+            this.previewBtn.Size = new System.Drawing.Size(103, 28);
+            this.previewBtn.TabIndex = 238;
+            this.previewBtn.Text = "Preview";
+            this.previewBtn.UseVisualStyleBackColor = false;
+            this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
+            // 
             // horiPanel
             // 
+            this.horiPanel.Controls.Add(this.previewHBtn);
             this.horiPanel.Controls.Add(this.mainHOnly);
             this.horiPanel.Controls.Add(this.sizeH);
             this.horiPanel.Controls.Add(this.mainHPanel);
@@ -797,6 +591,28 @@ namespace ACNHPoker
             this.mainHPanel.Size = new System.Drawing.Size(205, 285);
             this.mainHPanel.TabIndex = 95;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(180, 81);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(12, 48);
+            this.label19.TabIndex = 240;
+            this.label19.Text = ".\r\n.\r\n.";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(108, 81);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(12, 48);
+            this.label18.TabIndex = 239;
+            this.label18.Text = ".\r\n.\r\n.";
+            // 
             // timesHLabel1
             // 
             this.timesHLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -822,63 +638,6 @@ namespace ACNHPoker
             this.label17.Size = new System.Drawing.Size(12, 48);
             this.label17.TabIndex = 229;
             this.label17.Text = ".\r\n.\r\n.";
-            // 
-            // mainH02
-            // 
-            this.mainH02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.mainH02.FlatAppearance.BorderSize = 0;
-            this.mainH02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mainH02.flowerQuantity = ((ushort)(0));
-            this.mainH02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.mainH02.ForeColor = System.Drawing.Color.White;
-            this.mainH02.itemDurability = ((ushort)(0));
-            this.mainH02.itemQuantity = ((ushort)(0));
-            this.mainH02.Location = new System.Drawing.Point(152, 0);
-            this.mainH02.Margin = new System.Windows.Forms.Padding(0);
-            this.mainH02.Name = "mainH02";
-            this.mainH02.Size = new System.Drawing.Size(75, 75);
-            this.mainH02.TabIndex = 4;
-            this.mainH02.Tag = "1";
-            this.mainH02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.mainH02.UseVisualStyleBackColor = false;
-            // 
-            // mainH01
-            // 
-            this.mainH01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.mainH01.FlatAppearance.BorderSize = 0;
-            this.mainH01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mainH01.flowerQuantity = ((ushort)(0));
-            this.mainH01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.mainH01.ForeColor = System.Drawing.Color.White;
-            this.mainH01.itemDurability = ((ushort)(0));
-            this.mainH01.itemQuantity = ((ushort)(0));
-            this.mainH01.Location = new System.Drawing.Point(76, 0);
-            this.mainH01.Margin = new System.Windows.Forms.Padding(0);
-            this.mainH01.Name = "mainH01";
-            this.mainH01.Size = new System.Drawing.Size(75, 75);
-            this.mainH01.TabIndex = 3;
-            this.mainH01.Tag = "1";
-            this.mainH01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.mainH01.UseVisualStyleBackColor = false;
-            // 
-            // mainH00
-            // 
-            this.mainH00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.mainH00.FlatAppearance.BorderSize = 0;
-            this.mainH00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mainH00.flowerQuantity = ((ushort)(0));
-            this.mainH00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.mainH00.ForeColor = System.Drawing.Color.White;
-            this.mainH00.itemDurability = ((ushort)(0));
-            this.mainH00.itemQuantity = ((ushort)(0));
-            this.mainH00.Location = new System.Drawing.Point(0, 0);
-            this.mainH00.Margin = new System.Windows.Forms.Padding(0);
-            this.mainH00.Name = "mainH00";
-            this.mainH00.Size = new System.Drawing.Size(75, 75);
-            this.mainH00.TabIndex = 2;
-            this.mainH00.Tag = "1";
-            this.mainH00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.mainH00.UseVisualStyleBackColor = false;
             // 
             // label21
             // 
@@ -906,6 +665,28 @@ namespace ACNHPoker
             this.subHPanel.Size = new System.Drawing.Size(205, 285);
             this.subHPanel.TabIndex = 96;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(180, 81);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(12, 48);
+            this.label22.TabIndex = 241;
+            this.label22.Text = ".\r\n.\r\n.";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(108, 81);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(12, 48);
+            this.label20.TabIndex = 240;
+            this.label20.Text = ".\r\n.\r\n.";
+            // 
             // timesHLabel2
             // 
             this.timesHLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -931,63 +712,6 @@ namespace ACNHPoker
             this.label23.Size = new System.Drawing.Size(12, 48);
             this.label23.TabIndex = 230;
             this.label23.Text = ".\r\n.\r\n.";
-            // 
-            // subH00
-            // 
-            this.subH00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.subH00.FlatAppearance.BorderSize = 0;
-            this.subH00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.subH00.flowerQuantity = ((ushort)(0));
-            this.subH00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.subH00.ForeColor = System.Drawing.Color.White;
-            this.subH00.itemDurability = ((ushort)(0));
-            this.subH00.itemQuantity = ((ushort)(0));
-            this.subH00.Location = new System.Drawing.Point(0, 0);
-            this.subH00.Margin = new System.Windows.Forms.Padding(0);
-            this.subH00.Name = "subH00";
-            this.subH00.Size = new System.Drawing.Size(75, 75);
-            this.subH00.TabIndex = 8;
-            this.subH00.Tag = "1";
-            this.subH00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.subH00.UseVisualStyleBackColor = false;
-            // 
-            // subH01
-            // 
-            this.subH01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.subH01.FlatAppearance.BorderSize = 0;
-            this.subH01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.subH01.flowerQuantity = ((ushort)(0));
-            this.subH01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.subH01.ForeColor = System.Drawing.Color.White;
-            this.subH01.itemDurability = ((ushort)(0));
-            this.subH01.itemQuantity = ((ushort)(0));
-            this.subH01.Location = new System.Drawing.Point(76, 0);
-            this.subH01.Margin = new System.Windows.Forms.Padding(0);
-            this.subH01.Name = "subH01";
-            this.subH01.Size = new System.Drawing.Size(75, 75);
-            this.subH01.TabIndex = 9;
-            this.subH01.Tag = "1";
-            this.subH01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.subH01.UseVisualStyleBackColor = false;
-            // 
-            // subH02
-            // 
-            this.subH02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.subH02.FlatAppearance.BorderSize = 0;
-            this.subH02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.subH02.flowerQuantity = ((ushort)(0));
-            this.subH02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.subH02.ForeColor = System.Drawing.Color.White;
-            this.subH02.itemDurability = ((ushort)(0));
-            this.subH02.itemQuantity = ((ushort)(0));
-            this.subH02.Location = new System.Drawing.Point(152, 0);
-            this.subH02.Margin = new System.Windows.Forms.Padding(0);
-            this.subH02.Name = "subH02";
-            this.subH02.Size = new System.Drawing.Size(75, 75);
-            this.subH02.TabIndex = 10;
-            this.subH02.Tag = "1";
-            this.subH02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.subH02.UseVisualStyleBackColor = false;
             // 
             // rowPanel
             // 
@@ -1055,6 +779,17 @@ namespace ACNHPoker
             this.allHPanel.Size = new System.Drawing.Size(205, 285);
             this.allHPanel.TabIndex = 97;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(154, 181);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(44, 16);
+            this.label27.TabIndex = 235;
+            this.label27.Text = ".   .   .";
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -1066,6 +801,17 @@ namespace ACNHPoker
             this.label28.TabIndex = 232;
             this.label28.Text = ".\r\n.\r\n.";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.White;
+            this.label29.Location = new System.Drawing.Point(154, 105);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(44, 16);
+            this.label29.TabIndex = 234;
+            this.label29.Text = ".   .   .";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -1076,6 +822,213 @@ namespace ACNHPoker
             this.label30.Size = new System.Drawing.Size(12, 48);
             this.label30.TabIndex = 231;
             this.label30.Text = ".\r\n.\r\n.";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label31.ForeColor = System.Drawing.Color.White;
+            this.label31.Location = new System.Drawing.Point(154, 29);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(44, 16);
+            this.label31.TabIndex = 233;
+            this.label31.Text = ".   .   .";
+            // 
+            // okHBtn
+            // 
+            this.okHBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.okHBtn.DialogResult = System.Windows.Forms.DialogResult.Abort;
+            this.okHBtn.FlatAppearance.BorderSize = 0;
+            this.okHBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.okHBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.okHBtn.ForeColor = System.Drawing.Color.White;
+            this.okHBtn.Location = new System.Drawing.Point(588, 344);
+            this.okHBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.okHBtn.Name = "okHBtn";
+            this.okHBtn.Size = new System.Drawing.Size(63, 28);
+            this.okHBtn.TabIndex = 230;
+            this.okHBtn.Text = "OK";
+            this.okHBtn.UseVisualStyleBackColor = false;
+            // 
+            // subHOnly
+            // 
+            this.subHOnly.AutoSize = true;
+            this.subHOnly.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.subHOnly.ForeColor = System.Drawing.Color.White;
+            this.subHOnly.Location = new System.Drawing.Point(224, 3);
+            this.subHOnly.Name = "subHOnly";
+            this.subHOnly.Size = new System.Drawing.Size(160, 20);
+            this.subHOnly.TabIndex = 228;
+            this.subHOnly.Text = "Sub variation only :";
+            this.subHOnly.UseVisualStyleBackColor = true;
+            this.subHOnly.CheckedChanged += new System.EventHandler(this.subHOnly_CheckedChanged);
+            // 
+            // allH
+            // 
+            this.allH.AutoSize = true;
+            this.allH.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.allH.ForeColor = System.Drawing.Color.White;
+            this.allH.Location = new System.Drawing.Point(446, 3);
+            this.allH.Name = "allH";
+            this.allH.Size = new System.Drawing.Size(117, 20);
+            this.allH.TabIndex = 229;
+            this.allH.Text = "All variation :";
+            this.allH.UseVisualStyleBackColor = true;
+            this.allH.CheckedChanged += new System.EventHandler(this.allH_CheckedChanged);
+            // 
+            // toggleBtn
+            // 
+            this.toggleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.toggleBtn.FlatAppearance.BorderSize = 0;
+            this.toggleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toggleBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.toggleBtn.ForeColor = System.Drawing.Color.White;
+            this.toggleBtn.Location = new System.Drawing.Point(495, 372);
+            this.toggleBtn.Name = "toggleBtn";
+            this.toggleBtn.Size = new System.Drawing.Size(103, 28);
+            this.toggleBtn.TabIndex = 238;
+            this.toggleBtn.Tag = "Vertical";
+            this.toggleBtn.Text = "Vertical";
+            this.toggleBtn.UseVisualStyleBackColor = false;
+            this.toggleBtn.Click += new System.EventHandler(this.toggleBtn_Click);
+            // 
+            // miniMapBox
+            // 
+            this.miniMapBox.Location = new System.Drawing.Point(678, 22);
+            this.miniMapBox.Name = "miniMapBox";
+            this.miniMapBox.Size = new System.Drawing.Size(448, 384);
+            this.miniMapBox.TabIndex = 240;
+            this.miniMapBox.TabStop = false;
+            // 
+            // previewHBtn
+            // 
+            this.previewHBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.previewHBtn.FlatAppearance.BorderSize = 0;
+            this.previewHBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previewHBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.previewHBtn.ForeColor = System.Drawing.Color.White;
+            this.previewHBtn.Location = new System.Drawing.Point(484, 315);
+            this.previewHBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.previewHBtn.Name = "previewHBtn";
+            this.previewHBtn.Size = new System.Drawing.Size(103, 28);
+            this.previewHBtn.TabIndex = 239;
+            this.previewHBtn.Text = "Preview";
+            this.previewHBtn.UseVisualStyleBackColor = false;
+            this.previewHBtn.Click += new System.EventHandler(this.previewHBtn_Click);
+            // 
+            // mainH02
+            // 
+            this.mainH02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.mainH02.FlatAppearance.BorderSize = 0;
+            this.mainH02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mainH02.flowerQuantity = ((ushort)(0));
+            this.mainH02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.mainH02.ForeColor = System.Drawing.Color.White;
+            this.mainH02.itemDurability = ((ushort)(0));
+            this.mainH02.itemQuantity = ((ushort)(0));
+            this.mainH02.Location = new System.Drawing.Point(152, 0);
+            this.mainH02.Margin = new System.Windows.Forms.Padding(0);
+            this.mainH02.Name = "mainH02";
+            this.mainH02.Size = new System.Drawing.Size(75, 75);
+            this.mainH02.TabIndex = 4;
+            this.mainH02.Tag = "1";
+            this.mainH02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.mainH02.UseVisualStyleBackColor = false;
+            // 
+            // mainH01
+            // 
+            this.mainH01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.mainH01.FlatAppearance.BorderSize = 0;
+            this.mainH01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mainH01.flowerQuantity = ((ushort)(0));
+            this.mainH01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.mainH01.ForeColor = System.Drawing.Color.White;
+            this.mainH01.itemDurability = ((ushort)(0));
+            this.mainH01.itemQuantity = ((ushort)(0));
+            this.mainH01.Location = new System.Drawing.Point(76, 0);
+            this.mainH01.Margin = new System.Windows.Forms.Padding(0);
+            this.mainH01.Name = "mainH01";
+            this.mainH01.Size = new System.Drawing.Size(75, 75);
+            this.mainH01.TabIndex = 3;
+            this.mainH01.Tag = "1";
+            this.mainH01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.mainH01.UseVisualStyleBackColor = false;
+            // 
+            // mainH00
+            // 
+            this.mainH00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.mainH00.FlatAppearance.BorderSize = 0;
+            this.mainH00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mainH00.flowerQuantity = ((ushort)(0));
+            this.mainH00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.mainH00.ForeColor = System.Drawing.Color.White;
+            this.mainH00.itemDurability = ((ushort)(0));
+            this.mainH00.itemQuantity = ((ushort)(0));
+            this.mainH00.Location = new System.Drawing.Point(0, 0);
+            this.mainH00.Margin = new System.Windows.Forms.Padding(0);
+            this.mainH00.Name = "mainH00";
+            this.mainH00.Size = new System.Drawing.Size(75, 75);
+            this.mainH00.TabIndex = 2;
+            this.mainH00.Tag = "1";
+            this.mainH00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.mainH00.UseVisualStyleBackColor = false;
+            // 
+            // subH00
+            // 
+            this.subH00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.subH00.FlatAppearance.BorderSize = 0;
+            this.subH00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.subH00.flowerQuantity = ((ushort)(0));
+            this.subH00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.subH00.ForeColor = System.Drawing.Color.White;
+            this.subH00.itemDurability = ((ushort)(0));
+            this.subH00.itemQuantity = ((ushort)(0));
+            this.subH00.Location = new System.Drawing.Point(0, 0);
+            this.subH00.Margin = new System.Windows.Forms.Padding(0);
+            this.subH00.Name = "subH00";
+            this.subH00.Size = new System.Drawing.Size(75, 75);
+            this.subH00.TabIndex = 8;
+            this.subH00.Tag = "1";
+            this.subH00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.subH00.UseVisualStyleBackColor = false;
+            // 
+            // subH01
+            // 
+            this.subH01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.subH01.FlatAppearance.BorderSize = 0;
+            this.subH01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.subH01.flowerQuantity = ((ushort)(0));
+            this.subH01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.subH01.ForeColor = System.Drawing.Color.White;
+            this.subH01.itemDurability = ((ushort)(0));
+            this.subH01.itemQuantity = ((ushort)(0));
+            this.subH01.Location = new System.Drawing.Point(76, 0);
+            this.subH01.Margin = new System.Windows.Forms.Padding(0);
+            this.subH01.Name = "subH01";
+            this.subH01.Size = new System.Drawing.Size(75, 75);
+            this.subH01.TabIndex = 9;
+            this.subH01.Tag = "1";
+            this.subH01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.subH01.UseVisualStyleBackColor = false;
+            // 
+            // subH02
+            // 
+            this.subH02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.subH02.FlatAppearance.BorderSize = 0;
+            this.subH02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.subH02.flowerQuantity = ((ushort)(0));
+            this.subH02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.subH02.ForeColor = System.Drawing.Color.White;
+            this.subH02.itemDurability = ((ushort)(0));
+            this.subH02.itemQuantity = ((ushort)(0));
+            this.subH02.Location = new System.Drawing.Point(152, 0);
+            this.subH02.Margin = new System.Windows.Forms.Padding(0);
+            this.subH02.Name = "subH02";
+            this.subH02.Size = new System.Drawing.Size(75, 75);
+            this.subH02.TabIndex = 10;
+            this.subH02.Tag = "1";
+            this.subH02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.subH02.UseVisualStyleBackColor = false;
             // 
             // allH12
             // 
@@ -1191,140 +1144,233 @@ namespace ACNHPoker
             this.allH02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.allH02.UseVisualStyleBackColor = false;
             // 
-            // okHBtn
+            // main02
             // 
-            this.okHBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.okHBtn.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.okHBtn.FlatAppearance.BorderSize = 0;
-            this.okHBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.okHBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.okHBtn.ForeColor = System.Drawing.Color.White;
-            this.okHBtn.Location = new System.Drawing.Point(588, 344);
-            this.okHBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.okHBtn.Name = "okHBtn";
-            this.okHBtn.Size = new System.Drawing.Size(63, 28);
-            this.okHBtn.TabIndex = 230;
-            this.okHBtn.Text = "OK";
-            this.okHBtn.UseVisualStyleBackColor = false;
+            this.main02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.main02.FlatAppearance.BorderSize = 0;
+            this.main02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main02.flowerQuantity = ((ushort)(0));
+            this.main02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.main02.ForeColor = System.Drawing.Color.White;
+            this.main02.itemDurability = ((ushort)(0));
+            this.main02.itemQuantity = ((ushort)(0));
+            this.main02.Location = new System.Drawing.Point(0, 152);
+            this.main02.Margin = new System.Windows.Forms.Padding(0);
+            this.main02.Name = "main02";
+            this.main02.Size = new System.Drawing.Size(75, 75);
+            this.main02.TabIndex = 4;
+            this.main02.Tag = "1";
+            this.main02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.main02.UseVisualStyleBackColor = false;
             // 
-            // subHOnly
+            // main01
             // 
-            this.subHOnly.AutoSize = true;
-            this.subHOnly.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.subHOnly.ForeColor = System.Drawing.Color.White;
-            this.subHOnly.Location = new System.Drawing.Point(224, 3);
-            this.subHOnly.Name = "subHOnly";
-            this.subHOnly.Size = new System.Drawing.Size(160, 20);
-            this.subHOnly.TabIndex = 228;
-            this.subHOnly.Text = "Sub variation only :";
-            this.subHOnly.UseVisualStyleBackColor = true;
-            this.subHOnly.CheckedChanged += new System.EventHandler(this.subHOnly_CheckedChanged);
+            this.main01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.main01.FlatAppearance.BorderSize = 0;
+            this.main01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main01.flowerQuantity = ((ushort)(0));
+            this.main01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.main01.ForeColor = System.Drawing.Color.White;
+            this.main01.itemDurability = ((ushort)(0));
+            this.main01.itemQuantity = ((ushort)(0));
+            this.main01.Location = new System.Drawing.Point(0, 76);
+            this.main01.Margin = new System.Windows.Forms.Padding(0);
+            this.main01.Name = "main01";
+            this.main01.Size = new System.Drawing.Size(75, 75);
+            this.main01.TabIndex = 3;
+            this.main01.Tag = "1";
+            this.main01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.main01.UseVisualStyleBackColor = false;
             // 
-            // allH
+            // main00
             // 
-            this.allH.AutoSize = true;
-            this.allH.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.allH.ForeColor = System.Drawing.Color.White;
-            this.allH.Location = new System.Drawing.Point(446, 3);
-            this.allH.Name = "allH";
-            this.allH.Size = new System.Drawing.Size(117, 20);
-            this.allH.TabIndex = 229;
-            this.allH.Text = "All variation :";
-            this.allH.UseVisualStyleBackColor = true;
-            this.allH.CheckedChanged += new System.EventHandler(this.allH_CheckedChanged);
+            this.main00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.main00.FlatAppearance.BorderSize = 0;
+            this.main00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main00.flowerQuantity = ((ushort)(0));
+            this.main00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.main00.ForeColor = System.Drawing.Color.White;
+            this.main00.itemDurability = ((ushort)(0));
+            this.main00.itemQuantity = ((ushort)(0));
+            this.main00.Location = new System.Drawing.Point(0, 0);
+            this.main00.Margin = new System.Windows.Forms.Padding(0);
+            this.main00.Name = "main00";
+            this.main00.Size = new System.Drawing.Size(75, 75);
+            this.main00.TabIndex = 2;
+            this.main00.Tag = "1";
+            this.main00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.main00.UseVisualStyleBackColor = false;
             // 
-            // label27
+            // sub00
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(154, 181);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(44, 16);
-            this.label27.TabIndex = 235;
-            this.label27.Text = ".   .   .";
+            this.sub00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.sub00.FlatAppearance.BorderSize = 0;
+            this.sub00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sub00.flowerQuantity = ((ushort)(0));
+            this.sub00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.sub00.ForeColor = System.Drawing.Color.White;
+            this.sub00.itemDurability = ((ushort)(0));
+            this.sub00.itemQuantity = ((ushort)(0));
+            this.sub00.Location = new System.Drawing.Point(0, 0);
+            this.sub00.Margin = new System.Windows.Forms.Padding(0);
+            this.sub00.Name = "sub00";
+            this.sub00.Size = new System.Drawing.Size(75, 75);
+            this.sub00.TabIndex = 8;
+            this.sub00.Tag = "1";
+            this.sub00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.sub00.UseVisualStyleBackColor = false;
             // 
-            // label29
+            // sub01
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(154, 105);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(44, 16);
-            this.label29.TabIndex = 234;
-            this.label29.Text = ".   .   .";
+            this.sub01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.sub01.FlatAppearance.BorderSize = 0;
+            this.sub01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sub01.flowerQuantity = ((ushort)(0));
+            this.sub01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.sub01.ForeColor = System.Drawing.Color.White;
+            this.sub01.itemDurability = ((ushort)(0));
+            this.sub01.itemQuantity = ((ushort)(0));
+            this.sub01.Location = new System.Drawing.Point(0, 76);
+            this.sub01.Margin = new System.Windows.Forms.Padding(0);
+            this.sub01.Name = "sub01";
+            this.sub01.Size = new System.Drawing.Size(75, 75);
+            this.sub01.TabIndex = 9;
+            this.sub01.Tag = "1";
+            this.sub01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.sub01.UseVisualStyleBackColor = false;
             // 
-            // label31
+            // sub02
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(154, 29);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(44, 16);
-            this.label31.TabIndex = 233;
-            this.label31.Text = ".   .   .";
+            this.sub02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.sub02.FlatAppearance.BorderSize = 0;
+            this.sub02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sub02.flowerQuantity = ((ushort)(0));
+            this.sub02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.sub02.ForeColor = System.Drawing.Color.White;
+            this.sub02.itemDurability = ((ushort)(0));
+            this.sub02.itemQuantity = ((ushort)(0));
+            this.sub02.Location = new System.Drawing.Point(0, 152);
+            this.sub02.Margin = new System.Windows.Forms.Padding(0);
+            this.sub02.Name = "sub02";
+            this.sub02.Size = new System.Drawing.Size(75, 75);
+            this.sub02.TabIndex = 10;
+            this.sub02.Tag = "1";
+            this.sub02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.sub02.UseVisualStyleBackColor = false;
             // 
-            // label18
+            // all12
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(108, 81);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(12, 48);
-            this.label18.TabIndex = 239;
-            this.label18.Text = ".\r\n.\r\n.";
+            this.all12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.all12.FlatAppearance.BorderSize = 0;
+            this.all12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.all12.flowerQuantity = ((ushort)(0));
+            this.all12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.all12.ForeColor = System.Drawing.Color.White;
+            this.all12.itemDurability = ((ushort)(0));
+            this.all12.itemQuantity = ((ushort)(0));
+            this.all12.Location = new System.Drawing.Point(76, 152);
+            this.all12.Margin = new System.Windows.Forms.Padding(0);
+            this.all12.Name = "all12";
+            this.all12.Size = new System.Drawing.Size(75, 75);
+            this.all12.TabIndex = 19;
+            this.all12.Tag = "1";
+            this.all12.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.all12.UseVisualStyleBackColor = false;
             // 
-            // label19
+            // all00
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(180, 81);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(12, 48);
-            this.label19.TabIndex = 240;
-            this.label19.Text = ".\r\n.\r\n.";
+            this.all00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.all00.FlatAppearance.BorderSize = 0;
+            this.all00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.all00.flowerQuantity = ((ushort)(0));
+            this.all00.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.all00.ForeColor = System.Drawing.Color.White;
+            this.all00.itemDurability = ((ushort)(0));
+            this.all00.itemQuantity = ((ushort)(0));
+            this.all00.Location = new System.Drawing.Point(0, 0);
+            this.all00.Margin = new System.Windows.Forms.Padding(0);
+            this.all00.Name = "all00";
+            this.all00.Size = new System.Drawing.Size(75, 75);
+            this.all00.TabIndex = 14;
+            this.all00.Tag = "1";
+            this.all00.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.all00.UseVisualStyleBackColor = false;
             // 
-            // label20
+            // all11
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(108, 81);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(12, 48);
-            this.label20.TabIndex = 240;
-            this.label20.Text = ".\r\n.\r\n.";
+            this.all11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.all11.FlatAppearance.BorderSize = 0;
+            this.all11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.all11.flowerQuantity = ((ushort)(0));
+            this.all11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.all11.ForeColor = System.Drawing.Color.White;
+            this.all11.itemDurability = ((ushort)(0));
+            this.all11.itemQuantity = ((ushort)(0));
+            this.all11.Location = new System.Drawing.Point(76, 76);
+            this.all11.Margin = new System.Windows.Forms.Padding(0);
+            this.all11.Name = "all11";
+            this.all11.Size = new System.Drawing.Size(75, 75);
+            this.all11.TabIndex = 18;
+            this.all11.Tag = "1";
+            this.all11.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.all11.UseVisualStyleBackColor = false;
             // 
-            // label22
+            // all01
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(180, 81);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(12, 48);
-            this.label22.TabIndex = 241;
-            this.label22.Text = ".\r\n.\r\n.";
+            this.all01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.all01.FlatAppearance.BorderSize = 0;
+            this.all01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.all01.flowerQuantity = ((ushort)(0));
+            this.all01.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.all01.ForeColor = System.Drawing.Color.White;
+            this.all01.itemDurability = ((ushort)(0));
+            this.all01.itemQuantity = ((ushort)(0));
+            this.all01.Location = new System.Drawing.Point(0, 76);
+            this.all01.Margin = new System.Windows.Forms.Padding(0);
+            this.all01.Name = "all01";
+            this.all01.Size = new System.Drawing.Size(75, 75);
+            this.all01.TabIndex = 15;
+            this.all01.Tag = "1";
+            this.all01.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.all01.UseVisualStyleBackColor = false;
             // 
-            // toggleBtn
+            // all10
             // 
-            this.toggleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.toggleBtn.FlatAppearance.BorderSize = 0;
-            this.toggleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toggleBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.toggleBtn.ForeColor = System.Drawing.Color.White;
-            this.toggleBtn.Location = new System.Drawing.Point(495, 372);
-            this.toggleBtn.Name = "toggleBtn";
-            this.toggleBtn.Size = new System.Drawing.Size(103, 28);
-            this.toggleBtn.TabIndex = 238;
-            this.toggleBtn.Tag = "Vertical";
-            this.toggleBtn.Text = "Vertical";
-            this.toggleBtn.UseVisualStyleBackColor = false;
-            this.toggleBtn.Click += new System.EventHandler(this.toggleBtn_Click);
+            this.all10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.all10.FlatAppearance.BorderSize = 0;
+            this.all10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.all10.flowerQuantity = ((ushort)(0));
+            this.all10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.all10.ForeColor = System.Drawing.Color.White;
+            this.all10.itemDurability = ((ushort)(0));
+            this.all10.itemQuantity = ((ushort)(0));
+            this.all10.Location = new System.Drawing.Point(76, 0);
+            this.all10.Margin = new System.Windows.Forms.Padding(0);
+            this.all10.Name = "all10";
+            this.all10.Size = new System.Drawing.Size(75, 75);
+            this.all10.TabIndex = 17;
+            this.all10.Tag = "1";
+            this.all10.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.all10.UseVisualStyleBackColor = false;
+            // 
+            // all02
+            // 
+            this.all02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.all02.FlatAppearance.BorderSize = 0;
+            this.all02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.all02.flowerQuantity = ((ushort)(0));
+            this.all02.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.all02.ForeColor = System.Drawing.Color.White;
+            this.all02.itemDurability = ((ushort)(0));
+            this.all02.itemQuantity = ((ushort)(0));
+            this.all02.Location = new System.Drawing.Point(0, 152);
+            this.all02.Margin = new System.Windows.Forms.Padding(0);
+            this.all02.Name = "all02";
+            this.all02.Size = new System.Drawing.Size(75, 75);
+            this.all02.TabIndex = 16;
+            this.all02.Tag = "1";
+            this.all02.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.all02.UseVisualStyleBackColor = false;
             // 
             // variationSpawn
             // 
@@ -1332,16 +1378,17 @@ namespace ACNHPoker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(674, 411);
+            this.Controls.Add(this.miniMapBox);
             this.Controls.Add(this.toggleBtn);
-            this.Controls.Add(this.vertPanel);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.horiPanel);
+            this.Controls.Add(this.vertPanel);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(690, 900);
+            this.MaximumSize = new System.Drawing.Size(1150, 900);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(690, 450);
             this.Name = "variationSpawn";
@@ -1369,6 +1416,7 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.rowBox)).EndInit();
             this.allHPanel.ResumeLayout(false);
             this.allHPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1455,5 +1503,8 @@ namespace ACNHPoker
         private System.Windows.Forms.RadioButton subHOnly;
         private System.Windows.Forms.RadioButton allH;
         private System.Windows.Forms.Button toggleBtn;
+        private System.Windows.Forms.PictureBox miniMapBox;
+        private System.Windows.Forms.Button previewBtn;
+        private System.Windows.Forms.Button previewHBtn;
     }
 }

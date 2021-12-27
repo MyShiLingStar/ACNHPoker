@@ -54,6 +54,11 @@ namespace ACNHPoker
             this.TerrainBtn = new System.Windows.Forms.Button();
             this.buildingPanel = new System.Windows.Forms.Panel();
             this.BuildingControl = new System.Windows.Forms.Panel();
+            this.inclinePanel = new System.Windows.Forms.Panel();
+            this.inclineTypeSelect = new System.Windows.Forms.ComboBox();
+            this.inclineAngleSelect = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.saveBuildingBtn = new System.Windows.Forms.Button();
             this.loadBuildingBtn = new System.Windows.Forms.Button();
             this.PreviewBtn = new System.Windows.Forms.Button();
@@ -77,6 +82,7 @@ namespace ACNHPoker
             this.acrePanel.SuspendLayout();
             this.buildingPanel.SuspendLayout();
             this.BuildingControl.SuspendLayout();
+            this.inclinePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YUpDown)).BeginInit();
@@ -405,6 +411,7 @@ namespace ACNHPoker
             // 
             // BuildingControl
             // 
+            this.BuildingControl.Controls.Add(this.inclinePanel);
             this.BuildingControl.Controls.Add(this.saveBuildingBtn);
             this.BuildingControl.Controls.Add(this.loadBuildingBtn);
             this.BuildingControl.Controls.Add(this.PreviewBtn);
@@ -420,11 +427,95 @@ namespace ACNHPoker
             this.BuildingControl.Controls.Add(this.YUpDown);
             this.BuildingControl.Controls.Add(this.AUpDown);
             this.BuildingControl.Controls.Add(this.angleLabel);
-            this.BuildingControl.Location = new System.Drawing.Point(0, 355);
+            this.BuildingControl.Location = new System.Drawing.Point(0, 333);
             this.BuildingControl.Name = "BuildingControl";
-            this.BuildingControl.Size = new System.Drawing.Size(513, 115);
+            this.BuildingControl.Size = new System.Drawing.Size(513, 137);
             this.BuildingControl.TabIndex = 95;
             this.BuildingControl.Visible = false;
+            // 
+            // inclinePanel
+            // 
+            this.inclinePanel.Controls.Add(this.inclineTypeSelect);
+            this.inclinePanel.Controls.Add(this.inclineAngleSelect);
+            this.inclinePanel.Controls.Add(this.label4);
+            this.inclinePanel.Controls.Add(this.label3);
+            this.inclinePanel.Location = new System.Drawing.Point(209, 29);
+            this.inclinePanel.Name = "inclinePanel";
+            this.inclinePanel.Size = new System.Drawing.Size(300, 70);
+            this.inclinePanel.TabIndex = 242;
+            this.inclinePanel.Visible = false;
+            // 
+            // inclineTypeSelect
+            // 
+            this.inclineTypeSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inclineTypeSelect.DropDownHeight = 200;
+            this.inclineTypeSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inclineTypeSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inclineTypeSelect.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inclineTypeSelect.ForeColor = System.Drawing.Color.White;
+            this.inclineTypeSelect.FormattingEnabled = true;
+            this.inclineTypeSelect.IntegralHeight = false;
+            this.inclineTypeSelect.ItemHeight = 16;
+            this.inclineTypeSelect.Items.AddRange(new object[] {
+            "Stone : 0x0",
+            "Red Steel : 0x1",
+            "White-Plank : 0x2",
+            "Log : 0x3",
+            "Brick : 0x4",
+            "Natural : 0x1D",
+            "Blue-Plank : 0x1E",
+            "Blue Steel : 0x1F"});
+            this.inclineTypeSelect.Location = new System.Drawing.Point(162, 30);
+            this.inclineTypeSelect.MaxDropDownItems = 10;
+            this.inclineTypeSelect.Name = "inclineTypeSelect";
+            this.inclineTypeSelect.Size = new System.Drawing.Size(135, 24);
+            this.inclineTypeSelect.TabIndex = 244;
+            this.inclineTypeSelect.SelectedIndexChanged += new System.EventHandler(this.inclineTypeSelect_SelectedIndexChanged);
+            // 
+            // inclineAngleSelect
+            // 
+            this.inclineAngleSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inclineAngleSelect.DropDownHeight = 200;
+            this.inclineAngleSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inclineAngleSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inclineAngleSelect.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inclineAngleSelect.ForeColor = System.Drawing.Color.White;
+            this.inclineAngleSelect.FormattingEnabled = true;
+            this.inclineAngleSelect.IntegralHeight = false;
+            this.inclineAngleSelect.ItemHeight = 16;
+            this.inclineAngleSelect.Items.AddRange(new object[] {
+            "West → East : 0x0",
+            "South ↑ North : 0x1",
+            "East ← West : 0x2",
+            "North ↓ South : 0x3"});
+            this.inclineAngleSelect.Location = new System.Drawing.Point(4, 30);
+            this.inclineAngleSelect.MaxDropDownItems = 10;
+            this.inclineAngleSelect.Name = "inclineAngleSelect";
+            this.inclineAngleSelect.Size = new System.Drawing.Size(143, 24);
+            this.inclineAngleSelect.TabIndex = 243;
+            this.inclineAngleSelect.SelectedIndexChanged += new System.EventHandler(this.inclineAngleSelect_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(158, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 22);
+            this.label4.TabIndex = 242;
+            this.label4.Text = "Type :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(0, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 22);
+            this.label3.TabIndex = 242;
+            this.label3.Text = "Angle :";
             // 
             // saveBuildingBtn
             // 
@@ -433,7 +524,7 @@ namespace ACNHPoker
             this.saveBuildingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBuildingBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveBuildingBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBuildingBtn.Location = new System.Drawing.Point(232, 80);
+            this.saveBuildingBtn.Location = new System.Drawing.Point(232, 101);
             this.saveBuildingBtn.Name = "saveBuildingBtn";
             this.saveBuildingBtn.Size = new System.Drawing.Size(86, 30);
             this.saveBuildingBtn.TabIndex = 241;
@@ -448,7 +539,7 @@ namespace ACNHPoker
             this.loadBuildingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadBuildingBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadBuildingBtn.ForeColor = System.Drawing.Color.White;
-            this.loadBuildingBtn.Location = new System.Drawing.Point(324, 80);
+            this.loadBuildingBtn.Location = new System.Drawing.Point(324, 101);
             this.loadBuildingBtn.Name = "loadBuildingBtn";
             this.loadBuildingBtn.Size = new System.Drawing.Size(86, 30);
             this.loadBuildingBtn.TabIndex = 240;
@@ -463,7 +554,7 @@ namespace ACNHPoker
             this.PreviewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreviewBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PreviewBtn.ForeColor = System.Drawing.Color.White;
-            this.PreviewBtn.Location = new System.Drawing.Point(99, 80);
+            this.PreviewBtn.Location = new System.Drawing.Point(99, 101);
             this.PreviewBtn.Name = "PreviewBtn";
             this.PreviewBtn.Size = new System.Drawing.Size(86, 30);
             this.PreviewBtn.TabIndex = 239;
@@ -489,7 +580,7 @@ namespace ACNHPoker
             this.updateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateBtn.ForeColor = System.Drawing.Color.White;
-            this.updateBtn.Location = new System.Drawing.Point(7, 80);
+            this.updateBtn.Location = new System.Drawing.Point(7, 101);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(86, 30);
             this.updateBtn.TabIndex = 238;
@@ -504,7 +595,7 @@ namespace ACNHPoker
             this.buildingConfirmBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buildingConfirmBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buildingConfirmBtn.ForeColor = System.Drawing.Color.White;
-            this.buildingConfirmBtn.Location = new System.Drawing.Point(416, 80);
+            this.buildingConfirmBtn.Location = new System.Drawing.Point(416, 101);
             this.buildingConfirmBtn.Name = "buildingConfirmBtn";
             this.buildingConfirmBtn.Size = new System.Drawing.Size(86, 30);
             this.buildingConfirmBtn.TabIndex = 237;
@@ -716,7 +807,7 @@ namespace ACNHPoker
             this.buildingGridView.ReadOnly = true;
             this.buildingGridView.RowHeadersVisible = false;
             this.buildingGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.buildingGridView.Size = new System.Drawing.Size(513, 355);
+            this.buildingGridView.Size = new System.Drawing.Size(513, 332);
             this.buildingGridView.TabIndex = 30;
             this.buildingGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.buildingGridView_CellMouseUp);
             // 
@@ -784,6 +875,8 @@ namespace ACNHPoker
             this.buildingPanel.ResumeLayout(false);
             this.BuildingControl.ResumeLayout(false);
             this.BuildingControl.PerformLayout();
+            this.inclinePanel.ResumeLayout(false);
+            this.inclinePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YUpDown)).EndInit();
@@ -841,5 +934,10 @@ namespace ACNHPoker
         private System.Windows.Forms.Panel LoadingPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel inclinePanel;
+        private System.Windows.Forms.ComboBox inclineTypeSelect;
+        private System.Windows.Forms.ComboBox inclineAngleSelect;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

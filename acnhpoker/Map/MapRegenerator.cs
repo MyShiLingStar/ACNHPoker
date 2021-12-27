@@ -55,8 +55,8 @@ namespace ACNHPoker
                 Debug.Print(v.ToString());
                 if (v == 6969)
                 {
-                    this.Icon = ACNHPoker.Properties.Resources.k;
-                    this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.k;
+                    this.Icon = Properties.Resources.k;
+                    this.trayIcon.Icon = this.Icon = Properties.Resources.k;
                     Log.logEvent("Regen", "A Shiny Has Appeared!");
                 }
 

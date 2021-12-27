@@ -12,7 +12,6 @@ using Timer = System.Windows.Forms.Timer;
 namespace ACNHPoker
 {
 
-
     public partial class Form1 : Form
     {
         private void villagerBtn_Click(object sender, EventArgs e)
@@ -1315,16 +1314,6 @@ namespace ACNHPoker
         {
             V[i].TempData[player] = b;
             V[i].Friendship[player] = b[70];
-        }
-
-        private bool checkFriendshipInit(int player)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                if (V[i].Friendship[player] != 0)
-                    return true;
-            }
-            return false;
         }
     }
 }

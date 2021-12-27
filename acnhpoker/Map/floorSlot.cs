@@ -530,7 +530,7 @@ namespace ACNHPoker
                     }
                     else if (itemID != 0xFFFE)
                     {
-                        topleft = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        topleft = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
                     if (image2Path != "")
                     {
@@ -538,7 +538,7 @@ namespace ACNHPoker
                     }
                     else if (part2 != 0x0000FFFE)
                     {
-                        bottomleft = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        bottomleft = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
                     if (image3Path != "")
                     {
@@ -546,7 +546,7 @@ namespace ACNHPoker
                     }
                     else if (part3 != 0x0000FFFE)
                     {
-                        topright = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        topright = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
                     if (image4Path != "")
                     {
@@ -554,7 +554,7 @@ namespace ACNHPoker
                     }
                     else if (part4 != 0x0000FFFE)
                     {
-                        bottomright = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        bottomright = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
 
                     Image img = PlaceImages(background, topleft, topright, bottomleft, bottomright, 1);
@@ -582,7 +582,7 @@ namespace ACNHPoker
 
                 if (image1Path == "" & itemID != 0xFFFE)
                 {
-                    return (Image)(new Bitmap(ACNHPoker.Properties.Resources.Leaf, size));
+                    return (Image)(new Bitmap(Properties.Resources.Leaf, size));
                 }
                 else if (itemID == 0x16A2) // recipe
                 {
@@ -655,7 +655,7 @@ namespace ACNHPoker
                     }
                     else if (itemID != 0xFFFE)
                     {
-                        topleft = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        topleft = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
                     if (image2Path != "")
                     {
@@ -663,7 +663,7 @@ namespace ACNHPoker
                     }
                     else if (part2 != 0x0000FFFE)
                     {
-                        bottomleft = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        bottomleft = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
                     if (image3Path != "")
                     {
@@ -671,7 +671,7 @@ namespace ACNHPoker
                     }
                     else if (part3 != 0x0000FFFE)
                     {
-                        topright = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        topright = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
                     if (image4Path != "")
                     {
@@ -679,7 +679,7 @@ namespace ACNHPoker
                     }
                     else if (part4 != 0x0000FFFE)
                     {
-                        bottomright = (new Bitmap(ACNHPoker.Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
+                        bottomright = (new Bitmap(Properties.Resources.ACLeaf2.ToBitmap(), new Size((this.Width) / 2, (this.Height) / 2)));
                     }
 
                     Image img = await PlaceImagesAsync(background, topleft, topright, bottomleft, bottomright, 1);
@@ -707,7 +707,7 @@ namespace ACNHPoker
 
                 if (image1Path == "" & itemID != 0xFFFE)
                 {
-                    return (Image)(new Bitmap(ACNHPoker.Properties.Resources.Leaf, size));
+                    return (Image)(new Bitmap(Properties.Resources.Leaf, size));
                 }
                 else if (itemID == 0x16A2) // recipe
                 {

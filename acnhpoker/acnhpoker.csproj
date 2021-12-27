@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ACNHPoker</RootNamespace>
     <AssemblyName>ACNHPoker</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -51,10 +51,10 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>none</DebugType>
+    <DebugType>embedded</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -64,9 +64,10 @@
 	</AllowedReferenceRelatedFileExtensions>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <DebugSymbols>false</DebugSymbols>
-    <FileAlignment>1024</FileAlignment>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>8192</FileAlignment>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>8F0F1CA91E0D94DAAAB5B3F16448F643E5217088</ManifestCertificateThumbprint>
@@ -132,6 +133,8 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="AsyncAwaitBestPractices, Version=6.0.4.0, Culture=neutral, PublicKeyToken=532360cfd341384d, processorArchitecture=MSIL">
       <HintPath>..\packages\AsyncAwaitBestPractices.6.0.4\lib\netstandard2.0\AsyncAwaitBestPractices.dll</HintPath>
@@ -236,6 +239,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dodo\controller.cs" />
+    <Compile Include="Dodo\dodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dodo\dodo.Designer.cs">
+      <DependentUpon>dodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dodo\teleport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dodo\teleport.Designer.cs">
+      <DependentUpon>teleport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Map\bulldozer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,15 +271,8 @@
     <Compile Include="Map\bulkSpawn.Designer.cs">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dodo\controller.cs" />
     <Compile Include="Custom\DataGridViewProgressColumn.cs" />
     <Compile Include="Discord\DiscordWebHook.cs" />
-    <Compile Include="Dodo\dodo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dodo\dodo.Designer.cs">
-      <DependentUpon>dodo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Custom\MyTimer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +284,12 @@
     </Compile>
     <Compile Include="Map\Freezer.Designer.cs">
       <DependentUpon>Freezer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\MapRegenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\MapRegenerator.Designer.cs">
+      <DependentUpon>MapRegenerator.cs</DependentUpon>
     </Compile>
     <Compile Include="Twitch\OrderDisplay.cs">
       <SubType>Form</SubType>
@@ -310,12 +325,6 @@
     <Compile Include="Map\map.Designer.cs">
       <DependentUpon>map.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\MapRegenerator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Map\MapRegenerator.Designer.cs">
-      <DependentUpon>MapRegenerator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Map\miniMap.cs" />
     <Compile Include="Custom\MyComboBox.cs">
       <SubType>Component</SubType>
@@ -335,12 +344,6 @@
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="Discord\DiscordStructs.cs" />
-    <Compile Include="Dodo\teleport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dodo\teleport.Designer.cs">
-      <DependentUpon>teleport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Twitch\TwitchBot.cs" />
     <Compile Include="Custom\USBBot.cs" />
     <Compile Include="Discord\DiscordUtils.cs" />
@@ -394,6 +397,12 @@
     <Compile Include="Custom\VillagerSelector.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Dodo\dodo.resx">
+      <DependentUpon>dodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dodo\teleport.resx">
+      <DependentUpon>teleport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Map\bulldozer.resx">
       <DependentUpon>bulldozer.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,9 +413,6 @@
       <DependentUpon>bulkSpawn.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dodo\dodo.resx">
-      <DependentUpon>dodo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -416,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Map\Freezer.resx">
       <DependentUpon>Freezer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map\MapRegenerator.resx">
+      <DependentUpon>MapRegenerator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Twitch\OrderDisplay.resx">
       <DependentUpon>OrderDisplay.cs</DependentUpon>
@@ -430,14 +439,8 @@
       <DependentUpon>map.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map\MapRegenerator.resx">
-      <DependentUpon>MapRegenerator.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Setting\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dodo\teleport.resx">
-      <DependentUpon>teleport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom\variation.resx">
       <DependentUpon>variation.cs</DependentUpon>

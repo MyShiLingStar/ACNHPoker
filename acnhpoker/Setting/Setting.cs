@@ -200,28 +200,29 @@ namespace ACNHPoker
             if (Utilities.mapZero != Convert.ToUInt32(MapZero.Text, 16))
                 MapZero.ForeColor = Color.Red;
 
-            Dictionary<string, UInt32> ConfigValue = new Dictionary<string, uint>();
-
-            ConfigValue.Add("PlayerSlot", Convert.ToUInt32(PlayerSlot.Text, 16));
-            ConfigValue.Add("PlayerOffset", Convert.ToUInt32(PlayerOffset.Text, 16));
-            ConfigValue.Add("Slot21Offset", Convert.ToUInt32(Slot21Offset.Text, 16));
-            ConfigValue.Add("HomeOffset", Convert.ToUInt32(HomeOffset.Text, 16));
-            ConfigValue.Add("ReactionOffset", Convert.ToUInt32(ReactionOffset.Text, 16));
-            ConfigValue.Add("Villager", Convert.ToUInt32(Villager.Text, 16));
-            ConfigValue.Add("VillagerOffset", Convert.ToUInt32(VillagerOffset.Text, 16));
-            ConfigValue.Add("VillagerHouse", Convert.ToUInt32(VillagerHouse.Text, 16));
-            ConfigValue.Add("VillagerHouseOffset", Convert.ToUInt32(VillagerHouseOffset.Text, 16));
-            ConfigValue.Add("VillagerHouseBuffer", Convert.ToUInt32(VillagerHouseBuffer.Text, 16));
-            ConfigValue.Add("RecyclingBin", Convert.ToUInt32(RecyclingBin.Text, 16));
-            ConfigValue.Add("Turnip", Convert.ToUInt32(Turnip.Text, 16));
-            ConfigValue.Add("Stamina", Convert.ToUInt32(Stamina.Text, 16));
-            ConfigValue.Add("WalkSpeed", Convert.ToUInt32(WalkSpeed.Text, 16));
-            ConfigValue.Add("AnimationSpeed", Convert.ToUInt32(AnimationSpeed.Text, 16));
-            ConfigValue.Add("Collision", Convert.ToUInt32(Collision.Text, 16));
-            ConfigValue.Add("FreezeTime", Convert.ToUInt32(FreezeTime.Text, 16));
-            ConfigValue.Add("ReadTime", Convert.ToUInt32(ReadTime.Text, 16));
-            ConfigValue.Add("WeatherSeed", Convert.ToUInt32(WeatherSeed.Text, 16));
-            ConfigValue.Add("MapZero", Convert.ToUInt32(MapZero.Text, 16));
+            Dictionary<string, UInt32> ConfigValue = new Dictionary<string, uint>
+            {
+                { "PlayerSlot", Convert.ToUInt32(PlayerSlot.Text, 16) },
+                { "PlayerOffset", Convert.ToUInt32(PlayerOffset.Text, 16) },
+                { "Slot21Offset", Convert.ToUInt32(Slot21Offset.Text, 16) },
+                { "HomeOffset", Convert.ToUInt32(HomeOffset.Text, 16) },
+                { "ReactionOffset", Convert.ToUInt32(ReactionOffset.Text, 16) },
+                { "Villager", Convert.ToUInt32(Villager.Text, 16) },
+                { "VillagerOffset", Convert.ToUInt32(VillagerOffset.Text, 16) },
+                { "VillagerHouse", Convert.ToUInt32(VillagerHouse.Text, 16) },
+                { "VillagerHouseOffset", Convert.ToUInt32(VillagerHouseOffset.Text, 16) },
+                { "VillagerHouseBuffer", Convert.ToUInt32(VillagerHouseBuffer.Text, 16) },
+                { "RecyclingBin", Convert.ToUInt32(RecyclingBin.Text, 16) },
+                { "Turnip", Convert.ToUInt32(Turnip.Text, 16) },
+                { "Stamina", Convert.ToUInt32(Stamina.Text, 16) },
+                { "WalkSpeed", Convert.ToUInt32(WalkSpeed.Text, 16) },
+                { "AnimationSpeed", Convert.ToUInt32(AnimationSpeed.Text, 16) },
+                { "Collision", Convert.ToUInt32(Collision.Text, 16) },
+                { "FreezeTime", Convert.ToUInt32(FreezeTime.Text, 16) },
+                { "ReadTime", Convert.ToUInt32(ReadTime.Text, 16) },
+                { "WeatherSeed", Convert.ToUInt32(WeatherSeed.Text, 16) },
+                { "MapZero", Convert.ToUInt32(MapZero.Text, 16) }
+            };
 
             Utilities.overrideAddresses(ConfigValue);
         }

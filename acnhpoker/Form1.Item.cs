@@ -1960,28 +1960,7 @@ namespace ACNHPoker
         #region Keyboard
         public void KeyboardKeyDown(object sender, KeyEventArgs e)
         {
-            //Debug.Print(e.KeyCode.ToString());
-            if (e.KeyCode.ToString() == "F12" && teleporter != null)
-            {
-                if (dodoSetup == null)
-                {
-                    dodoSetup = new dodo(s, this, true)
-                    {
-                        ControlBox = true,
-                        ShowInTaskbar = true
-                    };
-                    dodoSetup.Show();
-                    dodoSetup.WriteLog("[You have started dodo helper in standalone mode.]\n\n" +
-                                        "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
-                                        "2. Leave only the Joy-Con docked on your Switch.\n" +
-                                        "3. Return to the game and dock your Switch if needed. Try pressing the buttons below to test the controller.\n" +
-                                        "4. If the virtual controller does not response, try the \"Detach\" button on the right, then the \"A\" button.\n" +
-                                        "5. If the virtual controller still does not appear, try restart your Switch.\n\n" +
-                                        ">> Please try the buttons below to test the virtual controller. <<"
-                                        );
-                }
-            }
-            else if (e.KeyCode.ToString() == "F2" || e.KeyCode.ToString() == "Insert")
+            if (e.KeyCode.ToString() == "F2" || e.KeyCode.ToString() == "Insert")
             {
                 if (selectedButton == null & (s != null || bot != null))
                 {
