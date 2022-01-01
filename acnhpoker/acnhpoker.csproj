@@ -51,10 +51,11 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>embedded</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -64,10 +65,10 @@
 	</AllowedReferenceRelatedFileExtensions>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <DebugSymbols>true</DebugSymbols>
-    <FileAlignment>8192</FileAlignment>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>512</FileAlignment>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>8F0F1CA91E0D94DAAAB5B3F16448F643E5217088</ManifestCertificateThumbprint>
@@ -230,6 +231,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ToggleSwitch, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormsToggleSwitch.1.1.0\lib\net40\ToggleSwitch.dll</HintPath>
+    </Reference>
     <Reference Include="TwitchLib.Communication, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TwitchLib.Communication.1.0.3\lib\netstandard2.0\TwitchLib.Communication.dll</HintPath>
     </Reference>
@@ -239,6 +243,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\ImageDownloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom\ImageDownloader.Designer.cs">
+      <DependentUpon>ImageDownloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom\MyTimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom\MyTimer.Designer.cs">
+      <DependentUpon>MyTimer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dodo\controller.cs" />
     <Compile Include="Dodo\dodo.cs">
       <SubType>Form</SubType>
@@ -258,12 +274,6 @@
     <Compile Include="Map\bulldozer.Designer.cs">
       <DependentUpon>bulldozer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\BadTimeSimulator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Map\BadTimeSimulator.Designer.cs">
-      <DependentUpon>BadTimeSimulator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Custom\CountDownTimer.cs" />
     <Compile Include="Map\bulkSpawn.cs">
       <SubType>Form</SubType>
@@ -273,12 +283,6 @@
     </Compile>
     <Compile Include="Custom\DataGridViewProgressColumn.cs" />
     <Compile Include="Discord\DiscordWebHook.cs" />
-    <Compile Include="Custom\MyTimer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Custom\MyTimer.Designer.cs">
-      <DependentUpon>MyTimer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Map\Freezer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,12 +386,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom\ImageDownloader.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Custom\ImageDownloader.Designer.cs">
-      <DependentUpon>ImageDownloader.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory\ItemAttr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -397,6 +395,12 @@
     <Compile Include="Custom\VillagerSelector.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Custom\ImageDownloader.resx">
+      <DependentUpon>ImageDownloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom\MyTimer.resx">
+      <DependentUpon>MyTimer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dodo\dodo.resx">
       <DependentUpon>dodo.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,9 +410,6 @@
     <EmbeddedResource Include="Map\bulldozer.resx">
       <DependentUpon>bulldozer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map\BadTimeSimulator.resx">
-      <DependentUpon>BadTimeSimulator.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Map\bulkSpawn.resx">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -416,9 +417,6 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Custom\MyTimer.resx">
-      <DependentUpon>MyTimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Map\Freezer.resx">
       <DependentUpon>Freezer.cs</DependentUpon>
@@ -444,9 +442,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custom\variation.resx">
       <DependentUpon>variation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Custom\ImageDownloader.resx">
-      <DependentUpon>ImageDownloader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -475,6 +470,833 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="twitch[template].json" />
+    <None Include="VillagerDatabase\ant00.nhv2" />
+    <None Include="VillagerDatabase\ant00.nhvh2" />
+    <None Include="VillagerDatabase\ant01.nhv2" />
+    <None Include="VillagerDatabase\ant01.nhvh2" />
+    <None Include="VillagerDatabase\ant02.nhv2" />
+    <None Include="VillagerDatabase\ant02.nhvh2" />
+    <None Include="VillagerDatabase\ant03.nhv2" />
+    <None Include="VillagerDatabase\ant03.nhvh2" />
+    <None Include="VillagerDatabase\ant05.nhv2" />
+    <None Include="VillagerDatabase\ant05.nhvh2" />
+    <None Include="VillagerDatabase\ant06.nhv2" />
+    <None Include="VillagerDatabase\ant06.nhvh2" />
+    <None Include="VillagerDatabase\ant08.nhv2" />
+    <None Include="VillagerDatabase\ant08.nhvh2" />
+    <None Include="VillagerDatabase\ant09.nhv2" />
+    <None Include="VillagerDatabase\ant09.nhvh2" />
+    <None Include="VillagerDatabase\bea00.nhv2" />
+    <None Include="VillagerDatabase\bea00.nhvh2" />
+    <None Include="VillagerDatabase\bea01.nhv2" />
+    <None Include="VillagerDatabase\bea01.nhvh2" />
+    <None Include="VillagerDatabase\bea02.nhv2" />
+    <None Include="VillagerDatabase\bea02.nhvh2" />
+    <None Include="VillagerDatabase\bea03.nhv2" />
+    <None Include="VillagerDatabase\bea03.nhvh2" />
+    <None Include="VillagerDatabase\bea05.nhv2" />
+    <None Include="VillagerDatabase\bea05.nhvh2" />
+    <None Include="VillagerDatabase\bea06.nhv2" />
+    <None Include="VillagerDatabase\bea06.nhvh2" />
+    <None Include="VillagerDatabase\bea07.nhv2" />
+    <None Include="VillagerDatabase\bea07.nhvh2" />
+    <None Include="VillagerDatabase\bea08.nhv2" />
+    <None Include="VillagerDatabase\bea08.nhvh2" />
+    <None Include="VillagerDatabase\bea09.nhv2" />
+    <None Include="VillagerDatabase\bea09.nhvh2" />
+    <None Include="VillagerDatabase\bea10.nhv2" />
+    <None Include="VillagerDatabase\bea10.nhvh2" />
+    <None Include="VillagerDatabase\bea11.nhv2" />
+    <None Include="VillagerDatabase\bea11.nhvh2" />
+    <None Include="VillagerDatabase\bea12.nhv2" />
+    <None Include="VillagerDatabase\bea12.nhvh2" />
+    <None Include="VillagerDatabase\bea13.nhv2" />
+    <None Include="VillagerDatabase\bea13.nhvh2" />
+    <None Include="VillagerDatabase\bea14.nhv2" />
+    <None Include="VillagerDatabase\bea14.nhvh2" />
+    <None Include="VillagerDatabase\bea15.nhv2" />
+    <None Include="VillagerDatabase\bea15.nhvh2" />
+    <None Include="VillagerDatabase\brd00.nhv2" />
+    <None Include="VillagerDatabase\brd00.nhvh2" />
+    <None Include="VillagerDatabase\brd01.nhv2" />
+    <None Include="VillagerDatabase\brd01.nhvh2" />
+    <None Include="VillagerDatabase\brd02.nhv2" />
+    <None Include="VillagerDatabase\brd02.nhvh2" />
+    <None Include="VillagerDatabase\brd03.nhv2" />
+    <None Include="VillagerDatabase\brd03.nhvh2" />
+    <None Include="VillagerDatabase\brd04.nhv2" />
+    <None Include="VillagerDatabase\brd04.nhvh2" />
+    <None Include="VillagerDatabase\brd05.nhv2" />
+    <None Include="VillagerDatabase\brd05.nhvh2" />
+    <None Include="VillagerDatabase\brd06.nhv2" />
+    <None Include="VillagerDatabase\brd06.nhvh2" />
+    <None Include="VillagerDatabase\brd08.nhv2" />
+    <None Include="VillagerDatabase\brd08.nhvh2" />
+    <None Include="VillagerDatabase\brd09.nhv2" />
+    <None Include="VillagerDatabase\brd09.nhvh2" />
+    <None Include="VillagerDatabase\brd11.nhv2" />
+    <None Include="VillagerDatabase\brd11.nhvh2" />
+    <None Include="VillagerDatabase\brd15.nhv2" />
+    <None Include="VillagerDatabase\brd15.nhvh2" />
+    <None Include="VillagerDatabase\brd16.nhv2" />
+    <None Include="VillagerDatabase\brd16.nhvh2" />
+    <None Include="VillagerDatabase\brd17.nhv2" />
+    <None Include="VillagerDatabase\brd17.nhvh2" />
+    <None Include="VillagerDatabase\brd18.nhv2" />
+    <None Include="VillagerDatabase\brd18.nhvh2" />
+    <None Include="VillagerDatabase\bul00.nhv2" />
+    <None Include="VillagerDatabase\bul00.nhvh2" />
+    <None Include="VillagerDatabase\bul01.nhv2" />
+    <None Include="VillagerDatabase\bul01.nhvh2" />
+    <None Include="VillagerDatabase\bul03.nhv2" />
+    <None Include="VillagerDatabase\bul03.nhvh2" />
+    <None Include="VillagerDatabase\bul05.nhv2" />
+    <None Include="VillagerDatabase\bul05.nhvh2" />
+    <None Include="VillagerDatabase\bul07.nhv2" />
+    <None Include="VillagerDatabase\bul07.nhvh2" />
+    <None Include="VillagerDatabase\bul08.nhv2" />
+    <None Include="VillagerDatabase\bul08.nhvh2" />
+    <None Include="VillagerDatabase\cat00.nhv2" />
+    <None Include="VillagerDatabase\cat00.nhvh2" />
+    <None Include="VillagerDatabase\cat01.nhv2" />
+    <None Include="VillagerDatabase\cat01.nhvh2" />
+    <None Include="VillagerDatabase\cat02.nhv2" />
+    <None Include="VillagerDatabase\cat02.nhvh2" />
+    <None Include="VillagerDatabase\cat03.nhv2" />
+    <None Include="VillagerDatabase\cat03.nhvh2" />
+    <None Include="VillagerDatabase\cat04.nhv2" />
+    <None Include="VillagerDatabase\cat04.nhvh2" />
+    <None Include="VillagerDatabase\cat05.nhv2" />
+    <None Include="VillagerDatabase\cat05.nhvh2" />
+    <None Include="VillagerDatabase\cat06.nhv2" />
+    <None Include="VillagerDatabase\cat06.nhvh2" />
+    <None Include="VillagerDatabase\cat07.nhv2" />
+    <None Include="VillagerDatabase\cat07.nhvh2" />
+    <None Include="VillagerDatabase\cat08.nhv2" />
+    <None Include="VillagerDatabase\cat08.nhvh2" />
+    <None Include="VillagerDatabase\cat09.nhv2" />
+    <None Include="VillagerDatabase\cat09.nhvh2" />
+    <None Include="VillagerDatabase\cat10.nhv2" />
+    <None Include="VillagerDatabase\cat10.nhvh2" />
+    <None Include="VillagerDatabase\cat11.nhv2" />
+    <None Include="VillagerDatabase\cat11.nhvh2" />
+    <None Include="VillagerDatabase\cat12.nhv2" />
+    <None Include="VillagerDatabase\cat12.nhvh2" />
+    <None Include="VillagerDatabase\cat13.nhv2" />
+    <None Include="VillagerDatabase\cat13.nhvh2" />
+    <None Include="VillagerDatabase\cat14.nhv2" />
+    <None Include="VillagerDatabase\cat14.nhvh2" />
+    <None Include="VillagerDatabase\cat15.nhv2" />
+    <None Include="VillagerDatabase\cat15.nhvh2" />
+    <None Include="VillagerDatabase\cat16.nhv2" />
+    <None Include="VillagerDatabase\cat16.nhvh2" />
+    <None Include="VillagerDatabase\cat17.nhv2" />
+    <None Include="VillagerDatabase\cat17.nhvh2" />
+    <None Include="VillagerDatabase\cat18.nhv2" />
+    <None Include="VillagerDatabase\cat18.nhvh2" />
+    <None Include="VillagerDatabase\cat19.nhv2" />
+    <None Include="VillagerDatabase\cat19.nhvh2" />
+    <None Include="VillagerDatabase\cat20.nhv2" />
+    <None Include="VillagerDatabase\cat20.nhvh2" />
+    <None Include="VillagerDatabase\cat21.nhv2" />
+    <None Include="VillagerDatabase\cat21.nhvh2" />
+    <None Include="VillagerDatabase\cat23.nhv2" />
+    <None Include="VillagerDatabase\cat23.nhvh2" />
+    <None Include="VillagerDatabase\cbr00.nhv2" />
+    <None Include="VillagerDatabase\cbr00.nhvh2" />
+    <None Include="VillagerDatabase\cbr01.nhv2" />
+    <None Include="VillagerDatabase\cbr01.nhvh2" />
+    <None Include="VillagerDatabase\cbr02.nhv2" />
+    <None Include="VillagerDatabase\cbr02.nhvh2" />
+    <None Include="VillagerDatabase\cbr03.nhv2" />
+    <None Include="VillagerDatabase\cbr03.nhvh2" />
+    <None Include="VillagerDatabase\cbr04.nhv2" />
+    <None Include="VillagerDatabase\cbr04.nhvh2" />
+    <None Include="VillagerDatabase\cbr05.nhv2" />
+    <None Include="VillagerDatabase\cbr05.nhvh2" />
+    <None Include="VillagerDatabase\cbr06.nhv2" />
+    <None Include="VillagerDatabase\cbr06.nhvh2" />
+    <None Include="VillagerDatabase\cbr07.nhv2" />
+    <None Include="VillagerDatabase\cbr07.nhvh2" />
+    <None Include="VillagerDatabase\cbr09.nhv2" />
+    <None Include="VillagerDatabase\cbr09.nhvh2" />
+    <None Include="VillagerDatabase\cbr10.nhv2" />
+    <None Include="VillagerDatabase\cbr10.nhvh2" />
+    <None Include="VillagerDatabase\cbr13.nhv2" />
+    <None Include="VillagerDatabase\cbr13.nhvh2" />
+    <None Include="VillagerDatabase\cbr14.nhv2" />
+    <None Include="VillagerDatabase\cbr14.nhvh2" />
+    <None Include="VillagerDatabase\cbr15.nhv2" />
+    <None Include="VillagerDatabase\cbr15.nhvh2" />
+    <None Include="VillagerDatabase\cbr16.nhv2" />
+    <None Include="VillagerDatabase\cbr16.nhvh2" />
+    <None Include="VillagerDatabase\cbr17.nhv2" />
+    <None Include="VillagerDatabase\cbr17.nhvh2" />
+    <None Include="VillagerDatabase\cbr18.nhv2" />
+    <None Include="VillagerDatabase\cbr18.nhvh2" />
+    <None Include="VillagerDatabase\cbr19.nhv2" />
+    <None Include="VillagerDatabase\cbr19.nhvh2" />
+    <None Include="VillagerDatabase\chn00.nhv2" />
+    <None Include="VillagerDatabase\chn00.nhvh2" />
+    <None Include="VillagerDatabase\chn01.nhv2" />
+    <None Include="VillagerDatabase\chn01.nhvh2" />
+    <None Include="VillagerDatabase\chn02.nhv2" />
+    <None Include="VillagerDatabase\chn02.nhvh2" />
+    <None Include="VillagerDatabase\chn05.nhv2" />
+    <None Include="VillagerDatabase\chn05.nhvh2" />
+    <None Include="VillagerDatabase\chn09.nhv2" />
+    <None Include="VillagerDatabase\chn09.nhvh2" />
+    <None Include="VillagerDatabase\chn10.nhv2" />
+    <None Include="VillagerDatabase\chn10.nhvh2" />
+    <None Include="VillagerDatabase\chn11.nhv2" />
+    <None Include="VillagerDatabase\chn11.nhvh2" />
+    <None Include="VillagerDatabase\chn12.nhv2" />
+    <None Include="VillagerDatabase\chn12.nhvh2" />
+    <None Include="VillagerDatabase\chn13.nhv2" />
+    <None Include="VillagerDatabase\chn13.nhvh2" />
+    <None Include="VillagerDatabase\cow00.nhv2" />
+    <None Include="VillagerDatabase\cow00.nhvh2" />
+    <None Include="VillagerDatabase\cow01.nhv2" />
+    <None Include="VillagerDatabase\cow01.nhvh2" />
+    <None Include="VillagerDatabase\cow06.nhv2" />
+    <None Include="VillagerDatabase\cow06.nhvh2" />
+    <None Include="VillagerDatabase\cow07.nhv2" />
+    <None Include="VillagerDatabase\cow07.nhvh2" />
+    <None Include="VillagerDatabase\crd00.nhv2" />
+    <None Include="VillagerDatabase\crd00.nhvh2" />
+    <None Include="VillagerDatabase\crd01.nhv2" />
+    <None Include="VillagerDatabase\crd01.nhvh2" />
+    <None Include="VillagerDatabase\crd02.nhv2" />
+    <None Include="VillagerDatabase\crd02.nhvh2" />
+    <None Include="VillagerDatabase\crd04.nhv2" />
+    <None Include="VillagerDatabase\crd04.nhvh2" />
+    <None Include="VillagerDatabase\crd05.nhv2" />
+    <None Include="VillagerDatabase\crd05.nhvh2" />
+    <None Include="VillagerDatabase\crd06.nhv2" />
+    <None Include="VillagerDatabase\crd06.nhvh2" />
+    <None Include="VillagerDatabase\crd07.nhv2" />
+    <None Include="VillagerDatabase\crd07.nhvh2" />
+    <None Include="VillagerDatabase\crd08.nhv2" />
+    <None Include="VillagerDatabase\crd08.nhvh2" />
+    <None Include="VillagerDatabase\der00.nhv2" />
+    <None Include="VillagerDatabase\der00.nhvh2" />
+    <None Include="VillagerDatabase\der01.nhv2" />
+    <None Include="VillagerDatabase\der01.nhvh2" />
+    <None Include="VillagerDatabase\der02.nhv2" />
+    <None Include="VillagerDatabase\der02.nhvh2" />
+    <None Include="VillagerDatabase\der03.nhv2" />
+    <None Include="VillagerDatabase\der03.nhvh2" />
+    <None Include="VillagerDatabase\der04.nhv2" />
+    <None Include="VillagerDatabase\der04.nhvh2" />
+    <None Include="VillagerDatabase\der05.nhv2" />
+    <None Include="VillagerDatabase\der05.nhvh2" />
+    <None Include="VillagerDatabase\der06.nhv2" />
+    <None Include="VillagerDatabase\der06.nhvh2" />
+    <None Include="VillagerDatabase\der07.nhv2" />
+    <None Include="VillagerDatabase\der07.nhvh2" />
+    <None Include="VillagerDatabase\der08.nhv2" />
+    <None Include="VillagerDatabase\der08.nhvh2" />
+    <None Include="VillagerDatabase\der09.nhv2" />
+    <None Include="VillagerDatabase\der09.nhvh2" />
+    <None Include="VillagerDatabase\der10.nhv2" />
+    <None Include="VillagerDatabase\der10.nhvh2" />
+    <None Include="VillagerDatabase\der11.nhv2" />
+    <None Include="VillagerDatabase\der11.nhvh2" />
+    <None Include="VillagerDatabase\dog00.nhv2" />
+    <None Include="VillagerDatabase\dog00.nhvh2" />
+    <None Include="VillagerDatabase\dog01.nhv2" />
+    <None Include="VillagerDatabase\dog01.nhvh2" />
+    <None Include="VillagerDatabase\dog02.nhv2" />
+    <None Include="VillagerDatabase\dog02.nhvh2" />
+    <None Include="VillagerDatabase\dog03.nhv2" />
+    <None Include="VillagerDatabase\dog03.nhvh2" />
+    <None Include="VillagerDatabase\dog04.nhv2" />
+    <None Include="VillagerDatabase\dog04.nhvh2" />
+    <None Include="VillagerDatabase\dog05.nhv2" />
+    <None Include="VillagerDatabase\dog05.nhvh2" />
+    <None Include="VillagerDatabase\dog06.nhv2" />
+    <None Include="VillagerDatabase\dog06.nhvh2" />
+    <None Include="VillagerDatabase\dog07.nhv2" />
+    <None Include="VillagerDatabase\dog07.nhvh2" />
+    <None Include="VillagerDatabase\dog08.nhv2" />
+    <None Include="VillagerDatabase\dog08.nhvh2" />
+    <None Include="VillagerDatabase\dog09.nhv2" />
+    <None Include="VillagerDatabase\dog09.nhvh2" />
+    <None Include="VillagerDatabase\dog10.nhv2" />
+    <None Include="VillagerDatabase\dog10.nhvh2" />
+    <None Include="VillagerDatabase\dog11.nhv2" />
+    <None Include="VillagerDatabase\dog11.nhvh2" />
+    <None Include="VillagerDatabase\dog14.nhv2" />
+    <None Include="VillagerDatabase\dog14.nhvh2" />
+    <None Include="VillagerDatabase\dog15.nhv2" />
+    <None Include="VillagerDatabase\dog15.nhvh2" />
+    <None Include="VillagerDatabase\dog16.nhv2" />
+    <None Include="VillagerDatabase\dog16.nhvh2" />
+    <None Include="VillagerDatabase\dog17.nhv2" />
+    <None Include="VillagerDatabase\dog17.nhvh2" />
+    <None Include="VillagerDatabase\dog18.nhv2" />
+    <None Include="VillagerDatabase\dog18.nhvh2" />
+    <None Include="VillagerDatabase\duk00.nhv2" />
+    <None Include="VillagerDatabase\duk00.nhvh2" />
+    <None Include="VillagerDatabase\duk01.nhv2" />
+    <None Include="VillagerDatabase\duk01.nhvh2" />
+    <None Include="VillagerDatabase\duk02.nhv2" />
+    <None Include="VillagerDatabase\duk02.nhvh2" />
+    <None Include="VillagerDatabase\duk03.nhv2" />
+    <None Include="VillagerDatabase\duk03.nhvh2" />
+    <None Include="VillagerDatabase\duk04.nhv2" />
+    <None Include="VillagerDatabase\duk04.nhvh2" />
+    <None Include="VillagerDatabase\duk05.nhv2" />
+    <None Include="VillagerDatabase\duk05.nhvh2" />
+    <None Include="VillagerDatabase\duk06.nhv2" />
+    <None Include="VillagerDatabase\duk06.nhvh2" />
+    <None Include="VillagerDatabase\duk07.nhv2" />
+    <None Include="VillagerDatabase\duk07.nhvh2" />
+    <None Include="VillagerDatabase\duk08.nhv2" />
+    <None Include="VillagerDatabase\duk08.nhvh2" />
+    <None Include="VillagerDatabase\duk09.nhv2" />
+    <None Include="VillagerDatabase\duk09.nhvh2" />
+    <None Include="VillagerDatabase\duk10.nhv2" />
+    <None Include="VillagerDatabase\duk10.nhvh2" />
+    <None Include="VillagerDatabase\duk11.nhv2" />
+    <None Include="VillagerDatabase\duk11.nhvh2" />
+    <None Include="VillagerDatabase\duk12.nhv2" />
+    <None Include="VillagerDatabase\duk12.nhvh2" />
+    <None Include="VillagerDatabase\duk13.nhv2" />
+    <None Include="VillagerDatabase\duk13.nhvh2" />
+    <None Include="VillagerDatabase\duk15.nhv2" />
+    <None Include="VillagerDatabase\duk15.nhvh2" />
+    <None Include="VillagerDatabase\duk16.nhv2" />
+    <None Include="VillagerDatabase\duk16.nhvh2" />
+    <None Include="VillagerDatabase\duk17.nhv2" />
+    <None Include="VillagerDatabase\duk17.nhvh2" />
+    <None Include="VillagerDatabase\elp00.nhv2" />
+    <None Include="VillagerDatabase\elp00.nhvh2" />
+    <None Include="VillagerDatabase\elp01.nhv2" />
+    <None Include="VillagerDatabase\elp01.nhvh2" />
+    <None Include="VillagerDatabase\elp02.nhv2" />
+    <None Include="VillagerDatabase\elp02.nhvh2" />
+    <None Include="VillagerDatabase\elp03.nhv2" />
+    <None Include="VillagerDatabase\elp03.nhvh2" />
+    <None Include="VillagerDatabase\elp04.nhv2" />
+    <None Include="VillagerDatabase\elp04.nhvh2" />
+    <None Include="VillagerDatabase\elp05.nhv2" />
+    <None Include="VillagerDatabase\elp05.nhvh2" />
+    <None Include="VillagerDatabase\elp06.nhv2" />
+    <None Include="VillagerDatabase\elp06.nhvh2" />
+    <None Include="VillagerDatabase\elp07.nhv2" />
+    <None Include="VillagerDatabase\elp07.nhvh2" />
+    <None Include="VillagerDatabase\elp09.nhv2" />
+    <None Include="VillagerDatabase\elp09.nhvh2" />
+    <None Include="VillagerDatabase\elp10.nhv2" />
+    <None Include="VillagerDatabase\elp10.nhvh2" />
+    <None Include="VillagerDatabase\elp11.nhv2" />
+    <None Include="VillagerDatabase\elp11.nhvh2" />
+    <None Include="VillagerDatabase\elp12.nhv2" />
+    <None Include="VillagerDatabase\elp12.nhvh2" />
+    <None Include="VillagerDatabase\flg00.nhv2" />
+    <None Include="VillagerDatabase\flg00.nhvh2" />
+    <None Include="VillagerDatabase\flg01.nhv2" />
+    <None Include="VillagerDatabase\flg01.nhvh2" />
+    <None Include="VillagerDatabase\flg02.nhv2" />
+    <None Include="VillagerDatabase\flg02.nhvh2" />
+    <None Include="VillagerDatabase\flg03.nhv2" />
+    <None Include="VillagerDatabase\flg03.nhvh2" />
+    <None Include="VillagerDatabase\flg04.nhv2" />
+    <None Include="VillagerDatabase\flg04.nhvh2" />
+    <None Include="VillagerDatabase\flg05.nhv2" />
+    <None Include="VillagerDatabase\flg05.nhvh2" />
+    <None Include="VillagerDatabase\flg06.nhv2" />
+    <None Include="VillagerDatabase\flg06.nhvh2" />
+    <None Include="VillagerDatabase\flg07.nhv2" />
+    <None Include="VillagerDatabase\flg07.nhvh2" />
+    <None Include="VillagerDatabase\flg09.nhv2" />
+    <None Include="VillagerDatabase\flg09.nhvh2" />
+    <None Include="VillagerDatabase\flg10.nhv2" />
+    <None Include="VillagerDatabase\flg10.nhvh2" />
+    <None Include="VillagerDatabase\flg11.nhv2" />
+    <None Include="VillagerDatabase\flg11.nhvh2" />
+    <None Include="VillagerDatabase\flg12.nhv2" />
+    <None Include="VillagerDatabase\flg12.nhvh2" />
+    <None Include="VillagerDatabase\flg13.nhv2" />
+    <None Include="VillagerDatabase\flg13.nhvh2" />
+    <None Include="VillagerDatabase\flg15.nhv2" />
+    <None Include="VillagerDatabase\flg15.nhvh2" />
+    <None Include="VillagerDatabase\flg16.nhv2" />
+    <None Include="VillagerDatabase\flg16.nhvh2" />
+    <None Include="VillagerDatabase\flg17.nhv2" />
+    <None Include="VillagerDatabase\flg17.nhvh2" />
+    <None Include="VillagerDatabase\flg18.nhv2" />
+    <None Include="VillagerDatabase\flg18.nhvh2" />
+    <None Include="VillagerDatabase\flg19.nhv2" />
+    <None Include="VillagerDatabase\flg19.nhvh2" />
+    <None Include="VillagerDatabase\goa00.nhv2" />
+    <None Include="VillagerDatabase\goa00.nhvh2" />
+    <None Include="VillagerDatabase\goa01.nhv2" />
+    <None Include="VillagerDatabase\goa01.nhvh2" />
+    <None Include="VillagerDatabase\goa02.nhv2" />
+    <None Include="VillagerDatabase\goa02.nhvh2" />
+    <None Include="VillagerDatabase\goa04.nhv2" />
+    <None Include="VillagerDatabase\goa04.nhvh2" />
+    <None Include="VillagerDatabase\goa06.nhv2" />
+    <None Include="VillagerDatabase\goa06.nhvh2" />
+    <None Include="VillagerDatabase\goa07.nhv2" />
+    <None Include="VillagerDatabase\goa07.nhvh2" />
+    <None Include="VillagerDatabase\goa08.nhv2" />
+    <None Include="VillagerDatabase\goa08.nhvh2" />
+    <None Include="VillagerDatabase\goa09.nhv2" />
+    <None Include="VillagerDatabase\goa09.nhvh2" />
+    <None Include="VillagerDatabase\gor00.nhv2" />
+    <None Include="VillagerDatabase\gor00.nhvh2" />
+    <None Include="VillagerDatabase\gor01.nhv2" />
+    <None Include="VillagerDatabase\gor01.nhvh2" />
+    <None Include="VillagerDatabase\gor02.nhv2" />
+    <None Include="VillagerDatabase\gor02.nhvh2" />
+    <None Include="VillagerDatabase\gor04.nhv2" />
+    <None Include="VillagerDatabase\gor04.nhvh2" />
+    <None Include="VillagerDatabase\gor05.nhv2" />
+    <None Include="VillagerDatabase\gor05.nhvh2" />
+    <None Include="VillagerDatabase\gor07.nhv2" />
+    <None Include="VillagerDatabase\gor07.nhvh2" />
+    <None Include="VillagerDatabase\gor08.nhv2" />
+    <None Include="VillagerDatabase\gor08.nhvh2" />
+    <None Include="VillagerDatabase\gor09.nhv2" />
+    <None Include="VillagerDatabase\gor09.nhvh2" />
+    <None Include="VillagerDatabase\gor10.nhv2" />
+    <None Include="VillagerDatabase\gor10.nhvh2" />
+    <None Include="VillagerDatabase\gor11.nhv2" />
+    <None Include="VillagerDatabase\gor11.nhvh2" />
+    <None Include="VillagerDatabase\ham00.nhv2" />
+    <None Include="VillagerDatabase\ham00.nhvh2" />
+    <None Include="VillagerDatabase\ham01.nhv2" />
+    <None Include="VillagerDatabase\ham01.nhvh2" />
+    <None Include="VillagerDatabase\ham02.nhv2" />
+    <None Include="VillagerDatabase\ham02.nhvh2" />
+    <None Include="VillagerDatabase\ham03.nhv2" />
+    <None Include="VillagerDatabase\ham03.nhvh2" />
+    <None Include="VillagerDatabase\ham04.nhv2" />
+    <None Include="VillagerDatabase\ham04.nhvh2" />
+    <None Include="VillagerDatabase\ham05.nhv2" />
+    <None Include="VillagerDatabase\ham05.nhvh2" />
+    <None Include="VillagerDatabase\ham06.nhv2" />
+    <None Include="VillagerDatabase\ham06.nhvh2" />
+    <None Include="VillagerDatabase\ham07.nhv2" />
+    <None Include="VillagerDatabase\ham07.nhvh2" />
+    <None Include="VillagerDatabase\ham09.nhv2" />
+    <None Include="VillagerDatabase\ham09.nhvh2" />
+    <None Include="VillagerDatabase\hip00.nhv2" />
+    <None Include="VillagerDatabase\hip00.nhvh2" />
+    <None Include="VillagerDatabase\hip02.nhv2" />
+    <None Include="VillagerDatabase\hip02.nhvh2" />
+    <None Include="VillagerDatabase\hip03.nhv2" />
+    <None Include="VillagerDatabase\hip03.nhvh2" />
+    <None Include="VillagerDatabase\hip04.nhv2" />
+    <None Include="VillagerDatabase\hip04.nhvh2" />
+    <None Include="VillagerDatabase\hip05.nhv2" />
+    <None Include="VillagerDatabase\hip05.nhvh2" />
+    <None Include="VillagerDatabase\hip08.nhv2" />
+    <None Include="VillagerDatabase\hip08.nhvh2" />
+    <None Include="VillagerDatabase\hip09.nhv2" />
+    <None Include="VillagerDatabase\hip09.nhvh2" />
+    <None Include="VillagerDatabase\hrs00.nhv2" />
+    <None Include="VillagerDatabase\hrs00.nhvh2" />
+    <None Include="VillagerDatabase\hrs01.nhv2" />
+    <None Include="VillagerDatabase\hrs01.nhvh2" />
+    <None Include="VillagerDatabase\hrs02.nhv2" />
+    <None Include="VillagerDatabase\hrs02.nhvh2" />
+    <None Include="VillagerDatabase\hrs03.nhv2" />
+    <None Include="VillagerDatabase\hrs03.nhvh2" />
+    <None Include="VillagerDatabase\hrs04.nhv2" />
+    <None Include="VillagerDatabase\hrs04.nhvh2" />
+    <None Include="VillagerDatabase\hrs05.nhv2" />
+    <None Include="VillagerDatabase\hrs05.nhvh2" />
+    <None Include="VillagerDatabase\hrs06.nhv2" />
+    <None Include="VillagerDatabase\hrs06.nhvh2" />
+    <None Include="VillagerDatabase\hrs07.nhv2" />
+    <None Include="VillagerDatabase\hrs07.nhvh2" />
+    <None Include="VillagerDatabase\hrs08.nhv2" />
+    <None Include="VillagerDatabase\hrs08.nhvh2" />
+    <None Include="VillagerDatabase\hrs09.nhv2" />
+    <None Include="VillagerDatabase\hrs09.nhvh2" />
+    <None Include="VillagerDatabase\hrs10.nhv2" />
+    <None Include="VillagerDatabase\hrs10.nhvh2" />
+    <None Include="VillagerDatabase\hrs11.nhv2" />
+    <None Include="VillagerDatabase\hrs11.nhvh2" />
+    <None Include="VillagerDatabase\hrs12.nhv2" />
+    <None Include="VillagerDatabase\hrs12.nhvh2" />
+    <None Include="VillagerDatabase\hrs13.nhv2" />
+    <None Include="VillagerDatabase\hrs13.nhvh2" />
+    <None Include="VillagerDatabase\hrs16.nhv2" />
+    <None Include="VillagerDatabase\hrs16.nhvh2" />
+    <None Include="VillagerDatabase\Io.nhv2" />
+    <None Include="VillagerDatabase\kal00.nhv2" />
+    <None Include="VillagerDatabase\kal00.nhvh2" />
+    <None Include="VillagerDatabase\kal01.nhv2" />
+    <None Include="VillagerDatabase\kal01.nhvh2" />
+    <None Include="VillagerDatabase\kal02.nhv2" />
+    <None Include="VillagerDatabase\kal02.nhvh2" />
+    <None Include="VillagerDatabase\kal03.nhv2" />
+    <None Include="VillagerDatabase\kal03.nhvh2" />
+    <None Include="VillagerDatabase\kal04.nhv2" />
+    <None Include="VillagerDatabase\kal04.nhvh2" />
+    <None Include="VillagerDatabase\kal05.nhv2" />
+    <None Include="VillagerDatabase\kal05.nhvh2" />
+    <None Include="VillagerDatabase\kal07.nhv2" />
+    <None Include="VillagerDatabase\kal07.nhvh2" />
+    <None Include="VillagerDatabase\kal08.nhv2" />
+    <None Include="VillagerDatabase\kal08.nhvh2" />
+    <None Include="VillagerDatabase\kal09.nhv2" />
+    <None Include="VillagerDatabase\kal09.nhvh2" />
+    <None Include="VillagerDatabase\kal10.nhv2" />
+    <None Include="VillagerDatabase\kal10.nhvh2" />
+    <None Include="VillagerDatabase\kgr00.nhv2" />
+    <None Include="VillagerDatabase\kgr00.nhvh2" />
+    <None Include="VillagerDatabase\kgr01.nhv2" />
+    <None Include="VillagerDatabase\kgr01.nhvh2" />
+    <None Include="VillagerDatabase\kgr02.nhv2" />
+    <None Include="VillagerDatabase\kgr02.nhvh2" />
+    <None Include="VillagerDatabase\kgr05.nhv2" />
+    <None Include="VillagerDatabase\kgr05.nhvh2" />
+    <None Include="VillagerDatabase\kgr06.nhv2" />
+    <None Include="VillagerDatabase\kgr06.nhvh2" />
+    <None Include="VillagerDatabase\kgr08.nhv2" />
+    <None Include="VillagerDatabase\kgr08.nhvh2" />
+    <None Include="VillagerDatabase\kgr09.nhv2" />
+    <None Include="VillagerDatabase\kgr09.nhvh2" />
+    <None Include="VillagerDatabase\kgr10.nhv2" />
+    <None Include="VillagerDatabase\kgr10.nhvh2" />
+    <None Include="VillagerDatabase\lon00.nhv2" />
+    <None Include="VillagerDatabase\lon00.nhvh2" />
+    <None Include="VillagerDatabase\lon01.nhv2" />
+    <None Include="VillagerDatabase\lon01.nhvh2" />
+    <None Include="VillagerDatabase\lon02.nhv2" />
+    <None Include="VillagerDatabase\lon02.nhvh2" />
+    <None Include="VillagerDatabase\lon04.nhv2" />
+    <None Include="VillagerDatabase\lon04.nhvh2" />
+    <None Include="VillagerDatabase\lon06.nhv2" />
+    <None Include="VillagerDatabase\lon06.nhvh2" />
+    <None Include="VillagerDatabase\lon07.nhv2" />
+    <None Include="VillagerDatabase\lon07.nhvh2" />
+    <None Include="VillagerDatabase\lon08.nhv2" />
+    <None Include="VillagerDatabase\lon08.nhvh2" />
+    <None Include="VillagerDatabase\mnk01.nhv2" />
+    <None Include="VillagerDatabase\mnk01.nhvh2" />
+    <None Include="VillagerDatabase\mnk02.nhv2" />
+    <None Include="VillagerDatabase\mnk02.nhvh2" />
+    <None Include="VillagerDatabase\mnk03.nhv2" />
+    <None Include="VillagerDatabase\mnk03.nhvh2" />
+    <None Include="VillagerDatabase\mnk04.nhv2" />
+    <None Include="VillagerDatabase\mnk04.nhvh2" />
+    <None Include="VillagerDatabase\mnk05.nhv2" />
+    <None Include="VillagerDatabase\mnk05.nhvh2" />
+    <None Include="VillagerDatabase\mnk06.nhv2" />
+    <None Include="VillagerDatabase\mnk06.nhvh2" />
+    <None Include="VillagerDatabase\mnk07.nhv2" />
+    <None Include="VillagerDatabase\mnk07.nhvh2" />
+    <None Include="VillagerDatabase\mnk08.nhv2" />
+    <None Include="VillagerDatabase\mnk08.nhvh2" />
+    <None Include="VillagerDatabase\mnk09.nhv2" />
+    <None Include="VillagerDatabase\mnk09.nhvh2" />
+    <None Include="VillagerDatabase\mus00.nhv2" />
+    <None Include="VillagerDatabase\mus00.nhvh2" />
+    <None Include="VillagerDatabase\mus01.nhv2" />
+    <None Include="VillagerDatabase\mus01.nhvh2" />
+    <None Include="VillagerDatabase\mus02.nhv2" />
+    <None Include="VillagerDatabase\mus02.nhvh2" />
+    <None Include="VillagerDatabase\mus03.nhv2" />
+    <None Include="VillagerDatabase\mus03.nhvh2" />
+    <None Include="VillagerDatabase\mus04.nhv2" />
+    <None Include="VillagerDatabase\mus04.nhvh2" />
+    <None Include="VillagerDatabase\mus05.nhv2" />
+    <None Include="VillagerDatabase\mus05.nhvh2" />
+    <None Include="VillagerDatabase\mus08.nhv2" />
+    <None Include="VillagerDatabase\mus08.nhvh2" />
+    <None Include="VillagerDatabase\mus09.nhv2" />
+    <None Include="VillagerDatabase\mus09.nhvh2" />
+    <None Include="VillagerDatabase\mus10.nhv2" />
+    <None Include="VillagerDatabase\mus10.nhvh2" />
+    <None Include="VillagerDatabase\mus12.nhv2" />
+    <None Include="VillagerDatabase\mus12.nhvh2" />
+    <None Include="VillagerDatabase\mus14.nhv2" />
+    <None Include="VillagerDatabase\mus14.nhvh2" />
+    <None Include="VillagerDatabase\mus15.nhv2" />
+    <None Include="VillagerDatabase\mus15.nhvh2" />
+    <None Include="VillagerDatabase\mus16.nhv2" />
+    <None Include="VillagerDatabase\mus16.nhvh2" />
+    <None Include="VillagerDatabase\mus17.nhv2" />
+    <None Include="VillagerDatabase\mus17.nhvh2" />
+    <None Include="VillagerDatabase\mus18.nhv2" />
+    <None Include="VillagerDatabase\mus18.nhvh2" />
+    <None Include="VillagerDatabase\mus19.nhv2" />
+    <None Include="VillagerDatabase\mus19.nhvh2" />
+    <None Include="VillagerDatabase\ocp00.nhv2" />
+    <None Include="VillagerDatabase\ocp00.nhvh2" />
+    <None Include="VillagerDatabase\ocp01.nhv2" />
+    <None Include="VillagerDatabase\ocp01.nhvh2" />
+    <None Include="VillagerDatabase\ocp02.nhv2" />
+    <None Include="VillagerDatabase\ocp02.nhvh2" />
+    <None Include="VillagerDatabase\ocp04.nhv2" />
+    <None Include="VillagerDatabase\ocp04.nhvh2" />
+    <None Include="VillagerDatabase\ost00.nhv2" />
+    <None Include="VillagerDatabase\ost00.nhvh2" />
+    <None Include="VillagerDatabase\ost01.nhv2" />
+    <None Include="VillagerDatabase\ost01.nhvh2" />
+    <None Include="VillagerDatabase\ost02.nhv2" />
+    <None Include="VillagerDatabase\ost02.nhvh2" />
+    <None Include="VillagerDatabase\ost03.nhv2" />
+    <None Include="VillagerDatabase\ost03.nhvh2" />
+    <None Include="VillagerDatabase\ost04.nhv2" />
+    <None Include="VillagerDatabase\ost04.nhvh2" />
+    <None Include="VillagerDatabase\ost05.nhv2" />
+    <None Include="VillagerDatabase\ost05.nhvh2" />
+    <None Include="VillagerDatabase\ost06.nhv2" />
+    <None Include="VillagerDatabase\ost06.nhvh2" />
+    <None Include="VillagerDatabase\ost07.nhv2" />
+    <None Include="VillagerDatabase\ost07.nhvh2" />
+    <None Include="VillagerDatabase\ost08.nhv2" />
+    <None Include="VillagerDatabase\ost08.nhvh2" />
+    <None Include="VillagerDatabase\ost09.nhv2" />
+    <None Include="VillagerDatabase\ost09.nhvh2" />
+    <None Include="VillagerDatabase\ost10.nhv2" />
+    <None Include="VillagerDatabase\ost10.nhvh2" />
+    <None Include="VillagerDatabase\pbr00.nhv2" />
+    <None Include="VillagerDatabase\pbr00.nhvh2" />
+    <None Include="VillagerDatabase\pbr01.nhv2" />
+    <None Include="VillagerDatabase\pbr01.nhvh2" />
+    <None Include="VillagerDatabase\pbr02.nhv2" />
+    <None Include="VillagerDatabase\pbr02.nhvh2" />
+    <None Include="VillagerDatabase\pbr03.nhv2" />
+    <None Include="VillagerDatabase\pbr03.nhvh2" />
+    <None Include="VillagerDatabase\pbr05.nhv2" />
+    <None Include="VillagerDatabase\pbr05.nhvh2" />
+    <None Include="VillagerDatabase\pbr06.nhv2" />
+    <None Include="VillagerDatabase\pbr06.nhvh2" />
+    <None Include="VillagerDatabase\pbr07.nhv2" />
+    <None Include="VillagerDatabase\pbr07.nhvh2" />
+    <None Include="VillagerDatabase\pbr08.nhv2" />
+    <None Include="VillagerDatabase\pbr08.nhvh2" />
+    <None Include="VillagerDatabase\pbr09.nhv2" />
+    <None Include="VillagerDatabase\pbr09.nhvh2" />
+    <None Include="VillagerDatabase\pbr10.nhv2" />
+    <None Include="VillagerDatabase\pbr10.nhvh2" />
+    <None Include="VillagerDatabase\pgn00.nhv2" />
+    <None Include="VillagerDatabase\pgn00.nhvh2" />
+    <None Include="VillagerDatabase\pgn01.nhv2" />
+    <None Include="VillagerDatabase\pgn01.nhvh2" />
+    <None Include="VillagerDatabase\pgn02.nhv2" />
+    <None Include="VillagerDatabase\pgn02.nhvh2" />
+    <None Include="VillagerDatabase\pgn03.nhv2" />
+    <None Include="VillagerDatabase\pgn03.nhvh2" />
+    <None Include="VillagerDatabase\pgn04.nhv2" />
+    <None Include="VillagerDatabase\pgn04.nhvh2" />
+    <None Include="VillagerDatabase\pgn05.nhv2" />
+    <None Include="VillagerDatabase\pgn05.nhvh2" />
+    <None Include="VillagerDatabase\pgn06.nhv2" />
+    <None Include="VillagerDatabase\pgn06.nhvh2" />
+    <None Include="VillagerDatabase\pgn07.nhv2" />
+    <None Include="VillagerDatabase\pgn07.nhvh2" />
+    <None Include="VillagerDatabase\pgn09.nhv2" />
+    <None Include="VillagerDatabase\pgn09.nhvh2" />
+    <None Include="VillagerDatabase\pgn10.nhv2" />
+    <None Include="VillagerDatabase\pgn10.nhvh2" />
+    <None Include="VillagerDatabase\pgn11.nhv2" />
+    <None Include="VillagerDatabase\pgn11.nhvh2" />
+    <None Include="VillagerDatabase\pgn12.nhv2" />
+    <None Include="VillagerDatabase\pgn12.nhvh2" />
+    <None Include="VillagerDatabase\pgn13.nhv2" />
+    <None Include="VillagerDatabase\pgn13.nhvh2" />
+    <None Include="VillagerDatabase\pgn14.nhv2" />
+    <None Include="VillagerDatabase\pgn14.nhvh2" />
+    <None Include="VillagerDatabase\pig00.nhv2" />
+    <None Include="VillagerDatabase\pig00.nhvh2" />
+    <None Include="VillagerDatabase\pig01.nhv2" />
+    <None Include="VillagerDatabase\pig01.nhvh2" />
+    <None Include="VillagerDatabase\pig02.nhv2" />
+    <None Include="VillagerDatabase\pig02.nhvh2" />
+    <None Include="VillagerDatabase\pig03.nhv2" />
+    <None Include="VillagerDatabase\pig03.nhvh2" />
+    <None Include="VillagerDatabase\pig04.nhv2" />
+    <None Include="VillagerDatabase\pig04.nhvh2" />
+    <None Include="VillagerDatabase\pig05.nhv2" />
+    <None Include="VillagerDatabase\pig05.nhvh2" />
+    <None Include="VillagerDatabase\pig08.nhv2" />
+    <None Include="VillagerDatabase\pig08.nhvh2" />
+    <None Include="VillagerDatabase\pig09.nhv2" />
+    <None Include="VillagerDatabase\pig09.nhvh2" />
+    <None Include="VillagerDatabase\pig10.nhv2" />
+    <None Include="VillagerDatabase\pig10.nhvh2" />
+    <None Include="VillagerDatabase\pig11.nhv2" />
+    <None Include="VillagerDatabase\pig11.nhvh2" />
+    <None Include="VillagerDatabase\pig13.nhv2" />
+    <None Include="VillagerDatabase\pig13.nhvh2" />
+    <None Include="VillagerDatabase\pig14.nhv2" />
+    <None Include="VillagerDatabase\pig14.nhvh2" />
+    <None Include="VillagerDatabase\pig15.nhv2" />
+    <None Include="VillagerDatabase\pig15.nhvh2" />
+    <None Include="VillagerDatabase\pig16.nhv2" />
+    <None Include="VillagerDatabase\pig16.nhvh2" />
+    <None Include="VillagerDatabase\pig17.nhv2" />
+    <None Include="VillagerDatabase\pig17.nhvh2" />
+    <None Include="VillagerDatabase\rbt00.nhv2" />
+    <None Include="VillagerDatabase\rbt00.nhvh2" />
+    <None Include="VillagerDatabase\rbt01.nhv2" />
+    <None Include="VillagerDatabase\rbt01.nhvh2" />
+    <None Include="VillagerDatabase\rbt02.nhv2" />
+    <None Include="VillagerDatabase\rbt02.nhvh2" />
+    <None Include="VillagerDatabase\rbt03.nhv2" />
+    <None Include="VillagerDatabase\rbt03.nhvh2" />
+    <None Include="VillagerDatabase\rbt04.nhv2" />
+    <None Include="VillagerDatabase\rbt04.nhvh2" />
+    <None Include="VillagerDatabase\rbt05.nhv2" />
+    <None Include="VillagerDatabase\rbt05.nhvh2" />
+    <None Include="VillagerDatabase\rbt06.nhv2" />
+    <None Include="VillagerDatabase\rbt06.nhvh2" />
+    <None Include="VillagerDatabase\rbt07.nhv2" />
+    <None Include="VillagerDatabase\rbt07.nhvh2" />
+    <None Include="VillagerDatabase\rbt08.nhv2" />
+    <None Include="VillagerDatabase\rbt08.nhvh2" />
+    <None Include="VillagerDatabase\rbt09.nhv2" />
+    <None Include="VillagerDatabase\rbt09.nhvh2" />
+    <None Include="VillagerDatabase\rbt10.nhv2" />
+    <None Include="VillagerDatabase\rbt10.nhvh2" />
+    <None Include="VillagerDatabase\rbt11.nhv2" />
+    <None Include="VillagerDatabase\rbt11.nhvh2" />
+    <None Include="VillagerDatabase\rbt12.nhv2" />
+    <None Include="VillagerDatabase\rbt12.nhvh2" />
+    <None Include="VillagerDatabase\rbt13.nhv2" />
+    <None Include="VillagerDatabase\rbt13.nhvh2" />
+    <None Include="VillagerDatabase\rbt14.nhv2" />
+    <None Include="VillagerDatabase\rbt14.nhvh2" />
+    <None Include="VillagerDatabase\rbt15.nhv2" />
+    <None Include="VillagerDatabase\rbt15.nhvh2" />
+    <None Include="VillagerDatabase\rbt16.nhv2" />
+    <None Include="VillagerDatabase\rbt16.nhvh2" />
+    <None Include="VillagerDatabase\rbt17.nhv2" />
+    <None Include="VillagerDatabase\rbt17.nhvh2" />
+    <None Include="VillagerDatabase\rbt18.nhv2" />
+    <None Include="VillagerDatabase\rbt18.nhvh2" />
+    <None Include="VillagerDatabase\rbt19.nhv2" />
+    <None Include="VillagerDatabase\rbt19.nhvh2" />
+    <None Include="VillagerDatabase\rbt20.nhv2" />
+    <None Include="VillagerDatabase\rbt20.nhvh2" />
+    <None Include="VillagerDatabase\rbt21.nhv2" />
+    <None Include="VillagerDatabase\rbt21.nhvh2" />
+    <None Include="VillagerDatabase\rhn00.nhv2" />
+    <None Include="VillagerDatabase\rhn00.nhvh2" />
+    <None Include="VillagerDatabase\rhn01.nhv2" />
+    <None Include="VillagerDatabase\rhn01.nhvh2" />
+    <None Include="VillagerDatabase\rhn02.nhv2" />
+    <None Include="VillagerDatabase\rhn02.nhvh2" />
+    <None Include="VillagerDatabase\rhn04.nhv2" />
+    <None Include="VillagerDatabase\rhn04.nhvh2" />
+    <None Include="VillagerDatabase\rhn05.nhv2" />
+    <None Include="VillagerDatabase\rhn05.nhvh2" />
+    <None Include="VillagerDatabase\rhn07.nhv2" />
+    <None Include="VillagerDatabase\rhn07.nhvh2" />
+    <None Include="VillagerDatabase\rhn08.nhv2" />
+    <None Include="VillagerDatabase\rhn08.nhvh2" />
+    <None Include="VillagerDatabase\shp00.nhv2" />
+    <None Include="VillagerDatabase\shp00.nhvh2" />
+    <None Include="VillagerDatabase\shp01.nhv2" />
+    <None Include="VillagerDatabase\shp01.nhvh2" />
+    <None Include="VillagerDatabase\shp02.nhv2" />
+    <None Include="VillagerDatabase\shp02.nhvh2" />
+    <None Include="VillagerDatabase\shp03.nhv2" />
+    <None Include="VillagerDatabase\shp03.nhvh2" />
+    <None Include="VillagerDatabase\shp04.nhv2" />
+    <None Include="VillagerDatabase\shp04.nhvh2" />
+    <None Include="VillagerDatabase\shp07.nhv2" />
+    <None Include="VillagerDatabase\shp07.nhvh2" />
+    <None Include="VillagerDatabase\shp08.nhv2" />
+    <None Include="VillagerDatabase\shp08.nhvh2" />
+    <None Include="VillagerDatabase\shp09.nhv2" />
+    <None Include="VillagerDatabase\shp09.nhvh2" />
+    <None Include="VillagerDatabase\shp10.nhv2" />
+    <None Include="VillagerDatabase\shp10.nhvh2" />
+    <None Include="VillagerDatabase\shp11.nhv2" />
+    <None Include="VillagerDatabase\shp11.nhvh2" />
+    <None Include="VillagerDatabase\shp12.nhv2" />
+    <None Include="VillagerDatabase\shp12.nhvh2" />
+    <None Include="VillagerDatabase\shp13.nhv2" />
+    <None Include="VillagerDatabase\shp13.nhvh2" />
+    <None Include="VillagerDatabase\shp14.nhv2" />
+    <None Include="VillagerDatabase\shp14.nhvh2" />
+    <None Include="VillagerDatabase\shp15.nhv2" />
+    <None Include="VillagerDatabase\shp15.nhvh2" />
+    <None Include="VillagerDatabase\squ00.nhv2" />
+    <None Include="VillagerDatabase\squ00.nhvh2" />
+    <None Include="VillagerDatabase\squ01.nhv2" />
+    <None Include="VillagerDatabase\squ01.nhvh2" />
+    <None Include="VillagerDatabase\squ02.nhv2" />
+    <None Include="VillagerDatabase\squ02.nhvh2" />
+    <None Include="VillagerDatabase\squ03.nhv2" />
+    <None Include="VillagerDatabase\squ03.nhvh2" />
+    <None Include="VillagerDatabase\squ04.nhv2" />
+    <None Include="VillagerDatabase\squ04.nhvh2" />
+    <None Include="VillagerDatabase\squ05.nhv2" />
+    <None Include="VillagerDatabase\squ05.nhvh2" />
+    <None Include="VillagerDatabase\squ06.nhv2" />
+    <None Include="VillagerDatabase\squ06.nhvh2" />
+    <None Include="VillagerDatabase\squ07.nhv2" />
+    <None Include="VillagerDatabase\squ07.nhvh2" />
+    <None Include="VillagerDatabase\squ08.nhv2" />
+    <None Include="VillagerDatabase\squ08.nhvh2" />
+    <None Include="VillagerDatabase\squ09.nhv2" />
+    <None Include="VillagerDatabase\squ09.nhvh2" />
+    <None Include="VillagerDatabase\squ10.nhv2" />
+    <None Include="VillagerDatabase\squ10.nhvh2" />
+    <None Include="VillagerDatabase\squ11.nhv2" />
+    <None Include="VillagerDatabase\squ11.nhvh2" />
+    <None Include="VillagerDatabase\squ13.nhv2" />
+    <None Include="VillagerDatabase\squ13.nhvh2" />
+    <None Include="VillagerDatabase\squ14.nhv2" />
+    <None Include="VillagerDatabase\squ14.nhvh2" />
+    <None Include="VillagerDatabase\squ15.nhv2" />
+    <None Include="VillagerDatabase\squ15.nhvh2" />
+    <None Include="VillagerDatabase\squ16.nhv2" />
+    <None Include="VillagerDatabase\squ16.nhvh2" />
+    <None Include="VillagerDatabase\squ17.nhv2" />
+    <None Include="VillagerDatabase\squ17.nhvh2" />
+    <None Include="VillagerDatabase\squ18.nhv2" />
+    <None Include="VillagerDatabase\squ18.nhvh2" />
+    <None Include="VillagerDatabase\squ21.nhv2" />
+    <None Include="VillagerDatabase\squ21.nhvh2" />
+    <None Include="VillagerDatabase\tig00.nhv2" />
+    <None Include="VillagerDatabase\tig00.nhvh2" />
+    <None Include="VillagerDatabase\tig01.nhv2" />
+    <None Include="VillagerDatabase\tig01.nhvh2" />
+    <None Include="VillagerDatabase\tig02.nhv2" />
+    <None Include="VillagerDatabase\tig02.nhvh2" />
+    <None Include="VillagerDatabase\tig03.nhv2" />
+    <None Include="VillagerDatabase\tig03.nhvh2" />
+    <None Include="VillagerDatabase\tig04.nhv2" />
+    <None Include="VillagerDatabase\tig04.nhvh2" />
+    <None Include="VillagerDatabase\tig05.nhv2" />
+    <None Include="VillagerDatabase\tig05.nhvh2" />
+    <None Include="VillagerDatabase\tig06.nhv2" />
+    <None Include="VillagerDatabase\tig06.nhvh2" />
+    <None Include="VillagerDatabase\wol00.nhv2" />
+    <None Include="VillagerDatabase\wol00.nhvh2" />
+    <None Include="VillagerDatabase\wol01.nhv2" />
+    <None Include="VillagerDatabase\wol01.nhvh2" />
+    <None Include="VillagerDatabase\wol02.nhv2" />
+    <None Include="VillagerDatabase\wol02.nhvh2" />
+    <None Include="VillagerDatabase\wol03.nhv2" />
+    <None Include="VillagerDatabase\wol03.nhvh2" />
+    <None Include="VillagerDatabase\wol04.nhv2" />
+    <None Include="VillagerDatabase\wol04.nhvh2" />
+    <None Include="VillagerDatabase\wol05.nhv2" />
+    <None Include="VillagerDatabase\wol05.nhvh2" />
+    <None Include="VillagerDatabase\wol06.nhv2" />
+    <None Include="VillagerDatabase\wol06.nhvh2" />
+    <None Include="VillagerDatabase\wol08.nhv2" />
+    <None Include="VillagerDatabase\wol08.nhvh2" />
+    <None Include="VillagerDatabase\wol09.nhv2" />
+    <None Include="VillagerDatabase\wol09.nhvh2" />
+    <None Include="VillagerDatabase\wol10.nhv2" />
+    <None Include="VillagerDatabase\wol10.nhvh2" />
+    <None Include="VillagerDatabase\wol12.nhv2" />
+    <None Include="VillagerDatabase\wol12.nhvh2" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -523,7 +1345,8 @@
   </ItemDefinitionGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)\csv" "$(TargetDir)\csv" /e /y /i /r
-xcopy "$(ProjectDir)\save" "$(TargetDir)\save" /e /y /i /r</PostBuildEvent>
+xcopy "$(ProjectDir)\save" "$(TargetDir)\save" /e /y /i /r
+xcopy "$(ProjectDir)\VillagerDatabase" "$(TargetDir)\villager" /e /y /i /r</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
