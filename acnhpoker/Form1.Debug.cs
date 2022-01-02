@@ -51,10 +51,10 @@ namespace ACNHPoker
             string fourthResult = Utilities.ByteToHexString(fourthBytes);
             string FullResult = Utilities.ByteToHexString(AddressBank);
 
-            Result1.Text = Utilities.flip(firstResult);
-            Result2.Text = Utilities.flip(secondResult);
-            Result3.Text = Utilities.flip(thirdResult);
-            Result4.Text = Utilities.flip(fourthResult);
+            PokeResult1.Text = Utilities.flip(firstResult);
+            PokeResult2.Text = Utilities.flip(secondResult);
+            PokeResult3.Text = Utilities.flip(thirdResult);
+            PokeResult4.Text = Utilities.flip(fourthResult);
             FullAddress.Text = FullResult;
         }
 
@@ -115,158 +115,6 @@ namespace ACNHPoker
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
             //hideWait();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog()
-            {
-                Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
-            };
-
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            byte[] b = File.ReadAllBytes(file.FileName);
-
-
-            if (MiniMap == null)
-                MiniMap = new miniMap(b, null, null, 3);
-
-            //miniMapBox.Visible = true;
-            //miniMapBox.Image = MiniMap.drawItemMap();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            SaveFileDialog file = new SaveFileDialog()
-            {
-                Filter = "New Horizons t (*.nht)|*.nht",
-            };
-
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            byte[] save = Utilities.ReadByteArray8(s, Utilities.TerrainOffset, AllTerrainSize);
-
-            File.WriteAllBytes(file.FileName, save);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog file = new SaveFileDialog()
-            {
-                Filter = "New Horizons a (*.nha)|*.nha",
-            };
-
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            byte[] save = Utilities.ReadByteArray8(s, Utilities.AcreOffset, AcrePlusAdditionalParams);
-
-            File.WriteAllBytes(file.FileName, save);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog()
-            {
-                Filter = "New Horizons a (*.nha)|*.nha",
-            };
-
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            byte[] data = File.ReadAllBytes(file.FileName);
-
-            Utilities.SendByteArray8(s, Utilities.AcreOffset, data, AcrePlusAdditionalParams);
-        }
-
-        private void button8_Click_1(object sender, EventArgs e)
-        {
-            SaveFileDialog file = new SaveFileDialog()
-            {
-                Filter = "New Horizons b (*.nhb)|*.nhb",
-            };
-
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            byte[] save = Utilities.ReadByteArray8(s, Utilities.BuildingOffset, AllBuildingSize);
-
-            File.WriteAllBytes(file.FileName, save);
-        }
-
-        public static void GetAcreTileColor(byte acre, int x, int y)
-        {
-            var baseOfs = acre * 32 * 32 * 4;
-
-            // 64x64
-            var shift = (4 * ((y * 64) + x));
-            var ofs = baseOfs + shift;
-            //var tile = AcreTiles[ofs];
-            //return CollisionUtil.Dict[tile].ToArgb();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            byte a = 0x87;
-            GetAcreTileColor(a, 0, 0);
         }
 
         private void ChaseBtn_Click(object sender, EventArgs e)
@@ -389,7 +237,7 @@ namespace ACNHPoker
             }
         }
 
-        private void ReadBtn_Click(object sender, EventArgs e)
+        private void AddNHIBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog()
             {
@@ -434,7 +282,7 @@ namespace ACNHPoker
             }
         }
 
-        private void createBtn_Click(object sender, EventArgs e)
+        private void saveNHBSbtn_Click(object sender, EventArgs e)
         {
             if (save == null)
                 return;
@@ -552,7 +400,7 @@ namespace ACNHPoker
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void nhbsIDBtn_Click(object sender, EventArgs e)
         {
             string bank = "";
             recipeGridView.Sort(recipeGridView.Columns["id"], ListSortDirection.Ascending);
@@ -606,7 +454,7 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void button13_Click_1(object sender, EventArgs e)
+        private void nhbsAZBtn_Clicked(object sender, EventArgs e)
         {
             string bank = "";
             recipeGridView.Sort(recipeGridView.Columns["eng"], ListSortDirection.Ascending);
@@ -660,7 +508,7 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void button18_Click_1(object sender, EventArgs e)
+        private void DiffIDBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog loadfile = new OpenFileDialog()
             {
@@ -704,7 +552,7 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void button19_Click(object sender, EventArgs e)
+        private void DiffAtoZBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog loadfile = new OpenFileDialog()
             {
@@ -747,94 +595,10 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void freezeBtn_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog()
-            {
-                Filter = "New Horizons Inventory (*.nhi)|*.nhi|All files (*.*)|*.*",
-                FileName = "items.nhi",
-            };
-
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-            string savepath;
-
-            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
-                savepath = Directory.GetCurrentDirectory() + @"\save";
-            else
-                savepath = config.AppSettings.Settings["LastLoad"].Value;
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            string[] temp = file.FileName.Split('\\');
-            string path = "";
-            for (int i = 0; i < temp.Length - 1; i++)
-                path = path + temp[i] + "\\";
-
-            config.AppSettings.Settings["LastLoad"].Value = path;
-            config.Save(ConfigurationSaveMode.Minimal);
-
-            byte[] data = File.ReadAllBytes(file.FileName);
-
-            btnToolTip.RemoveAll();
-
-
-            byte[] b1 = new byte[160];
-            byte[] b2 = new byte[160];
-
-            Buffer.BlockCopy(data, 0, b1, 0, 160);
-            Buffer.BlockCopy(data, 160, b2, 0, 160);
-
-            Utilities.SendString(s, Utilities.Freeze(Utilities.GetItemSlotUIntAddress(1), b1));
-            Utilities.SendString(s, Utilities.Freeze(Utilities.GetItemSlotUIntAddress(21), b2));
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Utilities.SendString(s, Utilities.UnFreeze(Utilities.GetItemSlotUIntAddress(1)));
-            Utilities.SendString(s, Utilities.UnFreeze(Utilities.GetItemSlotUIntAddress(21)));
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Debug.Print(Utilities.GetFreezeCount(s).ToString());
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Utilities.SendString(s, Utilities.FreezeClear());
-        }
-
-        private void button10_Click(object sender, EventArgs e)
+        private void SysbotbaseVersionBtn_Click(object sender, EventArgs e)
         {
             myMessageBox.Show(Utilities.getVersion(s), "Sys-botbase Version");
         }
 
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            controller.setupDodo();
-        }
-        private void button14_Click(object sender, EventArgs e)
-        {
-            dodoSetup = new dodo(s, this);
-            dodoSetup.Show();
-            Thread testThread = new Thread(delegate () { testrestore(); });
-            testThread.Start();
-        }
-
-        private void testrestore()
-        {
-            dodoSetup.HardRestore();
-        }
     }
 }

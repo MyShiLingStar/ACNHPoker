@@ -1184,7 +1184,7 @@ namespace ACNHPoker
                 //byte[] IName = Encoding.Default.GetBytes(lines[lines.Length - 1]);
                 //string IName = lines[lines.Length - 1];
                 string RealName = lines[0];
-                if (VillagerSearch.Text.ToLower() == RealName.ToLower())
+                if (VillagerSearch.Text.Split(new string[] { " " }, StringSplitOptions.None)[0].ToLower() == RealName.ToLower())
                 {
                     ReplaceSelector.SelectedIndex = i;
                     break;
@@ -1215,7 +1215,7 @@ namespace ACNHPoker
                 //byte[] IName = Encoding.Default.GetBytes(lines[lines.Length - 1]);
                 //string IName = lines[lines.Length - 1];
                 string RealName = lines[0];
-                if (IslandSearch.Text.ToLower() == RealName.ToLower())
+                if (IslandSearch.Text.Split(new string[] { " " }, StringSplitOptions.None)[0].ToLower() == RealName.ToLower())
                 {
                     MysSelector.SelectedIndex = i;
                     break;

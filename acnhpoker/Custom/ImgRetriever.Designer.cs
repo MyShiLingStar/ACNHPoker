@@ -1,6 +1,6 @@
 ﻿namespace ACNHPoker
 {
-    partial class ImageDownloader
+    partial class ImgRetriever
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageDownloader));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImgRetriever));
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.yesBtn = new System.Windows.Forms.Button();
             this.noBtn = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
             this.yesBtn.TabIndex = 1;
             this.yesBtn.Text = "Yes";
             this.yesBtn.UseVisualStyleBackColor = false;
-            this.yesBtn.Click += new System.EventHandler(this.button1_Click);
+            this.yesBtn.Click += new System.EventHandler(this.yesBtn_Click);
             // 
             // noBtn
             // 
@@ -74,7 +74,7 @@
             this.noBtn.TabIndex = 2;
             this.noBtn.Text = "No";
             this.noBtn.UseVisualStyleBackColor = false;
-            this.noBtn.Click += new System.EventHandler(this.button2_Click);
+            this.noBtn.Click += new System.EventHandler(this.noBtn_Click);
             // 
             // msg
             // 
@@ -131,7 +131,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ImageDownloader";
+            this.Name = "ImgRetriever";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Images";

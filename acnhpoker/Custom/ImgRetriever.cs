@@ -8,21 +8,21 @@ using System.Windows.Forms;
 
 namespace ACNHPoker
 {
-    public partial class ImageDownloader : Form
+    public partial class ImgRetriever : Form
     {
-        public ImageDownloader()
+        public ImgRetriever()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void noBtn_Click(object sender, EventArgs e)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
             config.AppSettings.Settings["RestartRequired"].Value = "false";
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void yesBtn_Click(object sender, EventArgs e)
         {
             yesBtn.Enabled = false;
             noBtn.Enabled = false;

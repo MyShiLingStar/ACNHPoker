@@ -10,7 +10,7 @@
     <AssemblyName>ACNHPoker</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
@@ -50,14 +50,14 @@
     </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>
     </DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>0</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <AllowedReferenceRelatedFileExtensions>
 	  *.xml;
@@ -66,9 +66,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <DebugSymbols>false</DebugSymbols>
-    <FileAlignment>512</FileAlignment>
+    <FileAlignment>8192</FileAlignment>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>8F0F1CA91E0D94DAAAB5B3F16448F643E5217088</ManifestCertificateThumbprint>
@@ -136,6 +138,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AsyncAwaitBestPractices, Version=6.0.4.0, Culture=neutral, PublicKeyToken=532360cfd341384d, processorArchitecture=MSIL">
       <HintPath>..\packages\AsyncAwaitBestPractices.6.0.4\lib\netstandard2.0\AsyncAwaitBestPractices.dll</HintPath>
@@ -243,18 +248,47 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Custom\ImageDownloader.cs">
+    <Compile Include="Custom\CountDownTimer.cs" />
+    <Compile Include="Custom\DataGridViewProgressColumn.cs" />
+    <Compile Include="Custom\ExtendedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\HexUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\ImgRetriever.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom\ImageDownloader.Designer.cs">
-      <DependentUpon>ImageDownloader.cs</DependentUpon>
+    <Compile Include="Custom\ImgRetriever.Designer.cs">
+      <DependentUpon>ImgRetriever.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom\MyTimer.cs">
+    <Compile Include="Custom\LoopStream.cs" />
+    <Compile Include="Custom\MyComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\myMessageBox.cs" />
+    <Compile Include="Custom\MyProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\MyStopWatch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Custom\MyTimer.Designer.cs">
-      <DependentUpon>MyTimer.cs</DependentUpon>
+    <Compile Include="Custom\MyStopWatch.Designer.cs">
+      <DependentUpon>MyStopWatch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Custom\USBBot.cs" />
+    <Compile Include="Custom\variation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Custom\variation.Designer.cs">
+      <DependentUpon>variation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom\VillagerSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Discord\DiscordStructs.cs" />
+    <Compile Include="Discord\DiscordUtils.cs" />
+    <Compile Include="Discord\DiscordWebHook.cs" />
     <Compile Include="Dodo\controller.cs" />
     <Compile Include="Dodo\dodo.cs">
       <SubType>Form</SubType>
@@ -268,26 +302,32 @@
     <Compile Include="Dodo\teleport.Designer.cs">
       <DependentUpon>teleport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map\bulldozer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Map\bulldozer.Designer.cs">
-      <DependentUpon>bulldozer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Custom\CountDownTimer.cs" />
     <Compile Include="Map\bulkSpawn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Map\bulkSpawn.Designer.cs">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Custom\DataGridViewProgressColumn.cs" />
-    <Compile Include="Discord\DiscordWebHook.cs" />
+    <Compile Include="Map\bulldozer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\bulldozer.Designer.cs">
+      <DependentUpon>bulldozer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\floorSlot.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Map\Freezer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Map\Freezer.Designer.cs">
       <DependentUpon>Freezer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\map.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\map.Designer.cs">
+      <DependentUpon>map.cs</DependentUpon>
     </Compile>
     <Compile Include="Map\MapRegenerator.cs">
       <SubType>Form</SubType>
@@ -295,67 +335,19 @@
     <Compile Include="Map\MapRegenerator.Designer.cs">
       <DependentUpon>MapRegenerator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Twitch\OrderDisplay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Twitch\OrderDisplay.Designer.cs">
-      <DependentUpon>OrderDisplay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Twitch\DropOrder.cs" />
-    <Compile Include="Custom\ExtendedPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Map\floorSlot.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Twitch\VillagerOrder.cs" />
+    <Compile Include="Map\miniMap.cs" />
     <Compile Include="Map\variationSpawn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Map\variationSpawn.Designer.cs">
       <DependentUpon>variationSpawn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Villager\Friendship.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Villager\Friendship.Designer.cs">
-      <DependentUpon>Friendship.cs</DependentUpon>
-    </Compile>
     <Compile Include="Setting\Log.cs" />
-    <Compile Include="Custom\LoopStream.cs" />
-    <Compile Include="Map\map.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Map\map.Designer.cs">
-      <DependentUpon>map.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Map\miniMap.cs" />
-    <Compile Include="Custom\MyComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Custom\myMessageBox.cs" />
-    <Compile Include="Custom\MyProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Custom\HexUpDown.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Twitch\PubSub.cs" />
     <Compile Include="Setting\Setting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Setting\Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Discord\DiscordStructs.cs" />
-    <Compile Include="Twitch\TwitchBot.cs" />
-    <Compile Include="Custom\USBBot.cs" />
-    <Compile Include="Discord\DiscordUtils.cs" />
-    <Compile Include="Custom\variation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Custom\variation.Designer.cs">
-      <DependentUpon>variation.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory\inventorySlot.cs">
       <SubType>Component</SubType>
@@ -389,17 +381,33 @@
     <Compile Include="Inventory\ItemAttr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Twitch\DropOrder.cs" />
+    <Compile Include="Twitch\OrderDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Twitch\OrderDisplay.Designer.cs">
+      <DependentUpon>OrderDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Twitch\PubSub.cs" />
+    <Compile Include="Twitch\TwitchBot.cs" />
+    <Compile Include="Twitch\VillagerOrder.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="Villager\Friendship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Villager\Friendship.Designer.cs">
+      <DependentUpon>Friendship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Villager\villager.cs" />
     <Compile Include="Villager\VillagerMemory.cs" />
-    <Compile Include="Custom\VillagerSelector.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <EmbeddedResource Include="Custom\ImageDownloader.resx">
-      <DependentUpon>ImageDownloader.cs</DependentUpon>
+    <EmbeddedResource Include="Custom\ImgRetriever.resx">
+      <DependentUpon>ImgRetriever.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Custom\MyTimer.resx">
-      <DependentUpon>MyTimer.cs</DependentUpon>
+    <EmbeddedResource Include="Custom\MyStopWatch.resx">
+      <DependentUpon>MyStopWatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom\variation.resx">
+      <DependentUpon>variation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dodo\dodo.resx">
       <DependentUpon>dodo.cs</DependentUpon>
@@ -407,41 +415,31 @@
     <EmbeddedResource Include="Dodo\teleport.resx">
       <DependentUpon>teleport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map\bulldozer.resx">
-      <DependentUpon>bulldozer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Map\bulkSpawn.resx">
-      <DependentUpon>bulkSpawn.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Map\bulkSpawn.resx">
+      <DependentUpon>bulkSpawn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Map\bulldozer.resx">
+      <DependentUpon>bulldozer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Map\Freezer.resx">
       <DependentUpon>Freezer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Map\map.resx">
+      <DependentUpon>map.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Map\MapRegenerator.resx">
       <DependentUpon>MapRegenerator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Twitch\OrderDisplay.resx">
-      <DependentUpon>OrderDisplay.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Map\variationSpawn.resx">
       <DependentUpon>variationSpawn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Villager\Friendship.resx">
-      <DependentUpon>Friendship.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Map\map.resx">
-      <DependentUpon>map.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Setting\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Custom\variation.resx">
-      <DependentUpon>variation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -453,13 +451,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Twitch\OrderDisplay.resx">
+      <DependentUpon>OrderDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Villager\Friendship.resx">
+      <DependentUpon>Friendship.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="csv\field.csv" />
     <None Include="csv\flowers.csv" />
     <None Include="csv\items.csv" />
+    <None Include="csv\kind.csv" />
     <None Include="csv\override.csv" />
     <None Include="csv\recipes.csv" />
     <None Include="csv\variations.csv" />
     <None Include="packages.config" />
-    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -469,6 +474,76 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="save\%282%29Fish.nhbs" />
+    <None Include="save\%282%29Insect.nhbs" />
+    <None Include="save\%283%29Fence.nhbs" />
+    <None Include="save\%284%29Flower.nhbs" />
+    <None Include="save\%284%29Materials.nhbs" />
+    <None Include="save\%288%29StarFragment.nhbs" />
+    <None Include="save\1100Update.nhi" />
+    <None Include="save\1110Update.nhi" />
+    <None Include="save\AugUpdate.nhi" />
+    <None Include="save\Cherry-blossom.nhi" />
+    <None Include="save\Cinnamoroll.nhi" />
+    <None Include="save\Cone.nhg" />
+    <None Include="save\Demo.nhg" />
+    <None Include="save\Demo.nhi" />
+    <None Include="save\DIY[A-Z].nhbs" />
+    <None Include="save\DIY[ID].nhbs" />
+    <None Include="save\Empty.nhg" />
+    <None Include="save\FakeArt.nhi" />
+    <None Include="save\Festivale[1].nhi" />
+    <None Include="save\Festivale[2].nhi" />
+    <None Include="save\Festivale[3].nhi" />
+    <None Include="save\Fossil.nhbs" />
+    <None Include="save\GoldenTools.nhi" />
+    <None Include="save\Gulliver.nhi" />
+    <None Include="save\Halloween[1].nhi" />
+    <None Include="save\Halloween[2].nhi" />
+    <None Include="save\Halloween[3].nhi" />
+    <None Include="save\Halloween[4].nhi" />
+    <None Include="save\Hello Kitty.nhi" />
+    <None Include="save\Kerokerokeroppi.nhi" />
+    <None Include="save\Kiki&amp;Lala.nhi" />
+    <None Include="save\Mario[1].nhi" />
+    <None Include="save\Mario[2].nhi" />
+    <None Include="save\Mermaid.nhi" />
+    <None Include="save\Mom[1].nhi" />
+    <None Include="save\Mom[2].nhi" />
+    <None Include="save\Mush.nhi" />
+    <None Include="save\My Melody.nhi" />
+    <None Include="save\NewDIY[A-Z].nhbs" />
+    <None Include="save\NewDIY[id].nhbs" />
+    <None Include="save\NookMilesItem[1].nhi" />
+    <None Include="save\NookMilesItem[2].nhi" />
+    <None Include="save\NookMilesItem[3].nhi" />
+    <None Include="save\NPCItem[1].nhi" />
+    <None Include="save\NPCItem[2].nhi" />
+    <None Include="save\Photo.nhbs" />
+    <None Include="save\Photo[A-Z].nhbs" />
+    <None Include="save\Photo[ID].nhbs" />
+    <None Include="save\Pirate.nhi" />
+    <None Include="save\Pompompurin.nhi" />
+    <None Include="save\Poster.nhbs" />
+    <None Include="save\Poster[A-Z].nhbs" />
+    <None Include="save\Poster[ID].nhbs" />
+    <None Include="save\RealArt[01].nhi" />
+    <None Include="save\RealArt[02].nhi" />
+    <None Include="save\Sanrio Update[1].nhi" />
+    <None Include="save\Sanrio Update[2].nhi" />
+    <None Include="save\Sanrio Update[3].nhi" />
+    <None Include="save\SeaCreature.nhi" />
+    <None Include="save\SnorkelWetSuit.nhi" />
+    <None Include="save\Song.nhbs" />
+    <None Include="save\Song2.nhi" />
+    <None Include="save\twitch[template].json" />
+    <None Include="save\Wedding[1].nhi" />
+    <None Include="save\Wedding[2].nhi" />
+    <None Include="save\Winter[1].nhi" />
+    <None Include="save\Winter[2].nhi" />
+    <None Include="save\Winter[3].nhi" />
+    <None Include="save\Winter[4].nhi" />
+    <None Include="save\ZodiacFigurine.nhi" />
     <None Include="twitch[template].json" />
     <None Include="VillagerDatabase\ant00.nhv2" />
     <None Include="VillagerDatabase\ant00.nhvh2" />
@@ -1320,7 +1395,6 @@
     <None Include="Resources\timer.png" />
     <None Include="Resources\marker.png" />
     <None Include="Resources\ACLeaf2.ico" />
-    <None Include="bin\Debug\img\Leaf.png" />
     <None Include="Resources\acre" />
     <None Include="Resources\f.ico" />
     <None Include="Resources\arrows-horizontal.png" />
@@ -1336,6 +1410,9 @@
     <None Include="Resources\height.png" />
     <None Include="Resources\Leaf.png" />
     <Content Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemDefinitionGroup>

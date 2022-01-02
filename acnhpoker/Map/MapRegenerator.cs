@@ -760,8 +760,8 @@ namespace ACNHPoker
                         Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
                         //DateTime localDate = DateTime.Now;
                         //myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        myMessageBox.Show("Connection Lost", "Yeeted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        CreateLog("[Connection Lost]");
+                        myMessageBox.Show("Connection to the switch has been lost", "Yeeted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        CreateLog("Connection to the switch has been lost");
                         this.Close();
                         /*
                         stopWatch.Stop();
@@ -982,8 +982,8 @@ namespace ACNHPoker
                         Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
                         //DateTime localDate = DateTime.Now;
                         //myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        myMessageBox.Show("Connection Lost", "Yeeted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        CreateLog("[Connection Lost]");
+                        myMessageBox.Show("Connection to the switch has been lost", "Yeeted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        CreateLog("Connection to the switch has been lost");
                         this.Close();
                         /*
                         stopWatch.Stop();

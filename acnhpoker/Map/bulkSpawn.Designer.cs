@@ -40,13 +40,11 @@ namespace ACNHPoker
             this.selectBtn = new System.Windows.Forms.Button();
             this.spawnBtn = new System.Windows.Forms.Button();
             this.previewBtn = new System.Windows.Forms.Button();
-            this.createBtn = new System.Windows.Forms.Button();
-            this.ReadBtn = new System.Windows.Forms.Button();
             this.numOfItemBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.HeightImageBox = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.DirectionImageBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,15 +55,15 @@ namespace ACNHPoker
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
             this.MapProgressBar = new System.Windows.Forms.ProgressBar();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.NowLoading = new System.Windows.Forms.PictureBox();
             this.label29 = new System.Windows.Forms.Label();
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeightImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DirectionImageBox)).BeginInit();
             this.settingPanel.SuspendLayout();
             this.PleaseWaitPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // heightNumber
@@ -204,38 +202,6 @@ namespace ACNHPoker
             this.previewBtn.UseVisualStyleBackColor = false;
             this.previewBtn.Click += new System.EventHandler(this.previewBtn_Click);
             // 
-            // createBtn
-            // 
-            this.createBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.createBtn.FlatAppearance.BorderSize = 0;
-            this.createBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.createBtn.ForeColor = System.Drawing.Color.White;
-            this.createBtn.Location = new System.Drawing.Point(689, 79);
-            this.createBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(138, 28);
-            this.createBtn.TabIndex = 225;
-            this.createBtn.Text = "Create";
-            this.createBtn.UseVisualStyleBackColor = false;
-            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
-            // 
-            // ReadBtn
-            // 
-            this.ReadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.ReadBtn.FlatAppearance.BorderSize = 0;
-            this.ReadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ReadBtn.ForeColor = System.Drawing.Color.White;
-            this.ReadBtn.Location = new System.Drawing.Point(689, 43);
-            this.ReadBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.ReadBtn.Name = "ReadBtn";
-            this.ReadBtn.Size = new System.Drawing.Size(138, 28);
-            this.ReadBtn.TabIndex = 226;
-            this.ReadBtn.Text = "Read";
-            this.ReadBtn.UseVisualStyleBackColor = false;
-            this.ReadBtn.Click += new System.EventHandler(this.ReadBtn_Click);
-            // 
             // numOfItemBox
             // 
             this.numOfItemBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -264,15 +230,15 @@ namespace ACNHPoker
             this.label1.Text = "Num of Items :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // HeightImageBox
             // 
-            this.pictureBox1.Image = global::ACNHPoker.Properties.Resources.height;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 229;
-            this.pictureBox1.TabStop = false;
+            this.HeightImageBox.Image = global::ACNHPoker.Properties.Resources.height;
+            this.HeightImageBox.Location = new System.Drawing.Point(4, 5);
+            this.HeightImageBox.Name = "HeightImageBox";
+            this.HeightImageBox.Size = new System.Drawing.Size(50, 50);
+            this.HeightImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.HeightImageBox.TabIndex = 229;
+            this.HeightImageBox.TabStop = false;
             // 
             // label2
             // 
@@ -286,15 +252,15 @@ namespace ACNHPoker
             this.label2.Text = "Height :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox2
+            // DirectionImageBox
             // 
-            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.arrows_horizontal;
-            this.pictureBox2.Location = new System.Drawing.Point(7, 70);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 231;
-            this.pictureBox2.TabStop = false;
+            this.DirectionImageBox.Image = global::ACNHPoker.Properties.Resources.arrows_horizontal;
+            this.DirectionImageBox.Location = new System.Drawing.Point(7, 70);
+            this.DirectionImageBox.Name = "DirectionImageBox";
+            this.DirectionImageBox.Size = new System.Drawing.Size(45, 45);
+            this.DirectionImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.DirectionImageBox.TabIndex = 231;
+            this.DirectionImageBox.TabStop = false;
             // 
             // label3
             // 
@@ -341,8 +307,8 @@ namespace ACNHPoker
             this.settingPanel.Controls.Add(this.heightNumber);
             this.settingPanel.Controls.Add(this.leftBtn);
             this.settingPanel.Controls.Add(this.label3);
-            this.settingPanel.Controls.Add(this.pictureBox1);
-            this.settingPanel.Controls.Add(this.pictureBox2);
+            this.settingPanel.Controls.Add(this.HeightImageBox);
+            this.settingPanel.Controls.Add(this.DirectionImageBox);
             this.settingPanel.Controls.Add(this.label2);
             this.settingPanel.Controls.Add(this.previewBtn);
             this.settingPanel.Controls.Add(this.spawnBtn);
@@ -402,7 +368,7 @@ namespace ACNHPoker
             // 
             this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
             this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
-            this.PleaseWaitPanel.Controls.Add(this.pictureBox3);
+            this.PleaseWaitPanel.Controls.Add(this.NowLoading);
             this.PleaseWaitPanel.Controls.Add(this.label29);
             this.PleaseWaitPanel.Location = new System.Drawing.Point(465, 328);
             this.PleaseWaitPanel.Name = "PleaseWaitPanel";
@@ -435,14 +401,14 @@ namespace ACNHPoker
             this.MapProgressBar.Size = new System.Drawing.Size(190, 10);
             this.MapProgressBar.TabIndex = 215;
             // 
-            // pictureBox3
+            // NowLoading
             // 
-            this.pictureBox3.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox3.Location = new System.Drawing.Point(38, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox3.TabIndex = 216;
-            this.pictureBox3.TabStop = false;
+            this.NowLoading.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.NowLoading.Location = new System.Drawing.Point(38, 2);
+            this.NowLoading.Name = "NowLoading";
+            this.NowLoading.Size = new System.Drawing.Size(24, 24);
+            this.NowLoading.TabIndex = 216;
+            this.NowLoading.TabStop = false;
             // 
             // label29
             // 
@@ -472,8 +438,6 @@ namespace ACNHPoker
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numOfItemBox);
-            this.Controls.Add(this.ReadBtn);
-            this.Controls.Add(this.createBtn);
             this.Controls.Add(this.selectBtn);
             this.Controls.Add(this.miniMapBox);
             this.Controls.Add(this.yCoordinate);
@@ -491,13 +455,13 @@ namespace ACNHPoker
             this.Text = "Bulk Spawn";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.bulkSpawn_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeightImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DirectionImageBox)).EndInit();
             this.settingPanel.ResumeLayout(false);
             this.settingPanel.PerformLayout();
             this.PleaseWaitPanel.ResumeLayout(false);
             this.PleaseWaitPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,13 +478,11 @@ namespace ACNHPoker
         private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.Button spawnBtn;
         private System.Windows.Forms.Button previewBtn;
-        private System.Windows.Forms.Button createBtn;
-        private System.Windows.Forms.Button ReadBtn;
         private System.Windows.Forms.RichTextBox numOfItemBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox HeightImageBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox DirectionImageBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -531,7 +493,7 @@ namespace ACNHPoker
         private System.Windows.Forms.Panel PleaseWaitPanel;
         private System.Windows.Forms.RichTextBox WaitMessagebox;
         private System.Windows.Forms.ProgressBar MapProgressBar;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox NowLoading;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Timer ProgressTimer;
     }

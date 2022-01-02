@@ -702,7 +702,7 @@ namespace ACNHPoker
             this.HoverToolTip.SetToolTip(this.TimerBtn, "Open the countdown timer.\r\nA useful tool if you don\'t want to use the in-game one" +
         ".\r\nUse chroma-key if you want to display it on stream.");
             this.TimerBtn.UseVisualStyleBackColor = false;
-            this.TimerBtn.Click += new System.EventHandler(this.TimerBtn_Click);
+            this.TimerBtn.Click += new System.EventHandler(this.StopWatchBtn_Click);
             // 
             // HomeBtn
             // 

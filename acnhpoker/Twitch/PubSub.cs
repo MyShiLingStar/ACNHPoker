@@ -521,7 +521,7 @@ namespace ACNHPoker
 
                 if (Iname.Equals("cbr18") || Iname.Equals("der10") || Iname.Equals("elp11") || Iname.Equals("gor11") || Iname.Equals("rbt20") || Iname.Equals("shp14"))
                 {
-                    await MyTwitchBot.SendMessage($"Sorry, but Sanrio Villagers require special care. Talk to @MyShiLingStar if you really want them.");
+                    await MyTwitchBot.SendMessage($"Sorry, but Sanrio Villagers require special care. Talk to the streamer if you really want them.");
                     return;
                 }
 

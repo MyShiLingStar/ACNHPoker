@@ -336,7 +336,7 @@ namespace ACNHPoker
 
         private void FreezeMapFloor(UInt32 address, byte[] data)
         {
-            showMapWait(84, "Freezing...");
+            showMapWait(84, "Casting...");
 
             lockControl();
 
@@ -380,7 +380,7 @@ namespace ACNHPoker
 
         private void UnFreezeMapFloor(UInt32 address)
         {
-            showMapWait(84, "Freezing...");
+            showMapWait(84, "Casting...");
 
             lockControl();
 
@@ -598,7 +598,7 @@ namespace ACNHPoker
 
         private void FreezeMapFloor2(UInt32 address, byte[] data, int x, int y)
         {
-            showMapWait(124, "Freezing...");
+            showMapWait(124, "Casting...");
 
             lockControl();
 
@@ -868,7 +868,7 @@ namespace ACNHPoker
 
         private void FreezeAllVillager()
         {
-            showMapWait(124, "Freezing...");
+            showMapWait(124, "Casting...");
 
             lockControl();
 

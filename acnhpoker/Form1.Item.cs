@@ -67,7 +67,7 @@ namespace ACNHPoker
 
                 if (!Regex.IsMatch(ipBox.Text, ipPattern))
                 {
-                    pictureBox1.BackColor = System.Drawing.Color.Orange;
+                    IPboxBorder.BackColor = System.Drawing.Color.Orange;
                     return;
                 }
 
@@ -95,10 +95,10 @@ namespace ACNHPoker
                             }
                             catch
                             {
-                                this.pictureBox1.Invoke((MethodInvoker)delegate
+                                this.IPboxBorder.Invoke((MethodInvoker)delegate
                                 {
                                     Log.logEvent("MainForm", "Connection Failed : " + ipBox.Text);
-                                    this.pictureBox1.BackColor = Color.Red;
+                                    this.IPboxBorder.BackColor = Color.Red;
                                 });
                                 myMessageBox.Show("You have successfully started a connection!\n" +
                                                 "Your Switch IP address is correct!\n" +
@@ -121,7 +121,7 @@ namespace ACNHPoker
 
                             Invoke((MethodInvoker)delegate
                             {
-                                this.pictureBox1.BackColor = System.Drawing.Color.Green;
+                                this.IPboxBorder.BackColor = System.Drawing.Color.Green;
 
                                 Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
 
@@ -216,7 +216,6 @@ namespace ACNHPoker
                                 LoadGridView(FishSeaAppearParam, seaFishGridView, ref seaFishRate, Utilities.FishDataSize, Utilities.FishSeaNumRecords, 1);
                                 LoadGridView(CreatureSeaAppearParam, seaCreatureGridView, ref seaCreatureRate, Utilities.SeaCreatureDataSize, Utilities.SeaCreatureNumRecords, 1);
 
-                                teleporter = new teleport(s);
                                 Controller = new controller(s, IslandName);
                             });
 
@@ -224,9 +223,9 @@ namespace ACNHPoker
                         else
                         {
                             s.Close();
-                            this.pictureBox1.Invoke((MethodInvoker)delegate
+                            this.IPboxBorder.Invoke((MethodInvoker)delegate
                             {
-                                this.pictureBox1.BackColor = System.Drawing.Color.Red;
+                                this.IPboxBorder.BackColor = System.Drawing.Color.Red;
                             });
                             myMessageBox.Show("Unable to connect to the Sys-botbase server.\n" +
                                             "Please double check your IP address and Sys-botbase installation.\n\n" +
@@ -1536,7 +1535,7 @@ namespace ACNHPoker
                 return;
             }
             waitMsg.Visible = true;
-            pacman2.Visible = true;
+            loadingGIF.Visible = true;
 
             itemModePanel.Visible = false;
             recipeModePanel.Visible = false;
@@ -1560,7 +1559,7 @@ namespace ACNHPoker
             }
 
             waitMsg.Visible = false;
-            pacman2.Visible = false;
+            loadingGIF.Visible = false;
             currentPanel.Visible = true;
 
             itemModeBtn.Visible = true;
@@ -2249,22 +2248,6 @@ namespace ACNHPoker
                 else if (currentPanel == flowerModePanel)
                 {
 
-                }
-            }
-            else if (Control.ModifierKeys == Keys.Control)
-            {
-                string code = e.KeyCode.ToString();
-                string pattern = @"(D)([0-9])";
-                Regex regex = new Regex(pattern);
-                Match match = regex.Match(code);
-                if (match.Success)
-                {
-                    Debug.Print("Start Teleport");
-                    int num = int.Parse(code.Replace("D", ""));
-                    if (num - 1 < 0)
-                        teleport.TeleportTo(9);
-                    else
-                        teleport.TeleportTo(num - 1);
                 }
             }
         }

@@ -3191,7 +3191,7 @@ namespace ACNHPoker
         #endregion
 
         #region Load
-        private void loadBtn_Click(object sender, EventArgs e)
+        private void loadNHGNHIBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -4482,9 +4482,9 @@ namespace ACNHPoker
             byte[] empty = Utilities.stringToByte("FEFF000000000000");
 
             byte[] processLayer1 = Layer1;
-            Boolean[] change1 = new Boolean[56];
+            Boolean[] HasChange1 = new Boolean[56];
             byte[] processLayer2 = Layer2;
-            Boolean[] change2 = new Boolean[56];
+            Boolean[] HasChange2 = new Boolean[56];
 
             byte[] tempID = new byte[2];
             ushort itemID;
@@ -4497,7 +4497,7 @@ namespace ACNHPoker
                     if (!itemID.Equals(0xFFFE))
                     {
                         Buffer.BlockCopy(empty, 0, processLayer1, i * 0x1800 + j * 0x8, 8);
-                        change1[i] = true;
+                        HasChange1[i] = true;
                     }
 
                     Buffer.BlockCopy(Layer2, i * 0x1800 + j * 0x8, tempID, 0, 2);
@@ -4505,12 +4505,12 @@ namespace ACNHPoker
                     if (!itemID.Equals(0xFFFE))
                     {
                         Buffer.BlockCopy(empty, 0, processLayer2, i * 0x1800 + j * 0x8, 8);
-                        change2[i] = true;
+                        HasChange2[i] = true;
                     }
                 }
             }
 
-            Thread renewThread = new Thread(delegate () { renew(processLayer1, change1, processLayer2, change2); });
+            Thread renewThread = new Thread(delegate () { renew(processLayer1, HasChange1, processLayer2, HasChange2); });
             renewThread.Start();
         }
 
@@ -4572,9 +4572,9 @@ namespace ACNHPoker
             hideMapWait();
         }
 
-        private void renew(byte[] newLayer1, Boolean[] change1, byte[] newLayer2, Boolean[] change2)
+        private void renew(byte[] newLayer1, Boolean[] HasChange1, byte[] newLayer2, Boolean[] HasChange2)
         {
-            int num = numOfWrite(change1) + numOfWrite(change2);
+            int num = numOfWrite(HasChange1) + numOfWrite(HasChange2);
             if (num == 0)
                 return;
 
@@ -4596,7 +4596,7 @@ namespace ACNHPoker
 
                 for (int i = 0; i < 56; i++)
                 {
-                    if (change1[i])
+                    if (HasChange1[i])
                     {
                         byte[] column = new byte[0x1800];
                         Buffer.BlockCopy(newLayer1, i * 0x1800, column, 0, 0x1800);
@@ -4604,7 +4604,7 @@ namespace ACNHPoker
                         Utilities.SendByteArray8(s, Utilities.mapZero + (i * 0x1800) + Utilities.mapOffset, column, 0x1800, ref counter);
                     }
 
-                    if (change2[i])
+                    if (HasChange2[i])
                     {
                         byte[] column = new byte[0x1800];
                         Buffer.BlockCopy(newLayer2, i * 0x1800, column, 0, 0x1800);

@@ -36,15 +36,15 @@ namespace ACNHPoker
             this.realXLabel = new System.Windows.Forms.Label();
             this.RealYCoordinate = new System.Windows.Forms.RichTextBox();
             this.RealXCoordinate = new System.Windows.Forms.RichTextBox();
-            this.YLabel = new System.Windows.Forms.Label();
-            this.XLabel = new System.Windows.Forms.Label();
+            this.FieldYLabel = new System.Windows.Forms.Label();
+            this.FieldXLabel = new System.Windows.Forms.Label();
             this.yCoordinate = new System.Windows.Forms.RichTextBox();
             this.xCoordinate = new System.Windows.Forms.RichTextBox();
             this.acreList = new System.Windows.Forms.ListView();
             this.sendBtn = new System.Windows.Forms.Button();
             this.selectedAcreBox = new System.Windows.Forms.RichTextBox();
             this.selectedAcreValueBox = new System.Windows.Forms.RichTextBox();
-            this.setBtn = new System.Windows.Forms.Button();
+            this.replaceBtn = new System.Windows.Forms.Button();
             this.AcreBtn = new System.Windows.Forms.Button();
             this.BuildingBtn = new System.Windows.Forms.Button();
             this.acrePanel = new System.Windows.Forms.Panel();
@@ -77,7 +77,7 @@ namespace ACNHPoker
             this.buildingGridView = new System.Windows.Forms.DataGridView();
             this.LoadingPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.NowLoading = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             this.acrePanel.SuspendLayout();
             this.buildingPanel.SuspendLayout();
@@ -89,7 +89,7 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.AUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingGridView)).BeginInit();
             this.LoadingPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // miniMapBox
@@ -119,7 +119,7 @@ namespace ACNHPoker
             this.realYLabel.ForeColor = System.Drawing.Color.White;
             this.realYLabel.Location = new System.Drawing.Point(656, 519);
             this.realYLabel.Name = "realYLabel";
-            this.realYLabel.Size = new System.Drawing.Size(26, 16);
+            this.realYLabel.Size = new System.Drawing.Size(25, 16);
             this.realYLabel.TabIndex = 226;
             this.realYLabel.Text = "Y :";
             // 
@@ -130,7 +130,7 @@ namespace ACNHPoker
             this.realXLabel.ForeColor = System.Drawing.Color.White;
             this.realXLabel.Location = new System.Drawing.Point(581, 519);
             this.realXLabel.Name = "realXLabel";
-            this.realXLabel.Size = new System.Drawing.Size(25, 16);
+            this.realXLabel.Size = new System.Drawing.Size(24, 16);
             this.realXLabel.TabIndex = 225;
             this.realXLabel.Text = "X :";
             // 
@@ -164,27 +164,27 @@ namespace ACNHPoker
             this.RealXCoordinate.TabIndex = 223;
             this.RealXCoordinate.Text = "0";
             // 
-            // YLabel
+            // FieldYLabel
             // 
-            this.YLabel.AutoSize = true;
-            this.YLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.YLabel.ForeColor = System.Drawing.Color.White;
-            this.YLabel.Location = new System.Drawing.Point(656, 553);
-            this.YLabel.Name = "YLabel";
-            this.YLabel.Size = new System.Drawing.Size(26, 16);
-            this.YLabel.TabIndex = 230;
-            this.YLabel.Text = "Y :";
+            this.FieldYLabel.AutoSize = true;
+            this.FieldYLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.FieldYLabel.ForeColor = System.Drawing.Color.White;
+            this.FieldYLabel.Location = new System.Drawing.Point(656, 553);
+            this.FieldYLabel.Name = "FieldYLabel";
+            this.FieldYLabel.Size = new System.Drawing.Size(25, 16);
+            this.FieldYLabel.TabIndex = 230;
+            this.FieldYLabel.Text = "Y :";
             // 
-            // XLabel
+            // FieldXLabel
             // 
-            this.XLabel.AutoSize = true;
-            this.XLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.XLabel.ForeColor = System.Drawing.Color.White;
-            this.XLabel.Location = new System.Drawing.Point(581, 553);
-            this.XLabel.Name = "XLabel";
-            this.XLabel.Size = new System.Drawing.Size(25, 16);
-            this.XLabel.TabIndex = 229;
-            this.XLabel.Text = "X :";
+            this.FieldXLabel.AutoSize = true;
+            this.FieldXLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.FieldXLabel.ForeColor = System.Drawing.Color.White;
+            this.FieldXLabel.Location = new System.Drawing.Point(581, 553);
+            this.FieldXLabel.Name = "FieldXLabel";
+            this.FieldXLabel.Size = new System.Drawing.Size(24, 16);
+            this.FieldXLabel.TabIndex = 229;
+            this.FieldXLabel.Text = "X :";
             // 
             // yCoordinate
             // 
@@ -278,20 +278,20 @@ namespace ACNHPoker
             this.selectedAcreValueBox.TabIndex = 234;
             this.selectedAcreValueBox.Text = "0";
             // 
-            // setBtn
+            // replaceBtn
             // 
-            this.setBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.setBtn.FlatAppearance.BorderSize = 0;
-            this.setBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.setBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setBtn.ForeColor = System.Drawing.Color.White;
-            this.setBtn.Location = new System.Drawing.Point(7, 435);
-            this.setBtn.Name = "setBtn";
-            this.setBtn.Size = new System.Drawing.Size(86, 30);
-            this.setBtn.TabIndex = 235;
-            this.setBtn.Text = "◀ Replace";
-            this.setBtn.UseVisualStyleBackColor = false;
-            this.setBtn.Click += new System.EventHandler(this.setBtn_Click);
+            this.replaceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.replaceBtn.FlatAppearance.BorderSize = 0;
+            this.replaceBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.replaceBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.replaceBtn.ForeColor = System.Drawing.Color.White;
+            this.replaceBtn.Location = new System.Drawing.Point(7, 435);
+            this.replaceBtn.Name = "replaceBtn";
+            this.replaceBtn.Size = new System.Drawing.Size(86, 30);
+            this.replaceBtn.TabIndex = 235;
+            this.replaceBtn.Text = "◀ Replace";
+            this.replaceBtn.UseVisualStyleBackColor = false;
+            this.replaceBtn.Click += new System.EventHandler(this.replaceBtn_Click);
             // 
             // AcreBtn
             // 
@@ -331,7 +331,7 @@ namespace ACNHPoker
             this.acrePanel.Controls.Add(this.loadAcreBtn);
             this.acrePanel.Controls.Add(this.allFlatBtn);
             this.acrePanel.Controls.Add(this.acreList);
-            this.acrePanel.Controls.Add(this.setBtn);
+            this.acrePanel.Controls.Add(this.replaceBtn);
             this.acrePanel.Controls.Add(this.sendBtn);
             this.acrePanel.Location = new System.Drawing.Point(578, 42);
             this.acrePanel.Name = "acrePanel";
@@ -814,7 +814,7 @@ namespace ACNHPoker
             // LoadingPanel
             // 
             this.LoadingPanel.Controls.Add(this.label2);
-            this.LoadingPanel.Controls.Add(this.pictureBox2);
+            this.LoadingPanel.Controls.Add(this.NowLoading);
             this.LoadingPanel.Location = new System.Drawing.Point(470, 241);
             this.LoadingPanel.Name = "LoadingPanel";
             this.LoadingPanel.Size = new System.Drawing.Size(185, 30);
@@ -831,14 +831,14 @@ namespace ACNHPoker
             this.label2.TabIndex = 242;
             this.label2.Text = "Now Loading...";
             // 
-            // pictureBox2
+            // NowLoading
             // 
-            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 217;
-            this.pictureBox2.TabStop = false;
+            this.NowLoading.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.NowLoading.Location = new System.Drawing.Point(2, 3);
+            this.NowLoading.Name = "NowLoading";
+            this.NowLoading.Size = new System.Drawing.Size(24, 24);
+            this.NowLoading.TabIndex = 217;
+            this.NowLoading.TabStop = false;
             // 
             // Bulldozer
             // 
@@ -852,8 +852,8 @@ namespace ACNHPoker
             this.Controls.Add(this.AcreBtn);
             this.Controls.Add(this.selectedAcreValueBox);
             this.Controls.Add(this.selectedAcreBox);
-            this.Controls.Add(this.YLabel);
-            this.Controls.Add(this.XLabel);
+            this.Controls.Add(this.FieldYLabel);
+            this.Controls.Add(this.FieldXLabel);
             this.Controls.Add(this.yCoordinate);
             this.Controls.Add(this.xCoordinate);
             this.Controls.Add(this.realYLabel);
@@ -884,7 +884,7 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.buildingGridView)).EndInit();
             this.LoadingPanel.ResumeLayout(false);
             this.LoadingPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -897,15 +897,15 @@ namespace ACNHPoker
         private System.Windows.Forms.Label realXLabel;
         private System.Windows.Forms.RichTextBox RealYCoordinate;
         private System.Windows.Forms.RichTextBox RealXCoordinate;
-        private System.Windows.Forms.Label YLabel;
-        private System.Windows.Forms.Label XLabel;
+        private System.Windows.Forms.Label FieldYLabel;
+        private System.Windows.Forms.Label FieldXLabel;
         private System.Windows.Forms.RichTextBox yCoordinate;
         private System.Windows.Forms.RichTextBox xCoordinate;
         private System.Windows.Forms.ListView acreList;
         private System.Windows.Forms.Button sendBtn;
         private System.Windows.Forms.RichTextBox selectedAcreBox;
         private System.Windows.Forms.RichTextBox selectedAcreValueBox;
-        private System.Windows.Forms.Button setBtn;
+        private System.Windows.Forms.Button replaceBtn;
         private System.Windows.Forms.Button AcreBtn;
         private System.Windows.Forms.Button BuildingBtn;
         private System.Windows.Forms.Panel acrePanel;
@@ -933,7 +933,7 @@ namespace ACNHPoker
         private System.Windows.Forms.Button loadBuildingBtn;
         private System.Windows.Forms.Panel LoadingPanel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox NowLoading;
         private System.Windows.Forms.Panel inclinePanel;
         private System.Windows.Forms.ComboBox inclineTypeSelect;
         private System.Windows.Forms.ComboBox inclineAngleSelect;

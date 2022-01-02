@@ -23,7 +23,6 @@ namespace ACNHPoker
         private byte[] Layer2 = null;
         private byte[] Acre = null;
         private byte[] Building = null;
-        private byte[] save = null;
 
         private byte[][] item = null;
         private int rowNum;
@@ -58,102 +57,6 @@ namespace ACNHPoker
                 Log.logEvent("BulkSpawn", "Form Construct: " + ex.Message.ToString());
             }
         }
-
-        private void ReadBtn_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog()
-            {
-                Filter = "New Horizons Inventory(*.nhi) | *.nhi|All files (*.*)|*.*",
-            };
-
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-            string savepath;
-
-            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
-                savepath = Directory.GetCurrentDirectory() + @"\save";
-            else
-                savepath = config.AppSettings.Settings["LastLoad"].Value;
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            string[] temp = file.FileName.Split('\\');
-            string path = "";
-            for (int i = 0; i < temp.Length - 1; i++)
-                path = path + temp[i] + "\\";
-
-            config.AppSettings.Settings["LastLoad"].Value = path;
-            config.Save(ConfigurationSaveMode.Minimal);
-
-            if (save == null)
-                save = File.ReadAllBytes(file.FileName);
-            else
-            {
-                byte[] read = File.ReadAllBytes(file.FileName);
-                save = Utilities.add(save, read);
-            }
-        }
-
-        private void createBtn_Click(object sender, EventArgs e)
-        {
-            if (save == null)
-                return;
-            else
-            {
-                SaveFileDialog file = new SaveFileDialog()
-                {
-                    Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs",
-                };
-
-                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-                string savepath;
-
-                if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
-                    savepath = Directory.GetCurrentDirectory() + @"\save";
-                else
-                    savepath = config.AppSettings.Settings["LastSave"].Value;
-
-                if (Directory.Exists(savepath))
-                {
-                    file.InitialDirectory = savepath;
-                }
-                else
-                {
-                    file.InitialDirectory = @"C:\";
-                }
-
-                if (file.ShowDialog() != DialogResult.OK)
-                    return;
-
-                string[] temp = file.FileName.Split('\\');
-                string path = "";
-                for (int i = 0; i < temp.Length - 1; i++)
-                    path = path + temp[i] + "\\";
-
-                config.AppSettings.Settings["LastSave"].Value = path;
-                config.Save(ConfigurationSaveMode.Minimal);
-
-
-                string dataStr = Utilities.ByteToHexString(save).Replace("FEFF000000000000", string.Empty);
-                byte[] final = Utilities.stringToByte(dataStr);
-
-                File.WriteAllBytes(file.FileName, final);
-                if (sound)
-                    System.Media.SystemSounds.Asterisk.Play();
-            }
-        }
-
         private void selectBtn_Click(object sender, EventArgs e)
         {
             spawnBtn.Visible = false;

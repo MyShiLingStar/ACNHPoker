@@ -46,14 +46,14 @@ namespace ACNHPoker
             this.FriendshipValue6 = new System.Windows.Forms.RichTextBox();
             this.FriendshipValue7 = new System.Windows.Forms.RichTextBox();
             this.FriendshipValue8 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName1 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName2 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName3 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName4 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName5 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName6 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName7 = new System.Windows.Forms.RichTextBox();
-            this.PlayerName8 = new System.Windows.Forms.RichTextBox();
+            this.Name1 = new System.Windows.Forms.RichTextBox();
+            this.Name2 = new System.Windows.Forms.RichTextBox();
+            this.Name3 = new System.Windows.Forms.RichTextBox();
+            this.Name4 = new System.Windows.Forms.RichTextBox();
+            this.Name5 = new System.Windows.Forms.RichTextBox();
+            this.Name6 = new System.Windows.Forms.RichTextBox();
+            this.Name7 = new System.Windows.Forms.RichTextBox();
+            this.Name8 = new System.Windows.Forms.RichTextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.VillagerImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.FriendshipBar1)).BeginInit();
@@ -283,125 +283,125 @@ namespace ACNHPoker
             this.FriendshipValue8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FriendshipValue_KeyPress);
             this.FriendshipValue8.Validated += new System.EventHandler(this.FriendshipValue8_Validated);
             // 
-            // PlayerName1
+            // Name1
             // 
-            this.PlayerName1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName1.ForeColor = System.Drawing.Color.White;
-            this.PlayerName1.Location = new System.Drawing.Point(150, 12);
-            this.PlayerName1.MaxLength = 40;
-            this.PlayerName1.Multiline = false;
-            this.PlayerName1.Name = "PlayerName1";
-            this.PlayerName1.ReadOnly = true;
-            this.PlayerName1.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName1.TabIndex = 194;
-            this.PlayerName1.Text = "";
+            this.Name1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name1.ForeColor = System.Drawing.Color.White;
+            this.Name1.Location = new System.Drawing.Point(150, 12);
+            this.Name1.MaxLength = 40;
+            this.Name1.Multiline = false;
+            this.Name1.Name = "Name1";
+            this.Name1.ReadOnly = true;
+            this.Name1.Size = new System.Drawing.Size(139, 28);
+            this.Name1.TabIndex = 194;
+            this.Name1.Text = "";
             // 
-            // PlayerName2
+            // Name2
             // 
-            this.PlayerName2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName2.ForeColor = System.Drawing.Color.White;
-            this.PlayerName2.Location = new System.Drawing.Point(150, 63);
-            this.PlayerName2.MaxLength = 40;
-            this.PlayerName2.Multiline = false;
-            this.PlayerName2.Name = "PlayerName2";
-            this.PlayerName2.ReadOnly = true;
-            this.PlayerName2.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName2.TabIndex = 195;
-            this.PlayerName2.Text = "";
+            this.Name2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name2.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name2.ForeColor = System.Drawing.Color.White;
+            this.Name2.Location = new System.Drawing.Point(150, 63);
+            this.Name2.MaxLength = 40;
+            this.Name2.Multiline = false;
+            this.Name2.Name = "Name2";
+            this.Name2.ReadOnly = true;
+            this.Name2.Size = new System.Drawing.Size(139, 28);
+            this.Name2.TabIndex = 195;
+            this.Name2.Text = "";
             // 
-            // PlayerName3
+            // Name3
             // 
-            this.PlayerName3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName3.ForeColor = System.Drawing.Color.White;
-            this.PlayerName3.Location = new System.Drawing.Point(150, 114);
-            this.PlayerName3.MaxLength = 40;
-            this.PlayerName3.Multiline = false;
-            this.PlayerName3.Name = "PlayerName3";
-            this.PlayerName3.ReadOnly = true;
-            this.PlayerName3.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName3.TabIndex = 196;
-            this.PlayerName3.Text = "";
+            this.Name3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name3.ForeColor = System.Drawing.Color.White;
+            this.Name3.Location = new System.Drawing.Point(150, 114);
+            this.Name3.MaxLength = 40;
+            this.Name3.Multiline = false;
+            this.Name3.Name = "Name3";
+            this.Name3.ReadOnly = true;
+            this.Name3.Size = new System.Drawing.Size(139, 28);
+            this.Name3.TabIndex = 196;
+            this.Name3.Text = "";
             // 
-            // PlayerName4
+            // Name4
             // 
-            this.PlayerName4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName4.ForeColor = System.Drawing.Color.White;
-            this.PlayerName4.Location = new System.Drawing.Point(150, 165);
-            this.PlayerName4.MaxLength = 40;
-            this.PlayerName4.Multiline = false;
-            this.PlayerName4.Name = "PlayerName4";
-            this.PlayerName4.ReadOnly = true;
-            this.PlayerName4.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName4.TabIndex = 197;
-            this.PlayerName4.Text = "";
+            this.Name4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name4.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name4.ForeColor = System.Drawing.Color.White;
+            this.Name4.Location = new System.Drawing.Point(150, 165);
+            this.Name4.MaxLength = 40;
+            this.Name4.Multiline = false;
+            this.Name4.Name = "Name4";
+            this.Name4.ReadOnly = true;
+            this.Name4.Size = new System.Drawing.Size(139, 28);
+            this.Name4.TabIndex = 197;
+            this.Name4.Text = "";
             // 
-            // PlayerName5
+            // Name5
             // 
-            this.PlayerName5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName5.ForeColor = System.Drawing.Color.White;
-            this.PlayerName5.Location = new System.Drawing.Point(150, 216);
-            this.PlayerName5.MaxLength = 40;
-            this.PlayerName5.Multiline = false;
-            this.PlayerName5.Name = "PlayerName5";
-            this.PlayerName5.ReadOnly = true;
-            this.PlayerName5.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName5.TabIndex = 198;
-            this.PlayerName5.Text = "";
+            this.Name5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name5.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name5.ForeColor = System.Drawing.Color.White;
+            this.Name5.Location = new System.Drawing.Point(150, 216);
+            this.Name5.MaxLength = 40;
+            this.Name5.Multiline = false;
+            this.Name5.Name = "Name5";
+            this.Name5.ReadOnly = true;
+            this.Name5.Size = new System.Drawing.Size(139, 28);
+            this.Name5.TabIndex = 198;
+            this.Name5.Text = "";
             // 
-            // PlayerName6
+            // Name6
             // 
-            this.PlayerName6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName6.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName6.ForeColor = System.Drawing.Color.White;
-            this.PlayerName6.Location = new System.Drawing.Point(150, 267);
-            this.PlayerName6.MaxLength = 40;
-            this.PlayerName6.Multiline = false;
-            this.PlayerName6.Name = "PlayerName6";
-            this.PlayerName6.ReadOnly = true;
-            this.PlayerName6.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName6.TabIndex = 199;
-            this.PlayerName6.Text = "";
+            this.Name6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name6.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name6.ForeColor = System.Drawing.Color.White;
+            this.Name6.Location = new System.Drawing.Point(150, 267);
+            this.Name6.MaxLength = 40;
+            this.Name6.Multiline = false;
+            this.Name6.Name = "Name6";
+            this.Name6.ReadOnly = true;
+            this.Name6.Size = new System.Drawing.Size(139, 28);
+            this.Name6.TabIndex = 199;
+            this.Name6.Text = "";
             // 
-            // PlayerName7
+            // Name7
             // 
-            this.PlayerName7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName7.ForeColor = System.Drawing.Color.White;
-            this.PlayerName7.Location = new System.Drawing.Point(150, 318);
-            this.PlayerName7.MaxLength = 40;
-            this.PlayerName7.Multiline = false;
-            this.PlayerName7.Name = "PlayerName7";
-            this.PlayerName7.ReadOnly = true;
-            this.PlayerName7.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName7.TabIndex = 200;
-            this.PlayerName7.Text = "";
+            this.Name7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name7.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name7.ForeColor = System.Drawing.Color.White;
+            this.Name7.Location = new System.Drawing.Point(150, 318);
+            this.Name7.MaxLength = 40;
+            this.Name7.Multiline = false;
+            this.Name7.Name = "Name7";
+            this.Name7.ReadOnly = true;
+            this.Name7.Size = new System.Drawing.Size(139, 28);
+            this.Name7.TabIndex = 200;
+            this.Name7.Text = "";
             // 
-            // PlayerName8
+            // Name8
             // 
-            this.PlayerName8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName8.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName8.ForeColor = System.Drawing.Color.White;
-            this.PlayerName8.Location = new System.Drawing.Point(150, 369);
-            this.PlayerName8.MaxLength = 40;
-            this.PlayerName8.Multiline = false;
-            this.PlayerName8.Name = "PlayerName8";
-            this.PlayerName8.ReadOnly = true;
-            this.PlayerName8.Size = new System.Drawing.Size(139, 28);
-            this.PlayerName8.TabIndex = 201;
-            this.PlayerName8.Text = "";
+            this.Name8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Name8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Name8.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.Name8.ForeColor = System.Drawing.Color.White;
+            this.Name8.Location = new System.Drawing.Point(150, 369);
+            this.Name8.MaxLength = 40;
+            this.Name8.Multiline = false;
+            this.Name8.Name = "Name8";
+            this.Name8.ReadOnly = true;
+            this.Name8.Size = new System.Drawing.Size(139, 28);
+            this.Name8.TabIndex = 201;
+            this.Name8.Text = "";
             // 
             // SaveBtn
             // 
@@ -433,14 +433,14 @@ namespace ACNHPoker
             this.ClientSize = new System.Drawing.Size(579, 448);
             this.Controls.Add(this.VillagerImage);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.PlayerName8);
-            this.Controls.Add(this.PlayerName7);
-            this.Controls.Add(this.PlayerName6);
-            this.Controls.Add(this.PlayerName5);
-            this.Controls.Add(this.PlayerName4);
-            this.Controls.Add(this.PlayerName3);
-            this.Controls.Add(this.PlayerName2);
-            this.Controls.Add(this.PlayerName1);
+            this.Controls.Add(this.Name8);
+            this.Controls.Add(this.Name7);
+            this.Controls.Add(this.Name6);
+            this.Controls.Add(this.Name5);
+            this.Controls.Add(this.Name4);
+            this.Controls.Add(this.Name3);
+            this.Controls.Add(this.Name2);
+            this.Controls.Add(this.Name1);
             this.Controls.Add(this.FriendshipValue8);
             this.Controls.Add(this.FriendshipValue7);
             this.Controls.Add(this.FriendshipValue6);
@@ -496,14 +496,14 @@ namespace ACNHPoker
         private System.Windows.Forms.RichTextBox FriendshipValue6;
         private System.Windows.Forms.RichTextBox FriendshipValue7;
         private System.Windows.Forms.RichTextBox FriendshipValue8;
-        private System.Windows.Forms.RichTextBox PlayerName1;
-        private System.Windows.Forms.RichTextBox PlayerName2;
-        private System.Windows.Forms.RichTextBox PlayerName3;
-        private System.Windows.Forms.RichTextBox PlayerName4;
-        private System.Windows.Forms.RichTextBox PlayerName5;
-        private System.Windows.Forms.RichTextBox PlayerName6;
-        private System.Windows.Forms.RichTextBox PlayerName7;
-        private System.Windows.Forms.RichTextBox PlayerName8;
+        private System.Windows.Forms.RichTextBox Name1;
+        private System.Windows.Forms.RichTextBox Name2;
+        private System.Windows.Forms.RichTextBox Name3;
+        private System.Windows.Forms.RichTextBox Name4;
+        private System.Windows.Forms.RichTextBox Name5;
+        private System.Windows.Forms.RichTextBox Name6;
+        private System.Windows.Forms.RichTextBox Name7;
+        private System.Windows.Forms.RichTextBox Name8;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.PictureBox VillagerImage;
     }

@@ -348,11 +348,8 @@ namespace ACNHPoker
 
             //These are the buttons texts for different languages. 
             //If you want to add a new language, add it here and in the GetButtonText-Function
-            private enum TwoLetterISOLanguageID { en, de, es, it };
-            private static readonly String[] BUTTON_TEXTS_ENGLISH_EN = { "OK", "Cancel", "&Yes", "&No", "&Abort", "&Retry", "&Ignore" }; //Note: This is also the fallback language
-            private static readonly String[] BUTTON_TEXTS_GERMAN_DE = { "OK", "Abbrechen", "&Ja", "&Nein", "&Abbrechen", "&Wiederholen", "&Ignorieren" };
-            private static readonly String[] BUTTON_TEXTS_SPANISH_ES = { "Aceptar", "Cancelar", "&Sí", "&No", "&Abortar", "&Reintentar", "&Ignorar" };
-            private static readonly String[] BUTTON_TEXTS_ITALIAN_IT = { "OK", "Annulla", "&Sì", "&No", "&Interrompi", "&Riprova", "&Ignora" };
+            private enum LanguageID { en, de, es, it };
+            private static readonly String[] ENGLISH = { "OK", "Cancel", "&Yes", "&No", "&Abort", "&Retry", "&Ignore" }; //Note: This is also the fallback language
 
             #endregion
 
@@ -360,7 +357,6 @@ namespace ACNHPoker
 
             private MessageBoxDefaultButton defaultButton;
             private int visibleButtonsCount;
-            private TwoLetterISOLanguageID languageID = TwoLetterISOLanguageID.en;
 
             #endregion
 
@@ -374,7 +370,7 @@ namespace ACNHPoker
                 InitializeComponent();
 
                 //Try to evaluate the language. If this fails, the fallback language English will be used
-                Enum.TryParse<TwoLetterISOLanguageID>(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, out this.languageID);
+                //Enum.TryParse<LanguageID>(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, out this.languageID);
 
                 this.KeyPreview = true;
                 this.KeyUp += FlexibleMessageBoxForm_KeyUp;
@@ -406,15 +402,7 @@ namespace ACNHPoker
             private string GetButtonText(ButtonID buttonID)
             {
                 var buttonTextArrayIndex = Convert.ToInt32(buttonID);
-
-                switch (this.languageID)
-                {
-                    case TwoLetterISOLanguageID.de: return BUTTON_TEXTS_GERMAN_DE[buttonTextArrayIndex];
-                    case TwoLetterISOLanguageID.es: return BUTTON_TEXTS_SPANISH_ES[buttonTextArrayIndex];
-                    case TwoLetterISOLanguageID.it: return BUTTON_TEXTS_ITALIAN_IT[buttonTextArrayIndex];
-
-                    default: return BUTTON_TEXTS_ENGLISH_EN[buttonTextArrayIndex];
-                }
+                return ENGLISH[buttonTextArrayIndex];
             }
 
             /// <summary>

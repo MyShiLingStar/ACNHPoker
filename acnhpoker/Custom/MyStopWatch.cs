@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ACNHPoker
 {
-    public partial class MyTimer : Form, IDisposable
+    public partial class MyStopWatch : Form, IDisposable
     {
         CountDownTimer timer;
 
@@ -12,7 +12,7 @@ namespace ACNHPoker
         public int seconds = 0;
         public bool done = false;
 
-        public MyTimer()
+        public MyStopWatch()
         {
             InitializeComponent();
             timer = new CountDownTimer();
@@ -137,22 +137,22 @@ namespace ACNHPoker
             start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pauseBtn_Click(object sender, EventArgs e)
         {
             pause();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void restartBtn_Click(object sender, EventArgs e)
         {
             restart();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void resetBtn_Click(object sender, EventArgs e)
         {
             reset();
         }
 
-        private void MyTimer_FormClosed(object sender, FormClosedEventArgs e)
+        private void MyStopWatch_FormClosed(object sender, FormClosedEventArgs e)
         {
             timer.Dispose();
         }

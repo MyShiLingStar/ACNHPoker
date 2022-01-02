@@ -31,13 +31,13 @@ namespace ACNHPoker
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapRegenerator));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.PauseTimeLabel = new System.Windows.Forms.Label();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
             this.MapProgressBar = new System.Windows.Forms.ProgressBar();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.NowLoading = new System.Windows.Forms.PictureBox();
             this.label29 = new System.Windows.Forms.Label();
             this.loadMapBtn = new System.Windows.Forms.Button();
             this.saveMapBtn = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@ namespace ACNHPoker
             this.miniMapBox = new System.Windows.Forms.PictureBox();
             this.xCoordinate = new System.Windows.Forms.RichTextBox();
             this.PleaseWaitPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGridView)).BeginInit();
             this.logPanel.SuspendLayout();
             this.mapPanel.SuspendLayout();
@@ -85,7 +85,7 @@ namespace ACNHPoker
             this.PleaseWaitPanel.Controls.Add(this.PauseTimeLabel);
             this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
             this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
-            this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
+            this.PleaseWaitPanel.Controls.Add(this.NowLoading);
             this.PleaseWaitPanel.Controls.Add(this.label29);
             this.PleaseWaitPanel.Location = new System.Drawing.Point(2, 256);
             this.PleaseWaitPanel.Name = "PleaseWaitPanel";
@@ -131,14 +131,14 @@ namespace ACNHPoker
             this.MapProgressBar.Size = new System.Drawing.Size(220, 3);
             this.MapProgressBar.TabIndex = 215;
             // 
-            // pictureBox2
+            // NowLoading
             // 
-            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(44, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 216;
-            this.pictureBox2.TabStop = false;
+            this.NowLoading.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.NowLoading.Location = new System.Drawing.Point(44, 2);
+            this.NowLoading.Name = "NowLoading";
+            this.NowLoading.Size = new System.Drawing.Size(24, 24);
+            this.NowLoading.TabIndex = 216;
+            this.NowLoading.TabStop = false;
             // 
             // label29
             // 
@@ -508,23 +508,23 @@ namespace ACNHPoker
             this.logGridView.AllowUserToResizeRows = false;
             this.logGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.logGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.logGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.logGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.logGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.logGridView.EnableHeadersVisualStyles = false;
             this.logGridView.Location = new System.Drawing.Point(4, 36);
             this.logGridView.MultiSelect = false;
@@ -680,7 +680,7 @@ namespace ACNHPoker
             this.Move += new System.EventHandler(this.MapRegenerator_Move);
             this.PleaseWaitPanel.ResumeLayout(false);
             this.PleaseWaitPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGridView)).EndInit();
             this.logPanel.ResumeLayout(false);
             this.logPanel.PerformLayout();
@@ -697,7 +697,7 @@ namespace ACNHPoker
         private System.Windows.Forms.Panel PleaseWaitPanel;
         private System.Windows.Forms.RichTextBox WaitMessagebox;
         private System.Windows.Forms.ProgressBar MapProgressBar;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox NowLoading;
         private System.Windows.Forms.Button loadMapBtn;
         private System.Windows.Forms.Button saveMapBtn;
         private System.Windows.Forms.Label label29;

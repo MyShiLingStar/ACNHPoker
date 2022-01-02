@@ -113,12 +113,12 @@ namespace ACNHPoker
                 BuildingName.Name = "Name";
                 BuildingName.SortMode = DataGridViewColumnSortMode.NotSortable;
                 BuildingName.Width = 200;
-                BuildingX.HeaderText = "X";
-                BuildingX.Name = "X";
+                BuildingX.HeaderText = "X-Coordinate";
+                BuildingX.Name = "X-Coordinate";
                 BuildingX.SortMode = DataGridViewColumnSortMode.NotSortable;
                 BuildingX.Width = 60;
-                BuildingY.HeaderText = "Y";
-                BuildingY.Name = "Y";
+                BuildingY.HeaderText = "Y-Coordinate";
+                BuildingY.Name = "Y-Coordinate";
                 BuildingY.SortMode = DataGridViewColumnSortMode.NotSortable;
                 BuildingY.Width = 60;
                 BuildingA.HeaderText = "Angle";
@@ -140,10 +140,10 @@ namespace ACNHPoker
 
                 buildingGridView.Columns["ID"].Visible = false;
 
-                buildingGridView.Columns["X"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                buildingGridView.Columns["Y"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                buildingGridView.Columns["X"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                buildingGridView.Columns["Y"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["X-Coordinate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["Y-Coordinate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["X-Coordinate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                buildingGridView.Columns["Y-Coordinate"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buildingGridView.Columns["Angle"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buildingGridView.Columns["Type"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buildingGridView.Columns["Angle"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -266,8 +266,8 @@ namespace ACNHPoker
 
                         if (buildingGridView.CurrentCell.RowIndex != -1)
                         {
-                            int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
-                            int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                            int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                            int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                             int index = BuildingType.SelectedIndex;
                             byte type = (byte)index;
                             miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, Realx, Realy, type);
@@ -356,8 +356,8 @@ namespace ACNHPoker
 
                         if (buildingGridView.CurrentCell.RowIndex != -1)
                         {
-                            int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
-                            int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                            int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                            int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                             int index = BuildingType.SelectedIndex;
                             byte type = (byte)index;
                             miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, Realx, Realy, type);
@@ -383,7 +383,7 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void setBtn_Click(object sender, EventArgs e)
+        private void replaceBtn_Click(object sender, EventArgs e)
         {
             if (selectedAcre < 0)
                 return;
@@ -426,7 +426,7 @@ namespace ACNHPoker
         private void Bulldozer_FormClosed(object sender, FormClosedEventArgs e)
         {
             Log.logEvent("Bulldozer", "Form Closed");
-            main.B = null;
+            //main.B = null;
         }
 
         private void BuildingBtn_Click(object sender, EventArgs e)
@@ -464,8 +464,8 @@ namespace ACNHPoker
 
                     MapOrGridViewChange = true;
 
-                    XUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X"].Value.ToString());
-                    YUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y"].Value.ToString());
+                    XUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                    YUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                     AUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Angle"].Value.ToString());
                     TUpDown.Value = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Type"].Value.ToString());
 
@@ -483,8 +483,8 @@ namespace ACNHPoker
                         BuildingType.SelectedIndex = -1;
                     }
 
-                    int OrgX = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X"].Value.ToString());
-                    int OrgY = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y"].Value.ToString());
+                    int OrgX = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                    int OrgY = Int16.Parse(buildingGridView.Rows[e.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                     miniMapBox.Image = miniMap.drawLargeMarker(OrgX, OrgY, (int)XUpDown.Value, (int)YUpDown.Value, type);
 
                     MapOrGridViewChange = false;
@@ -693,8 +693,8 @@ namespace ACNHPoker
 
             if (buildingGridView.CurrentCell.RowIndex != -1)
             {
-                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
-                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                 int index = BuildingType.SelectedIndex;
                 byte type = (byte)index;
 
@@ -709,8 +709,8 @@ namespace ACNHPoker
 
             if (buildingGridView.CurrentCell.RowIndex != -1)
             {
-                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
-                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                 int index = BuildingType.SelectedIndex;
                 byte type = (byte)index;
 
@@ -725,8 +725,8 @@ namespace ACNHPoker
 
             if (buildingGridView.CurrentCell.RowIndex != -1)
             {
-                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value.ToString());
-                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value.ToString());
+                int OrgX = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X-Coordinate"].Value.ToString());
+                int OrgY = Int16.Parse(buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y-Coordinate"].Value.ToString());
                 int index = BuildingType.SelectedIndex;
                 byte type = (byte)index;
 
@@ -748,8 +748,8 @@ namespace ACNHPoker
             if (buildingGridView.CurrentCell.RowIndex == 0) // Plaza
             {
                 plazaEdited = true;
-                buildingGridView.Rows[0].Cells["X"].Value = XUpDown.Value;
-                buildingGridView.Rows[0].Cells["Y"].Value = YUpDown.Value;
+                buildingGridView.Rows[0].Cells["X-Coordinate"].Value = XUpDown.Value;
+                buildingGridView.Rows[0].Cells["Y-Coordinate"].Value = YUpDown.Value;
 
                 Acre[0x94] = (byte)XUpDown.Value;
                 Acre[0x98] = (byte)YUpDown.Value;
@@ -759,8 +759,8 @@ namespace ACNHPoker
             }
             else if (buildingGridView.CurrentCell.RowIndex != -1)
             {
-                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X"].Value = XUpDown.Value;
-                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y"].Value = YUpDown.Value;
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["X-Coordinate"].Value = XUpDown.Value;
+                buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Y-Coordinate"].Value = YUpDown.Value;
                 buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Angle"].Value = AUpDown.Value;
                 buildingGridView.Rows[buildingGridView.CurrentCell.RowIndex].Cells["Type"].Value = TUpDown.Value;
 
@@ -925,16 +925,16 @@ namespace ACNHPoker
                     {
                         buildingGridView.Rows[i + 1].Cells["ID"].Value = buildingList[i][0x0];
                         buildingGridView.Rows[i + 1].Cells["Name"].Value = BuildingName[key];
-                        buildingGridView.Rows[i + 1].Cells["X"].Value = buildingList[i][0x2];
-                        buildingGridView.Rows[i + 1].Cells["Y"].Value = buildingList[i][0x4];
+                        buildingGridView.Rows[i + 1].Cells["X-Coordinate"].Value = buildingList[i][0x2];
+                        buildingGridView.Rows[i + 1].Cells["Y-Coordinate"].Value = buildingList[i][0x4];
                         style.BackColor = miniMap.ByteToBuildingColor[buildingList[i][0x0]];
                     }
                     else
                     {
                         buildingGridView.Rows[i + 1].Cells["ID"].Value = buildingList[i][0x0];
                         buildingGridView.Rows[i + 1].Cells["Name"].Value = "???";
-                        buildingGridView.Rows[i + 1].Cells["X"].Value = buildingList[i][0x2];
-                        buildingGridView.Rows[i + 1].Cells["Y"].Value = buildingList[i][0x4];
+                        buildingGridView.Rows[i + 1].Cells["X-Coordinate"].Value = buildingList[i][0x2];
+                        buildingGridView.Rows[i + 1].Cells["Y-Coordinate"].Value = buildingList[i][0x4];
                         style.BackColor = Color.Black;
                     }
 
@@ -942,8 +942,8 @@ namespace ACNHPoker
                 }
 
                 buildingGridView.CurrentCell = buildingGridView.Rows[0].Cells[2];
-                XUpDown.Value = Int16.Parse(buildingGridView.Rows[0].Cells["X"].Value.ToString());
-                YUpDown.Value = Int16.Parse(buildingGridView.Rows[0].Cells["Y"].Value.ToString());
+                XUpDown.Value = Int16.Parse(buildingGridView.Rows[0].Cells["X-Coordinate"].Value.ToString());
+                YUpDown.Value = Int16.Parse(buildingGridView.Rows[0].Cells["Y-Coordinate"].Value.ToString());
                 int index = Int16.Parse(buildingGridView.Rows[0].Cells["ID"].Value.ToString());
                 byte type = (byte)index;
                 if (index <= BuildingType.Items.Count)

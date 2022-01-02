@@ -232,7 +232,7 @@ namespace ACNHPoker
         public static string TwitchSettingFile = @"twitch.json";
         public static string TwitchSettingPath = saveFolder + TwitchSettingFile;
 
-        public static string logFile = @"log.csv";
+        public static string logFile = @"ApplicationLog.csv";
         public static string logPath = saveFolder + logFile;
 
         public static string VisitorLogFile = @"VisitorLog.csv";
@@ -566,8 +566,8 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, GetItemSlotUIntAddress(1), buffer1, 160, ref counter);
-                    SendByteArray(socket, GetItemSlotUIntAddress(21), buffer2, 160, ref counter);
+                    SendByteArray8(socket, GetItemSlotUIntAddress(1), buffer1, 160, ref counter);
+                    SendByteArray8(socket, GetItemSlotUIntAddress(21), buffer2, 160, ref counter);
                 }
                 else
                 {
@@ -583,8 +583,8 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, GetItemSlotUIntAddress(1), buffer1, 160);
-                    SendByteArray(socket, GetItemSlotUIntAddress(21), buffer2, 160);
+                    SendByteArray8(socket, GetItemSlotUIntAddress(1), buffer1, 160);
+                    SendByteArray8(socket, GetItemSlotUIntAddress(21), buffer2, 160);
                 }
                 else
                 {
@@ -1015,6 +1015,8 @@ namespace ACNHPoker
                 return null;
             }
         }
+
+        /*
         public static bool SendByteArray(Socket socket, long initAddr, byte[] buffer, int size, ref int counter)
         {
             // Send in small chunks
@@ -1064,7 +1066,7 @@ namespace ACNHPoker
 
             return false;
         }
-
+        */
 
         private static string ReadToIntermediateString(Socket socket, long address, int size)
         {
@@ -1318,7 +1320,7 @@ namespace ACNHPoker
             }
         }
 
-        public static void setReaction(Socket socket, USBBot bot, int player, string reaction1, string reaction2)
+        public static void setReaction(Socket socket, USBBot bot, int player, string reactionFirstHalf, string reactionSecondHalf)
         {
             lock (botLock)
             {
@@ -1326,19 +1328,19 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (playerReactionAddress + (player * playerOffset)).ToString("x"), reaction1);
+                        string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (playerReactionAddress + (player * playerOffset)).ToString("x"), reactionFirstHalf);
                         Debug.Print("Poke Reaction: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", ((playerReactionAddress + (player * playerOffset)) + 4).ToString("x"), reaction2);
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", ((playerReactionAddress + (player * playerOffset)) + 4).ToString("x"), reactionSecondHalf);
                         Debug.Print("Poke Reaction: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
-                        bot.WriteBytes(stringToByte(reaction1), (uint)(playerReactionAddress + (player * playerOffset)));
+                        bot.WriteBytes(stringToByte(reactionFirstHalf), (uint)(playerReactionAddress + (player * playerOffset)));
 
-                        bot.WriteBytes(stringToByte(reaction2), (uint)((playerReactionAddress + (player * playerOffset)) + 4));
+                        bot.WriteBytes(stringToByte(reactionSecondHalf), (uint)((playerReactionAddress + (player * playerOffset)) + 4));
                     }
                 }
                 catch
@@ -1356,19 +1358,19 @@ namespace ACNHPoker
                 {
                     if (type == 0)
                     {
-                        SendByteArray(socket, InsectAppearPointer + InsectDataSize * index + 0x2, buffer, 12 * 6 * 2, ref counter);
+                        SendByteArray8(socket, InsectAppearPointer + InsectDataSize * index + 0x2, buffer, 12 * 6 * 2, ref counter);
                     }
                     else if (type == 1)
                     {
-                        SendByteArray(socket, FishRiverAppearPointer + FishDataSize * index + 0x2, buffer, 78, ref counter);
+                        SendByteArray8(socket, FishRiverAppearPointer + FishDataSize * index + 0x2, buffer, 78, ref counter);
                     }
                     else if (type == 2)
                     {
-                        SendByteArray(socket, FishSeaAppearPointer + FishDataSize * index + 0x2, buffer, 78, ref counter);
+                        SendByteArray8(socket, FishSeaAppearPointer + FishDataSize * index + 0x2, buffer, 78, ref counter);
                     }
                     else if (type == 3)
                     {
-                        SendByteArray(socket, CreatureSeaAppearPointer + SeaCreatureDataSize * index + 0x2, buffer, 78, ref counter);
+                        SendByteArray8(socket, CreatureSeaAppearPointer + SeaCreatureDataSize * index + 0x2, buffer, 78, ref counter);
                     }
                 }
                 else
@@ -1587,7 +1589,7 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, VillagerAddress + (num * VillagerSize), villager, (int)VillagerSize, ref counter);
+                    SendByteArray8(socket, VillagerAddress + (num * VillagerSize), villager, (int)VillagerSize, ref counter);
 
                     //SendByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
                 }
@@ -1670,7 +1672,7 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, flagData, flagData.Length, ref counter);
+                    SendByteArray8(socket, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, flagData, flagData.Length, ref counter);
                 }
                 else
                 {
@@ -1718,9 +1720,9 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize)), house, (int)VillagerHouseSize, ref counter);
+                    SendByteArray8(socket, VillagerHouseAddress + (num * (VillagerHouseSize)), house, (int)VillagerHouseSize, ref counter);
 
-                    SendByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize)) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
+                    SendByteArray8(socket, VillagerHouseAddress + (num * (VillagerHouseSize)) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
                 }
                 else
                 {
@@ -2097,8 +2099,8 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, MysIslandVillagerAddress, buffer, buffer.Length, ref counter);
-                    SendByteArray(socket, MysIslandVillagerSpecies, species, species.Length, ref counter);
+                    SendByteArray8(socket, MysIslandVillagerAddress, buffer, buffer.Length, ref counter);
+                    SendByteArray8(socket, MysIslandVillagerSpecies, species, species.Length, ref counter);
                 }
                 else
                 {
@@ -2185,11 +2187,11 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        SendByteArray(socket, address, stringToByte(buildDropStringLeft(itemId, count, flag1, flag2)), 16);
-                        SendByteArray(socket, address + mapOffset, stringToByte(buildDropStringLeft(itemId, count, flag1, flag2)), 16);
+                        SendByteArray8(socket, address, stringToByte(buildDropStringLeft(itemId, count, flag1, flag2)), 16);
+                        SendByteArray8(socket, address + mapOffset, stringToByte(buildDropStringLeft(itemId, count, flag1, flag2)), 16);
 
-                        SendByteArray(socket, address + 0x600, stringToByte(buildDropStringRight(itemId)), 16);
-                        SendByteArray(socket, address + 0x600 + mapOffset, stringToByte(buildDropStringRight(itemId)), 16);
+                        SendByteArray8(socket, address + 0x600, stringToByte(buildDropStringRight(itemId)), 16);
+                        SendByteArray8(socket, address + 0x600 + mapOffset, stringToByte(buildDropStringRight(itemId)), 16);
 
                         Debug.Print("Drop: " + address + " " + itemId + " " + count + " " + flag1 + " " + flag2);
                     }
@@ -2213,11 +2215,11 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        SendByteArray(socket, address, stringToByte(buildDropStringLeft("FFFE", "00000000", "00", "00", true)), 16);
-                        SendByteArray(socket, address + mapOffset, stringToByte(buildDropStringLeft("FFFE", "00000000", "00", "00", true)), 16);
+                        SendByteArray8(socket, address, stringToByte(buildDropStringLeft("FFFE", "00000000", "00", "00", true)), 16);
+                        SendByteArray8(socket, address + mapOffset, stringToByte(buildDropStringLeft("FFFE", "00000000", "00", "00", true)), 16);
 
-                        SendByteArray(socket, address + 0x600, stringToByte(buildDropStringRight("FFFE", true)), 16);
-                        SendByteArray(socket, address + 0x600 + mapOffset, stringToByte(buildDropStringRight("FFFE", true)), 16);
+                        SendByteArray8(socket, address + 0x600, stringToByte(buildDropStringRight("FFFE", true)), 16);
+                        SendByteArray8(socket, address + 0x600 + mapOffset, stringToByte(buildDropStringRight("FFFE", true)), 16);
 
                         Debug.Print("Delete: " + address);
                     }
@@ -2321,8 +2323,8 @@ namespace ACNHPoker
                     {
                         Debug.Print("[Sys] Poke : Acre " + AcreOffset.ToString("X"));
 
-                        SendByteArray(socket, AcreOffset, acre, acre.Length, ref counter);
-                        SendByteArray(socket, AcreOffset + mapOffset, acre, acre.Length, ref counter);
+                        SendByteArray8(socket, AcreOffset, acre, acre.Length, ref counter);
+                        SendByteArray8(socket, AcreOffset + mapOffset, acre, acre.Length, ref counter);
                     }
                     else
                     {
@@ -2349,8 +2351,8 @@ namespace ACNHPoker
                     {
                         Debug.Print("[Sys] Poke : Plaza " + (AcreOffset + 0x94).ToString("X"));
 
-                        SendByteArray(socket, AcreOffset + 0x94, plaza, plaza.Length, ref counter);
-                        SendByteArray(socket, AcreOffset + 0x94 + mapOffset, plaza, plaza.Length, ref counter);
+                        SendByteArray8(socket, AcreOffset + 0x94, plaza, plaza.Length, ref counter);
+                        SendByteArray8(socket, AcreOffset + 0x94 + mapOffset, plaza, plaza.Length, ref counter);
                     }
                     else
                     {
@@ -2377,8 +2379,8 @@ namespace ACNHPoker
                     {
                         Debug.Print("[Sys] Poke : Building " + BuildingOffset.ToString("X"));
 
-                        SendByteArray(socket, BuildingOffset, building, building.Length, ref counter);
-                        SendByteArray(socket, BuildingOffset + mapOffset, building, building.Length, ref counter);
+                        SendByteArray8(socket, BuildingOffset, building, building.Length, ref counter);
+                        SendByteArray8(socket, BuildingOffset + mapOffset, building, building.Length, ref counter);
                     }
                     else
                     {
@@ -2502,10 +2504,10 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, address1, buffer1, buffer1.Length, ref counter);
-                    SendByteArray(socket, address1 + mapOffset, buffer1, buffer1.Length, ref counter);
-                    SendByteArray(socket, address2, buffer2, buffer2.Length, ref counter);
-                    SendByteArray(socket, address2 + mapOffset, buffer2, buffer2.Length, ref counter);
+                    SendByteArray8(socket, address1, buffer1, buffer1.Length, ref counter);
+                    SendByteArray8(socket, address1 + mapOffset, buffer1, buffer1.Length, ref counter);
+                    SendByteArray8(socket, address2, buffer2, buffer2.Length, ref counter);
+                    SendByteArray8(socket, address2 + mapOffset, buffer2, buffer2.Length, ref counter);
                 }
                 else
                 {
@@ -2523,10 +2525,10 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, address1, buffer1, buffer1.Length);
-                    SendByteArray(socket, address1 + mapOffset, buffer1, buffer1.Length);
-                    SendByteArray(socket, address2, buffer2, buffer2.Length);
-                    SendByteArray(socket, address2 + mapOffset, buffer2, buffer2.Length);
+                    SendByteArray8(socket, address1, buffer1, buffer1.Length);
+                    SendByteArray8(socket, address1 + mapOffset, buffer1, buffer1.Length);
+                    SendByteArray8(socket, address2, buffer2, buffer2.Length);
+                    SendByteArray8(socket, address2 + mapOffset, buffer2, buffer2.Length);
                 }
                 else
                 {
@@ -2726,7 +2728,7 @@ namespace ACNHPoker
             lock (botLock)
             {
                 byte[] empty = new byte[20];
-                SendByteArray(socket, VisitorNameAddress, empty, 20);
+                SendByteArray8(socket, VisitorNameAddress, empty, 20);
                 Debug.Print("Send Blank Name");
             }
         }
@@ -3127,8 +3129,8 @@ namespace ACNHPoker
 
         public static async Task loadBoth(Socket socket, int villagerIndex, byte[] villager, int houseIndex, byte[] house)
         {
-            await Task.Run(() => SendByteArray(socket, VillagerAddress + (villagerIndex * VillagerSize), villager, (int)VillagerSize));
-            await Task.Run(() => SendByteArray(socket, VillagerHouseAddress + (houseIndex * (VillagerHouseSize)), house, (int)VillagerHouseSize));
+            await Task.Run(() => SendByteArray8(socket, VillagerAddress + (villagerIndex * VillagerSize), villager, (int)VillagerSize));
+            await Task.Run(() => SendByteArray8(socket, VillagerHouseAddress + (houseIndex * (VillagerHouseSize)), house, (int)VillagerHouseSize));
         }
 
         public static async Task SetMoveout(Socket socket, int villagerIndex, string MoveoutFlag = "2", string ForceMoveoutFlag = "1")

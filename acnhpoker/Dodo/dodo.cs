@@ -31,7 +31,7 @@ namespace ACNHPoker
         private bool wasLoading = false;
         private bool lastOrderIsRecipe = false;
         private static OrderDisplay itemDisplay;
-        private static MyTimer mytimer;
+        private static MyStopWatch stopWatch;
         bool dropItem = false;
         bool injectVillager = false;
         bool restoreDodo = true;
@@ -494,11 +494,11 @@ namespace ACNHPoker
                 itemDisplay.Close();
                 itemDisplay = null;
             }
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.Close();
-                mytimer.Dispose();
-                mytimer = null;
+                stopWatch.Close();
+                stopWatch.Dispose();
+                stopWatch = null;
             }
             if (mainForm is Form1)
             {
@@ -1407,23 +1407,23 @@ namespace ACNHPoker
                         wasLoading = true;
                     }
 
-                    if (mytimer != null)
+                    if (stopWatch != null)
                     {
                         int visitorNum = GetVisitorNumber();
-                        if (resetSession && mytimer.isDone())
+                        if (resetSession && stopWatch.isDone())
                         {
                             if (visitorNum >= 1)
                             {
                                 WriteLog("Time's up! Resetting session!", true);
                                 EndSession();
-                                mytimer.done = false;
+                                stopWatch.done = false;
                                 continue;
                             }
                             else
                             {
                                 WriteLog("Time's up! Save and reboot!", true);
                                 EndSession();
-                                mytimer.done = false;
+                                stopWatch.done = false;
                                 continue;
                             }
                         }
@@ -1474,12 +1474,12 @@ namespace ACNHPoker
                         NormalRestore();
                         unLockControl();
 
-                        if (mytimer != null && resetSession)
+                        if (stopWatch != null && resetSession)
                         {
                             this.Invoke((MethodInvoker)delegate
                             {
-                                mytimer.reset();
-                                mytimer.start();
+                                stopWatch.reset();
+                                stopWatch.start();
                             });
                         }
 
@@ -1579,38 +1579,38 @@ namespace ACNHPoker
             //Debug.Print("Visitor Update");
         }
 
-        private void TimerBtn_Click(object sender, EventArgs e)
+        private void StopWatchBtn_Click(object sender, EventArgs e)
         {
             if (this.Height < 440)
             {
                 this.Height = 440;
-                if (mytimer == null)
+                if (stopWatch == null)
                 {
-                    mytimer = new MyTimer();
-                    mytimer.Show();
+                    stopWatch = new MyStopWatch();
+                    stopWatch.Show();
                     timerSettingPanel.Enabled = true;
-                    mytimer.Location = new Point(this.Location.X, this.Location.Y - 140);
-                    mytimer.ControlBox = false;
+                    stopWatch.Location = new Point(this.Location.X, this.Location.Y - 140);
+                    stopWatch.ControlBox = false;
                 }
             }
             else
             {
                 this.Height = 330;
-                if (mytimer != null)
+                if (stopWatch != null)
                 {
-                    mytimer.Close();
-                    mytimer.Dispose();
-                    mytimer = null;
+                    stopWatch.Close();
+                    stopWatch.Dispose();
+                    stopWatch = null;
                 }
             }
         }
 
         private void dodo_Move(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.Location = new Point(this.Location.X, this.Location.Y - 140);
-                mytimer.BringToFront();
+                stopWatch.Location = new Point(this.Location.X, this.Location.Y - 140);
+                stopWatch.BringToFront();
             }
 
             if (itemDisplay != null)
@@ -1623,147 +1623,147 @@ namespace ACNHPoker
         #region Timer Control
         private void min1Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(1, mytimer.seconds);
+                stopWatch.set(1, stopWatch.seconds);
             }
         }
 
         private void min3Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(3, mytimer.seconds);
+                stopWatch.set(3, stopWatch.seconds);
             }
         }
 
         private void min5Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(5, mytimer.seconds);
+                stopWatch.set(5, stopWatch.seconds);
             }
         }
 
         private void min10Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(10, mytimer.seconds);
+                stopWatch.set(10, stopWatch.seconds);
             }
         }
 
         private void min15Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(15, mytimer.seconds);
+                stopWatch.set(15, stopWatch.seconds);
             }
         }
 
         private void sce0Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(mytimer.minutes, 0);
+                stopWatch.set(stopWatch.minutes, 0);
             }
         }
 
         private void sce30Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.set(mytimer.minutes, 30);
+                stopWatch.set(stopWatch.minutes, 30);
             }
         }
 
         private void minMinus1Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.minusMin(1);
+                stopWatch.minusMin(1);
             }
         }
 
         private void minPlus1Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.addMin(1);
+                stopWatch.addMin(1);
             }
         }
 
         private void minMinus5Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.minusMin(5);
+                stopWatch.minusMin(5);
             }
         }
 
         private void minPlus5Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.addMin(5);
+                stopWatch.addMin(5);
             }
         }
 
         private void secMinus1Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.minusSec(1);
+                stopWatch.minusSec(1);
             }
         }
 
         private void secPlus1Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.addSec(1);
+                stopWatch.addSec(1);
             }
         }
 
         private void secMinus5Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.minusSec(5);
+                stopWatch.minusSec(5);
             }
         }
 
         private void secPlus5Btn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.addSec(5);
+                stopWatch.addSec(5);
             }
         }
 
         private void timerStartBtn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
                 timerSettingPanel.Enabled = false;
-                mytimer.start();
+                stopWatch.start();
             }
         }
 
         private void timerPauseBtn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
-                mytimer.pause();
+                stopWatch.pause();
             }
         }
 
         private void timerResetBtn_Click(object sender, EventArgs e)
         {
-            if (mytimer != null)
+            if (stopWatch != null)
             {
                 timerSettingPanel.Enabled = true;
-                mytimer.reset();
+                stopWatch.reset();
             }
         }
         #endregion

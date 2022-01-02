@@ -502,7 +502,7 @@ namespace ACNHPoker
             //}
         }
 
-        private void loadBtn_Click(object sender, EventArgs e)
+        private void loadNHIBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1025,34 +1025,32 @@ namespace ACNHPoker
             byte[] reactionBank = Utilities.getReaction(s, bot, player);
             //Debug.Print(Encoding.ASCII.GetString(reactionBank));
 
-            byte[] reaction1 = new byte[1];
-            byte[] reaction2 = new byte[1];
-            byte[] reaction3 = new byte[1];
-            byte[] reaction4 = new byte[1];
-            byte[] reaction5 = new byte[1];
-            byte[] reaction6 = new byte[1];
-            byte[] reaction7 = new byte[1];
-            byte[] reaction8 = new byte[1];
+            byte[] reactions1 = new byte[1];
+            byte[] reactions2 = new byte[1];
+            byte[] reactions3 = new byte[1];
+            byte[] reactions4 = new byte[1];
+            byte[] reactions5 = new byte[1];
+            byte[] reactions6 = new byte[1];
+            byte[] reactions7 = new byte[1];
+            byte[] reactions8 = new byte[1];
 
-            Buffer.BlockCopy(reactionBank, 0, reaction1, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 1, reaction2, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 2, reaction3, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 3, reaction4, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 4, reaction5, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 5, reaction6, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 6, reaction7, 0x0, 0x1);
-            Buffer.BlockCopy(reactionBank, 7, reaction8, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 0, reactions1, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 1, reactions2, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 2, reactions3, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 3, reactions4, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 4, reactions5, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 5, reactions6, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 6, reactions7, 0x0, 0x1);
+            Buffer.BlockCopy(reactionBank, 7, reactions8, 0x0, 0x1);
 
-            setReactionBox(Utilities.ByteToHexString(reaction1), reactionSlot1);
-            setReactionBox(Utilities.ByteToHexString(reaction2), reactionSlot2);
-            setReactionBox(Utilities.ByteToHexString(reaction3), reactionSlot3);
-            setReactionBox(Utilities.ByteToHexString(reaction4), reactionSlot4);
-            setReactionBox(Utilities.ByteToHexString(reaction5), reactionSlot5);
-            setReactionBox(Utilities.ByteToHexString(reaction6), reactionSlot6);
-            setReactionBox(Utilities.ByteToHexString(reaction7), reactionSlot7);
-            setReactionBox(Utilities.ByteToHexString(reaction8), reactionSlot8);
-            //Debug.Print(Encoding.ASCII.GetString(reaction1) + " | " + Encoding.ASCII.GetString(reaction2) + " | " + Encoding.ASCII.GetString(reaction3) + " | " + Encoding.ASCII.GetString(reaction4));
-            //Debug.Print(Encoding.ASCII.GetString(reaction5) + " | " + Encoding.ASCII.GetString(reaction6) + " | " + Encoding.ASCII.GetString(reaction7) + " | " + Encoding.ASCII.GetString(reaction8));
+            setReactionBox(Utilities.ByteToHexString(reactions1), reactionSlot1);
+            setReactionBox(Utilities.ByteToHexString(reactions2), reactionSlot2);
+            setReactionBox(Utilities.ByteToHexString(reactions3), reactionSlot3);
+            setReactionBox(Utilities.ByteToHexString(reactions4), reactionSlot4);
+            setReactionBox(Utilities.ByteToHexString(reactions5), reactionSlot5);
+            setReactionBox(Utilities.ByteToHexString(reactions6), reactionSlot6);
+            setReactionBox(Utilities.ByteToHexString(reactions7), reactionSlot7);
+            setReactionBox(Utilities.ByteToHexString(reactions8), reactionSlot8);
         }
 
         private void setReactionBox(string reaction, ComboBox box)
@@ -1077,9 +1075,9 @@ namespace ACNHPoker
             //{
             int player = playerSelectorOther.SelectedIndex;
 
-            string reaction1 = (Utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
-            string reaction2 = (Utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
-            Utilities.setReaction(s, bot, player, reaction1, reaction2);
+            string reactionFirstHalf = (Utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
+            string reactionSecondHalf = (Utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
+            Utilities.setReaction(s, bot, player, reactionFirstHalf, reactionSecondHalf);
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
             //}
@@ -1529,7 +1527,7 @@ namespace ACNHPoker
                     this.wrapSetting.SelectedIndex = 0;
                     //this.selectedItem.setHide(true);
                     this.ipBox.Visible = false;
-                    this.pictureBox1.Visible = false;
+                    this.IPboxBorder.Visible = false;
                     this.pokeMainCheatPanel.Visible = false;
                     this.configBtn.Visible = false;
                     this.playerSelectorInventory.Visible = true;
@@ -1576,7 +1574,7 @@ namespace ACNHPoker
                 this.critterBtn.Visible = false;
                 this.villagerBtn.Visible = false;
                 this.ipBox.Visible = true;
-                this.pictureBox1.Visible = true;
+                this.IPboxBorder.Visible = true;
                 this.configBtn.Visible = true;
                 cleanVillagerPage();
 

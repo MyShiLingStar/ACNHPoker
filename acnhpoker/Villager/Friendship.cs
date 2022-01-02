@@ -35,42 +35,42 @@ namespace ACNHPoker
                 switch (p)
                 {
                     case 0:
-                        PlayerName1.Text = mainForm.PassPlayerName(i, p);
+                        Name1.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar1.Value = friendshipValue[p];
                         FriendshipValue1.Text = friendshipValue[p].ToString();
                         break;
                     case 1:
-                        PlayerName2.Text = mainForm.PassPlayerName(i, p);
+                        Name2.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar2.Value = friendshipValue[p];
                         FriendshipValue2.Text = friendshipValue[p].ToString();
                         break;
                     case 2:
-                        PlayerName3.Text = mainForm.PassPlayerName(i, p);
+                        Name3.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar3.Value = friendshipValue[p];
                         FriendshipValue3.Text = friendshipValue[p].ToString();
                         break;
                     case 3:
-                        PlayerName4.Text = mainForm.PassPlayerName(i, p);
+                        Name4.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar4.Value = friendshipValue[p];
                         FriendshipValue4.Text = friendshipValue[p].ToString();
                         break;
                     case 4:
-                        PlayerName5.Text = mainForm.PassPlayerName(i, p);
+                        Name5.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar5.Value = friendshipValue[p];
                         FriendshipValue5.Text = friendshipValue[p].ToString();
                         break;
                     case 5:
-                        PlayerName6.Text = mainForm.PassPlayerName(i, p);
+                        Name6.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar6.Value = friendshipValue[p];
                         FriendshipValue6.Text = friendshipValue[p].ToString();
                         break;
                     case 6:
-                        PlayerName7.Text = mainForm.PassPlayerName(i, p);
+                        Name7.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar7.Value = friendshipValue[p];
                         FriendshipValue7.Text = friendshipValue[p].ToString();
                         break;
                     case 7:
-                        PlayerName8.Text = mainForm.PassPlayerName(i, p);
+                        Name8.Text = mainForm.PassPlayerName(i, p);
                         FriendshipBar8.Value = friendshipValue[p];
                         FriendshipValue8.Text = friendshipValue[p].ToString();
                         break;

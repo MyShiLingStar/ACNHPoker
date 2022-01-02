@@ -16,6 +16,13 @@ namespace ACNHPoker
             {
                 string logheader = "Timestamp" + "," + "Form" + "," + "Message";
 
+                string directoryPath = Directory.GetCurrentDirectory() + "\\" + Utilities.saveFolder;
+
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
                 using (StreamWriter sw = File.CreateText(Utilities.logPath))
                 {
                     sw.WriteLine(logheader);
@@ -26,9 +33,12 @@ namespace ACNHPoker
 
             string newLog = localDate.ToString() + "," + Location + "," + Message;
 
-            using (StreamWriter sw = File.AppendText(Utilities.logPath))
+            if (File.Exists(Utilities.logPath))
             {
-                sw.WriteLine(newLog);
+                using (StreamWriter sw = File.AppendText(Utilities.logPath))
+                {
+                    sw.WriteLine(newLog);
+                }
             }
         }
     }

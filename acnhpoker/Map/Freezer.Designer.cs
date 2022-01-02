@@ -49,13 +49,13 @@ namespace ACNHPoker
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.WaitMessagebox = new System.Windows.Forms.Label();
             this.MapProgressBar = new System.Windows.Forms.ProgressBar();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.NowLoading = new System.Windows.Forms.PictureBox();
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.FinMsg = new System.Windows.Forms.RichTextBox();
-            this.mapPanel = new System.Windows.Forms.Panel();
             this.unfreezeAllVillagerBtn = new System.Windows.Forms.Button();
             this.freezeAllVillagerBtn = new System.Windows.Forms.Button();
+            this.FinMsg = new System.Windows.Forms.RichTextBox();
+            this.mapPanel = new System.Windows.Forms.Panel();
             this.FreezeMap2Btn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@ namespace ACNHPoker
             this.xCoordinate = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.RateBar)).BeginInit();
             this.PleaseWaitPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).BeginInit();
             this.mainPanel.SuspendLayout();
             this.mapPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
@@ -302,7 +302,7 @@ namespace ACNHPoker
             // 
             this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
             this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
-            this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
+            this.PleaseWaitPanel.Controls.Add(this.NowLoading);
             this.PleaseWaitPanel.Location = new System.Drawing.Point(2, 293);
             this.PleaseWaitPanel.Name = "PleaseWaitPanel";
             this.PleaseWaitPanel.Size = new System.Drawing.Size(230, 35);
@@ -331,14 +331,14 @@ namespace ACNHPoker
             this.MapProgressBar.Size = new System.Drawing.Size(220, 3);
             this.MapProgressBar.TabIndex = 215;
             // 
-            // pictureBox2
+            // NowLoading
             // 
-            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(61, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 216;
-            this.pictureBox2.TabStop = false;
+            this.NowLoading.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.NowLoading.Location = new System.Drawing.Point(61, 2);
+            this.NowLoading.Name = "NowLoading";
+            this.NowLoading.Size = new System.Drawing.Size(24, 24);
+            this.NowLoading.TabIndex = 216;
+            this.NowLoading.TabStop = false;
             // 
             // ProgressTimer
             // 
@@ -367,36 +367,6 @@ namespace ACNHPoker
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(236, 364);
             this.mainPanel.TabIndex = 240;
-            // 
-            // FinMsg
-            // 
-            this.FinMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.FinMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FinMsg.Cursor = System.Windows.Forms.Cursors.Default;
-            this.FinMsg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.FinMsg.ForeColor = System.Drawing.Color.White;
-            this.FinMsg.Location = new System.Drawing.Point(14, 298);
-            this.FinMsg.Multiline = false;
-            this.FinMsg.Name = "FinMsg";
-            this.FinMsg.ReadOnly = true;
-            this.FinMsg.Size = new System.Drawing.Size(207, 21);
-            this.FinMsg.TabIndex = 239;
-            this.FinMsg.Text = "";
-            this.FinMsg.Visible = false;
-            // 
-            // mapPanel
-            // 
-            this.mapPanel.Controls.Add(this.FreezeMap2Btn);
-            this.mapPanel.Controls.Add(this.startBtn);
-            this.mapPanel.Controls.Add(this.label4);
-            this.mapPanel.Controls.Add(this.label3);
-            this.mapPanel.Controls.Add(this.yCoordinate);
-            this.mapPanel.Controls.Add(this.miniMapBox);
-            this.mapPanel.Controls.Add(this.xCoordinate);
-            this.mapPanel.Location = new System.Drawing.Point(239, 2);
-            this.mapPanel.Name = "mapPanel";
-            this.mapPanel.Size = new System.Drawing.Size(235, 364);
-            this.mapPanel.TabIndex = 241;
             // 
             // unfreezeAllVillagerBtn
             // 
@@ -429,6 +399,36 @@ namespace ACNHPoker
             this.freezeAllVillagerBtn.Text = "Freeze All Villager";
             this.freezeAllVillagerBtn.UseVisualStyleBackColor = false;
             this.freezeAllVillagerBtn.Click += new System.EventHandler(this.freezeAllVillagerBtn_Click);
+            // 
+            // FinMsg
+            // 
+            this.FinMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.FinMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FinMsg.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FinMsg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.FinMsg.ForeColor = System.Drawing.Color.White;
+            this.FinMsg.Location = new System.Drawing.Point(14, 298);
+            this.FinMsg.Multiline = false;
+            this.FinMsg.Name = "FinMsg";
+            this.FinMsg.ReadOnly = true;
+            this.FinMsg.Size = new System.Drawing.Size(207, 21);
+            this.FinMsg.TabIndex = 239;
+            this.FinMsg.Text = "";
+            this.FinMsg.Visible = false;
+            // 
+            // mapPanel
+            // 
+            this.mapPanel.Controls.Add(this.FreezeMap2Btn);
+            this.mapPanel.Controls.Add(this.startBtn);
+            this.mapPanel.Controls.Add(this.label4);
+            this.mapPanel.Controls.Add(this.label3);
+            this.mapPanel.Controls.Add(this.yCoordinate);
+            this.mapPanel.Controls.Add(this.miniMapBox);
+            this.mapPanel.Controls.Add(this.xCoordinate);
+            this.mapPanel.Location = new System.Drawing.Point(239, 2);
+            this.mapPanel.Name = "mapPanel";
+            this.mapPanel.Size = new System.Drawing.Size(235, 364);
+            this.mapPanel.TabIndex = 241;
             // 
             // FreezeMap2Btn
             // 
@@ -535,7 +535,7 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.RateBar)).EndInit();
             this.PleaseWaitPanel.ResumeLayout(false);
             this.PleaseWaitPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NowLoading)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.mapPanel.ResumeLayout(false);
@@ -562,7 +562,7 @@ namespace ACNHPoker
         private System.Windows.Forms.Button UnFreezeAllBtn;
         private System.Windows.Forms.Panel PleaseWaitPanel;
         private System.Windows.Forms.ProgressBar MapProgressBar;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox NowLoading;
         private System.Windows.Forms.Timer ProgressTimer;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label WaitMessagebox;

@@ -19,7 +19,7 @@ namespace ACNHPoker
     {
         #region variable
         private static Socket s;
-        private string version = "ACNH Poker R18.8 for v2.0.4";
+        private string version = "ACNH Poker R19 for v2.0.4";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -51,7 +51,6 @@ namespace ACNHPoker
         public MapRegenerator R = null;
         public Freezer F = null;
         public Bulldozer B = null;
-        private miniMap MiniMap = null;
         private USBBot bot = null;
         private bool offline = true;
         private bool allowUpdate = true;
@@ -60,7 +59,6 @@ namespace ACNHPoker
 
         private Setting setting;
         private Friendship friendship;
-        private teleport teleporter;
         private controller Controller;
         public dodo dodoSetup;
         private string IslandName = "";
@@ -132,8 +130,8 @@ namespace ACNHPoker
             {
                 config.AppSettings.Settings["ForcedImageDownload"].Value = "false";
                 config.Save(ConfigurationSaveMode.Minimal);
-                ImageDownloader imageDownloader = new ImageDownloader();
-                imageDownloader.ShowDialog();
+                ImgRetriever MoonMoon = new ImgRetriever();
+                MoonMoon.ShowDialog();
             }
 
             if (config.AppSettings.Settings["RestartRequired"].Value == "true")
@@ -377,42 +375,51 @@ namespace ACNHPoker
             {
                 string favheader = "id" + " ; " + "iName" + " ; " + "Name" + " ; " + "value" + " ; ";
 
+                string directoryPath = Directory.GetCurrentDirectory() + "\\" + Utilities.csvFolder;
+
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
                 using (StreamWriter sw = File.CreateText(Utilities.favPath))
                 {
                     sw.WriteLine(favheader);
                 }
             }
 
-            favSource = loadCSVwoKey(Utilities.favPath);
-            favGridView.DataSource = favSource;
-
-            favGridView.Columns["id"].Visible = false;
-            favGridView.Columns["iName"].Visible = false;
-            favGridView.Columns["value"].Visible = false;
-
-            favGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            favGridView.DefaultCellStyle.BackColor = Color.FromArgb(255, 47, 49, 54);
-            favGridView.DefaultCellStyle.ForeColor = Color.FromArgb(255, 114, 105, 110);
-            favGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
-
-            favGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 57, 60, 67);
-            favGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            favGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
-
-            favGridView.EnableHeadersVisualStyles = false;
-
-            DataGridViewImageColumn favimageColumn = new DataGridViewImageColumn
+            if (File.Exists(Utilities.favPath))
             {
-                Name = "Image",
-                HeaderText = "Image",
-                ImageLayout = DataGridViewImageCellLayout.Zoom
-            };
-            favGridView.Columns.Insert(4, favimageColumn);
-            favimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+                favSource = loadCSVwoKey(Utilities.favPath);
+                favGridView.DataSource = favSource;
 
-            favGridView.Columns["Name"].Width = 195;
-            favGridView.Columns["Image"].Width = 128;
+                favGridView.Columns["id"].Visible = false;
+                favGridView.Columns["iName"].Visible = false;
+                favGridView.Columns["value"].Visible = false;
 
+                favGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                favGridView.DefaultCellStyle.BackColor = Color.FromArgb(255, 47, 49, 54);
+                favGridView.DefaultCellStyle.ForeColor = Color.FromArgb(255, 114, 105, 110);
+                favGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
+
+                favGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 57, 60, 67);
+                favGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                favGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
+
+                favGridView.EnableHeadersVisualStyles = false;
+
+                DataGridViewImageColumn favimageColumn = new DataGridViewImageColumn
+                {
+                    Name = "Image",
+                    HeaderText = "Image",
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                favGridView.Columns.Insert(4, favimageColumn);
+                favimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+                favGridView.Columns["Name"].Width = 195;
+                favGridView.Columns["Image"].Width = 128;
+            }
 
             currentPanel = itemModePanel;
 
@@ -798,40 +805,40 @@ namespace ACNHPoker
                 byte[] Bank4 = Utilities.peekAddress(s, bot, Utilities.playerReactionAddress, 150); //reactionAddress
                 byte[] Bank5 = Utilities.peekAddress(s, bot, Utilities.staminaAddress, 150); //staminaAddress
 
-                string result1 = Utilities.ByteToHexString(Bank1);
-                string result2 = Utilities.ByteToHexString(Bank2);
-                string result3 = Utilities.ByteToHexString(Bank3);
-                string result4 = Utilities.ByteToHexString(Bank4);
-                string result5 = Utilities.ByteToHexString(Bank5);
+                string HexString1 = Utilities.ByteToHexString(Bank1);
+                string HexString2 = Utilities.ByteToHexString(Bank2);
+                string HexString3 = Utilities.ByteToHexString(Bank3);
+                string HexString4 = Utilities.ByteToHexString(Bank4);
+                string HexString5 = Utilities.ByteToHexString(Bank5);
 
-                Debug.Print(result1);
-                Debug.Print(result2);
-                Debug.Print(result3);
-                Debug.Print(result4);
-                Debug.Print(result5);
+                Debug.Print(HexString1);
+                Debug.Print(HexString2);
+                Debug.Print(HexString3);
+                Debug.Print(HexString4);
+                Debug.Print(HexString5);
 
                 int count1 = 0;
-                if (result1 == result2)
+                if (HexString1 == HexString2)
                 { count1++; }
-                if (result1 == result3)
+                if (HexString1 == HexString3)
                 { count1++; }
-                if (result1 == result4)
+                if (HexString1 == HexString4)
                 { count1++; }
-                if (result1 == result5)
+                if (HexString1 == HexString5)
                 { count1++; }
 
                 int count2 = 0;
-                if (result2 == result3)
+                if (HexString2 == HexString3)
                 { count2++; }
-                if (result2 == result4)
+                if (HexString2 == HexString4)
                 { count2++; }
-                if (result2 == result5)
+                if (HexString2 == HexString5)
                 { count2++; }
 
                 int count3 = 0;
-                if (result3 == result4)
+                if (HexString3 == HexString4)
                 { count3++; }
-                if (result3 == result5)
+                if (HexString3 == HexString5)
                 { count3++; }
 
                 Debug.Print("Count : " + count1.ToString() + " " + count2.ToString() + " " + count3.ToString());
@@ -911,7 +918,6 @@ namespace ACNHPoker
                 try
                 {
                     s.EndConnect(result);
-                    teleporter = new teleport(s);
                     Controller = new controller(s, IslandName);
                     return true;
                 }
@@ -931,7 +937,7 @@ namespace ACNHPoker
         }
 
         #region Form Control
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainFormClosed(object sender, FormClosedEventArgs e)
         {
             Log.logEvent("MainForm", "Form Closed");
         }
@@ -945,49 +951,6 @@ namespace ACNHPoker
         }
         #endregion
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-
-            SaveFileDialog file = new SaveFileDialog()
-            {
-                Filter = "New Horizons Villager (*.nhv2)|*.nhv2",
-                //FileName = V[i].GetInternalName() + ".nhv2",
-            };
-
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-            string savepath;
-
-            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
-                savepath = Directory.GetCurrentDirectory() + @"\save";
-            else
-                savepath = config.AppSettings.Settings["LastSave"].Value;
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            string[] temp = file.FileName.Split('\\');
-            string path = "";
-            for (int j = 0; j < temp.Length - 1; j++)
-                path = path + temp[j] + "\\";
-
-            config.AppSettings.Settings["LastSave"].Value = path;
-            config.Save(ConfigurationSaveMode.Minimal);
-
-            Thread dumpThread = new Thread(delegate () { dumpVillager2(i, file); });
-            dumpThread.Start();
-        }
-
         private void dumpVillager2(int i, SaveFileDialog file)
         {
             //byte[] b1 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
@@ -999,12 +962,7 @@ namespace ACNHPoker
             //File.WriteAllBytes(file.FileName + "3", b3);
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            teleport.dump();
-        }
-
-        private void button13_Click(object sender, EventArgs e)
+        private void stateBtn_Click(object sender, EventArgs e)
         {
             Thread stateThread = new Thread(delegate () { trystate(); });
             stateThread.Start();
@@ -1017,99 +975,6 @@ namespace ACNHPoker
                 Debug.Print(teleport.GetLocationState().ToString());
                 Thread.Sleep(2000);
             } while (true);
-        }
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            controller.talkAndGetDodoCode();
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog file = new SaveFileDialog()
-            {
-                Filter = "New Horizons Villager (*.nhv2)|*.nhv2",
-                //FileName = V[i].GetInternalName() + ".nhv2",
-            };
-
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-            string savepath;
-
-            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
-                savepath = Directory.GetCurrentDirectory() + @"\save";
-            else
-                savepath = config.AppSettings.Settings["LastSave"].Value;
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            string[] temp = file.FileName.Split('\\');
-            string path = "";
-            for (int j = 0; j < temp.Length - 1; j++)
-                path = path + temp[j] + "\\";
-
-            config.AppSettings.Settings["LastSave"].Value = path;
-            config.Save(ConfigurationSaveMode.Minimal);
-
-            Thread dumpThread = new Thread(delegate () { dumpHead(file); });
-            dumpThread.Start();
-        }
-
-        private void dumpHead(SaveFileDialog file)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                //byte[] b = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
-                //File.WriteAllBytes(file.FileName + i, b);
-            }
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            string[] namelist = new string[8];
-
-            string saveFolder = @"save\";
-
-            int num = 0;
-
-            using (StreamWriter sw = File.CreateText(saveFolder + "visitor.txt"))
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (i == 0)
-                        continue;
-                    namelist[i] = Utilities.GetVisitorName(s, null, i);
-                    if (namelist[i].Equals(String.Empty))
-                        sw.WriteLine("[Empty]");
-                    else
-                    {
-                        sw.WriteLine(namelist[i]);
-                        num++;
-                    }
-                }
-                if (num >= 7)
-                {
-                    sw.WriteLine("Num of Visitor : " + num);
-                    sw.WriteLine(" [Island Full] ");
-                }
-            }
-
-
-        }
-
-        private void button21_Click(object sender, EventArgs e)
-        {
-            controller.dropItem();
         }
 
         private void dodoHelperBtn_Click(object sender, EventArgs e)
@@ -1131,11 +996,6 @@ namespace ACNHPoker
                                     ">> Please try the buttons below to test the virtual controller. <<"
                                     );
             }
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            controller.emote(0);
         }
 
         private void HouseIndexValue_TextChanged(object sender, EventArgs e)
