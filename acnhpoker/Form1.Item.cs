@@ -216,6 +216,7 @@ namespace ACNHPoker
                                 LoadGridView(FishSeaAppearParam, seaFishGridView, ref seaFishRate, Utilities.FishDataSize, Utilities.FishSeaNumRecords, 1);
                                 LoadGridView(CreatureSeaAppearParam, seaCreatureGridView, ref seaCreatureRate, Utilities.SeaCreatureDataSize, Utilities.SeaCreatureNumRecords, 1);
 
+                                blinker = new teleport(s);
                                 Controller = new controller(s, IslandName);
                             });
 

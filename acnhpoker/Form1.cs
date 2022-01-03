@@ -59,6 +59,7 @@ namespace ACNHPoker
 
         private Setting setting;
         private Friendship friendship;
+        private teleport blinker;
         private controller Controller;
         public dodo dodoSetup;
         private string IslandName = "";
@@ -918,6 +919,7 @@ namespace ACNHPoker
                 try
                 {
                     s.EndConnect(result);
+                    blinker = new teleport(s);
                     Controller = new controller(s, IslandName);
                     return true;
                 }
