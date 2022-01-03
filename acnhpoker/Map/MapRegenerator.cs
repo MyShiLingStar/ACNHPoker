@@ -299,8 +299,8 @@ namespace ACNHPoker
 
                 Log.logEvent("Regen", "Regen1 Started: " + name[name.Length - 1]);
 
-                //string dodo = controller.setupDodo();
-                //Log.logEvent("Regen", "Regen1 Dodo: " + dodo);
+                string dodo = controller.setupDodo();
+                Log.logEvent("Regen", "Regen1 Dodo: " + dodo);
 
                 RegenThread = new Thread(delegate () { regenMapFloor(b, address, name[name.Length - 1]); });
                 RegenThread.Start();
@@ -446,8 +446,8 @@ namespace ACNHPoker
 
                     Log.logEvent("Regen", "Regen2Normal Started: " + tempFilename);
 
-                    //string dodo = controller.setupDodo();
-                    //Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
+                    string dodo = controller.setupDodo();
+                    Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
                     RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
                     RegenThread.Start();
@@ -506,8 +506,8 @@ namespace ACNHPoker
             Log.logEvent("Regen", "Regen2Limit Started: " + tempFilename);
             Log.logEvent("Regen", "Regen2Limit Area: " + anchorX + " " + anchorY);
 
-            //string dodo = controller.setupDodo();
-            //Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
+            string dodo = controller.setupDodo();
+            Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
             RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
             RegenThread.Start();
