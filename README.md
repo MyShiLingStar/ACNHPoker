@@ -1,3 +1,7 @@
+The legacy version of ACNHPoker have now be archived. You can find the new version at the [New Repository](https://github.com/MyShiLingStar/ACNHPokerCore)
+
+
+
 # ACNHPoker
 
 ![Release Image](https://i.ibb.co/txCNG22/131313.png)
