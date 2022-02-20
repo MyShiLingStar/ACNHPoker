@@ -1,4 +1,4 @@
-# >>★ _The legacy version of ACNHPoker have now be archived. You can find the new version at the [New Repository](https://github.com/MyShiLingStar/ACNHPokerCore)_ ★<<
+# >>★ _The legacy version of ACNHPoker has now been archived. You can find the new version at the [New Repository](https://github.com/MyShiLingStar/ACNHPokerCore)_ ★<<
 　
  　
   　
